@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_patient_label">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <table class="table table-condensed" style="border: 3px solid black !important;">
+                                <tr>
+                                    <td width="40%">
+                                        <p style="text-align:center;padding-top:10px;">
+                                            <img t-if="not o.image_medium" t-att-src="'/web/static/src/img/placeholder.png'" height="120" border="1" width="120"/>
+                                            <img t-if="o.image_medium" t-att-src="'data:image/png;base64,%s' % o.image_medium" height="120" border="1" width="120"/>
+                                        </p>
+                                        <p style="text-align:center;">
+                                            <strong><span t-field="o.name"/></strong>
+                                        </p>
+                                    </td>
+                                    <td width="60%">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <p style="text-align:right;padding-top:10px;"><strong>Patient ID : </strong></p>
+                                                    <p style="text-align:right;"><strong>DOB : </strong></p>
+                                                    <p style="text-align:right;"><strong>Age : </strong></p>
+                                                    <p style="text-align:right;"><strong>Sex : </strong></p>
+                                                    <p style="text-align:right;"><strong>Marital Status : </strong></p>
+                                                </td>
+                                                <td>
+                                                    <p style="text-align:left;padding-top:10px;padding-left:10px;" t-field="o.identification_code"/>
+                                                    <p style="text-align:left;padding-left:10px;" t-field="o.dob"/>
+                                                    <p style="text-align:left;padding-left:10px;" t-field="o.age"/>
+                                                    <p style="text-align:left;padding-left:10px;" t-field="o.sex"/>
+                                                    <p style="text-align:left;padding-left:10px;" t-field="o.marital_status"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

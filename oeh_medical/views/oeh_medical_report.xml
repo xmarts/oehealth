@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            string="Patient Card"
+            id="action_report_patient_label"
+            model="oeh.medical.patient"
+            report_type="qweb-pdf"
+            name="oehealth.report_patient_label"
+            file="oehealth.report_patient_label"
+        />
+
+        <report
+            string="Patient Medicines Report"
+            id="report_patient_medicine"
+            model="oeh.medical.patient"
+            report_type="qweb-pdf"
+            name="oehealth.report_patientmedicine"
+            file="oehealth.report_patientmedicine"
+        />
+
+	    <report
+            id="action_report_appointment_receipt"
+            string="Appointment Receipt"
+            model="oeh.medical.appointment"
+            report_type="qweb-pdf"
+            name="oehealth.report_appointment_receipt"
+            file="oehealth.report_appointment_receipt"
+            paperformat="oehealth.oeh_paperformat_appointmentreceipt"
+
+        />
+
+        <report
+            string="Prescription Report"
+            id="action_oeh_medical_report_patient_prescriptions"
+            model="oeh.medical.prescription"
+            report_type="qweb-pdf"
+            name="oehealth.report_oeh_medical_patient_prescription"
+            file="oehealth.report_oeh_medical_patient_prescription"
+        />
+
+    </data>
+</openerp>

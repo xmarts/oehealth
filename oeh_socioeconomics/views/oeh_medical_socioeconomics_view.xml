@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+            <!-- Occupation Configuration -->
+
+            <record model="ir.ui.view" id="oeh_medical_occupation_tree">
+                <field name="name">Occupations</field>
+                <field name="model">oeh.medical.occupation</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Occupations' editable="bottom">
+                        <field name="name"/>
+                        <field name="code"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_oeh_medical_occupation_filter" model="ir.ui.view">
+                <field name="name">Occupations</field>
+                <field name="model">oeh.medical.occupation</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Occupations">
+                        <field name="name"/>
+                        <field name="code"/>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_occupation_action_tree" model="ir.actions.act_window">
+                    <field name="name">Occupations</field>
+                    <field name="res_model">oeh.medical.occupation</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new occupation.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_occupation_action_tree" id="oeh_medical_occupation_conf_list" parent="oeh_medical_conf_patient" sequence="2"/>
+
+            <!-- Socioeconomics -->
+
+            <record id="oeh_medical_patient_socioeconomics_view" model="ir.ui.view">
+                <field name="name">Patient</field>
+                <field name="model">oeh.medical.patient</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_patient_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Socioeconomics">
+                            <group string="General">
+                                <group>
+                                    <field name="socioeconomics"/>
+                                    <field name="education_level"/>
+                                    <field name="housing_condition"/>
+                                    <field name="occupation"/>
+                                </group>
+                                <group>
+                                    <field name="works_at_home"/>
+                                    <field name="hours_outside"/>
+                                    <field name="hostile_area"/>
+                                    <field name="income"/>
+                                </group>
+                            </group>
+                            <group string="Infrastructure">
+                                <group>
+                                    <field name="sewers"/>
+                                    <field name="water"/>
+                                    <field name="trash"/>
+                                    <field name="electricity"/>
+                                </group>
+                                <group>
+                                    <field name="gas"/>
+                                    <field name="telephone"/>
+                                    <field name="television"/>
+                                    <field name="internet"/>
+                                </group>
+                            </group>
+                            <group string="Family APGAR">
+                                <group>
+                                    <field name="apgar_help"/>
+                                    <field name="apgar_discussion"/>
+                                    <field name="apgar_decision"/>
+                                </group>
+                                <group>
+                                    <field name="apgar_timesharing"/>
+                                    <field name="apgar_affection"/>
+                                </group>
+                            </group>
+                            <group string="Other Family Issues">
+                                <group>
+                                    <field name="single_parent"/>
+                                    <field name="domestic_violence"/>
+                                    <field name="working_children"/>
+                                    <field name="teenage_pregnancy"/>
+                                    <field name="sexual_abuse"/>
+                                </group>
+                                <group>
+                                    <field name="drug_addiction"/>
+                                    <field name="school_withdrawal"/>
+                                    <field name="prison_past"/>
+                                    <field name="prison_current"/>
+                                    <field name="relative_in_prison"/>
+                                </group>
+                            </group>
+                            <group string="Extra Info">
+                                <field name="info" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+
+        </data>
+</openerp>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<template id="report_oeh_medical_patient_prescription">
+    <t t-call="web.external_layout">
+        <t t-foreach="docs" t-as="o">
+            <div class="page">
+                <div class="oe_structure"/>
+                <div class="row">
+                    <p style="font-size:24px;text-align:center;font-weight:bold;">Prescription Detail</p>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div t-if="o.patient">
+                            <strong>Patient:</strong>
+                            <p t-field="o.patient.name"/>
+                        </div>
+                        <div t-if="o.name">
+                            <strong>Prescription#:</strong>
+                            <p t-field="o.name"/>
+                        </div>
+                        <div t-if="o.doctor">
+                            <strong>Physician:</strong>
+                            <p t-field="o.doctor.name"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div t-if="o.patient.partner_id" class="mt16">
+                            <strong>Address:</strong>
+                            <div t-field="o.patient.partner_id"
+                                t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}'/>
+                        </div>
+                        <div t-if="o.date" class="mt16">
+                            <strong>Date: </strong>
+                            <p t-field="o.date"/>
+                        </div>
+                        <div t-if="o.pharmacy">
+                            <strong>Pharmacy:</strong>
+                            <p t-field="o.pharmacy"/>
+                        </div>
+                    </div>
+                </div>
+
+               <table class="table table-condensed mt32">
+                    <thead>
+                        <tr>
+                            <th class="text-left">MEDICINE</th>
+                            <th class="text-left">INDICATION</th>
+                            <th class="text-left">DOSE</th>
+                            <th class="text-left">FORM</th>
+                            <th class="text-center">X</th>
+                            <th class="text-left">TREATMENT DURATION</th>
+                            <th class="text-left">TREATMENT PERIOD</th>
+                        </tr>
+                   </thead>
+                   <tbody class="invoice_tbody">
+                        <tr t-foreach="o.prescription_line" t-as="l">
+                            <td class="text-left">
+                               <strong><span t-field="l.name.name"/></strong>
+                            </td>
+                            <td>
+                                <span t-field="l.indication.name"/>
+                            </td>
+                            <td class="text-left">
+                                <span t-field="l.dose"/> <span t-field="l.dose_unit.name"/>
+                            </td>
+                            <td class="text-left">
+                                <span t-field="l.dose_form.name"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="l.qty"/>
+                            </td>
+                            <td class="text-left">
+                                <span t-field="l.duration"/>
+                            </td>
+                            <td class="text-left">
+                                <span t-field="l.duration_period"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+   </t>
+</template>
+</data>
+</odoo>

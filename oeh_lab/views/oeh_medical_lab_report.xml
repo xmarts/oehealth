@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            string="Lab Test Report"
+            id="action_report_patient_labtest"
+            model="oeh.medical.lab.test"
+            report_type="qweb-pdf"
+            name="oehealth.report_oeh_medical_patient_labtest"
+            file="oehealth.report_oeh_medical_patient_labtest"
+        />
+
+    </data>
+</openerp>

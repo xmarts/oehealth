@@ -1,0 +1,240 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+            <!-- Inpatient Hospitalization -->
+
+            <record model="ir.ui.view" id="oeh_medical_inpatient_view">
+                <field name="name">Inpatient Admission</field>
+                <field name="model">oeh.medical.inpatient</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Inpatient Admission">
+                        <header>
+                            <button confirm="Are you sure you want to admit the patient?" name="set_to_hospitalized" states="Draft" string="Admit Now" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <button confirm="Are you sure you want to discharge the patient?" name="set_to_discharged" states="Hospitalized" string="Discharge Now" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <button confirm="Are you sure you want to create the invoice?" name="set_to_invoiced" states="Discharged" string="Create Invoice" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <button confirm="Are you sure you want to cancel the admission?" name="set_to_cancelled" states="Hospitalized" string="Cancel Admission" type="object" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <button confirm="Are you sure you want to set record to draft mode?" name="set_to_draft" states="Cancelled" string="Set to Draft" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <field name="state" widget="statusbar" statusbar_visible="Draft,Hospitalized,Discharged,Invoiced" statusbar_colors='{"Hospitalized":"red","Draft":"blue","Invoiced":"grey","Discharged":"red"}'/>
+                        </header>
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name" string="Inpatient #"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="patient"/>
+                                    <field name="admission_reason"/>
+                                    <field name="ward" options="{'no_create': True}"/>
+                                    <field name="bed" domain="[('ward','=',ward),('state','=','Free')]" options="{'no_create': True}"/>
+                                </group>
+                                <group>
+                                    <field name="admission_type"/>
+                                    <field name="attending_physician" options="{'no_create': True}"/>
+                                    <field name="operating_physician" options="{'no_create': True}"/>
+                                </group>
+                            </group>
+                            <group string="Dates">
+                                <group>
+                                    <field name="admission_date"/>
+                                </group>
+                                <group>
+                                    <field name="discharge_date"/>
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Details">
+                                    <group>
+                                        <field name="admission_condition"/>
+                                    </group>
+                                    <group>
+                                        <field name="nursing_plan"/>
+                                    </group>
+                                    <group>
+                                        <field name="discharge_plan"/>
+                                    </group>
+                                </page>
+                                <page string="Extra Information">
+                                    <field name="info" nolabel="1"/>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_inpatient_tree">
+                <field name="name">Inpatient Admission</field>
+                <field name="model">oeh.medical.inpatient</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Inpatient Admission' colors="grey:state=='Invoiced';blue:state=='Hospitalized';green:state=='Discharged';red:state=='Cancelled'">
+                        <field name="name"/>
+                        <field name="patient"/>
+                        <field name="admission_type"/>
+                        <field name="ward"/>
+                        <field name="bed"/>
+                        <field name="admission_date"/>
+                        <field name="discharge_date"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_inpatient_filter" model="ir.ui.view">
+                <field name="name">Inpatient Admission Search</field>
+                <field name="model">oeh.medical.inpatient</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Inpatient Admission">
+                        <field name="name"/>
+                        <field name="patient"/>
+                        <field name="attending_physician"/>
+                        <field name="operating_physician"/>
+                        <field name="bed"/>
+                        <newline />
+                        <group expand="0" string="Group By...">
+                            <filter string="Admission Type" domain="[]" context="{'group_by':'admission_type'}" />
+                            <filter string="Ward" domain="[]" context="{'group_by':'ward'}" />
+                            <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                        </group>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_inpatient_action_tree" model="ir.actions.act_window">
+                    <field name="name">Inpatient Admissions</field>
+                    <field name="res_model">oeh.medical.inpatient</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to admit new patient.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_inpatient_action_tree" id="oeh_medical_inpatient_list" parent="oeh_medical_patients_menu" sequence="2"/>
+
+            <!-- Patient's Profile Inpatient Hospitalization -->
+
+            <record model="ir.ui.view" id="oeh_medical_inpatient_mydetails_view">
+                <field name="name">My Admission</field>
+                <field name="model">oeh.medical.inpatient.mydetails</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="My Admission">
+                        <header>
+                            <field name="state" widget="statusbar" statusbar_visible="Draft,Hospitalized,Discharged,Invoiced" statusbar_colors='{"Hospitalized":"red","Draft":"blue","Invoiced":"grey","Discharged":"green"}'/>
+                        </header>
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name" string="Inpatient #"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="patient"/>
+                                    <field name="admission_reason"/>
+                                    <field name="ward"/>
+                                    <field name="bed"/>
+                                </group>
+                                <group>
+                                    <field name="admission_type"/>
+                                    <field name="attending_physician"/>
+                                    <field name="operating_physician"/>
+                                </group>
+                            </group>
+                            <group string="Dates">
+                                <group>
+                                    <field name="admission_date"/>
+                                </group>
+                                <group>
+                                    <field name="discharge_date"/>
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Details">
+                                    <group>
+                                        <field name="admission_condition"/>
+                                    </group>
+                                    <group>
+                                        <field name="nursing_plan"/>
+                                    </group>
+                                    <group>
+                                        <field name="discharge_plan"/>
+                                    </group>
+                                </page>
+                                <page string="Extra Information">
+                                    <field name="info" nolabel="1"/>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+
+            <record model="ir.ui.view" id="oeh_medical_inpatient_mydetails_tree">
+                <field name="name">My Admission</field>
+                <field name="model">oeh.medical.inpatient.mydetails</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='My Admission' colors="grey:state=='Invoiced';blue:state=='Hospitalized';green:state=='Discharged';red:state=='Cancelled'">
+                        <field name="name"/>
+                        <field name="patient"/>
+                        <field name="admission_type"/>
+                        <field name="ward"/>
+                        <field name="bed"/>
+                        <field name="admission_date"/>
+                        <field name="discharge_date"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_inpatient_myadmission_filter" model="ir.ui.view">
+                <field name="name">My Admission Search</field>
+                <field name="model">oeh.medical.inpatient.mydetails</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="My Admission">
+                        <field name="name"/>
+                        <field name="patient"/>
+                        <field name="attending_physician"/>
+                        <field name="operating_physician"/>
+                        <field name="bed"/>
+                        <newline />
+                        <group expand="0" string="Group By...">
+                            <filter string="Admission Type" domain="[]" context="{'group_by':'admission_type'}" />
+                            <filter string="Ward" domain="[]" context="{'group_by':'ward'}" />
+                            <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                        </group>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_inpatient_myadmission_action_tree" model="ir.actions.act_window">
+                    <field name="name">My Admissions</field>
+                    <field name="res_model">oeh.medical.inpatient.mydetails</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+            </record>
+
+            <menuitem action="oeh_medical_inpatient_myadmission_action_tree" id="oeh_medical_inpatient_myadmission_list" parent="oeh_medical_patients_menu" sequence="3"/>
+
+
+        </data>
+</openerp>

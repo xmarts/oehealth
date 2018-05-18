@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="view_product_product_form" model="ir.ui.view">
+            <field name="name">product.template.common.form</field>
+            <field name="model">product.template</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="oeHealth">
+                        <group>
+                             <group>
+                                <field name="is_medicine" />
+                                <field name="is_bed" />
+                                <field name="is_insurance_plan" />
+                            </group>
+                            <group>
+                                <field name="is_medical_supply" />
+                                <field name="is_vaccine" />
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

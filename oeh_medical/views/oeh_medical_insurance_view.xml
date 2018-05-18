@@ -1,0 +1,141 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+            <!-- Insurance Types -->
+
+            <record model="ir.ui.view" id="oeh_medical_insurance_type_tree">
+                <field name="name">Insurance Types</field>
+                <field name="model">oeh.medical.insurance.type</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Insurance Types' editable="bottom">
+                        <field name="name"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_oeh_medical_insurance_type_filter" model="ir.ui.view">
+                <field name="name">Insurance Types Search</field>
+                <field name="model">oeh.medical.insurance.type</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Insurance Types">
+                        <field name="name"/>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_insurance_type_action_tree" model="ir.actions.act_window">
+                    <field name="name">Insurance Types</field>
+                    <field name="res_model">oeh.medical.insurance.type</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new insurance types.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_insurance_type_action_tree" id="oeh_medical_insurance_type_conf_list" parent="oeh_medical_conf_insurances" sequence="1"/>
+
+
+            <!-- Insurance -->
+
+            <record model="ir.ui.view" id="oeh_medical_insurance_view">
+                <field name="name">Insurances</field>
+                <field name="model">oeh.medical.insurance</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Insurances">
+                        <header>
+                            <button name="make_active" confirm="Are you sure you want to mark insurance as Active?" states="Draft" string="Make Active" type="object" class="oe_highlight"/>
+                            <field name="state" widget="statusbar" statusbar_visible="Draft,Active,Expired" statusbar_colors='{"Draft":"blue","Active":"red","Expired":"grey"}'/>
+                        </header>
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name" string="Insurer Name"/>
+                                    <h1><field name="name" class="oe_inline" required="1"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="ins_no"/>
+                                    <field name="start_date"/>
+                                    <field name="ins_type"/>
+                                </group>
+                                <group>
+                                    <field name="patient"/>
+                                    <field name="exp_date"/>
+                                </group>
+                            </group>
+                            <group string="Extra Information">
+                                <field name="info" nolabel="1"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_insurance_tree">
+                <field name="name">Insurances</field>
+                <field name="model">oeh.medical.insurance</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Insurances'>
+                        <field name="name"/>
+                        <field name="ins_no"/>
+                        <field name="patient"/>
+                        <field name="ins_type"/>
+                        <field name="start_date"/>
+                        <field name="exp_date"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_oeh_medical_insurance_filter" model="ir.ui.view">
+                <field name="name">Insurance Search</field>
+                <field name="model">oeh.medical.insurance</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Insurances">
+                        <field name="name"/>
+                        <field name="ins_no"/>
+                        <field name="patient"/>
+                        <newline />
+                        <group expand="0" string="Group By...">
+                            <filter string="Name" domain="[]" context="{'group_by':'name'}" />
+                            <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
+                            <filter string="Type" domain="[]" context="{'group_by':'ins_type'}" />
+                            <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                        </group>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_insurance_action_tree" model="ir.actions.act_window">
+                    <field name="name">Insurances</field>
+                    <field name="res_model">oeh.medical.insurance</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new insurance records.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_insurance_action_tree" id="oeh_medical_insurance_conf_list" parent="oeh_medical_conf_insurances" sequence="2"/>
+
+
+        </data>
+</openerp>

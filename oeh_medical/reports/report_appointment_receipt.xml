@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<data>
+<template id="report_appointment_receipt">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+          <t t-call="web.basic_layout">
+                <div class="page">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <strong>Patient:</strong>
+                            <p t-field="o.patient.name"/>
+                            <strong>Patient ID#:</strong>
+                            <p t-field="o.patient.identification_code"/>
+                            <strong>Doctor:</strong>
+                            <p t-field="o.doctor"/>
+                            <strong>Institución Origen:</strong>
+                            <p t-field="o.institution_origin"/>
+                            <strong>Lugar de Cita:</strong>
+                            <p t-field="o.institution"/>
+                        </div>
+                        <div class="col-xs-6">
+                            <strong>Appointment#:</strong>
+                            <p t-field="o.name"/>
+                            <strong>Fecha de creación:</strong>
+                            <p t-field="o.create_date"/>
+                            <strong>Fecha de cita:</strong>
+                            <p t-field="o.appointment_date"/>
+                            <strong>Health Professional:</strong>
+                            <p t-field="o.doctor.name"/>
+                            <strong>Specialty:</strong>
+                            <p t-field="o.doctor.speciality.name"/>
+                        </div>
+                        <div class="col-xs-12">
+                            <div t-if="o.comments">
+                                <strong>Comments:</strong>
+                                <p t-field="o.comments"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header"></div>
+                <div class="footer"></div>
+                </t>
+        </t>
+    </t>
+</template>
+</data>
+</odoo>

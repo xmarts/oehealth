@@ -1,0 +1,258 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+            <!-- Recreational Drugs -->
+
+            <record id="view_oeh_medical_recreational_drug_filter" model="ir.ui.view">
+                <field name="name">Recreational Drugs Search</field>
+                <field name="model">oeh.medical.recreational.drugs</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Drugs">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="street_name" string="Street Names" select="1"/>
+                            <field name="info" string="Info" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter string="Toxicity" context="{'group_by':'toxicity'}"/>
+                            <filter string="Addictions" context="{'group_by':'addiction_level'}"/>
+                            <filter string="Legal" context="{'group_by':'legal_status'}"/>
+                            <filter string="Category" context="{'group_by':'category'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_recreational_drug_view">
+                <field name="name">Recreational Drugs</field>
+                <field name="model">oeh.medical.recreational.drugs</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Drugs">
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name" string="Drug Name"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                    <label for="street_name" class="oe_edit_only"/>
+                                    <field name="street_name"/>
+                                </div>
+                            </div>
+                            <group string="General">
+                                <group>
+                                    <field name="toxicity"/>
+                                    <field name="legal_status"/>
+                                </group>
+                                <group>
+                                    <field name="addiction_level"/>
+                                    <field name="category"/>
+                                </group>
+                            </group>
+                            <group string="DEA Schedule Level">
+                                <group>
+                                    <field name="dea_schedule_i"/>
+                                    <field name="dea_schedule_iii"/>
+                                    <field name="dea_schedule_v"/>
+                                </group>
+                                <group>
+                                    <field name="dea_schedule_ii"/>
+                                    <field name="dea_schedule_iv"/>
+                                </group>
+                            </group>
+                            <group string="Henningfield Rating">
+                                <p class="oe_grey">
+                                    Please enter level values between 1 and 6 (1=highest and 6=lowest)
+                                </p>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="withdrawal_level"/>
+                                    <field name="tolerance_level"/>
+                                    <field name="intoxication_level"/>
+                                </group>
+                                <group>
+                                    <field name="reinforcement_level"/>
+                                    <field name="dependence_level"/>
+                                </group>
+                            </group>
+                            <group string="Administration Routes">
+                                <group>
+                                    <field name="route_oral"/>
+                                    <field name="route_popping"/>
+                                    <field name="route_injection"/>
+                                </group>
+                                <group>
+                                    <field name="route_inhaling"/>
+                                    <field name="route_sniffing"/>
+                                </group>
+                            </group>
+                            <group string="Additional Info and Effects">
+                                <field name="info" nolabel="1"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_recreational_drug_list">
+                <field name="name">Recreational Drugs</field>
+                <field name="model">oeh.medical.recreational.drugs</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Drugs">
+                        <field name="name"/>
+                        <field name="category"/>
+                        <field name="toxicity"/>
+                        <field name="addiction_level"/>
+                        <field name="street_name"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record id="oeh_medical_recreational_drug_action_tree" model="ir.actions.act_window">
+                    <field name="name">Recreational Drugs</field>
+                    <field name="res_model">oeh.medical.recreational.drugs</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new drug information.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_recreational_drug_action_tree" id="oeh_medical_recreational_drug_mgmt_list" parent="oeh_medical_conf_patient" sequence="10"/>
+
+            <!-- Inheriting Patient screen to display patient's lifestyle information -->
+
+            <record id="oeh_medical_patient_lifestyle_view" model="ir.ui.view">
+                <field name="name">Patient</field>
+                <field name="model">oeh.medical.patient</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_patient_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Lifestyle">
+                            <group>
+                                <group string="Physical Exercise">
+                                    <field name="exercise"/>
+                                    <field name="exercise_minutes_day"/>
+                                </group>
+                                <group string="Sleep">
+                                    <field name="sleep_during_daytime"/>
+                                    <field name="sleep_hours"/>
+                                </group>
+                            </group>
+                            <group string="Diet info">
+                                <group>
+                                    <field name="number_of_meals"/>
+                                    <field name="eats_alone"/>
+                                    <field name="coffee"/>
+                                    <field name="coffee_cups"/>
+                                </group>
+                                <group>
+                                    <field name="soft_drinks"/>
+                                    <field name="salt"/>
+                                    <field name="diet"/>
+                                    <field name="diet_info"/>
+                                </group>
+                            </group>
+                            <group string="Lifestyle Information">
+                                <field name="lifestyle_info" nolabel="1"></field>
+                            </group>
+                            <notebook>
+                                <page string="Addictions">
+                                    <group string="Smoking">
+                                        <group>
+                                            <field name="smoking"/>
+                                            <field name="ex_smoker"/>
+                                            <field name="age_start_smoking"/>
+                                        </group>
+                                        <group>
+                                            <field name="smoking_number"/>
+                                            <field name="second_hand_smoker"/>
+                                            <field name="age_quit_smoking"/>
+                                        </group>
+                                    </group>
+                                    <group string="Drinking">
+                                        <group>
+                                            <field name="alcohol"/>
+                                            <field name="age_start_drinking"/>
+                                            <field name="alcohol_beer_number"/>
+                                            <field name="alcohol_liquor_number"/>
+                                        </group>
+                                        <group>
+                                            <field name="ex_alcoholic"/>
+                                            <field name="age_quit_drinking"/>
+                                            <field name="alcohol_wine_number"/>
+                                        </group>
+                                    </group>
+                                    <group string="Drugs">
+                                        <group>
+                                            <field name="drug_usage"/>
+                                            <field name="age_start_drugs"/>
+                                            <field name="ex_drug_addict"/>
+                                        </group>
+                                        <group>
+                                            <field name="drug_iv"/>
+                                            <field name="age_quit_drugs"/>
+                                        </group>
+                                    </group>
+                                    <group>
+                                        <field name="drugs" widget="many2many_tags"/>
+                                    </group>
+                                </page>
+                                <page string="Sexuality">
+                                    <group>
+                                        <group>
+                                            <field name="sexual_preferences"/>
+                                            <field name="sexual_partners_number"/>
+                                            <field name="sexual_practices"/>
+                                        </group>
+                                        <group>
+                                            <field name="sexual_partners"/>
+                                            <field name="first_sexual_encounter"/>
+                                            <field name="anticonceptive"/>
+                                        </group>
+                                    </group>
+                                    <group>
+                                        <group string="Other sexual practices">
+                                            <field name="sex_oral"/>
+                                            <field name="sex_anal"/>
+                                        </group>
+                                        <group string="Prostitution">
+                                            <field name="prostitute"/>
+                                            <field name="sex_with_prostitutes"/>
+                                        </group>
+                                    </group>
+                                    <group string="Patient Sexuality Info">
+                                        <field nolabel="1" name="sexuality_info"></field>
+                                    </group>
+							    </page>
+                                <page string="Drive and Home Safety">
+                                    <group>
+                                        <group>
+                                            <field name="motorcycle_rider"/>
+                                            <field name="helmet"/>
+                                            <field name="traffic_laws"/>
+                                            <field name="car_revision"/>
+                                        </group>
+                                        <group>
+                                            <field name="car_seat_belt"/>
+                                            <field name="car_child_safety"/>
+                                            <field name="home_safety"/>
+                                        </group>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+
+        </data>
+    </openerp>

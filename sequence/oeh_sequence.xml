@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="seq_oeh_medical_patient" model="ir.sequence">
+            <field name="name">Patient</field>
+            <field name="code">oeh.medical.patient</field>
+            <field name="prefix">HP</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="seq_oeh_medical_appointment" model="ir.sequence">
+            <field name="name">Appointments</field>
+            <field name="code">oeh.medical.appointment</field>
+            <field name="prefix">AP</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="seq_oeh_medical_prescription" model="ir.sequence">
+            <field name="name">Prescriptions</field>
+            <field name="code">oeh.medical.prescription</field>
+            <field name="prefix">PR</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="seq_oeh_medical_inpatient" model="ir.sequence">
+            <field name="name">Inpatient Administration</field>
+            <field name="code">oeh.medical.inpatient</field>
+            <field name="prefix">IN</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_oeh_medical_evaluation" model="ir.sequence">
+            <field name="name">Evaluation</field>
+            <field name="code">oeh.medical.evaluation</field>
+            <field name="prefix">EN</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_oeh_medical_gyneco_perinatal_monitor" model="ir.sequence">
+            <field name="name">Parinatal</field>
+            <field name="code">oeh.medical.perinatal.monitor</field>
+            <field name="prefix">PR</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_oeh_medical_gyneco_puerperium_monitor" model="ir.sequence">
+            <field name="name">Puerperium</field>
+            <field name="code">oeh.medical.puerperium.monitor</field>
+            <field name="prefix">PU</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_oeh_medical_gyneco" model="ir.sequence">
+            <field name="name">Gynaco</field>
+            <field name="code">oeh.medical.gyneco</field>
+            <field name="prefix">GY</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_oeh_medical_lab_test" model="ir.sequence">
+            <field name="name">Lab Tests</field>
+            <field name="code">oeh.medical.lab.test</field>
+            <field name="prefix">LT</field>
+            <field name="padding">6</field>
+        </record>
+
+    </data>
+</openerp>

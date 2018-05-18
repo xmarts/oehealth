@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data noupdate="1">
+
+        <record model="oeh.medical.insurance.type" id="ins1">
+            <field name="name">State</field>
+        </record>
+        <record model="oeh.medical.insurance.type" id="ins2">
+            <field name="name">Labour Union / Syndical</field>
+        </record>
+        <record model="oeh.medical.insurance.type" id="ins3">
+            <field name="name">Private</field>
+        </record>
+
+
+    </data>
+</openerp>

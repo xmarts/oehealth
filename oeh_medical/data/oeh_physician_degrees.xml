@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data noupdate="1">
+
+        <record model="oeh.medical.degrees" id="deg1">
+            <field name="full_name">Doctor of Medicine</field>
+            <field name="name">M.D.</field>
+        </record>
+        <record model="oeh.medical.degrees" id="deg2">
+            <field name="full_name">Master of Surgery</field>
+            <field name="name">M.S.</field>
+        </record>
+        <record model="oeh.medical.degrees" id="deg3">
+            <field name="full_name">Bachelor of Medicine and Bachelor of Surgery</field>
+            <field name="name">M.B.B.S.</field>
+        </record>
+        <record model="oeh.medical.degrees" id="deg4">
+            <field name="full_name">Doctor of Osteopathic Medicine</field>
+            <field name="name">D.O.</field>
+        </record>
+        <record model="oeh.medical.degrees" id="deg5">
+            <field name="full_name">Bachelor of Physiotherapy</field>
+            <field name="name">B.P.T.</field>
+        </record>
+        <record model="oeh.medical.degrees" id="deg6">
+            <field name="full_name">Bachelor of Pharmacy</field>
+            <field name="name">B.Pharma</field>
+        </record>
+        <record model="oeh.medical.degrees" id="deg7">
+            <field name="full_name">Bachelor of Science Nursing</field>
+            <field name="name">B.Sc Nursing</field>
+        </record>
+        <record model="oeh.medical.degrees" id="deg8">
+            <field name="full_name">Bachelor of Homeopathic Medicine and Surgery</field>
+            <field name="name">B.H.M.S.</field>
+        </record>
+         <record model="oeh.medical.degrees" id="deg9">
+            <field name="full_name">Bachelor of Ayurvedic Medicine and Surgery</field>
+            <field name="name">B.A.M.S.</field>
+        </record>
+
+    </data>
+</openerp>

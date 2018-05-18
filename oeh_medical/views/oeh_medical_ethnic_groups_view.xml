@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+            <!-- Ethnic Groups -->
+
+            <record model="ir.ui.view" id="oeh_medical_ethnic_groups_tree">
+                <field name="name">Ethnic Groups</field>
+                <field name="model">oeh.medical.ethnicity</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Ethnic Groups' editable="bottom">
+                        <field name="name"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_oeh_medical_ethnic_groups_filter" model="ir.ui.view">
+                <field name="name">Ethnic Groups Search</field>
+                <field name="model">oeh.medical.ethnicity</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Ethnic Groups">
+                        <field name="name"/>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_ethnic_groups_action_tree" model="ir.actions.act_window">
+                    <field name="name">Ethnic Groups</field>
+                    <field name="res_model">oeh.medical.ethnicity</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new ethnic groups.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_ethnic_groups_action_tree" id="oeh_medical_ethnic_groups_conf_list" parent="oeh_medical_conf_patient" sequence="1"/>
+
+        </data>
+</openerp>

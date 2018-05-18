@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- SEMEN ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_semenanalysis0">
+            <field name="name">Semen Analysis</field>
+            <field name="code">SA</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis0">
+            <field name="name">Physical Examination</field>
+            <field name="sequence">1</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis1">
+            <field name="name">Color</field>
+            <field name="sequence">2</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis2">
+            <field name="name">Volume</field>
+            <field name="sequence">3</field>
+            <field name="normal_range">1.0 - 6.5</field>
+            <field name="units" ref="oehealth.lab_units_ml0"/>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis3">
+            <field name="name">Reaction</field>
+            <field name="sequence">4</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis4">
+            <field name="name">Viscosity</field>
+            <field name="sequence">5</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis5">
+            <field name="name">Liquefaction Time</field>
+            <field name="sequence">6</field>
+            <field name="normal_range">20 - 60</field>
+            <field name="units" ref="oehealth.lab_units_minutes0"/>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis6">
+            <field name="name">Microscopic Examination</field>
+            <field name="sequence">7</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis7">
+            <field name="name">Motility</field>
+            <field name="sequence">8</field>
+            <field name="normal_range">&gt; 50</field>
+            <field name="units" ref="oehealth.lab_units_0"/>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis8">
+            <field name="name">Progressive</field>
+            <field name="sequence">9</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis9">
+            <field name="name">Non Progressive</field>
+            <field name="sequence">10</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis10">
+            <field name="name">Non Motile</field>
+            <field name="sequence">11</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis11">
+            <field name="name">Total Sperm Count</field>
+            <field name="sequence">12</field>
+            <field name="normal_range">60-150</field>
+            <field name="units" ref="oehealth.lab_units_millionscc0"/>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis12">
+            <field name="name">Morphology</field>
+            <field name="sequence">13</field>
+            <field name="normal_range">&gt; 4</field>
+            <field name="units" ref="oehealth.lab_units_0"/>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis13">
+            <field name="name">Pus Cells</field>
+            <field name="sequence">14</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis14">
+            <field name="name">RBCs</field>
+            <field name="sequence">15</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis15">
+            <field name="name">Epithelial Cells</field>
+            <field name="sequence">16</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_semenanalysis16">
+            <field name="name">Spermatogonic Cells</field>
+            <field name="sequence">17</field>
+            <field name="medical_type_id" ref="lab_test_semenanalysis0"/>
+        </record>
+
+        <!-- COMPLETE BLOOD COUNT -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_completebloodcount0">
+            <field name="name">Complete Blood Count</field>
+            <field name="code">CBC</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount0">
+            <field name="name">Hemoglobin</field>
+            <field name="sequence">1</field>
+            <field name="normal_range">11.0 - 16.0</field>
+            <field name="units" ref="oehealth.lab_units_gmdl0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount1">
+            <field name="name">RBC</field>
+            <field name="sequence">2</field>
+            <field name="normal_range">3.5 - 5.5</field>
+            <field name="units" ref="oehealth.lab_units_ul0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount2">
+            <field name="name">HCT</field>
+            <field name="sequence">3</field>
+            <field name="normal_range">37.0 - 50.0</field>
+            <field name="units" ref="oehealth.lab_units_0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount3">
+            <field name="name">MCV</field>
+            <field name="sequence">4</field>
+            <field name="normal_range">82 - 95</field>
+            <field name="units" ref="oehealth.lab_units_fl0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount4">
+            <field name="name">MCH</field>
+            <field name="sequence">5</field>
+            <field name="normal_range">27 - 31</field>
+            <field name="units" ref="oehealth.lab_units_pg0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount5">
+            <field name="name">MCHC</field>
+            <field name="sequence">6</field>
+            <field name="normal_range">32.0 - 36.0</field>
+            <field name="units" ref="oehealth.lab_units_gmdl0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount6">
+            <field name="name">RDW-CV</field>
+            <field name="sequence">7</field>
+            <field name="normal_range">11.5 - 14.5</field>
+            <field name="units" ref="oehealth.lab_units_0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount7">
+            <field name="name">RDW-SD</field>
+            <field name="sequence">8</field>
+            <field name="normal_range">35 - 56</field>
+            <field name="units" ref="oehealth.lab_units_fl0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount8">
+            <field name="name">WBC</field>
+            <field name="sequence">9</field>
+            <field name="normal_range">4.5 - 11</field>
+            <field name="units" ref="oehealth.lab_units_ul1"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount9">
+            <field name="name">NEU%</field>
+            <field name="sequence">10</field>
+            <field name="normal_range">40 - 70</field>
+            <field name="units" ref="oehealth.lab_units_0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount10">
+            <field name="name">LYM%</field>
+            <field name="sequence">11</field>
+            <field name="normal_range">20 - 45</field>
+            <field name="units" ref="oehealth.lab_units_0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount11">
+            <field name="name">MON%</field>
+            <field name="sequence">12</field>
+            <field name="normal_range">2 - 10</field>
+            <field name="units" ref="oehealth.lab_units_0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount12">
+            <field name="name">EOS%</field>
+            <field name="sequence">13</field>
+            <field name="normal_range">1 - 6</field>
+            <field name="units" ref="oehealth.lab_units_0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount13">
+            <field name="name">BAS%</field>
+            <field name="sequence">14</field>
+            <field name="normal_range">0 - 2</field>
+            <field name="units" ref="oehealth.lab_units_0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount14">
+            <field name="name">LYM#</field>
+            <field name="sequence">15</field>
+            <field name="normal_range">1.5 - 4.0</field>
+            <field name="units" ref="oehealth.lab_units_ul1"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount15">
+            <field name="name">GRA#</field>
+            <field name="sequence">16</field>
+            <field name="normal_range">2.0 - 7.5</field>
+            <field name="units" ref="oehealth.lab_units_ul1"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount16">
+            <field name="name">PLT</field>
+            <field name="sequence">17</field>
+            <field name="normal_range">150 - 450</field>
+            <field name="units" ref="oehealth.lab_units_ul1"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_completebloodcount17">
+            <field name="name">ESR</field>
+            <field name="sequence">18</field>
+            <field name="normal_range">Up to 15</field>
+            <field name="units" ref="oehealth.lab_units_mmhr0"/>
+            <field name="medical_type_id" ref="lab_test_completebloodcount0"/>
+        </record>
+
+        <!-- LIVER FUNCTION TEST -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_liverfunctiontest0">
+            <field name="name">Liver Function Test</field>
+            <field name="code">LFT</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_liverfunctiontest0">
+            <field name="name">Total Protein</field>
+            <field name="sequence">1</field>
+            <field name="normal_range">6.4 - 8.3</field>
+            <field name="units" ref="oehealth.lab_units_gmdl0"/>
+            <field name="medical_type_id" ref="lab_test_liverfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_liverfunctiontest1">
+            <field name="name">Albumin</field>
+            <field name="sequence">2</field>
+            <field name="normal_range">3.5 - 5.5</field>
+            <field name="units" ref="oehealth.lab_units_gmdl0"/>
+            <field name="medical_type_id" ref="lab_test_liverfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_liverfunctiontest2">
+            <field name="name">Globulin</field>
+            <field name="sequence">3</field>
+            <field name="normal_range">1.5 - 3.5</field>
+            <field name="units" ref="oehealth.lab_units_gmdl0"/>
+            <field name="medical_type_id" ref="lab_test_liverfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_liverfunctiontest3">
+            <field name="name">Total Bilirubin</field>
+            <field name="sequence">4</field>
+            <field name="normal_range">0.3 - 1.2</field>
+            <field name="units" ref="oehealth.lab_units_mgdl0"/>
+            <field name="medical_type_id" ref="lab_test_liverfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_liverfunctiontest4">
+            <field name="name">Direct Bilirubin</field>
+            <field name="sequence">5</field>
+            <field name="normal_range">&lt; 0.2</field>
+            <field name="units" ref="oehealth.lab_units_mgdl0"/>
+            <field name="medical_type_id" ref="lab_test_liverfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_liverfunctiontest5">
+            <field name="name">Indirect Bilirubin</field>
+            <field name="sequence">6</field>
+            <field name="normal_range">Up to 0.8</field>
+            <field name="units" ref="oehealth.lab_units_mgdl0"/>
+            <field name="medical_type_id" ref="lab_test_liverfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_liverfunctiontest6">
+            <field name="name">Alkaline Phosphatase</field>
+            <field name="sequence">7</field>
+            <field name="normal_range">&lt; 270</field>
+            <field name="units" ref="oehealth.lab_units_ul2"/>
+            <field name="medical_type_id" ref="lab_test_liverfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_liverfunctiontest7">
+            <field name="name">SGPT</field>
+            <field name="sequence">8</field>
+            <field name="normal_range">&lt; 40</field>
+            <field name="units" ref="oehealth.lab_units_ul2"/>
+            <field name="medical_type_id" ref="lab_test_liverfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_liverfunctiontest8">
+            <field name="name">SGOT</field>
+            <field name="sequence">9</field>
+            <field name="normal_range">&lt; 40</field>
+            <field name="units" ref="oehealth.lab_units_ul2"/>
+            <field name="medical_type_id" ref="lab_test_liverfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_liverfunctiontest9">
+            <field name="name">Gamma GT</field>
+            <field name="sequence">10</field>
+            <field name="normal_range">&lt; 55</field>
+            <field name="units" ref="oehealth.lab_units_ul2"/>
+            <field name="medical_type_id" ref="lab_test_liverfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_liverfunctiontest10">
+            <field name="name">AG Ratio</field>
+            <field name="sequence">11</field>
+            <field name="normal_range">1.5:1 - 2.5:1</field>
+            <field name="medical_type_id" ref="lab_test_liverfunctiontest0"/>
+        </record>
+
+        <!-- STOOL EXAMINATION -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_stoolexamination0">
+            <field name="name">Stool Examination</field>
+            <field name="code">SE</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_stoolexamination0">
+            <field name="name">Physical Examination</field>
+            <field name="sequence">1</field>
+            <field name="medical_type_id" ref="lab_test_stoolexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_stoolexamination1">
+            <field name="name">Color</field>
+            <field name="sequence">2</field>
+            <field name="normal_range">Brown</field>
+            <field name="medical_type_id" ref="lab_test_stoolexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_stoolexamination2">
+            <field name="name">Consistency</field>
+            <field name="sequence">3</field>
+            <field name="normal_range">Well Formed</field>
+            <field name="medical_type_id" ref="lab_test_stoolexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_stoolexamination3">
+            <field name="name">Mucus</field>
+            <field name="sequence">4</field>
+            <field name="normal_range">Negative</field>
+            <field name="medical_type_id" ref="lab_test_stoolexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_stoolexamination4">
+            <field name="name">Blood</field>
+            <field name="sequence">5</field>
+            <field name="normal_range">Negative</field>
+            <field name="medical_type_id" ref="lab_test_stoolexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_stoolexamination5">
+            <field name="name">Microscopic Examination</field>
+            <field name="sequence">6</field>
+            <field name="medical_type_id" ref="lab_test_stoolexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_stoolexamination6">
+            <field name="name">Pus Cells</field>
+            <field name="sequence">7</field>
+            <field name="normal_range">0 - 1</field>
+            <field name="units" ref="oehealth.lab_units_hpf0"/>
+            <field name="medical_type_id" ref="lab_test_stoolexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_stoolexamination7">
+            <field name="name">RBCs</field>
+            <field name="sequence">8</field>
+            <field name="normal_range">0 - 1</field>
+            <field name="units" ref="oehealth.lab_units_hpf0"/>
+            <field name="medical_type_id" ref="lab_test_stoolexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_stoolexamination8">
+            <field name="name">Ova/Cyst</field>
+            <field name="sequence">9</field>
+            <field name="normal_range">Absent</field>
+            <field name="medical_type_id" ref="lab_test_stoolexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_stoolexamination9">
+            <field name="name">Un digested matter</field>
+            <field name="sequence">10</field>
+            <field name="normal_range">0 - 1</field>
+            <field name="medical_type_id" ref="lab_test_stoolexamination0"/>
+        </record>
+
+        <!-- RENAL FUNCTION TEST -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_renalfunctiontest0">
+            <field name="name">Renal Function Test</field>
+            <field name="code">RFT</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_renalfunctiontest0">
+            <field name="name">Urea</field>
+            <field name="sequence">1</field>
+            <field name="normal_range">13 - 43</field>
+            <field name="units" ref="oehealth.lab_units_mgdl0"/>
+            <field name="medical_type_id" ref="lab_test_renalfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_renalfunctiontest1">
+            <field name="name">Creatinine</field>
+            <field name="sequence">2</field>
+            <field name="normal_range">0.8 - 1.3</field>
+            <field name="units" ref="oehealth.lab_units_mgdl0"/>
+            <field name="medical_type_id" ref="lab_test_renalfunctiontest0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_renalfunctiontest2">
+            <field name="name">Uric Acid</field>
+            <field name="sequence">3</field>
+            <field name="normal_range">3.5 - 7.2</field>
+            <field name="units" ref="oehealth.lab_units_mgdl0"/>
+            <field name="medical_type_id" ref="lab_test_renalfunctiontest0"/>
+        </record>
+
+        <!-- HAEMATOLOGY TEST -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_haematology0">
+            <field name="name">Haematology</field>
+            <field name="code">HTG</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_haematology0">
+            <field name="name">Blood Group &amp; RH</field>
+            <field name="sequence">1</field>
+            <field name="medical_type_id" ref="lab_test_haematology0"/>
+        </record>
+
+        <!-- PERIPHERAL SMEAR EXAMINATION -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_peripheralsmearexamination0">
+            <field name="name">Peripheral Smear Examination</field>
+            <field name="code">PSE</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_peripheralsmearexamination0">
+            <field name="name">RBCs</field>
+            <field name="sequence">1</field>
+            <field name="medical_type_id" ref="lab_test_peripheralsmearexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_peripheralsmearexamination1">
+            <field name="name">WBCs</field>
+            <field name="sequence">2</field>
+            <field name="medical_type_id" ref="lab_test_peripheralsmearexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_peripheralsmearexamination2">
+            <field name="name">Platelets</field>
+            <field name="sequence">3</field>
+            <field name="medical_type_id" ref="lab_test_peripheralsmearexamination0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_peripheralsmearexamination3">
+            <field name="name">Report</field>
+            <field name="sequence">4</field>
+            <field name="medical_type_id" ref="lab_test_peripheralsmearexamination0"/>
+        </record>
+
+
+        <!-- URINE ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_urineanalysis0">
+            <field name="name">Urine Analysis</field>
+            <field name="code">UA</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis0">
+            <field name="name">Physical Examination</field>
+            <field name="sequence">1</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis1">
+            <field name="name">Color</field>
+            <field name="sequence">2</field>
+            <field name="normal_range">Yellow</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis2">
+            <field name="name">Clarity/ Appearance</field>
+            <field name="sequence">3</field>
+            <field name="normal_range">Clear</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis3">
+            <field name="name">Chemical Examination</field>
+            <field name="sequence">4</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis4">
+            <field name="name">Specific Gravity</field>
+            <field name="sequence">5</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis5">
+            <field name="name">PH</field>
+            <field name="sequence">6</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis6">
+            <field name="name">Nitrites</field>
+            <field name="sequence">7</field>
+            <field name="normal_range">Negative</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis7">
+            <field name="name">Glucose</field>
+            <field name="sequence">8</field>
+            <field name="normal_range">Negative</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis8">
+            <field name="name">Protein</field>
+            <field name="sequence">9</field>
+            <field name="normal_range">Negative</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis9">
+            <field name="name">Ketone Bodies</field>
+            <field name="sequence">10</field>
+            <field name="normal_range">Negative</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis10">
+            <field name="name">Urobilinogen</field>
+            <field name="sequence">11</field>
+            <field name="normal_range">Negative</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis11">
+            <field name="name">Leucocytes</field>
+            <field name="sequence">12</field>
+            <field name="normal_range">Negative</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis12">
+            <field name="name">Bilirubin</field>
+            <field name="sequence">13</field>
+            <field name="normal_range">Negative</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis13">
+            <field name="name">Blood</field>
+            <field name="sequence">14</field>
+            <field name="normal_range">Negative</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis14">
+            <field name="name">Microscopic Examination</field>
+            <field name="sequence">15</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis15">
+            <field name="name">Pus Cells</field>
+            <field name="sequence">16</field>
+            <field name="normal_range">1 - 2</field>
+            <field name="units" ref="oehealth.lab_units_hpf0"/>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis16">
+            <field name="name">RBC</field>
+            <field name="sequence">17</field>
+            <field name="normal_range">0 - 2</field>
+            <field name="units" ref="oehealth.lab_units_hpf0"/>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis17">
+            <field name="name">Epithelial Cells</field>
+            <field name="sequence">18</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis18">
+            <field name="name">Crystals</field>
+            <field name="sequence">19</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis19">
+            <field name="name">Casts</field>
+            <field name="sequence">20</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis20">
+            <field name="name">Bacteria</field>
+            <field name="sequence">21</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_urineanalysis21">
+            <field name="name">Others</field>
+            <field name="sequence">22</field>
+            <field name="medical_type_id" ref="lab_test_urineanalysis0"/>
+        </record>
+
+
+        <!-- ENDOCRINOLOGY -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_endocrinology0">
+            <field name="name">Endocrinology</field>
+            <field name="code">EGY</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_endocrinology0">
+            <field name="name">FSH</field>
+            <field name="sequence">1</field>
+            <field name="normal_range">Follicular Phase : 3.0 - 12.0
+Midcycle : 8.0 - 22.0
+Luteal phase : 2.0 - 12.0
+Post menopausal : 35.0 - 151.0</field>
+            <field name="units" ref="oehealth.lab_units_iul0"/>
+            <field name="medical_type_id" ref="lab_test_endocrinology0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_endocrinology1">
+            <field name="name">LH</field>
+            <field name="sequence">2</field>
+            <field name="normal_range">Follicular Phase : 0.8 - 10.5
+Midcycle : 18.4 - 61.2
+Luteal phase : 0.8 - 10.5
+Post menopausal : 8.2 - 40.8</field>
+            <field name="units" ref="oehealth.lab_units_iul0"/>
+            <field name="medical_type_id" ref="lab_test_endocrinology0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_endocrinology2">
+            <field name="name">TSH</field>
+            <field name="sequence">3</field>
+            <field name="normal_range">0.3 - 6.2</field>
+            <field name="units" ref="oehealth.lab_units_miul0"/>
+            <field name="medical_type_id" ref="lab_test_endocrinology0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_endocrinology3">
+            <field name="name">PROLACTIN</field>
+            <field name="sequence">4</field>
+            <field name="normal_range">Women, non pregnant : 1.2 - 19.5
+                Postmenopausal  : 1.5 - 18.5</field>
+            <field name="units" ref="oehealth.lab_units_ngml0"/>
+            <field name="medical_type_id" ref="lab_test_endocrinology0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_endocrinology4">
+            <field name="name">TESTOSTERONE</field>
+            <field name="sequence">5</field>
+            <field name="normal_range">Sexually mature women : &lt; 0.6
+                Postmenopause : &lt; 0.8</field>
+            <field name="units" ref="oehealth.lab_units_ngml0"/>
+            <field name="medical_type_id" ref="lab_test_endocrinology0"/>
+        </record>
+
+
+    </data>
+</openerp>
+

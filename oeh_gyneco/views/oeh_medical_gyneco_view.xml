@@ -1,0 +1,430 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+            <!-- Gynecology -->
+
+            <record id="view_oeh_medical_gyneco_filter" model="ir.ui.view">
+                <field name="name">Gynecology Search</field>
+                <field name="model">oeh.medical.gyneco</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Gynecology">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="patient" string="Patient" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter string="Patient" context="{'group_by':'patient'}"/>
+                            <filter string="Labor Mode" context="{'group_by':'labor_mode'}"/>
+                            <filter string="Fetus" context="{'group_by':'fetus_presentation'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_gyneco_view">
+                <field name="name">Gynecology</field>
+                <field name="model">oeh.medical.gyneco</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Gynecology" create="false">
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name" string="Code #"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                    <label for="patient" class="oe_edit_only"/>
+                                    <field name="patient" readonly="1"/>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="admission_date"/>
+                                    <field name="prenatal_evaluations"/>
+                                    <field name="gestational_weeks"/>
+                                    <field name="abortion"/>
+                                </group>
+                                <group>
+                                    <field name="dismissed"/>
+                                    <field name="gravida_number"/>
+                                    <field name="gestational_days"/>
+                                    <field name="abortion_reason" attrs="{'invisible':[('abortion','=',False)], 'required':[('abortion','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group string="Labor">
+                                <group>
+                                    <field name="labor_mode"/>
+                                </group>
+                                <group>
+                                    <field name="fetus_presentation"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Misc">
+                                    <field name="placenta_incomplete"/>
+                                    <field name="placenta_retained"/>
+                                    <field name="episiotomy"/>
+                                    <field name="vaginal_tearing"/>
+                                    <field name="forceps"/>
+                                </group>
+                                <group string="Deceased">
+                                    <field name="died_at_delivery"/>
+                                    <field name="died_at_the_hospital"/>
+                                    <field name="died_being_transferred"/>
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Perinatal Monitor">
+                                    <field name="perinatal_ids">
+                                        <form string="Perinatal Monitor" nolabel="1">
+                                            <sheet>
+                                                <div class="oe_left" style="width: 500px;">
+                                                    <div class="oe_title" style="width: 390px;">
+                                                        <label class="oe_edit_only" for="name" string="Internal #"/>
+                                                        <h1><field name="name" class="oe_inline"/></h1>
+                                                    </div>
+                                                </div>
+                                                <group string="Mother">
+                                                    <group>
+                                                        <field name="date"/>
+                                                        <field name="diastolic"/>
+                                                        <field name="frequency"/>
+                                                        <field name="fundal_height"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="systolic"/>
+                                                        <field name="contractions"/>
+                                                        <field name="dilation"/>
+                                                    </group>
+                                                </group>
+                                                <group string="Fetus">
+                                                    <group>
+                                                        <field name="fetus_position"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="f_frequency"/>
+                                                    </group>
+                                                </group>
+                                                <group string="Complications">
+                                                    <group>
+                                                        <field name="bleeding"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="meconium"/>
+                                                    </group>
+                                                </group>
+                                            </sheet>
+                                        </form>
+                                        <tree string="Perinatal Monitor" nolabel="1">
+                                            <field name="name"/>
+                                            <field name="date"/>
+                                            <field name="systolic"/>
+                                            <field name="diastolic"/>
+                                            <field name="frequency"/>
+                                            <field name="dilation"/>
+                                            <field name="fetus_position"/>
+                                            <field name="f_frequency"/>
+                                            <field name="bleeding"/>
+                                            <field name="meconium"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                                <page string="Puerperium Monitor">
+                                    <field name="puerperium_ids">
+                                        <form string="Puerperium Monitor">
+                                            <sheet>
+                                                <div class="oe_left" style="width: 500px;">
+                                                    <div class="oe_title" style="width: 390px;">
+                                                        <label class="oe_edit_only" for="name" string="Internal #"/>
+                                                        <h1><field name="name" class="oe_inline"/></h1>
+                                                    </div>
+                                                </div>
+                                                <group string="Main">
+                                                    <group>
+                                                        <field name="date"/>
+                                                        <field name="diastolic"/>
+                                                        <field name="frequency"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="systolic"/>
+                                                        <field name="temperature"/>
+                                                        <field name="uterus_involution"/>
+                                                    </group>
+                                                </group>
+                                                <group string="Lochia">
+                                                    <group>
+                                                        <field name="lochia_amount"/>
+                                                        <field name="lochia_odor"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="lochia_color"/>
+                                                    </group>
+                                                </group>
+                                            </sheet>
+                                        </form>
+                                        <tree string="Puerperium Monitor" nolabel="1">
+                                            <field name="name"/>
+                                            <field name="date"/>
+                                            <field name="systolic"/>
+                                            <field name="diastolic"/>
+                                            <field name="frequency"/>
+                                            <field name="temperature"/>
+                                            <field name="uterus_involution"/>
+                                            <field name="lochia_amount"/>
+                                            <field name="lochia_color"/>
+                                            <field name="lochia_odor"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_gyneco_list">
+                <field name="name">Gynecology</field>
+                <field name="model">oeh.medical.gyneco</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Gynecology" create="false">
+                        <field name="name" string="Code #"/>
+                        <field name="patient"/>
+                        <field name="gravida_number"/>
+                        <field name="admission_date"/>
+                        <field name="dismissed"/>
+                        <field name="gestational_weeks"/>
+                        <field name="gestational_weeks"/>
+                        <field name="abortion"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record id="oeh_medical_gyneco_action_tree" model="ir.actions.act_window">
+                    <field name="name">Gynecology</field>
+                    <field name="res_model">oeh.medical.gyneco</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+            </record>
+
+            <menuitem action="oeh_medical_gyneco_action_tree" id="oeh_medical_gyneco_mgmt_list" parent="oeh_medical_appointment_menu" sequence="6"/>
+
+
+
+            <!-- Inheriting Patient screen to display patient's gynecology information -->
+
+            <record id="oeh_medical_patient_gyneco_view" model="ir.ui.view">
+                <field name="name">Patient</field>
+                <field name="model">oeh.medical.patient</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_patient_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Gynecology" attrs="{'invisible':[('sex','=','Male')]}">
+                            <group string="Gyneco">
+                                <group>
+                                    <field name="fertile"/>
+                                    <field name="menarche"/>
+                                    <field name="menopausal"/>
+                                    <field name="menopause"/>
+                                    <field name="pap_test"/>
+                                    <field name="colposcopy"/>
+                                </group>
+                                <group>
+                                    <field name="currently_pregnant"/>
+                                    <field name="breast_self_examination"/>
+                                    <field name="mammography"/>
+                                    <field name="mammography_last"/>
+                                    <field name="pap_test_last"/>
+                                    <field name="colposcopy_last"/>
+                                </group>
+                            </group>
+                            <group string="Obstetrics">
+                                <group>
+                                    <field name="gpa"/>
+                                    <field name="full_term"/>
+                                    <field name="deaths_1st_week"/>
+                                    <field name="deaths_1st_week"/>
+                                </group>
+                                <group>
+                                    <field name="gravida"/>
+                                    <field name="born_alive"/>
+                                    <field name="premature"/>
+                                    <field name="abortions"/>
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Perinatal &amp; Puerperium Monitors">
+                                    <field name="gyneco_ids">
+                                        <form string="Perinatal &amp; Puerperium Monitors">
+                                            <sheet>
+                                                <div class="oe_left" style="width: 500px;">
+                                                    <div class="oe_title" style="width: 390px;">
+                                                        <label class="oe_edit_only" for="name" string="Code #"/>
+                                                        <h1><field name="name" class="oe_inline"/></h1>
+                                                    </div>
+                                                </div>
+                                                <group>
+                                                    <group>
+                                                        <field name="admission_date"/>
+                                                        <field name="prenatal_evaluations"/>
+                                                        <field name="gestational_weeks"/>
+                                                        <field name="abortion"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="dismissed"/>
+                                                        <field name="gravida_number"/>
+                                                        <field name="gestational_days"/>
+                                                        <field name="abortion_reason" attrs="{'invisible':[('abortion','=',False)], 'required':[('abortion','=',True)]}"/>
+                                                    </group>
+                                                </group>
+                                                <group string="Labor">
+                                                    <group>
+                                                        <field name="labor_mode"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="fetus_presentation"/>
+                                                    </group>
+                                                </group>
+                                                <group>
+                                                    <group string="Misc">
+                                                        <field name="placenta_incomplete"/>
+                                                        <field name="placenta_retained"/>
+                                                        <field name="episiotomy"/>
+                                                        <field name="vaginal_tearing"/>
+                                                        <field name="forceps"/>
+                                                    </group>
+                                                    <group string="Deceased">
+                                                        <field name="died_at_delivery"/>
+                                                        <field name="died_at_the_hospital"/>
+                                                        <field name="died_being_transferred"/>
+                                                    </group>
+                                                </group>
+                                                <notebook>
+                                                    <page string="Perinatal Monitor">
+                                                        <field name="perinatal_ids">
+                                                            <form string="Perinatal Monitor" nolabel="1">
+                                                                <sheet>
+                                                                    <div class="oe_left" style="width: 500px;">
+                                                                        <div class="oe_title" style="width: 390px;">
+                                                                            <label class="oe_edit_only" for="name" string="Internal #"/>
+                                                                            <h1><field name="name" class="oe_inline"/></h1>
+                                                                        </div>
+                                                                    </div>
+                                                                    <group string="Mother">
+                                                                        <group>
+                                                                            <field name="date"/>
+                                                                            <field name="diastolic"/>
+                                                                            <field name="frequency"/>
+                                                                            <field name="fundal_height"/>
+                                                                        </group>
+                                                                        <group>
+                                                                            <field name="systolic"/>
+                                                                            <field name="contractions"/>
+                                                                            <field name="dilation"/>
+                                                                        </group>
+                                                                    </group>
+                                                                    <group string="Fetus">
+                                                                        <group>
+                                                                            <field name="fetus_position"/>
+                                                                        </group>
+                                                                        <group>
+                                                                            <field name="f_frequency"/>
+                                                                        </group>
+                                                                    </group>
+                                                                    <group string="Complications">
+                                                                        <group>
+                                                                            <field name="bleeding"/>
+                                                                        </group>
+                                                                        <group>
+                                                                            <field name="meconium"/>
+                                                                        </group>
+                                                                    </group>
+                                                                </sheet>
+                                                            </form>
+                                                            <tree string="Perinatal Monitor" nolabel="1">
+                                                                <field name="name"/>
+                                                                <field name="date"/>
+                                                                <field name="systolic"/>
+                                                                <field name="diastolic"/>
+                                                                <field name="frequency"/>
+                                                                <field name="dilation"/>
+                                                                <field name="fetus_position"/>
+                                                                <field name="f_frequency"/>
+                                                                <field name="bleeding"/>
+                                                                <field name="meconium"/>
+                                                            </tree>
+                                                        </field>
+                                                    </page>
+                                                    <page string="Puerperium Monitor">
+                                                        <field name="puerperium_ids">
+                                                            <form string="Puerperium Monitor">
+                                                                <sheet>
+                                                                    <div class="oe_left" style="width: 500px;">
+                                                                        <div class="oe_title" style="width: 390px;">
+                                                                            <label class="oe_edit_only" for="name" string="Internal #"/>
+                                                                            <h1><field name="name" class="oe_inline"/></h1>
+                                                                        </div>
+                                                                    </div>
+                                                                    <group string="Main">
+                                                                        <group>
+                                                                            <field name="date"/>
+                                                                            <field name="diastolic"/>
+                                                                            <field name="frequency"/>
+                                                                        </group>
+                                                                        <group>
+                                                                            <field name="systolic"/>
+                                                                            <field name="temperature"/>
+                                                                            <field name="uterus_involution"/>
+                                                                        </group>
+                                                                    </group>
+                                                                    <group string="Lochia">
+                                                                        <group>
+                                                                            <field name="lochia_amount"/>
+                                                                            <field name="lochia_odor"/>
+                                                                        </group>
+                                                                        <group>
+                                                                            <field name="lochia_color"/>
+                                                                        </group>
+                                                                    </group>
+                                                                </sheet>
+                                                            </form>
+                                                            <tree string="Puerperium Monitor" nolabel="1">
+                                                                <field name="name"/>
+                                                                <field name="date"/>
+                                                                <field name="systolic"/>
+                                                                <field name="diastolic"/>
+                                                                <field name="frequency"/>
+                                                                <field name="temperature"/>
+                                                                <field name="uterus_involution"/>
+                                                                <field name="lochia_amount"/>
+                                                                <field name="lochia_color"/>
+                                                                <field name="lochia_odor"/>
+                                                            </tree>
+                                                        </field>
+                                                    </page>
+                                                </notebook>
+                                            </sheet>
+                                        </form>
+                                        <tree string="Perinatal &amp; Puerperium Monitors" nolable="1">
+                                            <field name="name" string="Code #"/>
+                                            <field name="gravida_number"/>
+                                            <field name="admission_date"/>
+                                            <field name="dismissed"/>
+                                            <field name="gestational_weeks"/>
+                                            <field name="gestational_weeks"/>
+                                            <field name="abortion"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+
+        </data>
+    </openerp>

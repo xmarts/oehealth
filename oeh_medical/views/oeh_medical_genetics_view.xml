@@ -1,0 +1,88 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+            <!-- Genetics Risk -->
+
+             <record id="view_oeh_medical_genetics_filter" model="ir.ui.view">
+                <field name="name">Genetics Search</field>
+                <field name="model">oeh.medical.genetics</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Genetic Risks">
+                        <field name="name"/>
+                        <field name="long_name"/>
+                        <newline />
+                        <group expand="0" string="Group By...">
+                            <filter string="Dominance" domain="[]" context="{'group_by':'dominance'}" />
+                        </group>
+				    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_genetics_tree">
+                <field name="name">Genetic Risks</field>
+                <field name="model">oeh.medical.genetics</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Genetic Risks'>
+                        <field name="name"/>
+                        <field name="long_name"/>
+                        <field name="chromosome"/>
+                        <field name="dominance"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_genetics_view">
+                <field name="name">Genetic Risks</field>
+                <field name="model">oeh.medical.genetics</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Genetic Risks">
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="long_name"/>
+                                    <h1><field name="long_name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="chromosome"/>
+                                    <field name="dominance"/>
+                                </group>
+                                <group>
+                                    <field name="gene_id"/>
+                                    <field name="location"/>
+                                </group>
+                            </group>
+                            <group string="Extra Info">
+                                <field name="info" nolabel="1"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record id="oeh_medical_genetics_action_tree" model="ir.actions.act_window">
+                    <field name="name">Genetic Risks</field>
+                    <field name="res_model">oeh.medical.genetics</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new genetic risks.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_genetics_action_tree" id="oeh_medical_genetics_conf_list" parent="oeh_medical_conf_patient" sequence="2"/>
+
+
+        </data>
+</openerp>

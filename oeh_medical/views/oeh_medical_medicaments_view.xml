@@ -1,0 +1,333 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+            <!-- Medicines -->
+
+            <record model="ir.ui.view" id="oeh_medical_medicines_view">
+                <field name="name">Medicines</field>
+                <field name="model">oeh.medical.medicines</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Medicines">
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name" string="Medicine Name"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="medicament_type" required="1"/>
+                                    <field name="therapeutic_action" attrs="{'invisible': [('medicament_type','=','Medicine')]}"/>
+                                    <field name="qty_available" attrs="{'invisible': [('medicament_type','=','Medicine')]}"/>
+                                </group>
+                                <group>
+                                    <field name="lst_price"/>
+                                    <field name="pregnancy_warning" attrs="{'invisible': [('medicament_type','=','Medicine')]}"/>
+                                </group>
+                            </group>
+                            <group attrs="{'invisible': [('medicament_type','=','Vaccine')]}">
+                                <group>
+                                    <field name="pregnancy"/>
+                                    <field name="composition"/>
+                                    <field name="dosage"/>
+                                    <field name="adverse_reaction"/>
+                                </group>
+                                <group>
+
+                                    <field name="indications"/>
+                                    <field name="overdosage"/>
+                                    <field name="storage"/>
+                                    <field name="info"/>
+                                </group>
+                            </group>
+                            <group attrs="{'invisible': [('medicament_type','=','Medicine')]}">
+                                <field name="info"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_medicines_tree">
+                <field name="name">Medicines</field>
+                <field name="model">oeh.medical.medicines</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Medicines">
+                        <field name="name"/>
+                        <field name="medicament_type"/>
+                        <field name="therapeutic_action"/>
+                        <field name="pregnancy_warning"/>
+                        <field name="lst_price"/>
+                        <field name="qty_available"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_medicines_filter" model="ir.ui.view">
+                <field name="name">Medicine Search</field>
+                <field name="model">oeh.medical.medicines</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Medicines">
+                        <field name="name"/>
+                        <field name="therapeutic_action"/>
+                        <field name="medicament_type"/>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_medicines_action_tree" model="ir.actions.act_window">
+                    <field name="name">Medicines</field>
+                    <field name="res_model">oeh.medical.medicines</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[('medicament_type','=','Medicine')]</field>
+                    <field name="context">{"search_default_medicament_type":"Medicine"}</field>
+                    <field name="search_view_id" ref="view_medical_medicines_filter"/>
+                    <field name="view_id" ref="oeh_medical_medicines_tree"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new medicine product.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_medicines_action_tree" id="oeh_medical_medicines_list" parent="oeh_medical_conf_medicaments" sequence="1"/>
+
+
+            <record model="ir.ui.view" id="oeh_medical_vaccines_tree">
+                <field name="name">Vaccines</field>
+                <field name="model">oeh.medical.medicines</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Vaccines">
+                        <field name="name"/>
+                        <field name="medicament_type"/>
+                        <field name="lst_price"/>
+                        <field name="info"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_vaccines_filter" model="ir.ui.view">
+                <field name="name">Vaccine Search</field>
+                <field name="model">oeh.medical.medicines</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Vaccines">
+                        <field name="name"/>
+                        <field name="medicament_type"/>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_vaccines_action_treeview" model="ir.actions.act_window">
+                    <field name="name">Vaccines</field>
+                    <field name="res_model">oeh.medical.medicines</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[('medicament_type','=','Vaccine')]</field>
+                    <field name="context">{"search_default_medicament_type":"Vaccine"}</field>
+                    <field name="search_view_id" ref="view_medical_vaccines_filter"/>
+                    <field name="view_id" ref="oeh_medical_vaccines_tree"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new vaccines product.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_vaccines_action_treeview" id="oeh_medical_vaccines_listview" parent="oeh_medical_conf_medicaments" sequence="2"/>
+
+            <!-- Dose Units -->
+
+            <record model="ir.ui.view" id="oeh_medical_dose_unit_tree">
+                <field name="name">Dose Units</field>
+                <field name="model">oeh.medical.dose.unit</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Dose Units' editable="top">
+                        <field name="name"/>
+                        <field name="desc"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_dose_unit_filter" model="ir.ui.view">
+                <field name="name">Dose Units</field>
+                <field name="model">oeh.medical.dose.unit</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Units">
+                        <separator orientation="vertical"/>
+                        <field name="name" select="1"/>
+                        <field name="desc" select="1"/>
+                    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_dose_unit_action_tree" model="ir.actions.act_window">
+                    <field name="name">Dose Units</field>
+                    <field name="res_model">oeh.medical.dose.unit</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new dose unit.
+                      </p><p>
+                        With oeHealth dose unit screen, you can add various units types which will
+                        be used while creating prescriptions.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_dose_unit_action_tree" id="oeh_medical_dose_unit_list" parent="oeh_medical_conf_medicaments" sequence="3"/>
+
+            <!-- Drug Routes -->
+
+            <record model="ir.ui.view" id="oeh_medical_drug_route_tree">
+                <field name="name">Drug Routes</field>
+                <field name="model">oeh.medical.drug.route</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Drug Routes' editable="top">
+                        <field name="name"/>
+                        <field name="code"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_drug_routes_filter" model="ir.ui.view">
+                <field name="name">Drug Routes</field>
+                <field name="model">oeh.medical.drug.route</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Routes">
+                        <separator orientation="vertical"/>
+                        <field name="name" select="1"/>
+                        <field name="code" select="1"/>
+                    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_drug_routes_action_tree" model="ir.actions.act_window">
+                    <field name="name">Drug Routes</field>
+                    <field name="res_model">oeh.medical.drug.route</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new drug routes.
+                      </p><p>
+                        With oeHealth drug routes screen, you can manage routes which will
+                        be used while creating prescriptions.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_drug_routes_action_tree" id="oeh_medical_drug_route_list" parent="oeh_medical_conf_medicaments" sequence="4"/>
+
+
+            <!-- Drug Forms -->
+
+            <record model="ir.ui.view" id="oeh_medical_drug_forms_tree">
+                <field name="name">Drug Forms</field>
+                <field name="model">oeh.medical.drug.form</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Drug Forms' editable="top">
+                        <field name="name"/>
+                        <field name="code"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_drug_forms_filter" model="ir.ui.view">
+                <field name="name">Drug Forms</field>
+                <field name="model">oeh.medical.drug.form</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Drug Forms">
+                        <separator orientation="vertical"/>
+                        <field name="name" select="1"/>
+                        <field name="code" select="1"/>
+                    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_drug_forms_action_tree" model="ir.actions.act_window">
+                    <field name="name">Drug Forms</field>
+                    <field name="res_model">oeh.medical.drug.form</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new drug form.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_drug_forms_action_tree" id="oeh_medical_drug_forms_list" parent="oeh_medical_conf_medicaments" sequence="5"/>
+
+            <!-- Medicines Dosage -->
+
+            <record model="ir.ui.view" id="oeh_medical_dosage_tree">
+                <field name="name">Medicines Dosage</field>
+                <field name="model">oeh.medical.dosage</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Medicines Dosage' editable="top">
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="abbreviation"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_dosage_filter" model="ir.ui.view">
+                <field name="name">Medicines Dosage</field>
+                <field name="model">oeh.medical.dosage</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Dosages">
+                        <separator orientation="vertical"/>
+                        <field name="name" select="1"/>
+                        <field name="code" select="1"/>
+                        <field name="abbreviation" select="1"/>
+                    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_dosage_action_tree" model="ir.actions.act_window">
+                    <field name="name">Medicines Dosage</field>
+                    <field name="res_model">oeh.medical.dosage</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new medicine dosage.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_dosage_action_tree" id="oeh_medical_dosage_list" parent="oeh_medical_conf_medicaments" sequence="6"/>
+
+
+    </data>
+</openerp>

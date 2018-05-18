@@ -1,0 +1,458 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+            <!-- Beds -->
+
+            <record model="ir.ui.view" id="oeh_medical_healthcenters_bed_view">
+                <field name="name">Beds</field>
+                <field name="model">oeh.medical.health.center.beds</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Beds">
+                        <header>
+                            <field name="state" widget="statusbar" statusbar_visible="Free,Reserved,Occupied,Not Available" statusbar_colors='{"Occupied":"red","Free":"blue","Reserved":"purple","Not Available":"grey"}'/>
+                        </header>
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name" string="Bed Name"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="institution"/>
+                                    <field name="telephone_number"/>
+                                    <field name="list_price" string="Reservation Charge"/>
+                                </group>
+                                <group>
+                                    <field name="building" domain="[('institution','=',institution)]" context="{'default_institution': institution}"/>
+                                    <field name="ward"/>
+                                    <field name="bed_type"/>
+                                </group>
+                            </group>
+                            <group string="Bed Status">
+                                <field name="change_bed_status" on_change="onchange_bed_status(change_bed_status, state)"/>
+                            </group>
+                            <group string="Extra Information">
+                                <field name="info" nolabel="1"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_healthcenters_bed_tree">
+                <field name="name">Beds</field>
+                <field name="model">oeh.medical.health.center.beds</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Beds' colors="grey:state=='Occupied';blue:state=='Reserved';green:state=='Free';red:state=='Not Available'">
+                        <field name="name"/>
+                        <field name="ward"/>
+                        <field name="institution"/>
+                        <field name="building"/>
+                        <field name="bed_type"/>
+                        <field name="telephone_number"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_healthcenters_bed_filter" model="ir.ui.view">
+                <field name="name">Bed Search</field>
+                <field name="model">oeh.medical.health.center.beds</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Beds">
+                        <field name="name"/>
+                        <field name="ward"/>
+                        <field name="bed_type"/>
+                        <field name="telephone_number"/>
+                        <newline />
+                        <group expand="0" string="Group By...">
+                            <filter string="Name" domain="[]" context="{'group_by':'name'}" />
+                            <filter string="Ward" domain="[]" context="{'group_by':'ward'}" />
+                            <filter string="Health Centers" domain="[]" context="{'group_by':'institution'}" />
+                            <filter string="Building" domain="[]" context="{'group_by':'building'}" />
+                            <filter string="Bed Type" domain="[]" context="{'group_by':'bed_type'}" />
+                            <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                        </group>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_healthcenters_bed_action_tree" model="ir.actions.act_window">
+                    <field name="name">Beds</field>
+                    <field name="res_model">oeh.medical.health.center.beds</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new health center beds.
+                      </p><p>
+                        With oeHealth bed screen, you can configure your beds and assign to any patients
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_healthcenters_bed_action_tree" id="oeh_medical_healthcenters_bed_list" parent="oeh_medical_hospital_menu" sequence="4"/>
+
+            <!-- Wards -->
+
+            <record model="ir.ui.view" id="oeh_medical_healthcenters_ward_view">
+                <field name="name">Wards</field>
+                <field name="model">oeh.medical.health.center.ward</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Wards">
+                        <header>
+                            <field name="state" widget="statusbar" statusbar_visible="Beds Available,Full" statusbar_colors='{"Full":"red","Beds Available":"blue"}'/>
+                        </header>
+                        <sheet>
+                            <div class="oe_right oe_button_box" style="width: 300px;" name="buttons">
+                                <button type="action" class="oe_stat_button" name="%(oeh_medical_healthcenters_bed_action_tree)d" context="{'search_default_ward': active_id,'default_ward': active_id}" icon="fa-list">
+                                    <field string="Beds" name="bed_count" widget="statinfo"/>
+                                </button>
+                            </div>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name" string="Ward Name"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="institution"/>
+                                    <field name="floor"/>
+                                    <field name="private"/>
+                                </group>
+                                <group>
+                                    <field name="building" domain="[('institution','=',institution)]" context="{'default_institution': institution}"/>
+                                    <field name="gender"/>
+                                    <field name="bio_hazard"/>
+                                </group>
+                            </group>
+                            <group string="Facilities">
+                                <group>
+                                    <field name="telephone"/>
+                                    <field name="private_bathroom"/>
+                                    <field name="tv"/>
+                                    <field name="refrigerator"/>
+                                </group>
+                                <group>
+                                    <field name="ac"/>
+                                    <field name="guest_sofa"/>
+                                    <field name="internet"/>
+                                    <field name="microwave"/>
+                                </group>
+                            </group>
+                            <group string="Extra Information">
+                                <field name="info" nolabel="1"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_healthcenters_ward_tree">
+                <field name="name">Wards</field>
+                <field name="model">oeh.medical.health.center.ward</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Wards'>
+                        <field name="name"/>
+                        <field name="institution"/>
+                        <field name="building"/>
+                        <field name="floor"/>
+                        <field name="gender"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_healthcenters_ward_filter" model="ir.ui.view">
+                <field name="name">Ward Search</field>
+                <field name="model">oeh.medical.health.center.ward</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Wards">
+                        <field name="name"/>
+                        <field name="institution"/>
+                        <field name="building"/>
+                        <field name="floor"/>
+                        <field name="gender"/>
+                        <newline />
+                        <group expand="0" string="Group By...">
+                            <filter string="Name" domain="[]" context="{'group_by':'name'}" />
+                            <filter string="Health Centers" domain="[]" context="{'group_by':'institution'}" />
+                            <filter string="Building" domain="[]" context="{'group_by':'building'}" />
+                            <filter string="Floor" domain="[]" context="{'group_by':'floor'}" />
+                            <filter string="Gender" domain="[]" context="{'group_by':'gender'}" />
+                            <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                        </group>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_healthcenters_ward_action_tree" model="ir.actions.act_window">
+                    <field name="name">Wards</field>
+                    <field name="res_model">oeh.medical.health.center.ward</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new health center ward.
+                      </p><p>
+                        With oeHealth ward screen, you can configure your wards with all other details
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_healthcenters_ward_action_tree" id="oeh_medical_healthcenters_ward_list" parent="oeh_medical_hospital_menu" sequence="3"/>
+
+            <!-- Buildings -->
+
+            <record model="ir.ui.view" id="oeh_medical_healthcenters_building_view">
+                <field name="name">Buildings</field>
+                <field name="model">oeh.medical.health.center.building</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Buildings">
+                        <sheet>
+                            <div class="oe_right oe_button_box" style="width: 300px;" name="buttons">
+                                <button type="action" class="oe_stat_button" name="%(oeh_medical_healthcenters_ward_action_tree)d" context="{'search_default_building': active_id,'default_building': active_id}" icon="fa-list">
+                                    <field string="Wards" name="ward_count" widget="statinfo"/>
+                                </button>
+                                <button type="action" class="oe_stat_button" name="%(oeh_medical_healthcenters_bed_action_tree)d" context="{'search_default_building': active_id,'default_building': active_id}" icon="fa-list">
+                                    <field string="Beds" name="bed_count" widget="statinfo"/>
+                                </button>
+                            </div>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name" string="Building Name"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="institution"/>
+                                </group>
+                                <group>
+                                    <field name="code"/>
+                                </group>
+                            </group>
+                            <group string="Extra Information">
+                                <field name="info" nolabel="1"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_healthcenters_building_tree">
+                <field name="name">Buildings</field>
+                <field name="model">oeh.medical.health.center.building</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Buildings'>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="institution"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_healthcenters_building_filter" model="ir.ui.view">
+                <field name="name">Building Search</field>
+                <field name="model">oeh.medical.health.center.building</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Buildings">
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="institution"/>
+                        <newline />
+                        <group expand="0" string="Group By...">
+                            <filter string="Name" domain="[]" context="{'group_by':'name'}" />
+                            <filter string="Health Centers" domain="[]" context="{'group_by':'institution'}" />
+                        </group>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_healthcenters_building_action_tree" model="ir.actions.act_window">
+                    <field name="name">Buildings</field>
+                    <field name="res_model">oeh.medical.health.center.building</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new health center building.
+                      </p><p>
+                        With oeHealth building screen, you can configure your buildings, wards and beds
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_healthcenters_building_action_tree" id="oeh_medical_healthcenters_building_list" parent="oeh_medical_hospital_menu" sequence="2"/>
+
+            <!-- Health Centers -->
+
+            <record model="ir.ui.view" id="oeh_medical_healthcenters_view">
+                <field name="name">Health Centers</field>
+                <field name="model">oeh.medical.health.center</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Health Centers">
+                        <sheet>
+                            <div class="oe_right oe_button_box" style="width: 300px;" name="buttons">
+                                <button type="action" class="oe_stat_button" name="%(oeh_medical_healthcenters_building_action_tree)d" context="{'search_default_institution': active_id,'default_institution': active_id}" icon="fa-building-o">
+                                    <field string="Buildings" name="building_count" widget="statinfo"/>
+                                </button>
+                            </div>
+                            <div class="oe_left" style="width: 500px;">
+                                <field name="image" widget='image' class="oe_left oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
+                                <div class="oe_title">
+                                    <label string="Health Centers Name" class="oe_edit_only"/>
+                                    <h1>
+                                        <field name="name" required="1"/>
+                                    </h1>
+                                    <label for="health_center_type" class="oe_edit_only"/>
+                                    <field name="health_center_type" required="1"/>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <label for="street" string="Address"/>
+                                    <div>
+                                        <field name="street" placeholder="Street..."/>
+                                        <field name="street2"/>
+                                        <div class="address_format">
+                                            <field name="city" placeholder="City" style="width: 40%%"/>
+                                            <field name="state_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}' on_change="onchange_state(state_id)"/>
+                                            <field name="zip" placeholder="ZIP" style="width: 20%%"/>
+                                        </div>
+                                        <field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True, "no_create": True}'/>
+                                    </div>
+                                    <field name="website" widget="url" placeholder="e.g. www.odoo.com"/>
+                                </group>
+                                <group>
+                                    <field name="phone" placeholder="e.g. +32.81.81.37.00"/>
+                                    <field name="mobile"/>
+                                    <!--<field name="fax"/>-->
+                                    <field name="email" widget="email"/>
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Extra Information">
+                                    <field name="info" nolabel="1"/>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_healthcenters_tree">
+                <field name="name">Health Center List</field>
+                <field name="model">oeh.medical.health.center</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Health Centers'>
+                        <field name="name"/>
+                        <field name="health_center_type"/>
+                        <field name="street"/>
+                        <field name="city"/>
+                        <field name="state_id"/>
+                        <field name="country_id"/>
+                        <field name="website"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record id="view_medical_healthcenters_filter" model="ir.ui.view">
+                <field name="name">Health Centers Search</field>
+                <field name="model">oeh.medical.health.center</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Health Centers">
+                        <field name="name" />
+                        <field name="health_center_type" />
+                        <newline />
+                        <group expand="0" string="Group By...">
+                            <filter string="Name" domain="[]" context="{'group_by':'name'}" />
+                            <filter string="Type" domain="[]" context="{'group_by':'health_center_type'}" />
+                        </group>
+				    </search>
+                </field>
+            </record>
+
+             <record model="ir.ui.view" id="oeh_medical_healthcenters_kanban_view">
+                <field name="name">Health Centers</field>
+                <field name="model">oeh.medical.health.center</field>
+                <field name="arch" type="xml">
+                    <kanban>
+                        <field name="id"/>
+                        <field name="name"/>
+                        <field name="health_center_type"/>
+                        <field name="city"/>
+                        <field name="country_id"/>
+                        <field name="email"/>
+                        <templates>
+                            <t t-name="kanban-box">
+                                <div class="oeh_medical_vignette oe_semantic_html_override">
+                                    <div class="oeh_medical_image">
+                                        <a type="open">
+                                            <img t-att-src="kanban_image('oeh.medical.health.center', 'image_small', record.id.raw_value)" class="oeh_medical_picture"/>
+                                        </a>
+                                    </div>
+                                    <div class="oeh_medical_details">
+                                        <h4>
+                                            <a type="open"><field name="name"/></a>
+                                        </h4>
+                                        <ul>
+                                            <li t-if="record.health_center_type.raw_value"><field name="health_center_type"/></li>
+                                            <li t-if="record.city.raw_value and record.country_id.raw_value"><field name="city"/>, <field name="country_id"/></li>
+                                            <li t-if="record.email.raw_value"><a t-attf-href="mailto:#{record.email.raw_value}"><field name="email"/></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </t>
+                        </templates>
+                    </kanban>
+
+                </field>
+            </record>
+
+            <record id="oeh_medical_healthcenters_action_tree" model="ir.actions.act_window">
+                    <field name="name">Health Centers</field>
+                    <field name="res_model">oeh.medical.health.center</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">kanban,tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new health centers.
+                      </p><p>
+                        With oeHealth health center screen, you can configure your health centers
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_healthcenters_action_tree" id="oeh_medical_healthcenters_list" parent="oeh_medical_hospital_menu" sequence="1"/>
+
+
+    </data>
+</openerp>

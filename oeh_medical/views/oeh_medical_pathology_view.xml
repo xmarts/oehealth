@@ -1,0 +1,168 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+            <!-- Disease -->
+
+            <record model="ir.ui.view" id="oeh_medical_pathology_view">
+                <field name="name">Disease</field>
+                <field name="model">oeh.medical.pathology</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Pathology Info">
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name" string="Disease Name"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="code"/>
+                                </group>
+                                <group>
+                                    <field name="category"/>
+                                </group>
+                            </group>
+                            <group string="Genetics">
+                                <group>
+                                    <field name="chromosome"/>
+                                    <field name="gene"/>
+                                </group>
+                                <group>
+                                    <field name="protein"/>
+                                </group>
+                            </group>
+                            <group string="Extra Info">
+                                <group>
+                                    <field name="info" nolabel="1"/>
+                                </group>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_pathology_tree">
+                <field name="name">Disease List</field>
+                <field name="model">oeh.medical.pathology</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Pathology'>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="category"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record id="view_oeh_medical_pathology_filter" model="ir.ui.view">
+                <field name="name">oeh.medical.pathology.select</field>
+                <field name="model">oeh.medical.pathology</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Diseases">
+                        <separator orientation="vertical"/>
+                        <field name="code" select="1"/>
+                        <field name="name" select="1"/>
+                        <field name="category" select="1"/>
+                        <group expand="1" string="Group By">
+                            <filter string="Categories" context="{'group_by':'category'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record id="action_oeh_medical_pathology_tree" model="ir.actions.act_window">
+                <field name="name">Diseases</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">oeh.medical.pathology</field>
+                <field name="view_type">form</field>
+                <field name="view_id" ref="oeh_medical_pathology_tree"/>
+                <field name="search_view_id" ref="view_oeh_medical_pathology_filter"/>
+                <field name="help" type="html">
+                  <p class="oe_view_nocontent_create">
+                        Click to add a new disease information.
+                  </p><p>
+                    Here is a list of all the diseases generated through the module
+                  </p>
+                </field>
+            </record>
+
+            <menuitem action="action_oeh_medical_pathology_tree" id="oeh_medical_conf_pathology_tree" parent="oeh_medical_conf_pathology" sequence="1"/>
+
+            <!-- Disease Categories -->
+
+            <record model="ir.ui.view" id="oeh_medical_pathology_category_form">
+                    <field name="name">Disease Categories</field>
+                    <field name="model">oeh.medical.pathology.category</field>
+                    <field name="type">form</field>
+                    <field name="arch" type="xml">
+                        <form string="Disease Categories">
+                            <sheet>
+                                <div class="oe_left" style="width: 500px;">
+                                    <div class="oe_title" style="width: 390px;">
+                                        <label class="oe_edit_only" for="name" string="Category Name"/>
+                                        <h1><field name="name" class="oe_inline"/></h1>
+                                    </div>
+                                </div>
+                                <group>
+                                    <group>
+                                        <field name="parent_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="active" />
+                                    </group>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_pathology_category_tree">
+                    <field name="name">Disease Category List</field>
+                    <field name="model">oeh.medical.pathology.category</field>
+                    <field name="type">tree</field>
+                    <field name="arch" type="xml">
+                        <tree string="Disease Categories">
+                            <field name="name"/>
+                        </tree>
+                    </field>
+            </record>
+
+            <record id="view_oeh_medical_disease_category_search" model="ir.ui.view">
+                <field name="name">oeh.medical.pathology.category.select</field>
+                <field name="model">oeh.medical.pathology.category</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Disease Categories">
+                        <separator orientation="vertical"/>
+                        <field name="name" select="1"/>
+                        <group expand="1" string="Group By">
+                            <filter string="Parent" context="{'group_by':'parent_id'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+             <record id="action_oeh_medical_pathology_category_form" model="ir.actions.act_window">
+                <field name="name">Disease Categories</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">oeh.medical.pathology.category</field>
+                <field name="view_type">form</field>
+                <field name="view_id" ref="oeh_medical_pathology_category_tree"/>
+                <field name="search_view_id" ref="view_oeh_medical_disease_category_search"/>
+                <field name="help" type="html">
+                  <p class="oe_view_nocontent_create">
+                        Click to add a new disease category.
+                  </p><p>
+                    Here is a list of all the diseases categories generated through the module
+                  </p>
+                </field>
+            </record>
+
+            <menuitem action="action_oeh_medical_pathology_category_form" id="oeh_medical_conf_pathology_category" parent="oeh_medical_conf_pathology"/>
+
+        </data>
+</openerp>

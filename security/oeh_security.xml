@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.module.category" id="module_oeh_medical_category">
+                <field name="name">oeHealth</field>
+                <field name="sequence">0</field>
+                <field name="visible" eval="0" />
+        </record>
+
+        <record id="group_oeh_medical_patient" model="res.groups">
+            <field name="name">Patient</field>
+            <field name="category_id" ref="module_oeh_medical_category"/>
+        </record>
+
+        <record id="group_oeh_medical_physician" model="res.groups">
+            <field name="name">Physician</field>
+            <field name="category_id" ref="module_oeh_medical_category"/>
+        </record>
+
+        <record id="group_oeh_medical_manager" model="res.groups">
+            <field name="name">Health Center Admin</field>
+            <field name="category_id" ref="module_oeh_medical_category"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_edit_patient'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_physician'),ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_my_patient_profile'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_patient')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_conf_insurances'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_physician'),ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_prescription_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_physician'),ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_insurance_type_conf_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_ethnic_groups_conf_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_genetics_conf_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_physician_degrees_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_physician_speciality_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_healthcenters_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_healthcenters_pharmacy_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_medicines_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_vaccines_listview'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_dose_unit_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_drug_route_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_drug_forms_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_dosage_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_healthcenters_building_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_healthcenters_ward_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_healthcenters_bed_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_inpatient_myadmission_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_patient')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_inpatient_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_my_physician_profile'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_physician_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_patient')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_vaccine_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_physician'),ref('group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_my_patient_vaccine'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_patient')])]"/>
+        </record>
+
+        <!-- Occupation -->
+        <record model='ir.ui.menu' id='oeh_medical_occupation_conf_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <!-- Gynacology -->
+        <record model='ir.ui.menu' id='oeh_medical_gyneco_mgmt_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <!-- Recreational Drugs -->
+        <record model='ir.ui.menu' id='oeh_medical_recreational_drug_mgmt_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+
+        <!-- Laboratory -->
+        <record model='ir.ui.menu' id='oeh_medical_lab_units_conf_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+        <record model='ir.ui.menu' id='oeh_medical_lab_test_types_conf_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
+        </record>
+        <record model='ir.ui.menu' id='oeh_medical_lab_test_conf_list'>
+            <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician'),ref('group_oeh_medical_patient')])]"/>
+        </record>
+
+    </data>
+</openerp>
