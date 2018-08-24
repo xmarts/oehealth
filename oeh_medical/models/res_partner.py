@@ -40,6 +40,8 @@ class oeHealthPartner(models.Model):
     _inherit = 'res.partner'
     _description = 'Partner'
 
+    convenio = fields.Boolean(string='Cuenta con Convenio', help='Si cuenta con convenio, selecciona la casilla, de lo contrario puedes continuar')
+    disc_porcent = fields.Integer(string='Porcentaje de Descuento', help='Si cuentas con algun convenio, ingresa el porcentaje de descuento')
     is_insurance_company = fields.Boolean(string='Insurance Company', help='Check if the party is an Insurance Company')
     is_institution = fields.Boolean(string='Institution', help='Check if the party is a Medical Center')
     is_doctor = fields.Boolean(string='Health Professional', help='Check if the party is a health professional')
@@ -47,7 +49,3 @@ class oeHealthPartner(models.Model):
     is_person = fields.Boolean(string='Person', help='Check if the party is a person.')
     is_pharmacy = fields.Boolean(string='Pharmacy', help='Check if the party is a Pharmacy')
     ref = fields.Char(size=256, string='SSN', help='Patient Social Security Number or equivalent')
-    convenio = fields.Boolean(string='Cuenta con Convenio', help='Si cuenta con convenio, selecciona la casilla, de lo contrario puedes continuar')
-    disc_porcent = fields.Integer(string='Porcentaje de Descuento', help='Si cuentas con algun convenio, ingresa el porcentaje de descuento')
-    
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

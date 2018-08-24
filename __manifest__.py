@@ -9,7 +9,7 @@
     'author': "Braincrew Apps",
     'category': 'Generic Modules/Medical',
     'summary': 'Odoo 11 Hospital Management Solutions',
-    'depends': ['base', 'sale', 'purchase', 'account', 'product','document','hr','web', 'account_invoicing'],
+    'depends': ['base', 'sale', 'purchase', 'account', 'product','document','hr','web', 'account_invoicing', 'contacts'],
     'description': """
 
 About oeHealth
