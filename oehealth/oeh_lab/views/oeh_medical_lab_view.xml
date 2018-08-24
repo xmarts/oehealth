@@ -1,0 +1,480 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+            <!-- Lab Units Management -->
+
+            <record id="view_oeh_medical_lab_units_filter" model="ir.ui.view">
+                <field name="name">Lab Units</field>
+                <field name="model">oeh.medical.lab.units</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Units">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="code" select="1"/>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_lab_units_tree">
+                <field name="name">Lab Units</field>
+                <field name="model">oeh.medical.lab.units</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Lab Units' editable="bottom">
+                        <field name="name"/>
+                        <field name="code"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record id="oeh_medical_lab_units_action_tree" model="ir.actions.act_window">
+                    <field name="name">Lab Units</field>
+                    <field name="res_model">oeh.medical.lab.units</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new lab test units.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_lab_units_action_tree" id="oeh_medical_lab_units_conf_list" parent="oeh_medical_conf_laboratory" sequence="1"/>
+
+
+            <!-- Lab Test Types Management -->
+
+            <record id="view_oeh_medical_lab_test_types_filter" model="ir.ui.view">
+                <field name="name">Lab Test Types</field>
+                <field name="model">oeh.medical.labtest.types</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Test Types">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="code" select="1"/>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_lab_test_types_tree">
+                <field name="name">Lab Test Types</field>
+                <field name="model">oeh.medical.labtest.types</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Lab Test Types'>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="lab_department"/>
+                        <field name="test_charge"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_lab_test_types_form">
+                <field name="name">Lab Test Types</field>
+                <field name="model">oeh.medical.labtest.types</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Lab Test Types">
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="lab_department" required="1"/>
+                                    <field name="code" required="1"/>
+                                </group>
+                                <group>
+                                    <field name="test_charge" required="1"/>
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Lab Test Cases">
+                                    <group>
+                                        <field name="lab_criteria" nolabel="1">
+                                            <tree string="Lab Test Cases" editable="bottom">
+                                                <field name="sequence" required="1"/>
+                                                <field name="name"/>
+                                                <field name="normal_range"/>
+                                                <field name="units"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                                <page string="Extra Info">
+                                    <group>
+                                        <field name="info" nolabel="1"/>
+                                    </group>
+                                </page>
+                                <page string="Materiales">
+                                    <group>
+                                        <field name="lab_material" nolabel="1">
+                                            <tree string="Material de laboratorio" editable="bottom">
+                                                <field name="name"/>
+                                                <field name="cantidad"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <span>NOTA: Estos materiales se tomaran de las existencias disponibles(WH/Existencias)</span>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+
+            <record id="oeh_medical_lab_test_types_action_tree" model="ir.actions.act_window">
+                    <field name="name">Lab Test Types</field>
+                    <field name="res_model">oeh.medical.labtest.types</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new lab test types.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_lab_test_types_action_tree" id="oeh_medical_lab_test_types_conf_list" parent="oeh_medical_conf_laboratory" sequence="2"/>
+
+
+
+            <!-- Indicaciones -->
+            <record id="oeh_medical_lab_test_indications" model="ir.actions.act_window">
+                    <field name="name">Indicaciones para pruebas de laboratorio</field>
+                    <field name="res_model">oeh.medical.lab.indications</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new Indication.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_lab_test_indications" id="oeh_medical_lab_indications_list" parent="oeh_medical_conf_laboratory" sequence="88"/>
+
+
+            <!-- Códigos Causes -->
+
+            <record model="ir.ui.view" id="oeh_medical_lab_causes_tree">
+                <field name="name">Códigos Cause</field>
+                <field name="model">oeh.medical.lab.causes</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Códigos Causes'>
+                        <field name="name" string="Código"/>
+                        <field name="definicion"/>
+                        <field name="description"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record id="oeh_medical_lab_test_codes_causes" model="ir.actions.act_window">
+                    <field name="name">Códigos Causes</field>
+                    <field name="res_model">oeh.medical.lab.causes</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new cause.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_lab_test_codes_causes" id="oeh_medical_lab_causes_list" parent="oeh_medical_conf_laboratory" sequence="89"/>
+
+
+
+
+            <!-- Lab Tests -->
+
+            <record id="view_oeh_medical_lab_test_filter" model="ir.ui.view">
+                <field name="name">Estudios</field>
+                <field name="model">oeh.medical.lab.test</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Tests">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="results" select="1"/>
+                            <field name="diagnosis" select="1"/>
+                            <field name="patient" select="1"/>
+
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter string="Patient" icon="terp-personal" domain="[]" context="{'group_by':'patient'}"/>
+                            <!--<filter string="Pathologist" icon="terp-personal" domain="[]" context="{'group_by':'pathologist'}"/>-->
+                            <filter string="Test Type" icon="terp-personal" domain="[]" context="{'group_by':'test_type'}"/>
+                            <filter string="State" icon="terp-personal" domain="[]" context="{'group_by':'state'}"/>
+                            <filter string="Solicitud" icon="terp-personal" domain="[]" context="{'group_by':'pref_merge'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_lab_test_tree">
+                <field name="name">Estudios</field>
+                <field name="model">oeh.medical.lab.test</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Estudios' colors="grey:state=='Invoiced';blue:state=='Test In Progress';green:state=='Completed';red:state=='Cancelled'">
+                        <field name="name"/>
+                        <field name="pref_merge"/>
+                        <field name="test_type"/>
+                        <field name="patient"/>
+                        <!--<field name="pathologist"/>
+                        <field name="requestor"/>-->
+                        <field name="date_requested"/>
+                        <field name="date_analysis"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_lab_test_codes_lines_form">
+                <field name="name">Estudios</field>
+                <field name="model">oeh.medical.lab.causes.lines</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Estudios">
+                        <sheet>
+                            <group>
+                                <field name="name" style="width: 95%;"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_lab_test_form">
+                <field name="name">Estudios</field>
+                <field name="model">oeh.medical.lab.test</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Estudios">
+                        <header>
+                            <button confirm="Are you sure you want to start the test?" name="set_to_test_inprogress" states="Draft" string="Start Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <button confirm="Are you sure you want to complete the test?" name="set_to_test_complete" states="Test In Progress" string="Complete Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <button confirm="Are you sure you want to create the invoice?" name="action_lab_invoice_create" string="Create Lab Test Invoice" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager" attrs="{'invisible': [('test_facturado','==','Si')], 'invisible': [('state','==','Invoiced')]}" />
+                            <button name="print_patient_labtest" states="Test In Progress,Completed,Invoiced" string="Print Lab Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <field name="state" widget="statusbar" statusbar_visible="Draft,Test In Progress,Completed,Invoiced" statusbar_colors='{"Completed":"blue","Test In Progress":"red","Invoiced":"grey"}'/>
+                            <field name="test_facturado" invisible="1"/>
+                        </header>
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="pref_merge" />
+                                    <field name="hospital_estudio" required="1"/>
+                                    <field name="lab_department" required="1"  domain="[('hospital','=',hospital_estudio)]"/>
+                                    <field name="patient" options="{'no_create': True}"/>
+                                    <field name="date_requested"/>
+                                    
+                                    <field name="have_imss" attrs="{'invisible': [('siconvenio','=',True)]}"/>
+
+                                    <field name="discount" attrs="{'invisible': [('have_imss','=',False)], 'required': [('have_imss','=',True)]}" />
+
+                                    <field name="siconvenio" attrs="{'invisible': [('have_imss','=',True)]}"/>
+
+                                    <field name="empresa" attrs="{'invisible': [('siconvenio','=',False)], 'required': [('siconvenio','=',True)]}"/>
+
+                                    <field name="conv_porce" attrs="{'invisible': [('siconvenio','=',False)], 'required': [('siconvenio','=',True)]}"/>
+                                    <field name="pref_hosp" invisible="1"/>
+                                    <field name="pref_dep" invisible="1" />
+                                    
+                                </group>
+                                <group>
+                                    <field name="code_cause" attrs="{'invisible': [('have_imss','=',False)], 'required': [('have_imss','=',True)]}"/>
+                                    <field name="test_type" on_change="onchange_test_type_id(test_type)"/>
+                                    <field name="date_analysis"/>
+                                    <field name="duration" widget="float_time"/>
+                                    <field name="diagnostico" />
+                                    <field invisible='1' name="pathologist" options="{'no_create': True}"/>
+                                    <!--<field name="vale" attrs="{'invisible': [('have_imss','=',False)], 'required': [('have_imss','=',True)]}" />-->
+                                    <!--<field name="requestor" options="{'no_create': True}"/>-->
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Lab Test Cases">
+                                    <group>
+                                        <field name="lab_test_criteria" nolabel="1">
+                                            <tree string="Lab Test Cases" editable="bottom">
+                                                <field name="sequence" required="1"/>
+                                                <field name="name"/>
+                                                <field name="result"/>
+                                                <field name="normal_range"/>
+                                                <field name="units"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                                <page string="Test Results">
+                                    <group>
+                                        <field name="results"/>
+                                    </group>
+                                    <group>
+                                        <field name="diagnosis"/>
+                                    </group>
+                                </page>
+                                <page string="Indicaciones">
+                                    <field name="lab_test_indications" nolabel="1">
+                                        <tree string="Indicaciones" editable="bottom">
+                                            <field name="name"/>
+                                            <field name="extra_info" />
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_lab_test_action_calendar">
+                <field name="name">Estudios</field>
+                <field name="model">oeh.medical.lab.test</field>
+                <field name="type">calendar</field>
+                <field name="arch" type="xml">
+                    <calendar string='Estudios' date_start="date_analysis">
+                        <field name="duration" widget="float_time"/>
+                        <field name="patient" />
+                    </calendar>
+                </field>
+            </record>
+            <record id="oeh_medical_lab_test_action_tree" model="ir.actions.act_window">
+                    <field name="name">Estudios</field>
+                    <field name="res_model">oeh.medical.lab.test</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new lab tests.
+                      </p>
+                    </field>
+            </record>
+            
+
+            <menuitem action="oeh_medical_lab_test_action_tree" id="oeh_medical_lab_test_conf_list" parent="oeh_medical_laboratory_menu" sequence="5"/>
+
+
+            <!-- Lab Test Department management -->
+
+            <record model="ir.ui.view" id="oeh_medical_lab_test_department_tree">
+                <field name="name">Labtest Departments</field>
+                <field name="model">oeh.medical.labtest.department</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Lab Test Departments' editable="top">
+                        <field name="name"/>
+                        <field name="hospital"/>
+                        <field name="suf_dep"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_lab_test_department_filter" model="ir.ui.view">
+                <field name="name">Labtest Departments</field>
+                <field name="model">oeh.medical.labtest.department</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Departments">
+                        <separator orientation="vertical"/>
+                        <field name="name" select="1"/>
+                        <field name="hospital" select="1"/>
+                    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_labtest_department_action_tree" model="ir.actions.act_window">
+                    <field name="name">Lab Test Departments</field>
+                    <field name="res_model">oeh.medical.labtest.department</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new Lab Test department.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_labtest_department_action_tree" id="oeh_medical_labtest_department_menu" parent="oeh_medical_conf_laboratory" sequence="15"/>
+
+
+
+            <!-- Inheriting Lab screen to display patient's labtest reference -->
+
+            <record id="oeh_medical_patient_lab_view" model="ir.ui.view">
+                <field name="name">Patient</field>
+                <field name="model">oeh.medical.patient</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_patient_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Estudios">
+                            <field name="lab_test_ids" readonly="1">
+                                <tree string='Lab Tests' colors="grey:state=='Invoiced';blue:state=='Test In Progress';green:state=='Completed';red:state=='Cancelled'">
+                                    <field name="name"/>
+                                    <field name="test_type"/>
+                                    <!--<field name="pathologist"/>
+                                    <field name="requestor"/>-->
+                                    <field name="date_requested"/>
+                                    <field name="date_analysis"/>
+                                    <field name="state"/>
+                                    <field name="patient" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+
+            
+            <!-- Inheriting Lab screen to display Labtest switch -->
+
+            <record id="oeh_medical_patient_lab_button_count_view" model="ir.ui.view">
+                <field name="name">Patient</field>
+                <field name="model">oeh.medical.patient</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_patient_view"/>
+                <field name="arch" type="xml">
+                    <div class="oe_button_box" name="buttons" position="inside">
+
+                        <button type="action" class="oe_stat_button" 
+
+                            name="%(oeh_medical_lab_test_action_tree)d"                          
+                            icon="fa-flask">
+                           
+                            <field string="Estudios" 
+                                   name="labs_count" 
+                                   widget="statinfo"/>
+                        </button>
+                    </div>
+                </field>
+            </record>          
+
+        </data>
+    </openerp>

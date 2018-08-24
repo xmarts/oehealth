@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data inherit_id="account.report_invoice_document">
+			<xpath expr="//table[@class='table tablecc-condensed']//tr[2] " position='inside'>
+				<tr><span t-field="o.amount_to_text"/></tr>
+			</xpath>
+	</data>
+</odoo>
