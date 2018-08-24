@@ -489,10 +489,18 @@
                             </group>
                             <group>
                                 <field name="dob" required="1"/>
-                                <field name="seguro_social"/>
+                                <field name="siseguro"/>                                
+                                <field name="seguro_social" attrs="{'invisible': [('siseguro','=',False)], 'required': [('siseguro','=',True)]}"/>
+
+                                <field name="empresa"/>
+
+                                <field name="disc_porcent" invisible="1" />
+
+
+
                                 <field name="marital_status" invisible="1"/>
                                 <field name="rh" invisible="1"/>
-                                <field name="doctor" options="{'no_create': True}"/>
+                                <!--<field name="doctor" options="{'no_create': True}"/>-->
                             </group>
                         </group>
                         <group>
@@ -512,8 +520,8 @@
                                                 <field name="street" placeholder="Street..."/>
                                                 <field name="street2"/>
                                                 <div class="address_format">
-                                                    <field name="city" placeholder="City" style="width: 40%%"/>
-                                                    <field name="state_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}' on_change="onchange_state(state_id)"/>
+                                                    <field name="city" required="1" placeholder="City" style="width: 40%%"/>
+                                                    <field name="state_id" required="1" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}' on_change="onchange_state(state_id)" domain="[('country_id','=', country_id)]"/>
                                                     <field name="zip" placeholder="ZIP" style="width: 20%%"/>
                                                 </div>
                                                 <field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True, "no_create": True}'/>
@@ -1019,6 +1027,7 @@
             </record>
 
             <menuitem action="oeh_medical_physician_degrees_action_tree" id="oeh_medical_physician_degrees_list" parent="oeh_medical_conf_physician" sequence="1"/>
+
 
         </data>
 </openerp>

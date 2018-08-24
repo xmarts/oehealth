@@ -89,6 +89,7 @@ class OeHealthCenters(models.Model):
     info = fields.Text('Extra Information')
     building_count = fields.Integer(compute=_building_count, string="Buildings")
     pharmacy_count = fields.Integer(compute=_pharmacy_count, string="Pharmacies")
+    suf_center = fields.Char(string='sufijo del Health Center', size=2, help='Ingresa 2 letras que puedan servir como prefijo del OeHealthCenter')
 
     @api.model
     def create(self, vals):

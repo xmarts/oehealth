@@ -190,6 +190,8 @@ class OeHealthPatient(models.Model):
             patient_data.age = compute_age_from_dates(patient_data.dob,patient_data.deceased,patient_data.dod)
         return True
 
+
+
     partner_id = fields.Many2one('res.partner', string='Related Partner', required=True, ondelete='cascade', help='Partner-related data of the patient')
     family = fields.One2many('oeh.medical.patient.family', 'patient_id', string='Family')
     ssn = fields.Char(size=256, string='SSN')
@@ -217,12 +219,19 @@ class OeHealthPatient(models.Model):
     oeh_patient_user_id = fields.Many2one('res.users', string='Responsible Odoo User')
     prescription_line = fields.One2many('oeh.medical.prescription.line', 'patient', string='Medicines', readonly=True)
     curp = fields.Char(string='CURP')
-    seguro_social = fields.Char(string='Número de seguro social')
+    seguro_social = fields.Char(string='Número de seguro popular')
+    siseguro = fields.Boolean(string='¿Tiene seguro popular?', help='Seleccionando esta opcion, se desplegara una opcion donde podras colocar tu numero de seguro, de ser lo contrario puedes continuar con los demas campos')
 
+    empresa = fields.Many2one('res.partner',string='Empresa con Convenio', help='Empresa con la cual se tiene un Convenio')
+    disc_porcent = fields.Integer(string='Porcentaje de Descuento', help='Si cuentas con algun convenio, ingresa el porcentaje de descuento')
 
     _sql_constraints = [
         ('code_oeh_patient_userid_uniq', 'unique (oeh_patient_user_id)', "Selected 'Responsible' user is already assigned to another patient !")
     ]
+
+    @api.onchange('empresa')
+    def onchange_patient(self):
+        self.disc_porcent = self.empresa.disc_porcent    
 
     @api.model
     def create(self, vals):
@@ -431,8 +440,8 @@ class OeHealthAppointment(models.Model):
     doctor = fields.Many2one('oeh.medical.physician', string='Physician', help="Current primary care / family doctor", domain=[('is_pharmacist','=',False)], required=True, readonly=True,states={'Scheduled': [('readonly', False)]}, default=_get_physician)
     appointment_date = fields.Datetime(string='Appointment Date', required=True, readonly=True,states={'Scheduled': [('readonly', False)]}, default=datetime.datetime.now())
     appointment_end = fields.Datetime(compute=_get_appointment_end, string='Appointment End Date', readonly=True, states={'Scheduled': [('readonly', False)]})
-    duration = fields.Integer(string='Duration (Hours)', readonly=True, states={'Scheduled': [('readonly', False)]}, default=lambda *a: 1)
-    institution = fields.Many2one('oeh.medical.health.center', string='Lugar de Cita', help="Medical Center", readonly=True, states={'Scheduled': [('readonly', False)]})
+    duration = fields.Integer(string='Duration (Hours)', readonly=True, states={'Scheduled': [('readonly', False)]}, default=lambda *a: '1')
+    institution = fields.Many2one('oeh.medical.health.center', string='Lugar de Cita', help="Medical Center", readonly=True, states={'Scheduled': [('readonly', False)]}, required= True)
     institution_origin = fields.Many2one('oeh.medical.health.center', string='Hospital Origen', help="Medical Center", readonly=True, states={'Scheduled': [('readonly', False)]})
     urgency_level = fields.Selection(URGENCY_LEVEL, string='Urgency Level', readonly=True, states={'Scheduled': [('readonly', False)]}, default=lambda *a: 'Normal')
     comments = fields.Text(string='Comments', readonly=True, states={'Scheduled': [('readonly', False)]})
@@ -444,6 +453,61 @@ class OeHealthAppointment(models.Model):
 
     @api.model
     def create(self, vals):
+
+        DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+        # get localized dates
+        fc = vals.get('appointment_date')
+        fechahora = datetime.datetime.strptime(fc, DATETIME_FORMAT)
+
+        anho = str(fechahora.strftime('%Y'))
+        mes = str(fechahora.strftime('%m'))
+        dia = str(fechahora.strftime('%d'))
+        hora = str(fechahora.strftime('%H'))
+        minuto = str(fechahora.strftime('%M'))
+        segundo = str(fechahora.strftime('%S'))
+        fecha = anho+'-'+mes+'-'+dia
+        dur = self.duration
+        if dur == 0:
+            dur = 1
+        hora1 = datetime.datetime(int(anho),int(mes),int(dia),int(hora),int(minuto),int(segundo))
+        if(int(hora)+int(dur) > 23):
+            hora2 = datetime.datetime(int(anho),int(mes),int(dia),int(0),int(minuto),int(segundo))
+            dias = timedelta(days=1)
+            hora2 = hora2 + dias
+        else:
+            hora2 = datetime.datetime(int(anho),int(mes),int(dia),int(int(hora)+dur),int(minuto),int(segundo))
+        cr = self.env.cr
+        sql = "select appointment_date,duration from oeh_medical_appointment WHERE appointment_date >= '"+str(fecha)+" 00:00:00' AND appointment_date <= '"+str(fecha)+" 23:59:59' AND institution = '"+str(vals.get('institution'))+"';"
+        cr.execute(str(sql))
+        citas = cr.fetchall()
+        if(citas!=[]):
+            for c in citas:
+                fc1 = datetime.datetime.strptime(c[0], DATETIME_FORMAT)
+                a1 = str(fc1.strftime('%Y'))
+                m1 = str(fc1.strftime('%m'))
+                d1 = str(fc1.strftime('%d'))
+                h1 = str(fc1.strftime('%H'))
+                mi1 = str(fc1.strftime('%M'))
+                s1 = str(fc1.strftime('%S'))
+                du1 = int(c[1])
+                if du1 == 0:
+                    du1 = 1
+                horai = datetime.datetime(int(a1),int(m1),int(d1),int(h1),int(mi1),int(s1))
+                if(int(h1)+int(du1) > 23):
+                    horaf = datetime.datetime(int(a1),int(m1),int(d1),int(0),int(mi1),int(s1))
+                    dias = timedelta(days=1)
+                    horaf = horaf + dias
+                else:
+                    horaf = datetime.datetime(int(a1),int(m1),int(d1),int(int(h1)+du1),int(mi1),int(s1))
+                if(horai == hora1):
+                    raise UserError(_('Esta Fecha y Hora de cita ya estan ocupadas.'))
+                if(hora1 > horai and  hora1 < horaf):
+                    raise UserError(_('Esta Fecha y Hora de cita ya estan ocupadas.'))
+                if(hora1 < horai and hora2 > horai and hora2 <= horaf):
+                    raise UserError(_('Esta Fecha y Hora de cita ya estan ocupadas.'))
+                if(hora1 < horai and hora2 > horaf):
+                    raise UserError(_('Esta Fecha y Hora de cita ya estan ocupadas.'))
+
         if vals.get('doctor') and vals.get('appointment_date'):
             self.check_physician_availability(vals.get('doctor'),vals.get('appointment_date'))
 
@@ -786,4 +850,4 @@ class OeHealthVaccines(models.Model):
             else:
                 dose = 1
             self.dose = dose
-        return res
+        return res 

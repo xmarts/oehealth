@@ -35,6 +35,9 @@
 from odoo import api, fields, models, _
 import time
 import datetime
+from datetime import timedelta
+from odoo.exceptions import UserError
+from odoo.tools.translate import _
 
 
 # Lab Units Management
@@ -54,7 +57,8 @@ class OeHealthLabTestDepartment(models.Model):
     _description = 'Lab Test Departments'
 
     name = fields.Char(string='Name', size=128, required=True)
-
+    hospital = fields.Many2one('oeh.medical.health.center', string='Hospital', help="Medical Center")
+    suf_dep = fields.Char(string='Sufijo del Dep',size=2, help='Sufijo para identificar el departamento o tipo de estudio')
 # Lab Test Types Management
 
 class OeHealthLabTestCriteria(models.Model):
@@ -102,36 +106,223 @@ class OeHealthLabTests(models.Model):
         ('Completed', 'Completed'),
         ('Invoiced', 'Invoiced'),
     ]
+    LABTEST_INVOICE = [
+        ('Si', 'Si'),
+        ('No', 'No'),
+    ]
 
     name = fields.Char(string='Lab Test #', size=16, readonly=True, required=True, help="Lab result ID", default=lambda *a: '/')
     lab_department = fields.Many2one('oeh.medical.labtest.department', string='Department', readonly=True, states={'Draft': [('readonly', False)]})
-    test_type = fields.Many2one('oeh.medical.labtest.types', string='Test Type', domain="[('lab_department', '=', lab_department)]", required=True, readonly=True, states={'Draft': [('readonly', False)]}, help="Lab test type")
+    test_type = fields.Many2one('oeh.medical.labtest.types',string='Test Type', required=True, readonly=True, states={'Draft': [('readonly', False)]}, help="Lab test type")
     patient = fields.Many2one('oeh.medical.patient', string='Patient', help="Patient Name", required=True, readonly=True, states={'Draft': [('readonly', False)]})
-    pathologist = fields.Many2one('oeh.medical.physician', string='Pathologist', help="Pathologist", required=True, readonly=True, states={'Draft': [('readonly', False)]})
+    pathologist = fields.Many2one('oeh.medical.physician', string='Pathologist', help="Pathologist", required=False, readonly=True, states={'Draft': [('readonly', False)]})
     requestor = fields.Char(string='Doctor who requested the test', help="Doctor who requested the test", readonly=True, states={'Draft': [('readonly', False)]})
     results = fields.Text(string='Results', readonly=True, states={'Draft': [('readonly', False)], 'Test In Progress': [('readonly', False)]})
     diagnosis = fields.Text(string='Diagnosis', readonly=True, states={'Draft': [('readonly', False)], 'Test In Progress': [('readonly', False)]})
     lab_test_criteria = fields.One2many('oeh.medical.lab.resultcriteria', 'medical_lab_test_id', string='Lab Test Result', readonly=True, states={'Draft': [('readonly', False)], 'Test In Progress': [('readonly', False)]})
     date_requested = fields.Datetime(string='Date requested', readonly=True, states={'Draft': [('readonly', False)]}, default=lambda *a: time.strftime('%Y-%m-%d %H:%M:%S'))
-    date_analysis = fields.Datetime(string='Date of the Analysis', readonly=True, states={'Draft': [('readonly', False)], 'Test In Progress': [('readonly', False)]})
+    date_analysis = fields.Datetime(string='Date of the Analysis', readonly=True, states={'Draft': [('readonly', False)], 'Test In Progress': [('readonly', False)]}, required=True)
     state = fields.Selection(LABTEST_STATE, string='State', readonly=True, default=lambda *a: 'Draft')
 
-
-    have_imss = fields.Boolean(string='¿Tiene Seguro?', readonly=True, states={'Draft': [('readonly', False)]})
-    discount = fields.Integer(string='Porcentaje de Descuento', readonly=True, states={'Draft': [('readonly', False)]})
+    duration = fields.Float(string='Duración (Horas:Minutos)', readonly=True, states={'Draft': [('readonly', False)]}, default='0.5', required=True)
+    have_imss = fields.Boolean(string='¿Tiene Seguro?', readonly=True, states={'Draft': [('readonly', False)], 'Test In Progress': [('readonly', False)]})
+    discount = fields.Integer(string='Porcentaje de Descuento', readonly=True, states={'Draft': [('readonly', False)]}, default="100")
     vale = fields.Char(string='N° de Vale', readonly=True, states={'Draft': [('readonly', False)]})
-    hospital_estudio = fields.Many2one('oeh.medical.health.center', string='Hospital donde de hará el estudio', help="Medical Center", readonly=True, states={'Draft': [('readonly', False)]})
+    hospital_estudio = fields.Many2one('oeh.medical.health.center', string='Hospital donde de hará el estudio', help="Medical Center", readonly=True, states={'Draft': [('readonly', False)]}, required=True)
     lab_test_indications = fields.One2many('oeh.medical.lab.indications.lines', 'medical_lab_test_id', string='Indicaciones', readonly=True, states={'Draft': [('readonly', False)]})
+    code_cause = fields.Many2one('oeh.medical.lab.causes', string='Código Causa',readonly=True, states={'Draft': [('readonly', False)]})
+    diagnostico = fields.Text(string='Diagnostico', readonly=True, states={'Completed': [('readonly', False)]})
+    test_facturado = fields.Selection(LABTEST_INVOICE,string='¿Facturado?', readonly=True,default=lambda *a: 'No')
+    
+    siconvenio = fields.Boolean(string='¿Cuentas con convenio?', help='Selecciona si cuentas con convenio')
+    empresa = fields.Char(string='Empresa con Convenio', help='Empresa con la cual se tiene un Convenio')
+    conv_porce = fields.Integer(string='Porcentaje de Descuento', help='Si cuenta con un convenio mostrara el porcentaje autorizado')
+    pref_hosp = fields.Char(string='Prefijo del Hospital', help='Campo oculto que recupera el prefijo del hospital')
+    pref_dep = fields.Char(string='Prefijo del Estudio', help='Campo oculto que recupera el prefijo cel Estudio ')
+    pref_merge = fields.Char(string='Solicitud #', compute='merge_fuf', store=True)
 
 
+   
+    @api.depends('pref_hosp','pref_dep','name')
+    def merge_fuf(self):
+        self.pref_merge = (self.pref_hosp or '')+''+(self.pref_dep or '')+''+(self.name or '')
 
+    @api.onchange('patient')
+    def onchange_patient(self):
+        self.siconvenio = self.patient.empresa.convenio
+        self.empresa = self.patient.empresa.name
+        self.conv_porce = self.patient.disc_porcent
+
+
+    @api.onchange('hospital_estudio')
+    def onechange_hospital_estudio(self):
+        self.pref_hosp = self.hospital_estudio.suf_center
+
+    @api.onchange('lab_department')
+    def onchange_lab_department(self):
+        self.pref_dep = self.lab_department.suf_dep 
+
+    @api.onchange('hospital_estudio')
+    def onchange_hosp(self):
+        self.lab_department = None
+        self.code_cause = None
+        self.test_type = None
+
+    @api.onchange('have_imss')
+    def onchange_imss(self):
+        self.lab_department = None
+        self.code_cause = None
+        self.test_type = None
+        if self.have_imss == True:
+           self.siconvenio = False
+
+    @api.onchange('siconvenio')
+    def onchange_sico(self):
+        
+        if self.siconvenio == True:
+           self.have_imss == False
+
+    @api.onchange('code_cause')
+    def onchange_code(self):
+        self.test_type = None
+        lista = []
+        res = {}
+        if self.code_cause:
+            for line in self.code_cause.estudios:
+                if(line.name.lab_department == self.lab_department):
+                    lista.append(line.name.id)
+        res.update({
+            'domain': {
+                'test_type': [('id', 'in', list(set(lista)))],
+            }
+        })
+        return res
+
+    @api.onchange('lab_department')
+    def onchange_dep(self):
+        self.test_type = None
+        lista = []
+        res = {}
+        if self.have_imss == True:
+            if self.code_cause:
+                for line in self.code_cause.estudios:
+                    if(line.name.lab_department == self.lab_department):
+                        lista.append(line.name.id)
+            res.update({
+                'domain': {
+                    'test_type': [('id', 'in', list(set(lista)))],
+                }
+            })
+        if self.have_imss == False:
+            cr = self.env.cr
+            self.code_cause = None
+            if self.lab_department.id != False:
+                sql = "select id from oeh_medical_labtest_types where lab_department='"+str(self.lab_department.id)+"';"
+                cr.execute(str(sql))
+                deps = cr.fetchall()
+                if deps != None:
+                    depts = []
+                    for l in deps:
+                        depts.append(l[0])
+                    res.update({
+                        'domain': {
+                            'test_type': [('id', 'in', list(set(depts)))],
+                        }
+                    })
+        return res
 
 
     @api.model
     def create(self, vals):
+        DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+        # get localized dates
+        fc = vals.get('date_analysis')
+        fechahora = datetime.datetime.strptime(fc, DATETIME_FORMAT)
+
+        anho = str(fechahora.strftime('%Y'))
+        mes = str(fechahora.strftime('%m'))
+        dia = str(fechahora.strftime('%d'))
+        hora = str(fechahora.strftime('%H'))
+        minuto = str(fechahora.strftime('%M'))
+        segundo = str(fechahora.strftime('%S'))
+        fecha = anho+'-'+mes+'-'+dia
+        if(vals.get('duration')==0):
+            raise UserError(_("La duración no puede ser 0"))
+        dur = vals.get('duration')
+        currentHours = int(dur // 1)
+        currentMinutes =int(round(dur % 1 * 60))
+        if(currentHours <= 9):
+            currentHours = "0" + str(currentHours)
+        if(currentMinutes <= 9):
+            currentMinutes = "0" + str(currentMinutes)
+
+        hora1 = datetime.datetime(int(anho),int(mes),int(dia),int(hora),int(minuto),int(segundo))
+        if((int(currentMinutes)+int(minuto))>=60):
+            if(int(hora)+int(currentHours)+1 > 23):
+                hora2 = datetime.datetime(int(anho),int(mes),int(dia),int(0),int((int(currentMinutes)+int(minuto))-60),int(segundo))
+                dias = timedelta(days=1)
+                hora2 = hora2 + dias
+            else:
+                hora2 = datetime.datetime(int(anho),int(mes),int(dia),int(int(hora)+int(currentHours)+1),int((int(currentMinutes)+int(minuto))-60),int(segundo))
+        else:
+            if(int(hora)+int(currentHours) > 23):
+                hora2 = datetime.datetime(int(anho),int(mes),int(dia),int(0),int(int(currentMinutes)+int(minuto)),int(segundo))
+                dias = timedelta(days=1)
+                hora2 = hora2 + dias
+            else:
+                hora2 = datetime.datetime(int(anho),int(mes),int(dia),int(int(hora)+int(currentHours)),int(int(currentMinutes)+int(minuto)),int(segundo))
+        #raise UserError(_(str(hora1)+"--"+str(hora2)))
+        cr = self.env.cr
+        sql = "select date_analysis,duration,lab_department from oeh_medical_lab_test WHERE date_analysis >= '"+str(fecha)+" 00:00:00' AND date_analysis <= '"+str(fecha)+" 23:59:59' AND hospital_estudio = '"+str(vals.get('hospital_estudio'))+"' AND lab_department = '"+str(vals.get('lab_department'))+"';"
+        cr.execute(str(sql))
+        citas = cr.fetchall()
+        if(citas!=[]):
+            for c in citas:
+                fc1 = datetime.datetime.strptime(c[0], DATETIME_FORMAT)
+                a1 = str(fc1.strftime('%Y'))
+                m1 = str(fc1.strftime('%m'))
+                d1 = str(fc1.strftime('%d'))
+                h1 = str(fc1.strftime('%H'))
+                mi1 = str(fc1.strftime('%M'))
+                s1 = str(fc1.strftime('%S'))
+                du1 = int(c[1])
+                if du1 == 0:
+                    du1 = 0.5
+                currentHours2 = int(du1 // 1)
+                currentMinutes2 =int(round(du1 % 1 * 60))
+                if(currentHours2 <= 9):
+                    currentHours2 = "0" + str(currentHours)
+                if(currentMinutes2 <= 9):
+                    currentMinutes2 = "0" + str(currentMinutes)
+                if((int(currentMinutes2)+int(mi1))>=60):
+                    if(int(h1)+int(currentHours2)+1 > 23):
+                        horaf = datetime.datetime(int(a1),int(m1),int(d1),int(0),int((int(currentMinutes2)+int(mi1))-60),int(s1))
+                        dias = timedelta(days=1)
+                        horaf = horaf + dias
+                    else:
+                        horaf = datetime.datetime(int(a1),int(m1),int(d1),int(int(h1)+int(currentHours2)+1),int((int(currentMinutes2)+int(mi1))-60),int(s1))
+                else:
+                    if(int(h1)+int(currentHours2) > 23):
+                        horaf = datetime.datetime(int(a1),int(m1),int(d1),int(0),int(int(currentMinutes2)+int(mi1)),int(s1))
+                        dias = timedelta(days=1)
+                        horaf = horaf + dias
+                    else:
+                        horaf = datetime.datetime(int(a1),int(m1),int(d1),int(int(h1)+int(currentHours2)),int(int(currentMinutes2)+int(mi1)),int(s1))
+                horai = datetime.datetime(int(a1),int(m1),int(d1),int(h1),int(mi1),int(s1))
+                if(horai == hora1):
+                    raise UserError(_('Laboratorio ocupado en esta Fecha y Hora.'))
+                if(hora1 > horai and  hora1 < horaf):
+                    raise UserError(_('Laboratorio ocupado en esta Fecha y Hora.'))
+                if(hora1 < horai and hora2 > horai and hora2 <= horaf):
+                    raise UserError(_('Laboratorio ocupado en esta Fecha y Hora.'))
+                if(hora1 < horai and hora2 > horaf):
+                    raise UserError(_('Laboratorio ocupado en esta Fecha y Hora.'))
+
         sequence = self.env['ir.sequence'].next_by_code('oeh.medical.lab.test')
         vals['name'] = sequence or '/'
         return super(OeHealthLabTests, self).create(vals)
+ 
+ 
 
 
     # Fetching lab test types
@@ -193,7 +384,10 @@ class OeHealthLabTests(models.Model):
 
     @api.multi
     def set_to_test_complete(self):
-        return self.write({'state': 'Completed'})
+        if(self.test_facturado=='Si'):
+            return self.write({'state': 'Invoiced'})
+        else:
+            return self.write({'state': 'Completed'})
 
     @api.multi
     def _default_account(self):
@@ -204,13 +398,15 @@ class OeHealthLabTests(models.Model):
         invoice_obj = self.env["account.invoice"]
         invoice_line_obj = self.env["account.invoice.line"]
         desc = 0
-        nvale = ''
+        #nvale = ''
         for lab in self:
             # Create Invoice
             if lab.patient:
+                if self.siconvenio == True:
+                    desc = self.conv_porce
                 if self.have_imss == True:
                     desc = self.discount
-                    nvale = "\nNo. de Vale: " + self.vale
+                    #nvale = "\nNo. de Vale: " + self.vale
                 curr_invoice = {
                     'partner_id': lab.patient.partner_id.id,
                     'account_id': lab.patient.partner_id.property_account_receivable_id.id,
@@ -230,7 +426,7 @@ class OeHealthLabTests(models.Model):
 
                         # Create Invoice line
                         curr_invoice_line = {
-                            'name': "Charge for " + str(lab.test_type.name) + " laboratory test" + nvale,
+                            'name': "Charge for " + str(lab.test_type.name) + " laboratory test",
                             'price_unit': (lab.test_type.test_charge - ((lab.test_type.test_charge / 100) * desc)) or 0,
                             'quantity': 1.0,
                             'account_id': prd_account_id,
@@ -238,8 +434,9 @@ class OeHealthLabTests(models.Model):
                         }
 
                         inv_line_ids = invoice_line_obj.create(curr_invoice_line)
-
-                self.write({'state': 'Invoiced'})
+                self.write({'test_facturado': 'Si'})
+                if(self.state=="Complete"):
+                    self.write({'state': 'Invoiced'})
 
         return {
                 'domain': "[('id','=', " + str(inv_id) + ")]",
@@ -256,6 +453,23 @@ class OeHealthLabTestsIndications(models.Model):
     _name = 'oeh.medical.lab.indications'
     _description = 'Indicaciones para pruebas de laboratorio'
     name = fields.Char(string='Descripción', required=True)
+
+
+class OeHealthLabTestsCauses(models.Model):
+    _name = 'oeh.medical.lab.causes'
+    _description = 'Códigos Causes'
+    name = fields.Char(string='Código')
+    familia = fields.Integer(string="Familia")
+    definicion = fields.Char(string="Definición")
+    description = fields.Char(string="Descripción")
+    estudios = fields.One2many("oeh.medical.lab.causes.lines",'t_id',string="Estudios aplicables")
+
+class OeHealthLabTestsCausesLines(models.Model):
+    _name = 'oeh.medical.lab.causes.lines'
+    _description = 'Códigos Causes Lines'
+    name = fields.Many2one("oeh.medical.labtest.types",string="Estudios aplicables")
+    t_id = fields.Many2one('oeh.medical.lab.causes', string="Cause ID", ondelete='cascade', index=True, copy=False,invisible=True)
+    
 
 
 class OeHealthLabTestsIndicationsLine(models.Model):
@@ -298,3 +512,7 @@ class OeHealthPatient(models.Model):
 
     lab_test_ids = fields.One2many('oeh.medical.lab.test', 'patient', string='Lab Tests')
     labs_count = fields.Integer(compute=_labtest_count, string="Lab Tests")
+
+class OeHealthModCountry(models.Model):
+    _inherit = 'res.partner'
+    country_id = fields.Many2one('res.country', string="País", default=156)

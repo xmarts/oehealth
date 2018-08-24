@@ -351,6 +351,7 @@
                                     <field name="mobile"/>
                                     <!--<field name="fax"/>-->
                                     <field name="email" widget="email"/>
+                                    <field name="suf_center" placeholder='HP'/>
                                 </group>
                             </group>
                             <notebook>

@@ -8,26 +8,22 @@
                 <div class="page">
                     <div class="oe_structure"/>
                     <div class="row">
-                        <p style="font-size:24px;text-align:center;font-weight:bold;">Labtest Report</p>
+                        <p style="font-size:24px;text-align:center;font-weight:bold;">Solicitud de Estudio</p>
                     </div>
                     <div class="row">
                         <div class="col-xs-8">
-                            <div t-if="o.name">
-                                <strong>Lab Test#:</strong>
-                                <p t-field="o.name"/>
-                            </div>
-                            <div t-if="o.patient">
-                                <strong>Patient:</strong>
-                                <p t-field="o.patient.name"/>
-                            </div>
-                            <div t-if="o.date_requested">
+                            <div t-if="o.date_requested" style="margin-rigth:top">
                                 <strong>Date Requested:</strong>
                                 <p t-field="o.date_requested"/>
                             </div>
-                            <div t-if="o.requestor">
-                                <strong>Doctor who requested test:</strong>
-                                <p t-field="o.requestor"/>
+                            <div t-if="o.name" >
+                                <strong>Lab Test#:</strong>
+                                <p t-field="o.name"/>
                             </div>
+                            <div>
+                                <strong>Solicitud #: </strong>
+                                <p t-field="o.pref_merge"/>
+                            </div>                            
                             <div t-if="o.hospital_estudio">
                                 <strong>Hospital donde se hara el estudio:</strong>
                                 <p>Hospital <span t-field="o.hospital_estudio"/></p>
@@ -41,20 +37,35 @@
                                     <t t-if="o.hospital_estudio.zip" ><span>C.P.<span t-field="o.hospital_estudio.zip"/>, </span></t>
                                 </p>
                             </div>
-                        </div>
-                        <div class="col-xs-4">
+                            <div t-if="o.date_analysis" style="margin-rigth:top">
+                                <strong>Fecha de Realizacion de Estudio:</strong>
+                                <p t-field="o.date_analysis"/>
+                            </div>                                                       
+                            <div t-if="o.patient">
+                                <strong>Patient:</strong>
+                                <p t-field="o.patient.name"/>
+                            </div>
                             <div t-if="o.test_type">
-                                <strong>Test Type:</strong>
+                                <strong>Tipo de Estudio: </strong>
                                 <p t-field="o.test_type.name"/>
                             </div>
+
+                            <!--
+                            <div t-if="o.requestor">
+                                <strong>Doctor who requested test:</strong>
+                                <p t-field="o.requestor"/>
+                            </div>
+                            -->
+
+                        </div>
+                        <div class="col-xs-4">
+
+                            <!--
                             <div t-if="o.pathologist" class="mt16">
                                 <strong>Pathologist: </strong>
                                 <p t-field="o.pathologist.name"/>
                             </div>
-                            <div t-if="o.date_analysis">
-                                <strong>Analysis Date:</strong>
-                                <p t-field="o.date_analysis"/>
-                            </div>
+                            -->
                             <div t-if="o.have_imss == True">
                                 <strong>¿Tiene IMSS? </strong>
                                 <b>Si</b>
@@ -66,12 +77,32 @@
                             </div>
                             <div t-if="o.have_imss == True">
                                 <p>
-                                    <strong>N° de vale: </strong><span t-field="o.vale" />    
+                                    <strong>N° de Poliza: </strong><span t-field="o.vale" />    
                                 </p>
                                 <p>
                                     <strong>Descuento: </strong><span t-field="o.discount" /><span>%</span>
                                 </p>
                             </div>
+
+                            <div t-if="o.siconvenio == True">
+                                <strong>¿Convenio? </strong>
+                                <b>Si</b>
+                            </div>
+
+                            <div t-if="o.siconvenio == False">
+                                <strong>¿Convenio? </strong>
+                                <b>No</b>
+                            </div>
+                            <div t-if="o.siconvenio == True">
+                                <p>
+                                    <strong>Empresa: </strong><span t-field="o.empresa" />    
+                                </p>
+                                <p>
+                                    <strong>Descuento: </strong><span t-field="o.conv_porce" /><span>%</span>
+                                </p>
+                            </div>
+                            
+
                         </div>
                     </div>
 

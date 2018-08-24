@@ -22,11 +22,13 @@
         <menuitem name="Operational Areas" id="oeh_medical_conf_operational_areas" parent="oeh_medical_conf_menu" sequence="9"/>
 		<menuitem name="Insurances" id="oeh_medical_conf_insurances" parent="oeh_medical_conf_menu" sequence="10"/>
 
+
 		<!--<menuitem id="base.next_id_156" name="oeHealth Reporting" parent="base.menu_reporting" sequence="1"/>-->
 
 		<!-- Laboratory Management -->
 		<menuitem name="Laboratory" id="oeh_medical_conf_laboratory" parent="oeh_medical_conf_menu" sequence="6"/>
 		<menuitem name="Laboratory" id="oeh_medical_laboratory_menu" parent="oeh_medical_menu" sequence="5"/>
+
 
 
 	</data>

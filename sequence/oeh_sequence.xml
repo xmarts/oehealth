@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
     <data noupdate="1">
 
         <record id="seq_oeh_medical_patient" model="ir.sequence">
             <field name="name">Patient</field>
             <field name="code">oeh.medical.patient</field>
-            <field name="prefix">HP</field>
+            <field name="prefix">SP</field>
             <field name="padding">4</field>
         </record>
 
@@ -66,4 +66,4 @@
         </record>
 
     </data>
-</openerp>
+</odoo>

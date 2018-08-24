@@ -17,6 +17,9 @@
                             <field name="is_patient" />
                             <field name="is_person" />
                             <field name="is_pharmacy" />
+                            <field name="convenio" attrs="{'value = False': [('company_type','=', 'person')], 'invisible': [('company_type','=', 'person')], 'required' : [('convenio','=','company')]}"/>
+
+                            <field name="disc_porcent" attrs="{'invisible': [('convenio','=',False)], 'required': [('convenio','=',True)]}"/>
                         </group>
                     </page>
                 </notebook>
