@@ -856,3 +856,4 @@ class AddFieldUsersOehealth(models.Model):
     _name='res.users'
     _inherit='res.users'
     hospital_usuario = fields.Many2one('oeh.medical.health.center', string='Hospital donde trabaja', help="Medical Center", required=True)
+    

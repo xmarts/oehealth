@@ -367,7 +367,8 @@
                     <field name="res_model">oeh.medical.lab.test</field>
                     <field name="view_type">form</field>
                     <field name="view_mode">tree,calendar,form</field>
-                    <field name="domain">[('hospital_origen','=',uid.hospital_usuario)]</field>
+                    <field name="domain">[]</field>
+                    <field name="domain_force">[]</field>
                     <field name="context">{}</field>
                     <field name="view_id" eval="False"/>
                     <field name="help" type="html">
@@ -378,7 +379,18 @@
             </record>
             
 
-            <menuitem action="oeh_medical_lab_test_action_tree" id="oeh_medical_lab_test_conf_list" parent="oeh_medical_laboratory_menu" sequence="5"/>
+            
+
+            <record id="action_oeh_medical_lab_test_action_tree_search" model="ir.actions.server" >
+                <field name="name">Rayos X</field>
+                <field name="model_id" ref="model_oeh_medical_lab_test"/>
+                <field name="state">code</field>
+                <field name="code">
+                    action = model.lab_test_searchs()
+                </field>
+            </record>
+
+            <menuitem action="action_oeh_medical_lab_test_action_tree_search" id="oeh_medical_lab_test_conf_list" parent="oeh_medical_laboratory_menu" string='Rayos X' sequence="5"/>
 
 
             <!-- Lab Test Department management -->

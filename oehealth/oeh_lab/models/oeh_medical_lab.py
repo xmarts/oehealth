@@ -151,6 +151,36 @@ class OeHealthLabTests(models.Model):
     def merge_func(self):
         self.pref_merge = (self.pref_hosp or '')+''+(self.pref_dep or '')+''+(self.name or '')
 
+    @api.model
+    def lab_test_searchs(self):
+        if(self.env.user.id==1):
+            action = {
+                'type': 'ir.actions.act_window',
+                'view_mode': 'tree,form',
+                'name': _('Rayos X'),
+                'res_model': 'oeh.medical.lab.test',
+            }
+            return action
+        else:
+            cr = self.env.cr
+            sql = "select id from oeh_medical_lab_test where hospital_origen='"+str(self.env.user.hospital_usuario.id)+"' or hospital_estudio='"+str(self.env.user.hospital_usuario.id)+"'"
+            cr.execute(sql)
+            tests = cr.fetchall()
+
+            lista=[]
+            for l in tests:
+                lista.append(l[0])
+            action = {
+                'type': 'ir.actions.act_window',
+                'view_mode': 'tree,form',
+                'name': _('Rayos X'),
+                'res_model': 'oeh.medical.lab.test',
+                'domain': [('id', 'in', lista)],
+                #'domain': ['&',('valid_purchase', '=', False),('id', 'in', lista)],
+            }
+            return action
+
+
     @api.onchange('siconvenio')
     def onchange_sico(self):    
         if self.siconvenio == True:

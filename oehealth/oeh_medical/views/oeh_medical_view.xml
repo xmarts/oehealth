@@ -1039,6 +1039,19 @@
                 </field>
             </record>
 
+            <record id="oehealth_add_field_hospital_user_simple" model="ir.ui.view">
+                <field name="name">oehealth_add_field_hospital_user_simple</field>
+                <field name="model">res.users</field>
+                <field name="inherit_id" ref="base.view_users_simple_form"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='mobile']" position="after">
+                        <field name="hospital_usuario" string="Hospital donde trabaja"/>
+                    </xpath>
+                </field>
+            </record>
+
+            
+
 
         </data>
 </openerp>
