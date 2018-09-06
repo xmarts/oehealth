@@ -124,6 +124,8 @@ class OeHealthLabTests(models.Model):
     date_analysis = fields.Datetime(string='Date of the Analysis', readonly=True, states={'Draft': [('readonly', False)], 'Test In Progress': [('readonly', False)]}, required=True)
     state = fields.Selection(LABTEST_STATE, string='State', readonly=True, default=lambda *a: 'Draft')
 
+
+    #First fields added
     duration = fields.Float(string='Duración (Horas:Minutos)', readonly=True, states={'Draft': [('readonly', False)]}, default='0.5', required=True)
     have_imss = fields.Boolean(string='¿Tiene Seguro?', readonly=True, states={'Draft': [('readonly', False)], 'Test In Progress': [('readonly', False)]})
     discount = fields.Integer(string='Porcentaje de Descuento', readonly=True, states={'Draft': [('readonly', False)]}, default="100")
@@ -134,8 +136,7 @@ class OeHealthLabTests(models.Model):
     diagnostico = fields.Text(string='Diagnostico', readonly=True, states={'Completed': [('readonly', False)]})
     test_facturado = fields.Selection(LABTEST_INVOICE,string='¿Facturado?', readonly=True,default=lambda *a: 'No')
     
-    #New Fields 
-
+    #Second Fields added
     siconvenio = fields.Boolean(string='¿Cuentas con convenio?', help='Selecciona si cuentas con convenio')
     empresa = fields.Char(string='Empresa con Convenio', help='Empresa con la cual se tiene un Convenio')
     conv_porce = fields.Integer(string='Porcentaje de Descuento', help='Si cuenta con un convenio mostrara el porcentaje autorizado')
@@ -143,6 +144,8 @@ class OeHealthLabTests(models.Model):
     pref_dep = fields.Char(string='Prefijo del Estudio', help='Campo oculto que recupera el prefijo cel Estudio ')
     pref_merge = fields.Char(string='Solicitud #', compute='merge_func', store=True)
 
+    #Third fields added
+    hospital_origen = fields.Many2one('oeh.medical.health.center', string='Hospital Origen', default=lambda self: self.env.user.hospital_usuario)
 
     @api.depends('pref_hosp','pref_dep','name')
     def merge_func(self):

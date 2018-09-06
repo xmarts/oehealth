@@ -1028,6 +1028,17 @@
 
             <menuitem action="oeh_medical_physician_degrees_action_tree" id="oeh_medical_physician_degrees_list" parent="oeh_medical_conf_physician" sequence="1"/>
 
+            <record id="oehealth_add_field_hospital_user" model="ir.ui.view">
+                <field name="name">oehealth_add_field_hospital_user</field>
+                <field name="model">res.users</field>
+                <field name="inherit_id" ref="base.view_users_form"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='partner_id']" position="after">
+                        <field name="hospital_usuario" string="Hospital donde trabaja"/>
+                    </xpath>
+                </field>
+            </record>
+
 
         </data>
 </openerp>

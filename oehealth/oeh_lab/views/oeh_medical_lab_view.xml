@@ -286,6 +286,7 @@
                                 <group>
                                     <field name="pref_merge" />
                                     <field name="hospital_estudio" required="1"/>
+                                    <field name="hospital_origen" />
                                     <field name="lab_department" required="1"  domain="[('hospital','=',hospital_estudio)]"/>
                                     <field name="patient" options="{'no_create': True}"/>
                                     <field name="date_requested"/>
@@ -366,7 +367,7 @@
                     <field name="res_model">oeh.medical.lab.test</field>
                     <field name="view_type">form</field>
                     <field name="view_mode">tree,calendar,form</field>
-                    <field name="domain">[]</field>
+                    <field name="domain">[('hospital_origen','=',uid.hospital_usuario)]</field>
                     <field name="context">{}</field>
                     <field name="view_id" eval="False"/>
                     <field name="help" type="html">
