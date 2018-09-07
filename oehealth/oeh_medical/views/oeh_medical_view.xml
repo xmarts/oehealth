@@ -1034,7 +1034,8 @@
                 <field name="inherit_id" ref="base.view_users_form"/>
                 <field name="arch" type="xml">
                     <xpath expr="//field[@name='partner_id']" position="after">
-                        <field name="hospital_usuario" string="Hospital donde trabaja"/>
+                        <field name="hospital_employee" />
+                        <field name="hospital_usuario" string="Hospital donde trabaja" attrs="{'invisible': [('hospital_employee','=',False)], 'required': [('hospital_employee','=',True)]}"/>
                     </xpath>
                 </field>
             </record>
@@ -1045,7 +1046,8 @@
                 <field name="inherit_id" ref="base.view_users_simple_form"/>
                 <field name="arch" type="xml">
                     <xpath expr="//field[@name='mobile']" position="after">
-                        <field name="hospital_usuario" string="Hospital donde trabaja"/>
+                        <field name="hospital_employee" />
+                        <field name="hospital_usuario" string="Hospital donde trabaja" attrs="{'invisible': [('hospital_employee','=',False)], 'required': [('hospital_employee','=',True)]}"/>
                     </xpath>
                 </field>
             </record>
