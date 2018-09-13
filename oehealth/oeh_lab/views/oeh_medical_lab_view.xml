@@ -286,7 +286,7 @@
                                 <group>
                                     <field name="pref_merge" />
                                     <field name="hospital_estudio" required="1"/>
-                                    <field name="hospital_origen" />
+                                    <field name="hospital_origen"  required="1" readonly="1"/>
                                     <field name="lab_department" required="1"  domain="[('hospital','=',hospital_estudio)]"/>
                                     <field name="patient" options="{'no_create': True}"/>
                                     <field name="date_requested"/>
