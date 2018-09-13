@@ -156,7 +156,7 @@ class OeHealthLabTests(models.Model):
         if(self.env.user.id==1):
             action = {
                 'type': 'ir.actions.act_window',
-                'view_mode': 'tree,form',
+                'view_mode': 'tree,form,calendar',
                 'name': _('Rayos X'),
                 'res_model': 'oeh.medical.lab.test',
             }
@@ -172,7 +172,7 @@ class OeHealthLabTests(models.Model):
                 lista.append(l[0])
             action = {
                 'type': 'ir.actions.act_window',
-                'view_mode': 'tree,form',
+                'view_mode': 'tree,form,calendar',
                 'name': _('Rayos X'),
                 'res_model': 'oeh.medical.lab.test',
                 'domain': [('id', 'in', lista)],

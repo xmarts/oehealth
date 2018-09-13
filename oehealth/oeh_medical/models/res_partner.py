@@ -51,3 +51,14 @@ class oeHealthPartner(models.Model):
     disc_porcent = fields.Integer(string='Porcentaje de Descuento', help='Si cuentas con algun convenio, ingresa el porcentaje de descuento')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+
+class AddFieldUsersOehealth(models.Model):
+    _name='res.users'
+    _inherit='res.users'
+    hospital_employee=fields.Boolean(string="¿Trabaja en algun hospital?",default=False)
+    hospital_usuario = fields.Many2one('oeh.medical.health.center', string='Hospital donde trabaja', help="Medical Center")
+
+    @api.onchange('hospital_employee')
+    def onchange_hospital_employee(self):
+        if self.hospital_employee==False:
+            self.hospital_usuario=''
