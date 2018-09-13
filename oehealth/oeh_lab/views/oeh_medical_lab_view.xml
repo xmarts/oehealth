@@ -390,7 +390,7 @@
                 </field>
             </record>
 
-            <menuitem action="action_oeh_medical_lab_test_action_tree_search" id="oeh_medical_lab_test_conf_list" parent="oeh_medical_laboratory_menu" string='Rayos X' sequence="5"/>
+            <menuitem action="action_oeh_medical_lab_test_action_tree_search" id="oeh_medical_lab_test_conf_list" parent="oeh_medical_laboratory_menu" string='Rayos X' sequence="6"/>
 
 
             <!-- Lab Test Department management -->
