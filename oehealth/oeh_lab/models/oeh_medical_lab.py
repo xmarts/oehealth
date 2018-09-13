@@ -176,7 +176,6 @@ class OeHealthLabTests(models.Model):
                 'name': _('Rayos X'),
                 'res_model': 'oeh.medical.lab.test',
                 'domain': [('id', 'in', lista)],
-                #'domain': ['&',('valid_purchase', '=', False),('id', 'in', lista)],
             }
             return action
 
