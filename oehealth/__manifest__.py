@@ -5,7 +5,7 @@
 
 {
     'name': 'oeHealth Personalizado',
-    'version': '1.0',
+    'version': '4.0',
     'author': "Braincrew Apps",
     'category': 'Generic Modules/Medical',
     'summary': 'Odoo 11 Hospital Management Solutions',

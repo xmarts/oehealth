@@ -32,6 +32,7 @@
 
 ##############################################################################
 # -*- coding: utf-8 -*-
+from . import model_u
 from . import oeh_medical
 from . import oeh_evaluation
 from . import oeh_socioeconomics
