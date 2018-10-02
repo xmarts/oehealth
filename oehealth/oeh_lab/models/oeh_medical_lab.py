@@ -94,7 +94,7 @@ class OeHealthLabTestTypes(models.Model):
     lab_criteria = fields.One2many('oeh.medical.labtest.criteria', 'medical_type_id', string='Lab Test Cases')
     lab_material = fields.One2many('oeh.medical.labtest.material', 'medical_type_id', string='Materiales para prueba de laboratorio')
     lab_department = fields.Many2one('oeh.medical.labtest.department', string='Department')
-
+    lab_test_indications = fields.One2many('oeh.medical.lab.indications.liness', 'medical_lab_test_type_id', string='Indicaciones')
 
 class OeHealthLabTests(models.Model):
     _name = 'oeh.medical.lab.test'
@@ -147,6 +147,7 @@ class OeHealthLabTests(models.Model):
     #Third fields added
     hospital_origen = fields.Many2one('oeh.medical.health.center', string='Hospital Origen', default=lambda self: self.env.user.hospital_usuario)
 
+
     @api.depends('pref_hosp','pref_dep','name')
     def merge_func(self):
         self.pref_merge = (self.pref_hosp or '')+''+(self.pref_dep or '')+''+(self.name or '')
@@ -179,6 +180,13 @@ class OeHealthLabTests(models.Model):
             }
             return action
 
+
+    @api.onchange('test_type')
+    def onchange_test_type(self):
+        result = []
+        for line in self.test_type.lab_test_indications:
+            result.append((0, 0, {'name': line.name.id, 'extra_info': line.extra_info}))
+        self.lab_test_indications = result
 
     @api.onchange('siconvenio')
     def onchange_sico(self):    
@@ -511,6 +519,12 @@ class OeHealthLabTestsIndicationsLine(models.Model):
     extra_info = fields.Char(string="Datos adicionales")
     medical_lab_test_id = fields.Many2one('oeh.medical.lab.test', string='Lab Tests')
 
+class OeHealthLabTestsIndicationsLiness(models.Model):
+    _name = 'oeh.medical.lab.indications.liness'
+    _description = 'Indicaciones'
+    name = fields.Many2one("oeh.medical.lab.indications",string='Indicaciones', required=True)
+    extra_info = fields.Char(string="Datos adicionales")
+    medical_lab_test_type_id = fields.Many2one('oeh.medical.labtest.types', string='Lab Tests')
 
 class OeHealthLabTestsResultCriteria(models.Model):
     _name = 'oeh.medical.lab.resultcriteria'

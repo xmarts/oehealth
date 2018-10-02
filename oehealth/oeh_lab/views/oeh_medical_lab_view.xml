@@ -127,6 +127,14 @@
                                     </group>
                                     <span>NOTA: Estos materiales se tomaran de las existencias disponibles(WH/Existencias)</span>
                                 </page>
+                                <page string="Indicaciones">
+                                    <field name="lab_test_indications" nolabel="1">
+                                        <tree string="Indicaciones" editable="bottom">
+                                            <field name="name"/>
+                                            <field name="extra_info" />
+                                        </tree>
+                                    </field>
+                                </page>
                             </notebook>
                         </sheet>
                     </form>
@@ -356,10 +364,11 @@
                 <field name="model">oeh.medical.lab.test</field>
                 <field name="type">calendar</field>
                 <field name="arch" type="xml">
-                    <calendar string='Estudios' date_start="date_analysis">
-                        <field name="duration" string="Duracón" widget="float_time"/>
+                    <calendar string='Estudios' date_start="date_analysis" color="lab_department" mode="month">
                         <field name="patient" />
                         <field name="pref_merge" />
+                        <field name="hospital_estudio" />
+                        <field name="lab_department"/>
                     </calendar>
                 </field>
             </record>
