@@ -45,4 +45,3 @@ from . import oeh_medical_genetics
 from . import oeh_medical
 from . import account_invoice
 from . import oeh_medical_inpatient
-from . import amount_to_text
