@@ -111,6 +111,17 @@
                                         </field>
                                     </group>
                                 </page>
+                                <page string="Impuestos">
+                                    <group>
+                                        <field name="tax_ids" options="{'no_create_edit': True}">
+                                            <tree string="Impuestos" editable="bottom">
+                                                <field name="name" readonly='1'/>
+                                                <field name="type_tax_use" readonly='1'/>
+                                                <field name="description" readonly='1'/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
                                 <page string="Extra Info">
                                     <group>
                                         <field name="info" nolabel="1"/>
@@ -269,6 +280,15 @@
                 </field>
             </record>
 
+            <act_window
+                id="action_invoice_test"
+                name="Facturas del estudio"
+                res_model="account.invoice"
+                src_model="oeh.medical.lab.test"
+                domain="[('test_id','=',active_id)]"
+                view_mode="tree,form"
+            />
+
             <record model="ir.ui.view" id="oeh_medical_lab_test_form">
                 <field name="name">Estudios</field>
                 <field name="model">oeh.medical.lab.test</field>
@@ -276,14 +296,19 @@
                 <field name="arch" type="xml">
                     <form string="Estudios">
                         <header>
-                            <button confirm="Are you sure you want to start the test?" name="set_to_test_inprogress" states="Draft" string="Start Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <button confirm="Are you sure you want to start the test?" name="set_to_test_inprogress" states="Draft" string="Start Test" type="object" class="oe_highlight oe_read_only" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
                             <button confirm="Are you sure you want to complete the test?" name="set_to_test_complete" states="Test In Progress" string="Complete Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
-                            <button confirm="Are you sure you want to create the invoice?" name="action_lab_invoice_create" string="Create Lab Test Invoice" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager" attrs="{'invisible': [('test_facturado','==','Si')], 'invisible': [('state','==','Invoiced')]}" />
+                            <button confirm="Are you sure you want to create the invoice?" name="action_lab_invoice_create" string="Create Lab Test Invoice" type="object" class="oe_highlight oe_read_only" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager" attrs="{'invisible': [('invoice_count','==','1')]}" />
                             <button name="print_patient_labtest" states="Test In Progress,Completed,Invoiced" string="Print Lab Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
                             <field name="state" widget="statusbar" statusbar_visible="Draft,Test In Progress,Completed,Invoiced" statusbar_colors='{"Completed":"blue","Test In Progress":"red","Invoiced":"grey"}'/>
                             <field name="test_facturado" invisible="1"/>
                         </header>
                         <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="%(action_invoice_test)d" type="action" class="oe_stat_button" icon="fa-file-text-o">
+                                <field name="invoice_count" widget="statinfo" string="Facturas"/>
+                            </button>
+                        </div>
                             <div class="oe_left" style="width: 500px;">
                                 <div class="oe_title" style="width: 390px;">
                                     <label class="oe_edit_only" for="name"/>

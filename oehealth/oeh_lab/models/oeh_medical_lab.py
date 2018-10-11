@@ -95,6 +95,7 @@ class OeHealthLabTestTypes(models.Model):
     lab_material = fields.One2many('oeh.medical.labtest.material', 'medical_type_id', string='Materiales para prueba de laboratorio')
     lab_department = fields.Many2one('oeh.medical.labtest.department', string='Department')
     lab_test_indications = fields.One2many('oeh.medical.lab.indications.liness', 'medical_lab_test_type_id', string='Indicaciones')
+    tax_ids = fields.Many2many('account.tax', string='Impuestos')
 
 class OeHealthLabTests(models.Model):
     _name = 'oeh.medical.lab.test'
@@ -146,7 +147,11 @@ class OeHealthLabTests(models.Model):
 
     #Third fields added
     hospital_origen = fields.Many2one('oeh.medical.health.center', string='Hospital Origen', default=lambda self: self.env.user.hospital_usuario)
+    invoice_count=fields.Char(string='Facturas', compute='_count_fact')
 
+    @api.one
+    def _count_fact(self):
+        self.invoice_count = self.env['account.invoice'].search_count([('test_id', '=', self.id),('state', '!=', 'cancel')])
 
     @api.depends('pref_hosp','pref_dep','name')
     def merge_func(self):
@@ -437,6 +442,7 @@ class OeHealthLabTests(models.Model):
     def action_lab_invoice_create(self):
         invoice_obj = self.env["account.invoice"]
         invoice_line_obj = self.env["account.invoice.line"]
+        invoice_line_tax_obj = self.env["account.invoice.tax"]
         desc = 0
         #nvale = ''
         for lab in self:
@@ -455,11 +461,12 @@ class OeHealthLabTests(models.Model):
                     'date_invoice':datetime.datetime.now(),
                     'origin': "Lab Test# : " + lab.name,
                     'target': 'new',
+                    'test_id': lab.id,
                 }
 
                 inv_ids = invoice_obj.create(curr_invoice)
                 inv_id = inv_ids.id
-
+                #groups="account.group_account_user"
                 if inv_ids:
                     prd_account_id = self._default_account()
                     if lab.test_type:
@@ -469,11 +476,23 @@ class OeHealthLabTests(models.Model):
                             'name': "Charge for " + str(lab.test_type.name) + " laboratory test",
                             'price_unit': (lab.test_type.test_charge - ((lab.test_type.test_charge / 100) * desc)) or 0,
                             'quantity': 1.0,
+                            'invoice_line_tax_ids': [(6,0,[n.id for n in lab.test_type.tax_ids])],
                             'account_id': prd_account_id,
                             'invoice_id': inv_id,
                         }
 
                         inv_line_ids = invoice_line_obj.create(curr_invoice_line)
+
+                        for ltax in lab.test_type.tax_ids:
+                            curr_invoice_line_tax = {
+                                'name': "Impuesto de "+ str(ltax.name),
+                                'account_id':ltax.account_id.id,
+                                'tax_id':ltax.id,
+                                'amount':float((ltax.amount / 100) * lab.test_type.test_charge),
+                                'invoice_id': inv_id,
+                            }
+                            inv_line_tax_ids = invoice_line_tax_obj.create(curr_invoice_line_tax)
+
                 self.write({'test_facturado': 'Si'})
                 if(self.state=="Complete"):
                     self.write({'state': 'Invoiced'})
@@ -487,6 +506,9 @@ class OeHealthLabTests(models.Model):
                 'type': 'ir.actions.act_window'
         }
 
+class OeHealthInvoice(models.Model):
+    _inherit = 'account.invoice'
+    test_id = fields.Many2one('oeh.medical.lab.test',string='Estudio')
 
 
 class OeHealthLabTestsIndications(models.Model):
