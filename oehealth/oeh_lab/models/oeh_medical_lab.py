@@ -96,6 +96,7 @@ class OeHealthLabTestTypes(models.Model):
     lab_department = fields.Many2one('oeh.medical.labtest.department', string='Department')
     lab_test_indications = fields.One2many('oeh.medical.lab.indications.liness', 'medical_lab_test_type_id', string='Indicaciones')
     tax_ids = fields.Many2many('account.tax', string='Impuestos')
+    hospital = fields.Char(related="lab_department.hospital.name", string="Hospital", readonly=True)
 
 class OeHealthLabTests(models.Model):
     _name = 'oeh.medical.lab.test'
@@ -525,11 +526,18 @@ class OeHealthLabTestsCauses(models.Model):
     definicion = fields.Char(string="Definición")
     description = fields.Char(string="Descripción")
     estudios = fields.One2many("oeh.medical.lab.causes.lines",'t_id',string="Estudios aplicables")
+    hospital = fields.Many2one('oeh.medical.health.center', string='Hospital', help="Medical Center", required=True)
+
+    @api.onchange('hospital')
+    def onchange_hospital(self):
+        self.estudios=[]
 
 class OeHealthLabTestsCausesLines(models.Model):
     _name = 'oeh.medical.lab.causes.lines'
     _description = 'Códigos Causes Lines'
     name = fields.Many2one("oeh.medical.labtest.types",string="Estudios aplicables")
+    department = fields.Char(related="name.lab_department.name")
+    hospital = fields.Char(related="name.lab_department.hospital.name")
     t_id = fields.Many2one('oeh.medical.lab.causes', string="Cause ID", ondelete='cascade', index=True, copy=False,invisible=True)
     
 

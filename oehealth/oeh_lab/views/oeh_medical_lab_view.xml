@@ -71,6 +71,7 @@
                         <field name="name"/>
                         <field name="code"/>
                         <field name="lab_department"/>
+                        <field name="hospital"/>
                         <field name="test_charge"/>
                     </tree>
                 </field>
@@ -198,8 +199,45 @@
                     <tree string='Códigos Causes'>
                         <field name="name" string="Código"/>
                         <field name="definicion"/>
+                        <field name="hospital"/>
                         <field name="description"/>
                     </tree>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_lab_causes_tree">
+                <field name="name">Códigos Cause</field>
+                <field name="model">oeh.medical.lab.causes</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string='Códigos Causes'>
+                        <header>
+                        </header>
+                        <sheet>
+                            <group>
+                                <group>
+                                    <field name="name" />
+                                    <field name="familia" />
+                                    <field name="definicion" />
+                                </group>
+                                <group>
+                                    <field name="hospital" />
+                                    <field name="description" />
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Estudios aplicables">
+                                    <field name="estudios" widget="one2many_list" >
+                                      <tree editable="buttom">
+                                        <field name="name" domain="[('lab_department.hospital','=',parent.hospital)]"/>
+                                        <field name="department" string="Departamento" readonly="1" />
+                                        <field name="hospital" string="Hospital" readonly="1" />
+                                      </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
                 </field>
             </record>
 
@@ -338,7 +376,7 @@
                                     
                                 </group>
                                 <group>
-                                    <field name="code_cause" attrs="{'invisible': [('have_imss','=',False)], 'required': [('have_imss','=',True)]}"/>
+                                    <field name="code_cause" domain="[('hospital','=',hospital_estudio)]" attrs="{'invisible': [('have_imss','=',False)], 'required': [('have_imss','=',True)]}"/>
                                     <field name="test_type" on_change="onchange_test_type_id(test_type)"/>
                                     <field name="date_analysis"/>
                                     <field name="duration" widget="float_time"/>
