@@ -150,6 +150,8 @@ class OeHealthLabTests(models.Model):
     hospital_origen = fields.Many2one('oeh.medical.health.center', string='Hospital Origen', default=lambda self: self.env.user.hospital_usuario)
     invoice_count=fields.Char(string='Facturas', compute='_count_fact')
 
+    all_test = fields.Boolean(string="Mostrar todos los estudios disponibles.", default=False)
+
     @api.one
     def _count_fact(self):
         self.invoice_count = self.env['account.invoice'].search_count([('test_id', '=', self.id),('state', '!=', 'cancel')])
@@ -228,21 +230,102 @@ class OeHealthLabTests(models.Model):
         if self.have_imss == True:
            self.siconvenio = False
 
+    @api.onchange('all_test')
+    def onchange_all_test(self):
+        if self.all_test == False:
+            self.test_type = None
+            lista = []
+            res = {}
+            if self.code_cause:
+                for line in self.code_cause.estudios:
+                    if(line.name.lab_department == self.lab_department):
+                        lista.append(line.name.id)
+            res.update({
+                'domain': {
+                    'test_type': [('id', 'in', list(set(lista)))],
+                }
+            })
+            return res
+        else:
+            self.test_type = None
+            lista = []
+            res = {}
+            if self.have_imss == True:
+                if self.code_cause:
+                    for line in self.code_cause.estudios:
+                        if(line.name.lab_department == self.lab_department):
+                            lista.append(line.name.id)
+                res.update({
+                    'domain': {
+                        'test_type': [('id', 'in', list(set(lista)))],
+                    }
+                })
+            if self.have_imss == False:
+                cr = self.env.cr
+                self.code_cause = None
+                if self.lab_department.id != False:
+                    sql = "select id from oeh_medical_labtest_types where lab_department='"+str(self.lab_department.id)+"';"
+                    cr.execute(str(sql))
+                    deps = cr.fetchall()
+                    if deps != None:
+                        depts = []
+                        for l in deps:
+                            depts.append(l[0])
+                        res.update({
+                            'domain': {
+                                'test_type': [('id', 'in', list(set(depts)))],
+                            }
+                        })
+            return res
+
     @api.onchange('code_cause')
     def onchange_code(self):
-        self.test_type = None
-        lista = []
-        res = {}
-        if self.code_cause:
-            for line in self.code_cause.estudios:
-                if(line.name.lab_department == self.lab_department):
-                    lista.append(line.name.id)
-        res.update({
-            'domain': {
-                'test_type': [('id', 'in', list(set(lista)))],
-            }
-        })
-        return res
+        if self.all_test == False:
+            self.test_type = None
+            lista = []
+            res = {}
+            if self.code_cause:
+                for line in self.code_cause.estudios:
+                    if(line.name.lab_department == self.lab_department):
+                        lista.append(line.name.id)
+            res.update({
+                'domain': {
+                    'test_type': [('id', 'in', list(set(lista)))],
+                }
+            })
+            return res
+        else:
+            self.test_type = None
+            lista = []
+            res = {}
+            if self.have_imss == True:
+                if self.code_cause:
+                    for line in self.code_cause.estudios:
+                        if(line.name.lab_department == self.lab_department):
+                            lista.append(line.name.id)
+                res.update({
+                    'domain': {
+                        'test_type': [('id', 'in', list(set(lista)))],
+                    }
+                })
+            if self.have_imss == False:
+                cr = self.env.cr
+                self.code_cause = None
+                if self.lab_department.id != False:
+                    sql = "select id from oeh_medical_labtest_types where lab_department='"+str(self.lab_department.id)+"';"
+                    cr.execute(str(sql))
+                    deps = cr.fetchall()
+                    if deps != None:
+                        depts = []
+                        for l in deps:
+                            depts.append(l[0])
+                        res.update({
+                            'domain': {
+                                'test_type': [('id', 'in', list(set(depts)))],
+                            }
+                        })
+            return res
+
 
     @api.onchange('lab_department')
     def onchange_dep(self):
