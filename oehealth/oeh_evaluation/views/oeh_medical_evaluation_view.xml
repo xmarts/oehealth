@@ -17,10 +17,10 @@
                             <field name="chief_complaint" string="Chief Complaint" select="1"/>
                         <newline/>
                         <group expand="0" string="Group By..." colspan="11" col="11">
-                            <filter string="Patient" context="{'group_by':'patient'}"/>
-                            <filter string="Doctor" context="{'group_by':'doctor'}"/>
-                            <filter string="Evaluation Type" context="{'group_by':'evaluation_type'}"/>
-                            <filter string="Mood" context="{'group_by':'mood'}"/>
+                            <filter name="f60" string="Patient" context="{'group_by':'patient'}"/>
+                            <filter name="f61" string="Doctor" context="{'group_by':'doctor'}"/>
+                            <filter name="f62" string="Evaluation Type" context="{'group_by':'evaluation_type'}"/>
+                            <filter name="f63" string="Mood" context="{'group_by':'mood'}"/>
                         </group>
                     </search>
                 </field>

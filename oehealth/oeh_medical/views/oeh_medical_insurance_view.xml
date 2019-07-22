@@ -110,10 +110,10 @@
                         <field name="patient"/>
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Name" domain="[]" context="{'group_by':'name'}" />
-                            <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
-                            <filter string="Type" domain="[]" context="{'group_by':'ins_type'}" />
-                            <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                            <filter name="f30" string="Name" domain="[]" context="{'group_by':'name'}" />
+                            <filter name="f31" string="Patient" domain="[]" context="{'group_by':'patient'}" />
+                            <filter name="f32" string="Type" domain="[]" context="{'group_by':'ins_type'}" />
+                            <filter name="f33" string="State" domain="[]" context="{'group_by':'state'}" />
                         </group>
 				    </search>
                 </field>

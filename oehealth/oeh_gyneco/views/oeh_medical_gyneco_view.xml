@@ -15,9 +15,9 @@
                             <field name="patient" string="Patient" select="1"/>
                         <newline/>
                         <group expand="0" string="Group By..." colspan="11" col="11">
-                            <filter string="Patient" context="{'group_by':'patient'}"/>
-                            <filter string="Labor Mode" context="{'group_by':'labor_mode'}"/>
-                            <filter string="Fetus" context="{'group_by':'fetus_presentation'}"/>
+                            <filter name="f64" string="Patient" context="{'group_by':'patient'}"/>
+                            <filter name="f65" string="Labor Mode" context="{'group_by':'labor_mode'}"/>
+                            <filter name="f66" string="Fetus" context="{'group_by':'fetus_presentation'}"/>
                         </group>
                     </search>
                 </field>

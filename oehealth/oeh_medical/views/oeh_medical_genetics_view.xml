@@ -14,7 +14,7 @@
                         <field name="long_name"/>
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Dominance" domain="[]" context="{'group_by':'dominance'}" />
+                            <filter name="f1" string="Dominance" domain="[]" context="{'group_by':'dominance'}" />
                         </group>
 				    </search>
                 </field>

@@ -24,133 +24,164 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
 
-        <record model='ir.ui.menu' id='oeh_medical_edit_patient'>
+         <record model='ir.ui.menu' id='oeh_medical_edit_patient'>
+            <field name="name">Patients</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_physician'),ref('group_oeh_medical_manager')])]"/>
-        </record>
-
+        </record> 
         <record model='ir.ui.menu' id='oeh_medical_my_patient_profile'>
+             <field name="name">Grupo 2</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_patient')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_conf_insurances'>
+             <field name="name">Insurances</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_physician'),ref('group_oeh_medical_manager')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_prescription_list'>
+             <field name="name">Prescriptions</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_physician'),ref('group_oeh_medical_manager')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_insurance_type_conf_list'>
+            <field name="name">Insurance Types</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_ethnic_groups_conf_list'>
+             <field name="name">Ethnic Groups</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_genetics_conf_list'>
+             <field name="name">Genetic Risks</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_physician_degrees_list'>
+             <field name="name">Degrees</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_physician_speciality_list'>
+             <field name="name">Specialities</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_healthcenters_list'>
+             <field name="name">Health Centers</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_healthcenters_pharmacy_list'>
+             <field name="name">Pharmacies</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_medicines_list'>
+             <field name="name">Medicines</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_vaccines_listview'>
+             <field name="name">Vaccines</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_dose_unit_list'>
+             <field name="name">Dose Units</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_drug_route_list'>
+             <field name="name">Drug Routes</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_drug_forms_list'>
+             <field name="name">Drug Forms</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_dosage_list'>
+             <field name="name">Medicines Dosage</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_healthcenters_building_list'>
+             <field name="name">Buildings</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_healthcenters_ward_list'>
+             <field name="name">Wards</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_healthcenters_bed_list'>
+             <field name="name">Beds</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_inpatient_myadmission_list'>
+             <field name="name">Grupo 22</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_patient')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_inpatient_list'>
+             <field name="name">Inpatient Admissions</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_my_physician_profile'>
+             <field name="name">My Profile</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_physician_list'>
+             <field name="name">Physicians</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_patient')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_vaccine_list'>
+             <field name="name">Vaccines</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_physician'),ref('group_oeh_medical_manager')])]"/>
         </record>
 
         <record model='ir.ui.menu' id='oeh_medical_my_patient_vaccine'>
+             <field name="name">Grupo 27</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_patient')])]"/>
         </record>
 
         <!-- Occupation -->
         <record model='ir.ui.menu' id='oeh_medical_occupation_conf_list'>
+             <field name="name">Occupations</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <!-- Gynacology -->
         <record model='ir.ui.menu' id='oeh_medical_gyneco_mgmt_list'>
+             <field name="name">Gynecology</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <!-- Recreational Drugs -->
         <record model='ir.ui.menu' id='oeh_medical_recreational_drug_mgmt_list'>
+             <field name="name">Recreational Drugs</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
 
         <!-- Laboratory -->
         <record model='ir.ui.menu' id='oeh_medical_lab_units_conf_list'>
+             <field name="name">Lab Units</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
         <record model='ir.ui.menu' id='oeh_medical_lab_test_types_conf_list'>
+             <field name="name">Lab Test Types</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician')])]"/>
         </record>
         <record model='ir.ui.menu' id='oeh_medical_lab_test_conf_list'>
+             <field name="name">Rayos X</field>
             <field name="groups_id" eval="[(6,0,[ref('group_oeh_medical_manager'),ref('group_oeh_medical_physician'),ref('group_oeh_medical_patient')])]"/>
         </record>
 

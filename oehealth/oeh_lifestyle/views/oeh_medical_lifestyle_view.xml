@@ -16,10 +16,10 @@
                             <field name="info" string="Info" select="1"/>
                         <newline/>
                         <group expand="0" string="Group By..." colspan="11" col="11">
-                            <filter string="Toxicity" context="{'group_by':'toxicity'}"/>
-                            <filter string="Addictions" context="{'group_by':'addiction_level'}"/>
-                            <filter string="Legal" context="{'group_by':'legal_status'}"/>
-                            <filter string="Category" context="{'group_by':'category'}"/>
+                            <filter name="f69" string="Toxicity" context="{'group_by':'toxicity'}"/>
+                            <filter name="f70" string="Addictions" context="{'group_by':'addiction_level'}"/>
+                            <filter name="f71" string="Legal" context="{'group_by':'legal_status'}"/>
+                            <filter name="f72" string="Category" context="{'group_by':'category'}"/>
                         </group>
                     </search>
                 </field>

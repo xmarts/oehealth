@@ -98,9 +98,9 @@
                         <field name="bed"/>
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Admission Type" domain="[]" context="{'group_by':'admission_type'}" />
-                            <filter string="Ward" domain="[]" context="{'group_by':'ward'}" />
-                            <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                            <filter name="f26" string="Admission Type" domain="[]" context="{'group_by':'admission_type'}" />
+                            <filter name="f27" string="Ward" domain="[]" context="{'group_by':'ward'}" />
+                            <filter name="f28" string="State" domain="[]" context="{'group_by':'state'}" />
                         </group>
 				    </search>
                 </field>
@@ -215,9 +215,9 @@
                         <field name="bed"/>
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Admission Type" domain="[]" context="{'group_by':'admission_type'}" />
-                            <filter string="Ward" domain="[]" context="{'group_by':'ward'}" />
-                            <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                            <filter name="f27" string="Admission Type" domain="[]" context="{'group_by':'admission_type'}" />
+                            <filter name="f28" string="Ward" domain="[]" context="{'group_by':'ward'}" />
+                            <filter name="f29" string="State" domain="[]" context="{'group_by':'state'}" />
                         </group>
 				    </search>
                 </field>

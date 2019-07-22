@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<openerp>
+<odoo>
         <data>
 
             <!-- Pharmacy -->
@@ -11,12 +11,12 @@
                 <field name="arch" type="xml">
                     <form string="Pharmacies">
                         <sheet>
-                            <div class="oe_left" style="width: 500px;">
+                            <div style="width: 500px;">
                                 <field name="image" widget='image' class="oe_left oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
-                                <div class="oe_title">
-                                    <label string="Pharmacy Name" class="oe_edit_only"/>
+                                <div >
+                                    
                                     <h1>
-                                        <field name="name" required="1"/>
+                                        <field name="name" />
                                     </h1>
                                     <field name="pharmacist_name" placeholder="Pharmacist Name" context="{'default_is_pharmacist':True}" options="{'no_create': True}"/>
                                     <field name="institution" placeholder="Health Centers" options="{'no_create': True}"/>
@@ -126,9 +126,9 @@
                         <field name="institution"/>
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Pharmacies" domain="[]" context="{'group_by':'name'}" />
-                            <filter string="Pharmacist Name" domain="[]" context="{'group_by':'pharmacist_name'}" />
-                            <filter string="Health Centers" domain="[]" context="{'group_by':'institution'}" />
+                            <filter name="f1" string="Pharmacies" domain="[]" context="{'group_by':'name'}" />
+                            <filter name="f2" string="Pharmacist Name" domain="[]" context="{'group_by':'pharmacist_name'}" />
+                            <filter name="f3" string="Health Centers" domain="[]" context="{'group_by':'institution'}" />
                         </group>
 				    </search>
                 </field>
@@ -151,7 +151,7 @@
                                 <div class="oeh_medical_vignette oe_semantic_html_override">
                                     <div class="oeh_medical_image">
                                         <a type="open">
-                                            <img t-att-src="kanban_image('oeh.medical.health.center.pharmacy', 'image_small', record.id.raw_value)" class="oeh_medical_picture"/>
+                                            <!-- <img t-att-src="kanban_image('oeh.medical.health.center.pharmacy', 'image_small', record.id.raw_value)" class="oeh_medical_picture"/> -->
                                         </a>
                                     </div>
                                     <div class="oeh_medical_details">
@@ -192,4 +192,4 @@
             <menuitem action="oeh_medical_healthcenters_pharmacy_action_tree" id="oeh_medical_healthcenters_pharmacy_list" parent="oeh_medical_hospital_menu" sequence="10"/>
 
     </data>
-</openerp>
+</odoo>

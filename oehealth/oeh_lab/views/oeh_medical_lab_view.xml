@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-    <openerp>
+    <odoo>
         <data>
 
             <!-- Lab Units Management -->
@@ -266,19 +266,19 @@
                 <field name="type">search</field>
                 <field name="arch" type="xml">
                     <search string="Search Tests">
-                        <separator orientation="vertical"/>
+                        <separator />
                             <field name="name" select="1"/>
                             <field name="results" select="1"/>
                             <field name="diagnosis" select="1"/>
                             <field name="patient" select="1"/>
 
-                        <newline/>
+                        
                         <group expand="0" string="Group By..." colspan="11" col="11">
-                            <filter string="Patient" icon="terp-personal" domain="[]" context="{'group_by':'patient'}"/>
-                            <!--<filter string="Pathologist" icon="terp-personal" domain="[]" context="{'group_by':'pathologist'}"/>-->
-                            <filter string="Test Type" icon="terp-personal" domain="[]" context="{'group_by':'test_type'}"/>
-                            <filter string="State" icon="terp-personal" domain="[]" context="{'group_by':'state'}"/>
-                            <filter string="Solicitud" icon="terp-personal" domain="[]" context="{'group_by':'pref_merge'}"/>
+                            <filter name="f66"  string="Patient"  domain="[]" context="{'group_by':'patient'}"/>
+                            <filter name="f100" string="Pathologist"  domain="[]" context="{'group_by':'pathologist'}"/>
+                            <filter name="f67" string="Test Type"  domain="[]" context="{'group_by':'test_type'}"/>
+                            <filter name="f101" string="State"  domain="[]" context="{'group_by':'state'}"/>
+                            <filter name="f68" string="Solicitud"  domain="[]" context="{'group_by':'pref_merge'}"/>
                         </group>
                     </search>
                 </field>
@@ -566,4 +566,4 @@
             </record>          
 
         </data>
-    </openerp>
+    </odoo>

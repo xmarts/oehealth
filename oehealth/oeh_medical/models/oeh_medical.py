@@ -173,9 +173,9 @@ class OeHealthPatient(models.Model):
         def compute_age_from_dates (patient_dob,patient_deceased,patient_dod):
             now=datetime.datetime.now()
             if (patient_dob):
-                dob=datetime.datetime.strptime(patient_dob,'%Y-%m-%d')
+                dob=datetime.datetime.strptime(str(patient_dob),'%Y-%m-%d')
                 if patient_deceased :
-                    dod=datetime.datetime.strptime(patient_dod,'%Y-%m-%d')
+                    dod=datetime.datetime.strptime(str(patient_dob),'%Y-%m-%d')
                     delta= dod - dob
                     deceased=" (deceased)"
                     years_months_days = str(delta.days // 365)+" years "+ str(delta.days%365)+" days" + deceased
@@ -431,7 +431,7 @@ class OeHealthAppointment(models.Model):
             if apm.duration:
                 duration = apm.duration
             if apm.appointment_date:
-                end_date = datetime.datetime.strptime(apm.appointment_date, "%Y-%m-%d %H:%M:%S") + timedelta(hours=duration)
+                end_date = datetime.datetime.strptime(str(apm.appointment_date), "%Y-%m-%d %H:%M:%S") + timedelta(hours=duration)
             apm.appointment_end = end_date
         return True
 
@@ -482,7 +482,7 @@ class OeHealthAppointment(models.Model):
         citas = cr.fetchall()
         if(citas!=[]):
             for c in citas:
-                fc1 = datetime.datetime.strptime(c[0], DATETIME_FORMAT)
+                fc1 = datetime.datetime.strptime(str(c[0]), DATETIME_FORMAT)
                 a1 = str(fc1.strftime('%Y'))
                 m1 = str(fc1.strftime('%m'))
                 d1 = str(fc1.strftime('%d'))

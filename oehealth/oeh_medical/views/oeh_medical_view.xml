@@ -31,12 +31,12 @@
                             <field name='lab_department' string="Department" select='1'/>
                         <newline/>
                         <group expand="0" string="Group By..." colspan="11" col="11">
-                            <filter string="Patient" context="{'group_by':'patient'}"/>
-                            <filter string="Doctor" context="{'group_by':'doctor'}"/>
-                            <filter string="Health Center" context="{'group_by':'institution'}"/>
-                            <filter string="Urgency" context="{'group_by':'urgency_level'}"/>
-                            <filter string="Status" context="{'group_by':'patient_status'}"/>
-                            <filter string="Department" context="{'group_by':'lab_department'}"/>
+                            <filter name="f36" string="Patient" context="{'group_by':'patient'}"/>
+                            <filter name="f37" string="Doctor" context="{'group_by':'doctor'}"/>
+                            <filter name="f38" string="Health Center" context="{'group_by':'institution'}"/>
+                            <filter name="f39" string="Urgency" context="{'group_by':'urgency_level'}"/>
+                            <filter name="f40" string="Status" context="{'group_by':'patient_status'}"/>
+                            <filter name="f41" string="Department" context="{'group_by':'lab_department'}"/>
                         </group>
                     </search>
                 </field>
@@ -153,7 +153,7 @@
                         <sheet>
                             <div class="oe_left" style="width: 500px;">
                                 <div class="oe_title">
-                                    <label string="Prescription #" class="oe_edit_only"/>
+                                    <label string="Prescription #" for="name" class="oe_edit_only"/>
                                     <h1>
                                         <field name="name"/>
                                     </h1>
@@ -189,9 +189,9 @@
                                             <group>
                                                 <group string="Dosage">
                                                     <field name="qty" required="1"/>
-                                                    <label for="dose"/>
+                                                    <label for="dose" class="oe_edit_only"/>
                                                     <div>
-                                                        <field name="dose" placeholder="250" style="width: 20%%"/>
+                                                        <field name="dose" class="oe_inline" placeholder="250" style="width: 20%%"/>
                                                         <field name="dose_unit" placeholder="mg" style="width: 40%%"/>
                                                     </div>
                                                 </group>
@@ -281,10 +281,10 @@
                         <field name="pharmacy" />
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
-                            <filter string="Physicians" domain="[]" context="{'group_by':'doctor'}" />
-                            <filter string="Pharmacy" domain="[]"	context="{'group_by':'pharmacy'}" />
-                            <filter string="Status" domain="[]"	context="{'group_by':'state'}" />
+                            <filter name="f42" string="Patient" domain="[]" context="{'group_by':'patient'}" />
+                            <filter name="f43" string="Physicians" domain="[]" context="{'group_by':'doctor'}" />
+                            <filter name="f44" string="Pharmacy" domain="[]"	context="{'group_by':'pharmacy'}" />
+                            <filter name="f45" string="Status" domain="[]"	context="{'group_by':'state'}" />
                         </group>
 				    </search>
                 </field>
@@ -322,12 +322,12 @@
                         <sheet>
                             <div class="oe_left" style="width: 500px;">
                                 <div class="oe_title">
-                                    <label string="Vaccine" class="oe_edit_only"/>
+                                    <label string="Vaccine" for="name" class="oe_edit_only"/>
                                     <h1>
                                         <field name="name"/>
                                     </h1>
                                     <label for="patient" class="oe_edit_only"/>
-                                    <field name="patient" on_change="onchange_patient(patient)"/>
+                                    <field name="patient" class="oe_inline" on_change="onchange_patient(patient)"/>
                                 </div>
                             </div>
                             <group>
@@ -378,9 +378,9 @@
                         <field name="institution" />
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
-                            <filter string="Doctor" domain="[]"	context="{'group_by':'doctor'}" />
-                            <filter string="Institution" domain="[]" context="{'group_by':'institution'}" />
+                            <filter name="f48" string="Patient" domain="[]" context="{'group_by':'patient'}" />
+                            <filter name="f49" string="Doctor" domain="[]"	context="{'group_by':'doctor'}" />
+                            <filter name="f50" string="Institution" domain="[]" context="{'group_by':'institution'}" />
                         </group>
 				    </search>
                 </field>
@@ -434,8 +434,8 @@
                             <field name="oeh_patient_user_id"/>
                         <newline/>
                         <group expand="0" string="Group By..." colspan="11" col="11">
-                            <filter string="Sex" icon="terp-personal" domain="[]" context="{'group_by':'sex'}"/>
-                            <filter string="Doctor" icon="terp-personal" domain="[]" context="{'group_by':'doctor'}"/>
+                            <filter name="f53" string="Sex" icon="terp-personal" domain="[]" context="{'group_by':'sex'}"/>
+                            <filter name="f54" string="Doctor" icon="terp-personal" domain="[]" context="{'group_by':'doctor'}"/>
                         </group>
                     </search>
                 </field>
@@ -473,7 +473,7 @@
                         <div>
                             <field name="image" widget='image' class="oe_left oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
                             <div class="oe_title">
-                               <label string="Full Name" class="oe_edit_only"/>
+                               <label string="Full Name" for="name"/>
                                 <h1>
                                     <field name="name" required="1"/>
                                 </h1>
@@ -593,9 +593,9 @@
                                                 <group>
                                                     <group string="Dosage">
                                                         <field name="qty" required="1"/>
-                                                        <label for="dose"/>
+                                                        <label for="dose" class="oe_edit_only"/>
                                                         <div>
-                                                            <field name="dose" placeholder="250" style="width: 20%%"/>
+                                                            <field name="dose" class="oe_inline" placeholder="250" style="width: 20%%"/>
                                                             <field name="dose_unit" placeholder="mg" style="width: 40%%"/>
                                                         </div>
                                                     </group>
@@ -672,7 +672,7 @@
                             <t t-name="kanban-box">
                                 <div class="oeh_medical_vignette">
                                     <div class="oeh_medical_image">
-                                        <a type="open"><img t-att-src="kanban_image('oeh.medical.patient', 'image_medium', record.id.raw_value)" class="oeh_medical_picture"/></a>
+                                        <a type="open"><!-- <img t-att-src="kanban_image('oeh.medical.patient', 'image_medium', record.id.raw_value)" class="oeh_medical_picture"/> --></a>
                                     </div>
                                     <div class="oeh_medical_details">
                                         <h4>
@@ -765,7 +765,7 @@
                             <div class="oe_left" style="width: 500px;">
                                 <field name="image" widget='image' class="oe_left oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
                                 <div class="oe_title">
-                                    <label string="Physician Name" class="oe_edit_only"/>
+                                    <label string="Physician Name" for="name"/>
                                     <h1>
                                         <field name="name" required="1"/>
                                     </h1>
@@ -856,9 +856,9 @@
                         <field name="speciality" />
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Name" domain="[]" context="{'group_by':'name'}" />
-                            <filter string="License ID" domain="[]" context="{'group_by':'code'}" />
-                            <filter string="Speciality" domain="[]"	context="{'group_by':'speciality'}" />
+                            <filter name="f55" string="Name" domain="[]" context="{'group_by':'name'}" />
+                            <filter name="f56" string="License ID" domain="[]" context="{'group_by':'code'}" />
+                            <filter name="f57" string="Speciality" domain="[]"	context="{'group_by':'speciality'}" />
                         </group>
 				    </search>
                 </field>
@@ -880,7 +880,7 @@
                             <t t-name="kanban-box">
                                 <div class="oeh_medical_vignette oe_semantic_html_override">
                                     <div class="oeh_medical_image">
-                                        <a type="open"><img t-att-src="kanban_image('oeh.medical.physician', 'image_medium', record.id.raw_value)" class="oeh_medical_picture"/></a>
+                                        <a type="open"><!-- <img t-att-src="kanban_image('oeh.medical.physician', 'image_medium', record.id.raw_value)" class="oeh_medical_picture"/> --></a>
                                     </div>
                                     <div class="oeh_medical_details">
                                         <h4>
@@ -1033,7 +1033,7 @@
                 <field name="model">res.users</field>
                 <field name="inherit_id" ref="base.view_users_form"/>
                 <field name="arch" type="xml">
-                    <xpath expr="//field[@name='partner_id']" position="after">
+                    <xpath expr="//field[@name='action_id']" position="after">
                         <field name="hospital_employee" />
                         <field name="hospital_usuario" string="Hospital donde trabaja" attrs="{'invisible': [('hospital_employee','=',False)], 'required': [('hospital_employee','=',True)]}"/>
                     </xpath>

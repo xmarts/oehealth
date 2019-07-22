@@ -36,10 +36,10 @@ from odoo import api, SUPERUSER_ID, fields, models, _
 
 
 
-class account_invoice(models.Model):
-	_inherit = 'account.invoice'
+# class account_invoice(models.Model):
+# 	_inherit = 'account.invoice'
 
-	patient = fields.Many2one('oeh.medical.patient', string='Related Patient', help="Patient Name")
+# 	patient = fields.Many2one('oeh.medical.patient', string='Related Patient', help="Patient Name")
 
 
 	

@@ -72,12 +72,12 @@
                         <field name="telephone_number"/>
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Name" domain="[]" context="{'group_by':'name'}" />
-                            <filter string="Ward" domain="[]" context="{'group_by':'ward'}" />
-                            <filter string="Health Centers" domain="[]" context="{'group_by':'institution'}" />
-                            <filter string="Building" domain="[]" context="{'group_by':'building'}" />
-                            <filter string="Bed Type" domain="[]" context="{'group_by':'bed_type'}" />
-                            <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                            <filter name="f1" string="Name" domain="[]" context="{'group_by':'name'}" />
+                            <filter name="f2" string="Ward" domain="[]" context="{'group_by':'ward'}" />
+                            <filter name="f3" string="Health Centers" domain="[]" context="{'group_by':'institution'}" />
+                            <filter name="f4" string="Building" domain="[]" context="{'group_by':'building'}" />
+                            <filter name="f5" string="Bed Type" domain="[]" context="{'group_by':'bed_type'}" />
+                            <filter name="f6" string="State" domain="[]" context="{'group_by':'state'}" />
                         </group>
 				    </search>
                 </field>
@@ -187,12 +187,12 @@
                         <field name="gender"/>
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Name" domain="[]" context="{'group_by':'name'}" />
-                            <filter string="Health Centers" domain="[]" context="{'group_by':'institution'}" />
-                            <filter string="Building" domain="[]" context="{'group_by':'building'}" />
-                            <filter string="Floor" domain="[]" context="{'group_by':'floor'}" />
-                            <filter string="Gender" domain="[]" context="{'group_by':'gender'}" />
-                            <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                            <filter name="f90" string="Name" domain="[]" context="{'group_by':'name'}" />
+                            <filter name="f91" string="Health Centers" domain="[]" context="{'group_by':'institution'}" />
+                            <filter name="f92" string="Building" domain="[]" context="{'group_by':'building'}" />
+                            <filter name="f93" string="Floor" domain="[]" context="{'group_by':'floor'}" />
+                            <filter name="f95" string="Gender" domain="[]" context="{'group_by':'gender'}" />
+                            <filter name="f96" string="State" domain="[]" context="{'group_by':'state'}" />
                         </group>
 				    </search>
                 </field>
@@ -280,8 +280,8 @@
                         <field name="institution"/>
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Name" domain="[]" context="{'group_by':'name'}" />
-                            <filter string="Health Centers" domain="[]" context="{'group_by':'institution'}" />
+                            <filter name="f22" string="Name" domain="[]" context="{'group_by':'name'}" />
+                            <filter name="f23" string="Health Centers" domain="[]" context="{'group_by':'institution'}" />
                         </group>
 				    </search>
                 </field>
@@ -315,7 +315,7 @@
                 <field name="arch" type="xml">
                     <form string="Health Centers">
                         <sheet>
-                            <div class="oe_right oe_button_box" style="width: 300px;" name="buttons">
+                            <div class="oe_button_box" name="button_box">
                                 <button type="action" class="oe_stat_button" name="%(oeh_medical_healthcenters_building_action_tree)d" context="{'search_default_institution': active_id,'default_institution': active_id}" icon="fa-building-o">
                                     <field string="Buildings" name="building_count" widget="statinfo"/>
                                 </button>
@@ -323,19 +323,20 @@
                             <div class="oe_left" style="width: 500px;">
                                 <field name="image" widget='image' class="oe_left oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
                                 <div class="oe_title">
-                                    <label string="Health Centers Name" class="oe_edit_only"/>
+                                   <!--  <label string="Health Centers Name" /> -->
+                                   <label for="name" string="Health Centers Name"/>
                                     <h1>
-                                        <field name="name" required="1"/>
+                                        <field name="name" />
                                     </h1>
                                     <label for="health_center_type" class="oe_edit_only"/>
-                                    <field name="health_center_type" required="1"/>
+                                    <field name="health_center_type" />
                                 </div>
                             </div>
                             <group>
                                 <group>
-                                    <label for="street" string="Address"/>
+                                    <label for="street" string="street"/>
                                     <div>
-                                        <field name="street" placeholder="Street..."/>
+                                        <field name="street"  placeholder="Street..."/>
                                         <field name="street2"/>
                                         <div class="address_format">
                                             <field name="city" placeholder="City" style="width: 40%%"/>
@@ -391,8 +392,8 @@
                         <field name="health_center_type" />
                         <newline />
                         <group expand="0" string="Group By...">
-                            <filter string="Name" domain="[]" context="{'group_by':'name'}" />
-                            <filter string="Type" domain="[]" context="{'group_by':'health_center_type'}" />
+                            <filter name="f24" string="Name" domain="[]" context="{'group_by':'name'}" />
+                            <filter name="f25" string="Type" domain="[]" context="{'group_by':'health_center_type'}" />
                         </group>
 				    </search>
                 </field>
@@ -414,7 +415,7 @@
                                 <div class="oeh_medical_vignette oe_semantic_html_override">
                                     <div class="oeh_medical_image">
                                         <a type="open">
-                                            <img t-att-src="kanban_image('oeh.medical.health.center', 'image_small', record.id.raw_value)" class="oeh_medical_picture"/>
+                                           <!--  <img t-att-src="kanban_image('oeh.medical.health.center', 'image_small', record.id.raw_value)" class="oeh_medical_picture"/> -->
                                         </a>
                                     </div>
                                     <div class="oeh_medical_details">
