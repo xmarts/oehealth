@@ -473,9 +473,9 @@
                         <div>
                             <field name="image" widget='image' class="oe_left oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
                             <div class="oe_title">
-                               <label string="Full Name" for="name"/>
+                             
                                 <h1>
-                                    <field name="name" required="1"/>
+                                    <field name="name" placeholder="Nombre completo" required="1"/>
                                 </h1>
                                 <field name="identification_code"/>
                             </div>
@@ -669,10 +669,10 @@
                         <field name="blood_type"/>
                         <field name="email"/>
                         <templates>
-                            <t t-name="kanban-box">
+                            <!-- <t t-name="kanban-box">
                                 <div class="oeh_medical_vignette">
                                     <div class="oeh_medical_image">
-                                        <a type="open"><!-- <img t-att-src="kanban_image('oeh.medical.patient', 'image_medium', record.id.raw_value)" class="oeh_medical_picture"/> --></a>
+                                        <a type="open"><img t-att-src="kanban_image('oeh.medical.patient', 'image_medium', record.id.raw_value)" class="oeh_medical_picture"/></a>
                                     </div>
                                     <div class="oeh_medical_details">
                                         <h4>
@@ -685,6 +685,25 @@
                                             <li t-if="record.rh.raw_value"><field name="blood_type"/> <field name="rh"/></li>
                                             <li t-if="record.email.raw_value"><a t-attf-href="mailto:#{record.email.value}"><field name="email"/></a></li>
                                         </ul>
+                                    </div>
+                                </div>
+                            </t> -->
+                               <t t-name="kanban-box">
+                                <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                      <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('oeh.medical.patient', 'image_medium', record.id.raw_value)}')">
+                                        <img class="o_kanban_image_inner_pic" t-att-alt="record.id.value" t-att-src="kanban_image('oeh.medical.patient', 'image_small', record.id.raw_value)"/>
+                                    </div>
+                                      <div class="oe_kanban_details">
+                                        <strong class="o_kanban_record_title oe_partner_heading"><field name="name"/></strong>
+                                        <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                        <ul>
+                                           <li t-if="record.identification_code.raw_value"><field name="identification_code"/></li>
+                                            <li t-if="record.sex.raw_value"><field name="sex"/></li>
+                                            <li t-if="record.age.raw_value"><field name="age"/></li>
+                                            <li t-if="record.rh.raw_value"><field name="blood_type"/> <field name="rh"/></li>
+                                            <li t-if="record.email.raw_value"><a t-attf-href="mailto:#{record.email.value}"><field name="email"/></a></li>
+                                        </ul>
+                                        <div class="oe_kanban_partner_links"/>
                                     </div>
                                 </div>
                             </t>
@@ -754,7 +773,7 @@
                 <field name="arch" type="xml">
                     <form string="Physician">
                         <sheet>
-                            <div class="oe_right oe_button_box" style="width: 300px;" name="buttons">
+                            <div class="oe_button_box" name="button_box">
                                 <button type="action" class="oe_stat_button" name="%(oeh_medical_appointment_action_tree)d" context="{'search_default_doctor': active_id,'default_doctor': active_id}" icon="fa-calendar">
                                     <field string="Appointments" name="app_count" widget="statinfo"/>
                                 </button>
@@ -877,10 +896,10 @@
                         <field name="code"/>
                         <field name="work_email"/>
                         <templates>
-                            <t t-name="kanban-box">
+                            <!-- <t t-name="kanban-box">
                                 <div class="oeh_medical_vignette oe_semantic_html_override">
                                     <div class="oeh_medical_image">
-                                        <a type="open"><!-- <img t-att-src="kanban_image('oeh.medical.physician', 'image_medium', record.id.raw_value)" class="oeh_medical_picture"/> --></a>
+                                        <a type="open"><img t-att-src="kanban_image('oeh.medical.physician', 'image_medium', record.id.raw_value)" class="oeh_medical_picture"/></a>
                                     </div>
                                     <div class="oeh_medical_details">
                                         <h4>
@@ -893,6 +912,25 @@
                                             <li t-if="record.code.raw_value"><field name="code"/></li>
                                             <li t-if="record.work_email.raw_value"><a t-attf-href="mailto:#{record.work_email.value}"><field name="work_email"/></a></li>
                                         </ul>
+                                    </div>
+                                </div>
+                            </t> -->
+                              <t t-name="kanban-box">
+                                <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                      <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('oeh.medical.physician', 'image_medium', record.id.raw_value)}')">
+                                        <img class="o_kanban_image_inner_pic" t-att-alt="record.id.value" t-att-src="kanban_image('oeh.medical.physician', 'image_small', record.id.raw_value)"/>
+                                    </div>
+                                      <div class="oe_kanban_details">
+                                        <strong class="o_kanban_record_title oe_partner_heading"><field name="name"/></strong>
+                                        <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                        <ul>
+                                            <li t-if="record.degree_id.raw_value"><field name="degree_id"/></li>
+                                            <li t-if="record.speciality.raw_value"><field name="speciality"/></li>
+                                            <li t-if="record.address_id.raw_value"><field name="address_id"/></li>
+                                            <li t-if="record.code.raw_value"><field name="code"/></li>
+                                            <li t-if="record.work_email.raw_value"><a t-attf-href="mailto:#{record.work_email.value}"><field name="work_email"/></a></li>
+                                        </ul>
+                                        <div class="oe_kanban_partner_links"/>
                                     </div>
                                 </div>
                             </t>

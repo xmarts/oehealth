@@ -16,7 +16,7 @@
                                 <div >
                                     
                                     <h1>
-                                        <field name="name" />
+                                        <field name="name"  placeholder="Nombre"/>
                                     </h1>
                                     <field name="pharmacist_name" placeholder="Pharmacist Name" context="{'default_is_pharmacist':True}" options="{'no_create': True}"/>
                                     <field name="institution" placeholder="Health Centers" options="{'no_create': True}"/>
@@ -147,11 +147,11 @@
                         <field name="country_id"/>
                         <field name="email"/>
                         <templates>
-                            <t t-name="kanban-box">
+                          <!--   <t t-name="kanban-box">
                                 <div class="oeh_medical_vignette oe_semantic_html_override">
                                     <div class="oeh_medical_image">
                                         <a type="open">
-                                            <!-- <img t-att-src="kanban_image('oeh.medical.health.center.pharmacy', 'image_small', record.id.raw_value)" class="oeh_medical_picture"/> -->
+                                            <img t-att-src="kanban_image('oeh.medical.health.center.pharmacy', 'image_small', record.id.raw_value)" class="oeh_medical_picture"/>
                                         </a>
                                     </div>
                                     <div class="oeh_medical_details">
@@ -164,6 +164,24 @@
                                             <li t-if="record.city.raw_value and record.country_id.raw_value"><field name="city"/>, <field name="country_id"/></li>
                                             <li t-if="record.email.raw_value"><a t-attf-href="mailto:#{record.email.raw_value}"><field name="email"/></a></li>
                                         </ul>
+                                    </div>
+                                </div>
+                            </t>  -->
+                               <t t-name="kanban-box">
+                                <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                      <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('oeh.medical.health.center.pharmacy', 'image_medium', record.id.raw_value)}')">
+                                        <img class="o_kanban_image_inner_pic" t-att-alt="record.id.value" t-att-src="kanban_image('oeh.medical.health.center.pharmacy', 'image_small', record.id.raw_value)"/>
+                                    </div>
+                                      <div class="oe_kanban_details">
+                                        <strong class="o_kanban_record_title oe_partner_heading"><field name="name"/></strong>
+                                        <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                        <ul>
+                                           <li t-if="record.pharmacist_name.raw_value"><field name="pharmacist_name"/></li>
+                                            <li t-if="record.institution.raw_value"><field name="institution"/></li>
+                                            <li t-if="record.city.raw_value and record.country_id.raw_value"><field name="city"/>, <field name="country_id"/></li>
+                                            <li t-if="record.email.raw_value"><a t-attf-href="mailto:#{record.email.raw_value}"><field name="email"/></a></li>
+                                        </ul>
+                                        <div class="oe_kanban_partner_links"/>
                                     </div>
                                 </div>
                             </t>

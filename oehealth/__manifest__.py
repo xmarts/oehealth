@@ -10,7 +10,7 @@
     'category': 'Generic Modules/Medical',
     'summary': 'Odoo 11 Hospital Management Solutions',
     'depends': ['base', 'sale', 'purchase', 'account', 'product','document','hr','web','contacts'],
-    # 'account_invoicing', 
+    # , 
     'description': """
 
 About oeHealth
@@ -39,7 +39,7 @@ Allow your doctors and patients to login inside your oeHealth system to manage t
         'oeh_medical/views/oeh_medical_pathology_view.xml',
         'oeh_medical/views/oeh_medical_inpatient_view.xml',
         'oeh_medical/views/oeh_medical_view.xml',
-        #'oeh_medical/views/account_invoice_view.xml',
+        'oeh_medical/views/account_invoice_view.xml',
         'oeh_medical/views/oeh_medical_insurance_view.xml',
         'oeh_medical/views/oeh_medical_ethnic_groups_view.xml',
         'oeh_medical/views/oeh_medical_genetics_view.xml',

@@ -16,8 +16,8 @@
                         <sheet>
                             <div class="oe_left" style="width: 500px;">
                                 <div class="oe_title" style="width: 390px;">
-                                    <label class="oe_edit_only" for="name" string="Bed Name"/>
-                                    <h1><field name="name" class="oe_inline"/></h1>
+                                    <!-- <label class="oe_edit_only" for="name" string="Bed Name"/> -->
+                                    <h1><field name="name" class="oe_inline" placeholder="Nombre"/></h1>
                                 </div>
                             </div>
                             <group>
@@ -114,15 +114,15 @@
                             <field name="state" widget="statusbar" statusbar_visible="Beds Available,Full" statusbar_colors='{"Full":"red","Beds Available":"blue"}'/>
                         </header>
                         <sheet>
-                            <div class="oe_right oe_button_box" style="width: 300px;" name="buttons">
+                            <div class="oe_button_box" name="button_box">
                                 <button type="action" class="oe_stat_button" name="%(oeh_medical_healthcenters_bed_action_tree)d" context="{'search_default_ward': active_id,'default_ward': active_id}" icon="fa-list">
                                     <field string="Beds" name="bed_count" widget="statinfo"/>
                                 </button>
                             </div>
                             <div class="oe_left" style="width: 500px;">
                                 <div class="oe_title" style="width: 390px;">
-                                    <label class="oe_edit_only" for="name" string="Ward Name"/>
-                                    <h1><field name="name" class="oe_inline"/></h1>
+                                    <!-- <label class="oe_edit_only" for="name" string="Ward Name"/> -->
+                                    <h1><field name="name" class="oe_inline" placeholder="Nombre"/></h1>
                                 </div>
                             </div>
                             <group>
@@ -226,7 +226,7 @@
                 <field name="arch" type="xml">
                     <form string="Buildings">
                         <sheet>
-                            <div class="oe_right oe_button_box" style="width: 300px;" name="buttons">
+                              <div class="oe_button_box" name="button_box">
                                 <button type="action" class="oe_stat_button" name="%(oeh_medical_healthcenters_ward_action_tree)d" context="{'search_default_building': active_id,'default_building': active_id}" icon="fa-list">
                                     <field string="Wards" name="ward_count" widget="statinfo"/>
                                 </button>
@@ -236,8 +236,8 @@
                             </div>
                             <div class="oe_left" style="width: 500px;">
                                 <div class="oe_title" style="width: 390px;">
-                                    <label class="oe_edit_only" for="name" string="Building Name"/>
-                                    <h1><field name="name" class="oe_inline"/></h1>
+                                   <!--  <label class="oe_edit_only" for="name" string="Building Name"/> -->
+                                    <h1><field name="name" class="oe_inline" placeholder="Nombre"/></h1>
                                 </div>
                             </div>
                             <group>
@@ -324,9 +324,9 @@
                                 <field name="image" widget='image' class="oe_left oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
                                 <div class="oe_title">
                                    <!--  <label string="Health Centers Name" /> -->
-                                   <label for="name" string="Health Centers Name"/>
+                                   <!-- <label for="name" string="Health Centers Name"/> -->
                                     <h1>
-                                        <field name="name" />
+                                        <field name="name"  placeholder="Nombre"/>
                                     </h1>
                                     <label for="health_center_type" class="oe_edit_only"/>
                                     <field name="health_center_type" />
@@ -391,8 +391,8 @@
                         <field name="name" />
                         <field name="health_center_type" />
                         <newline />
-                        <group expand="0" string="Group By...">
-                            <filter name="f24" string="Name" domain="[]" context="{'group_by':'name'}" />
+                        <group expand="0" name="group_by"  string="Group By...">
+                            <filter name="f24" string="Name"  context="{'group_by':'name'}" />
                             <filter name="f25" string="Type" domain="[]" context="{'group_by':'health_center_type'}" />
                         </group>
 				    </search>
@@ -411,11 +411,11 @@
                         <field name="country_id"/>
                         <field name="email"/>
                         <templates>
-                            <t t-name="kanban-box">
+                           <!--  <t t-name="kanban-box">
                                 <div class="oeh_medical_vignette oe_semantic_html_override">
                                     <div class="oeh_medical_image">
                                         <a type="open">
-                                           <!--  <img t-att-src="kanban_image('oeh.medical.health.center', 'image_small', record.id.raw_value)" class="oeh_medical_picture"/> -->
+                                            <img t-att-src="kanban_image('oeh.medical.health.center', 'image_small', record.id.raw_value)" class="oeh_medical_picture"/>
                                         </a>
                                     </div>
                                     <div class="oeh_medical_details">
@@ -427,6 +427,23 @@
                                             <li t-if="record.city.raw_value and record.country_id.raw_value"><field name="city"/>, <field name="country_id"/></li>
                                             <li t-if="record.email.raw_value"><a t-attf-href="mailto:#{record.email.raw_value}"><field name="email"/></a></li>
                                         </ul>
+                                    </div>
+                                </div>
+                            </t> -->
+                            <t t-name="kanban-box">
+                                <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                      <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('oeh.medical.health.center', 'image_medium', record.id.raw_value)}')">
+                                        <img class="o_kanban_image_inner_pic" t-att-alt="record.id.value" t-att-src="kanban_image('oeh.medical.health.center', 'image_small', record.id.raw_value)"/>
+                                    </div>
+                                      <div class="oe_kanban_details">
+                                        <strong class="o_kanban_record_title oe_partner_heading"><field name="name"/></strong>
+                                        <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                        <ul>
+                                           <li t-if="record.health_center_type.raw_value"><field name="health_center_type"/></li>
+                                            <li t-if="record.city.raw_value and record.country_id.raw_value"><field name="city"/>, <field name="country_id"/></li>
+                                            <li t-if="record.email.raw_value"><a t-attf-href="mailto:#{record.email.raw_value}"><field name="email"/></a></li>
+                                        </ul>
+                                        <div class="oe_kanban_partner_links"/>
                                     </div>
                                 </div>
                             </t>

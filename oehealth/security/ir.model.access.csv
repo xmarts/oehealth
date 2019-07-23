@@ -152,3 +152,5 @@ access_oeh_medical_labtest_department_manager,oeh.medical.labtest.department,mod
 access_oeh_medical_lab_indications_liness_manager,oeh.medical.lab.indications.liness,model_oeh_medical_lab_indications_liness,group_oeh_medical_manager,1,1,1,1
 
 access_oeh_medical_lab_indications_lines_manager,oeh.medical.lab.indications.lines,model_oeh_medical_lab_indications_lines,group_oeh_medical_manager,1,1,1,1
+
+access_oeh_medical_labtest_material_manager,oeh.medical.labtest.material,model_oeh_medical_labtest_material,group_oeh_medical_manager,1,1,1,1

@@ -21,7 +21,7 @@
                                 <group>
                                     <field name="medicament_type" required="1"/>
                                     <field name="therapeutic_action" attrs="{'invisible': [('medicament_type','=','Medicine')]}"/>
-                                    <field name="qty_available" attrs="{'invisible': [('medicament_type','=','Medicine')]}"/>
+                                   <!--  <field name="qty_available" attrs="{'invisible': [('medicament_type','=','Medicine')]}"/> -->
                                 </group>
                                 <group>
                                     <field name="lst_price"/>
@@ -62,7 +62,7 @@
                         <field name="therapeutic_action"/>
                         <field name="pregnancy_warning"/>
                         <field name="lst_price"/>
-                        <field name="qty_available"/>
+                      <!--   <field name="qty_available"/> -->
                     </tree>
                 </field>
             </record>
