@@ -8,7 +8,7 @@
     'version': '4.0',
     'author': "Braincrew Apps",
     'category': 'Generic Modules/Medical',
-    'summary': 'Odoo 11 Hospital Management Solutions',
+    'summary': 'Odoo 12 Hospital Management Solutions',
     'depends': ['base', 'sale', 'purchase', 'account', 'product','document','hr','web','contacts'],
     # , 
     'description': """
