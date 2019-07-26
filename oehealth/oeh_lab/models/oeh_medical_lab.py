@@ -184,7 +184,7 @@ class OeHealthLabTests(models.Model):
                 'view_mode': 'tree,form,calendar',
                 'name': _('Rayos X'),
                 'res_model': 'oeh.medical.lab.test',
-                'domain': [('id', 'in', lista)],
+                #'domain': [('id', 'in', lista)],
             }
             return action
 
