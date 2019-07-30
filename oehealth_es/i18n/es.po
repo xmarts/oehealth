@@ -1,0 +1,3661 @@
+# Spanish translation for oeHealth
+# Copyright (C) 2017 oeHealth (<http://oehealth.in>). All Rights Reserved
+# Braincrew Apps <info@braincrewapps.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: oehealth\n"
+"Report-Msgid-Bugs-To: Braincrew Apps <info@braincrewapps.com>\n"
+"POT-Creation-Date: 2017-03-09 14:07+0000\n"
+"PO-Revision-Date: 2017-03-09 11:15+0000\n"
+"Last-Translator: oeHealth <info@oehealth.in>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2015-11-28 06:38+0000\n"
+"X-Generator: Launchpad (build 17306)\n"
+
+
+#. module: oehealth
+#: model:ir.ui.menu,name:oehealth.oeh_medical_hospital_menu
+#: view:oeh.medical.health.center.building:oehealth.view_medical_healthcenters_building_filter
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_healthcenters_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_healthcenters_list
+#: view:oeh.medical.health.center.pharmacy:oehealth.view_medical_healthcenters_pharmacy_filter
+msgid "Health Centers"
+msgstr "Centros de Salud"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.ward:0
+#: view:oeh.medical.health.center.building:0
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_healthcenters_bed_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_healthcenters_bed_list
+#: view:oeh.medical.health.center.ward:oehealth.oeh_medical_healthcenters_ward_view
+#: view:oeh.medical.health.center.building:oehealth.oeh_medical_healthcenters_building_view
+msgid "Beds"
+msgstr "Camas"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.building:0
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_healthcenters_ward_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_healthcenters_ward_list
+#: view:oeh.medical.health.center.building:oehealth.oeh_medical_healthcenters_building_view
+msgid "Wards"
+msgstr "Salas"
+
+#. module: oehealth
+#: view:oeh.medical.health.center:0
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_healthcenters_building_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_healthcenters_building_list
+#: view:oeh.medical.health.center:oehealth.oeh_medical_healthcenters_view
+msgid "Buildings"
+msgstr "Edificios"
+
+#. module: oehealth
+#: view:oeh.medical.health.center:0
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_healthcenters_pharmacy_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_healthcenters_pharmacy_list
+msgid "Pharmacies"
+msgstr "Farmacias"
+
+#. module: oehealth
+#: model:ir.ui.menu,name:oehealth.oeh_medical_patients_menu
+msgid "Patient Management"
+msgstr "Manejo de los Pacientes"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_patient_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_edit_patient
+msgid "Patients"
+msgstr "Pacientes"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_patient_action_tree1
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_physician_action_tree1
+#: model:ir.ui.menu,name:oehealth.oeh_medical_my_patient_profile
+#: model:ir.ui.menu,name:oehealth.oeh_medical_my_physician_profile
+msgid "My Profile"
+msgstr "Mi Perfil"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_inpatient_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_inpatient_list
+msgid "Inpatient Admissions"
+msgstr "Admisión de hospitalización"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_inpatient_myadmission_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_inpatient_myadmission_list
+msgid "My Admissions"
+msgstr "Mi Admisión"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_vaccine_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_vaccine_list
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_vaccines_action_treeview
+#: model:ir.ui.menu,name:oehealth.oeh_medical_vaccines_listview
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Vaccines"
+msgstr "Vacunas"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_vaccine_action_tree1
+#: model:ir.ui.menu,name:oehealth.oeh_medical_my_patient_vaccine
+msgid "My Vaccines"
+msgstr "Mi Vacunas"
+
+#. module: oehealth
+#: model:ir.ui.menu,name:oehealth.oeh_medical_appointment_menu
+msgid "Physicians & Appointments"
+msgstr "Los médicos y citas"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_physician_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_physician_list
+#: view:oeh.medical.prescription:oehealth.view_medical_prescription_filter
+msgid "Physicians"
+msgstr "Médicos"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_appointment_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_appointment_list
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+#: view:oeh.medical.physician:oehealth.oeh_medical_physician_view
+msgid "Appointments"
+msgstr "Citas"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_prescription_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_prescription_list
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+#: view:oeh.medical.health.center.pharmacy:oehealth.oeh_medical_healthcenters_pharmacy_view
+#: view:oeh.medical.physician:oehealth.oeh_medical_physician_view
+msgid "Prescriptions"
+msgstr "Recetas"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_evaluation_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_evaluation_list
+#: view:oeh.medical.appointment:oehealth.oeh_medical_appointment_evaluation_view
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_evaluation_view
+msgid "Evaluations"
+msgstr "Evaluaciones"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_gyneco_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_gyneco_mgmt_list
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_gyneco_id
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_puerperium_monitor_gyneco_id
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_gyneco_view
+msgid "Gynecology"
+msgstr "Ginecología"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_lifestyle_view
+msgid "Lifestyle"
+msgstr "Estilo de vida"
+
+#. module: oehealth
+#: model:ir.ui.menu,name:oehealth.oeh_medical_conf_laboratory
+#: model:ir.ui.menu,name:oehealth.oeh_medical_laboratory_menu
+msgid "Laboratory"
+msgstr "Laboratorio"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_lab_test_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_lab_test_conf_list
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_resultcriteria_medical_lab_test_id
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_lab_view
+msgid "Lab Tests"
+msgstr "Pruebas de laboratorio"
+
+#. module: oehealth
+#: model:ir.ui.menu,name:oehealth.oeh_medical_conf_menu
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: oehealth
+#: model:ir.ui.menu,name:oehealth.oeh_medical_conf_patient
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_patient
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_patient
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_vaccines_patient
+#: view:oeh.medical.vaccines:oehealth.view_medical_vaccine_filter
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_patient
+#: view:oeh.medical.appointment:oehealth.view_oeh_medical_appointment_filter
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_patient
+#: view:oeh.medical.evaluation:oehealth.view_oeh_medical_evaluation_filter
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_patient
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_patient
+#: view:oeh.medical.prescription:oehealth.view_medical_prescription_filter
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_patient
+#: view:oeh.medical.gyneco:oehealth.view_oeh_medical_gyneco_filter
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_patient
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_line_patient
+#: view:oeh.medical.lab.test:oehealth.view_oeh_medical_lab_test_filter
+msgid "Patient"
+msgstr "Paciente"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "This field will allow to connect oeHealth patient with your preferred Odoo native user. Please note that the user you choose here must not related to any other patient."
+msgstr "Este campo le permitirá conectar paciente oeHealth con su usuario nativo de Odoo preferido. Tenga en cuenta que el usuario que elige aquí debe no relacionado con cualquier otro paciente."
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Time in between doses the patient must wait (ie, for 1 pill each 8 hours, put here 8 and select 'hours' in the unit field"
+msgstr "Tiempo entre dosis que el paciente debe esperar (es decir, 1 píldora cada 8 horas, puesto 8 aquí y seleccione 'horas' en el campo de la unidad"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Treatment period that the patient must take the medication in minutes, hours, days, months, years or indefinitely"
+msgstr "Período de tratamiento que el paciente debe tomar el medicamento en minutos, horas, días, meses, años o indefinidamente"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_physician_view
+msgid "This field will allow to connect oeHealth physician with your preferred Odoo native user. Please note that the user you choose here must not related to any other physician."
+msgstr "Este campo le permitirá conectarse médico oeHealth con su usuario nativo de Odoo preferido. Tenga en cuenta que el usuario que elige aquí debe no relacionado con cualquier otro médico."
+
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Personal"
+msgstr "Personal"
+
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_ethnic_groups_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_ethnic_groups_conf_list
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_ethnicity_name
+msgid "Ethnic Groups"
+msgstr "Grupos étnicos"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_genetics_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_genetics_conf_list
+msgid "Genetic Risks"
+msgstr "Riesgos genéticos"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_occupation_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_occupation_conf_list
+msgid "Occupations"
+msgstr "Ocupaciones"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_recreational_drug_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_recreational_drug_mgmt_list
+msgid "Recreational Drugs"
+msgstr "Drogas recreativas"
+
+#. module: oehealth
+#: model:ir.ui.menu,name:oehealth.oeh_medical_conf_physician
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_doctor
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_doctor
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_doctor
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_requestor
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_vaccines_doctor
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_line_doctor
+msgid "Physician"
+msgstr "Médico"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_physician_speciality_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_physician_speciality_list
+msgid "Specialities"
+msgstr "Especialidades"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_physician_degrees_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_physician_degrees_list
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_physician_degree_id
+#: view:oeh.medical.physician:oehealth.oeh_medical_physician_view
+msgid "Degrees"
+msgstr "Grados"
+
+#. module: oehealth
+#: model:ir.ui.menu,name:oehealth.oeh_medical_conf_pathology
+msgid "Pathology"
+msgstr "Patología"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.action_oeh_medical_pathology_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_conf_pathology_tree
+msgid "Diseases"
+msgstr "Enfermedades"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.action_oeh_medical_pathology_category_form
+#: model:ir.ui.menu,name:oehealth.oeh_medical_conf_pathology_category
+msgid "Disease Categories"
+msgstr "Categorías de enfermedad"
+
+#. module: oehealth
+#: model:ir.ui.menu,name:oehealth.oeh_medical_conf_medicaments
+msgid "Health Products"
+msgstr "Productos de salud"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_medicines_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_medicines_list
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_name
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_prescription_line_name
+msgid "Medicines"
+msgstr "Medicamentos"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_prescription_id
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_prescription_line_prescription_id
+msgid "Prescription Reference"
+msgstr "Referencia de la prescripción"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_dose_unit_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_dose_unit_list
+msgid "Dose Units"
+msgstr "Unidades de dosis"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_drug_routes_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_drug_route_list
+msgid "Drug Routes"
+msgstr "Rutas de drogas"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_drug_forms_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_drug_forms_list
+msgid "Drug Forms"
+msgstr "Formas de la droga"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_dosage_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_dosage_list
+msgid "Medicines Dosage"
+msgstr "Dosificación de medicamentos"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_insurance_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_insurance_conf_list
+#: model:ir.ui.menu,name:oehealth.oeh_medical_conf_insurances
+msgid "Insurances"
+msgstr "Seguros"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_insurance_type_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_insurance_type_conf_list
+msgid "Insurance Types"
+msgstr "Tipos de seguros"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_lab_units_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_lab_units_conf_list
+msgid "Lab Units"
+msgstr "Unidades de laboratorio"
+
+#. module: oehealth
+#: model:ir.actions.act_window,name:oehealth.oeh_medical_lab_test_types_action_tree
+#: model:ir.ui.menu,name:oehealth.oeh_medical_lab_test_types_conf_list
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_labtest_criteria_medical_type_id
+msgid "Lab Test Types"
+msgstr "Tipos de pruebas de laboratorio"
+
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Full Name"
+msgstr "Nombre completo"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Admissions"
+msgstr "Admisiones"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Invoices"
+msgstr "Facturas"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+#: view:oeh.medical.health.center:oehealth.oeh_medical_healthcenters_view
+#: view:oeh.medical.health.center.pharmacy:oehealth.oeh_medical_healthcenters_pharmacy_view
+msgid "Address"
+msgstr "Dirección"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+#: view:oeh.medical.health.center:oehealth.oeh_medical_healthcenters_view
+#: view:oeh.medical.health.center.pharmacy:oehealth.oeh_medical_healthcenters_pharmacy_view
+msgid "Street..."
+msgstr "Calle..."
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+#: view:oeh.medical.health.center:oehealth.oeh_medical_healthcenters_view
+#: view:oeh.medical.health.center.pharmacy:oehealth.oeh_medical_healthcenters_pharmacy_view
+msgid "City"
+msgstr "Ciudad"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+#: view:oeh.medical.health.center:oehealth.oeh_medical_healthcenters_view
+#: view:oeh.medical.health.center.pharmacy:oehealth.oeh_medical_healthcenters_pharmacy_view
+#: view:oeh.medical.health.center.ward:oehealth.view_medical_healthcenters_ward_filter
+#: view:oeh.medical.health.center.beds:oehealth.view_medical_healthcenters_bed_filter
+#: view:oeh.medical.inpatient:oehealth.view_medical_inpatient_filter
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_state
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_state
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_state
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_state
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_state
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_line_state
+#: view:oeh.medical.lab.test:oehealth.view_oeh_medical_lab_test_filter
+msgid "State"
+msgstr "Estado"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+#: view:oeh.medical.health.center:oehealth.oeh_medical_healthcenters_view
+#: view:oeh.medical.health.center.pharmacy:oehealth.oeh_medical_healthcenters_pharmacy_view
+msgid "Country"
+msgstr "País"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Profession"
+msgstr "Profesión"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+#: view:oeh.medical.health.center:oehealth.oeh_medical_healthcenters_view
+#: view:oeh.medical.health.center.pharmacy:oehealth.oeh_medical_healthcenters_pharmacy_view
+msgid "Email"
+msgstr "E-mail"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Patient Card"
+msgstr "Tarjeta de paciente"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+#: view:oeh.medical.health.center:oehealth.oeh_medical_healthcenters_view
+#: view:oeh.medical.health.center.building:oehealth.oeh_medical_healthcenters_building_view
+#: view:oeh.medical.health.center.ward:oehealth.oeh_medical_healthcenters_ward_view
+#: view:oeh.medical.health.center.beds:oehealth.oeh_medical_healthcenters_bed_view
+#: view:oeh.medical.health.center.pharmacy:oehealth.oeh_medical_healthcenters_pharmacy_view
+#: view:oeh.medical.inpatient:oehealth.oeh_medical_inpatient_view
+#: view:oeh.medical.inpatient.mydetails:oehealth.oeh_medical_inpatient_mydetails_view
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Extra Information"
+msgstr "Información adicional"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Critical Information"
+msgstr "Información crítica"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Family & Insurance"
+msgstr "Familia y seguro"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_socioeconomics
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_socioeconomics_view
+msgid "Socioeconomics"
+msgstr "Socio-económicos"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_socioeconomics_view
+msgid "Infrastructure"
+msgstr "Infraestructura"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_socioeconomics_view
+msgid "Family APGAR"
+msgstr "Familia de APGAR"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_socioeconomics_view
+msgid "Other Family Issues"
+msgstr "Otros problemas familiares"
+
+#. module: oehealth
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_socioeconomics_view
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_building_info
+#: view:oeh.medical.physician:oehealth.oeh_medical_physician_view
+#: view:oeh.medical.labtest.types:oehealth.oeh_medical_lab_test_types_form
+#: view:oeh.medical.genetics:oehealth.oeh_medical_genetics_view
+msgid "Extra Info"
+msgstr "Info extra"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_family_name
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_building_name
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_name
+#: model:ir.model.fields,field_description:product.field_product_product_name
+#: view:oeh.medical.health.center:oehealth.view_medical_healthcenters_filter
+#: view:oeh.medical.health.center.building:oehealth.view_medical_healthcenters_building_filter
+#: view:oeh.medical.health.center.ward:oehealth.view_medical_healthcenters_ward_filter
+#: view:oeh.medical.health.center.beds:oehealth.view_medical_healthcenters_bed_filter
+#: view:oeh.medical.health.center.beds:oehealth.oeh_medical_healthcenters_bed_tree
+#: view:oeh.medical.physician:oehealth.oeh_medical_physician_view
+#: model:ir.model.fields,field_description:hr.field_hr_employee_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Father"
+msgstr "Padre"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+#: view:oeh.medical.gyneco:oehealth.oeh_medical_gyneco_view
+msgid "Mother"
+msgstr "Madre"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Brother"
+msgstr "Hermano"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Sister"
+msgstr "Hermana"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Wife"
+msgstr "Esposa"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Husband"
+msgstr "Esposo"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Grand Father"
+msgstr "Gran Padre"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Grand Mother"
+msgstr "Gran Madre"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Aunt"
+msgstr "Tía"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Uncle"
+msgstr "Tío"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Nephew"
+msgstr "Sobrino"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Niece"
+msgstr "Sobrina"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Cousin"
+msgstr "Primo de"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+msgid "Relative"
+msgstr "Relativa"
+
+#. module: oehealth
+#: selection:oeh.medical.patient.family,relation:0
+#: selection:oeh.medical.health.center,health_center_type:0
+#: selection:oeh.medical.inpatient,admission_type:0
+#: view:oeh.medical.inpatient.mydetails:oehealth.oeh_medical_inpatient_mydetails_view
+#: selection:oeh.medical.physician,consultancy_type:0
+msgid "Other"
+msgstr "Otros"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_family_relation
+msgid "Relation"
+msgstr "Relación"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_family_age
+msgid "Age"
+msgstr "Edad"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_family_deceased
+msgid "Deceased?"
+msgstr "Fallecido?"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,marital_status:0
+msgid "Single"
+msgstr "Solo"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,marital_status:0
+msgid "Married"
+msgstr "Casado"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,marital_status:0
+msgid "Widowed"
+msgstr "Viudo"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,marital_status:0
+msgid "Divorced"
+msgstr "Divorciado"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,marital_status:0
+msgid "Separated"
+msgstr "Separados"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,sex:0
+msgid "Male"
+msgstr "Hombre"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,sex:0
+msgid "Female"
+msgstr "Mujer"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_partner_id
+msgid "Related Partner"
+msgstr "Relacionados con socio"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_partner_id
+msgid "Related Partner"
+msgstr "Relacionados con socio"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_family
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Family"
+msgstr "Familia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_current_insurance
+msgid "Insurance"
+msgstr "Seguro"
+
+#. module: oehealth
+#: model:ir.model.fields,health:oehealth.field_oeh_medical_patient_current_insurance
+msgid "Insurance information. You may choose from the different insurances belonging to the patient"
+msgstr "Información del seguro. Usted puede elegir entre los diferentes seguros pertenecientes al paciente"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_doctor
+msgid "Family Physician"
+msgstr "Médico de familia"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_doctor
+msgid "Current primary care physician / family doctor"
+msgstr "Médico de atención primaria actual / médico de familia"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_vaccines_doctor
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_appointment_doctor
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_doctor
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_doctor
+msgid "Current primary care / family doctor"
+msgstr "Corriente de atención / médico de familia primaria"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_dob
+msgid "Date of Birth"
+msgstr "Fecha de nacimiento"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_age
+msgid "Patient Age"
+msgstr "Edad del paciente"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_age
+msgid "It shows the age of the patient in years(y), months(m) and days(d).\n If the patient has died, the age shown is the age at time of death, the age corresponding to the date on the death certificate. It will show also \"deceased\" on the field"
+msgstr "Muestra la edad del paciente en years(y), months(m) y días (d). \nSi el paciente ha muerto, la edad se muestra es la edad en el momento de la muerte, la edad correspondiente a la fecha en el certificado de defunción. Se mostrará también \"fallecido\" en el campo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_sex
+msgid "Sex"
+msgstr "Sexo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_marital_status
+msgid "Sex"
+msgstr "Estado civil"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_blood_type
+msgid "Blood Type"
+msgstr "Tipo de sangre"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_identification_code
+msgid "Patient ID"
+msgstr "ID de paciente"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_identification_code
+msgid "Patient Identifier provided by the Health Center"
+msgstr "Paciente identificador proporcionado por el centro de salud"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_ethnic_group
+msgid "Ethnic group"
+msgstr "Grupo étnico"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_oeh_patient_user_id
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_physician_oeh_user_id
+msgid "Responsible Odoo User"
+msgstr "Usuario responsable de Odoo"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_critical_info
+msgid "Write any important information on the patient's disease, surgeries, allergies, ..."
+msgstr "Escriba cualquier información importante sobre la enfermedad del paciente, cirugías, alergias..."
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_general_info
+msgid "General information about the patient"
+msgstr "Información general sobre el paciente"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_genetic_risks
+msgid "Genetic Risks"
+msgstr "Riesgos genéticos"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_deceased
+msgid "Patient Deceased ?"
+msgstr "Paciente fallecido?"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_dod
+msgid "Date of Death"
+msgstr "Fecha de la muerte"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_cod
+msgid "Cause of Death"
+msgstr "Causa de la muerte"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_socioeconomics
+msgid "SES - Socioeconomic Status"
+msgstr "Estatus socioeconómico"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,socioeconomics:0
+msgid "Lower"
+msgstr "Inferior"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,socioeconomics:0
+msgid "Lower-middle"
+msgstr "Medio bajo"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,socioeconomics:0
+msgid "Middle"
+msgstr "Medio"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,socioeconomics:0
+msgid "Middle-upper"
+msgstr "Media-alta"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,socioeconomics:0
+msgid "Higher"
+msgstr "Mayor"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_occupation_name
+msgid "Occupation"
+msgstr "Ocupación"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_occupation_code
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_building_code
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_units_code
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_labtest_types_code
+msgid "Code"
+msgstr "Código"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_education_level
+msgid "Education Level"
+msgstr "Nivel de educación"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,education_level:0
+#: selection:oeh.medical.patient,apgar_help:0
+#: selection:oeh.medical.patient,apgar_discussion:0
+#: selection:oeh.medical.patient,apgar_decision:0
+#: selection:oeh.medical.patient,apgar_timesharing:0
+#: selection:oeh.medical.patient,apgar_affection:0
+msgid "None"
+msgstr "Ninguno"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,education_level:0
+msgid "Incomplete Primary School"
+msgstr "Escuela primaria incompleta"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,education_level:0
+msgid "Primary School"
+msgstr "Escuela primaria"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,education_level:0
+msgid "Incomplete Secondary School"
+msgstr "Escuela secundaria incompleta"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,education_level:0
+msgid "Secondary School"
+msgstr "Escuela secundaria"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,education_level:0
+msgid "University"
+msgstr "Universidad"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_housing_condition
+msgid "Housing conditions"
+msgstr "Las condiciones de vivienda"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_housing_condition
+msgid "Housing and sanitary living conditions"
+msgstr "Condiciones de vida vivienda y sanitarias"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,housing_condition:0
+msgid "Shanty, deficient sanitary conditions"
+msgstr "Campamentos, condiciones sanitarias deficientes"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,housing_condition:0
+msgid "Small, crowded but with good sanitary conditions"
+msgstr "Pequeño, lleno de gente, pero con buenas condiciones sanitarias"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,housing_condition:0
+msgid "Comfortable and good sanitary conditions"
+msgstr "Cómodo y buenas condiciones sanitarias"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,housing_condition:0
+msgid "Roomy and excellent sanitary conditions"
+msgstr "Amplias y excelentes condiciones sanitarias"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,housing_condition:0
+msgid "Luxury and excellent sanitary conditions"
+msgstr "Lujo y excelentes condiciones sanitarias"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_hostile_area
+msgid "Hostile Area"
+msgstr "Zona hostil"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_hostile_area
+msgid "Check this box if the patient lives in a zone of high hostility (eg, war)"
+msgstr "Marque esta casilla si el paciente vive en una zona de alta hostilidad (por ejemplo, guerra)"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_sewers
+msgid "Sanitary Sewers"
+msgstr "Alcantarillas sanitarias"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_water
+msgid "Running Water"
+msgstr "Agua corriendo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_trash
+msgid "Trash recollection"
+msgstr "Recolección de basura"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_electricity
+msgid "Electrical supply"
+msgstr "Suministro eléctrico"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_gas
+msgid "Gas supply"
+msgstr "Suministro de gas"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_telephone
+msgid "Telephone"
+msgstr "Teléfono"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_television
+msgid "Television"
+msgstr "Televisión"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_single_parent
+msgid "Single parent family"
+msgstr "Familia monoparental"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_domestic_violence
+msgid "Domestic violence"
+msgstr "Violencia doméstica"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_working_children
+msgid "Working children"
+msgstr "Niños que trabajan"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_teenage_pregnancy
+msgid "Teenage pregnancy"
+msgstr "Embarazo en la adolescencia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_sexual_abuse
+msgid "Sexual abuse"
+msgstr "Abuso sexual"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_drug_addiction
+msgid "Drug addiction"
+msgstr "Adicción a las drogas"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_school_withdrawal
+msgid "School withdrawal"
+msgstr "Retiro de la escuela"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_prison_past
+msgid "Has been in prison"
+msgstr "Ha estado en prisión"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_prison_current
+msgid "Is currently in prison"
+msgstr "Actualmente está en prisión"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_relative_in_prison
+msgid "Relative in prison"
+msgstr "Familiar en la cárcel"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_relative_in_prison
+msgid "Check if someone from the nuclear family - parents / sibblings  is or has been in prison"
+msgstr "Comprobar si una persona de la familia nuclear - padres y aprenderse es o ha estado en prisión"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_info
+msgid "Extra info"
+msgstr "Info extra"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,apgar_help:0
+#: selection:oeh.medical.patient,apgar_discussion:0
+#: selection:oeh.medical.patient,apgar_decision:0
+#: selection:oeh.medical.patient,apgar_timesharing:0
+#: selection:oeh.medical.patient,apgar_affection:0
+msgid "Moderately"
+msgstr "Moderadamente"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,apgar_help:0
+#: selection:oeh.medical.patient,apgar_discussion:0
+#: selection:oeh.medical.patient,apgar_decision:0
+#: selection:oeh.medical.patient,apgar_timesharing:0
+#: selection:oeh.medical.patient,apgar_affection:0
+msgid "Very much"
+msgstr "Mucho"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_apgar_help
+msgid "Family Help"
+msgstr "Ayuda familiar"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_apgar_help
+msgid "Is the patient satisfied with the level of help coming from the family when there is a problem ?"
+msgstr "¿Es el paciente satisfecho con el nivel de ayuda de la familia cuando hay un problema?"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_apgar_discussion
+msgid "Family discussions on problems"
+msgstr "Discusiones familiares en problemas"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_apgar_discussion
+msgid "Is the patient satisfied with the level of help coming from the family when there is a problem ?"
+msgstr "¿Es el paciente satisfecho con el nivel de hablar sobre los problemas como familia?"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_apgar_decision
+msgid "Family decision ability"
+msgstr "Capacidad de decisión de la familia"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_apgar_decision
+msgid "Is the patient satisfied with the level of making important decisions as a group ?"
+msgstr "¿Es el paciente satisfecho con el nivel de toma de decisiones importantes como grupo?"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_apgar_timesharing
+msgid "Family time sharing"
+msgstr "Compartir tiempo en familia"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_apgar_timesharing
+msgid "Is the patient satisfied with the level of time that they spend together ?"
+msgstr "¿Es el paciente satisfecho con el nivel de tiempo que pasan juntos?"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_apgar_affection
+msgid "Family affection"
+msgstr "Afecto familiar"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_apgar_affection
+msgid "Is the patient satisfied with the level of affection coming from the family ?"
+msgstr "¿Es el paciente satisfecho con el nivel de afecto de la familia?"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,income:0
+#: selection:oeh.medical.recreational.drugs,toxicity:0
+#: selection:oeh.medical.recreational.drugs,addiction_level:0
+msgid "High"
+msgstr "Alta"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,income:0
+msgid "Medium / Average"
+msgstr "Medio / promedio"
+
+#. module: oehealth
+#: selection:oeh.medical.patient,income:0
+#: selection:oeh.medical.recreational.drugs,toxicity:0
+#: selection:oeh.medical.recreational.drugs,addiction_level:0
+msgid "Low"
+msgstr "Bajo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_income
+msgid "Income (Monthly)"
+msgstr "Ingresos (mensual)"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_income
+msgid "Patient's monthly income"
+msgstr "Ingreso mensual del paciente"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_occupation
+msgid "Occupation"
+msgstr "Ocupación"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_works_at_home
+msgid "Works at home"
+msgstr "Trabajos en casa"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_works_at_home
+msgid "Check if the patient works at his / her house"
+msgstr "Compruebe si el paciente trabaja en su casa"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_patient_hours_outside
+msgid "Hours stay outside home"
+msgstr "Horas alojarte fuera de casa"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_patient_hours_outside
+msgid "Number of hours a day the patient spend outside the house"
+msgstr "Número de horas al día el paciente pasar fuera de la casa"
+
+
+
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_health_center_type
+#: view:oeh.medical.health.center:oehealth.view_medical_healthcenters_filter
+msgid "Type"
+msgstr "Tipo"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_health_center_health_center_type
+msgid "Health center type"
+msgstr "Tipo de centro de salud"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center,health_center_type:0
+msgid "Nursing Home"
+msgstr "Hogar de ancianos"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center,health_center_type:0
+msgid "Clinic"
+msgstr "Clínica"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center,health_center_type:0
+msgid "Community Health Center"
+msgstr "Centro comunitario de salud"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center,health_center_type:0
+msgid "Military Medical Facility"
+msgstr "Centro médico militar"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_building_institution
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_institution
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_institution
+#: view:oeh.medical.appointment:oehealth.view_oeh_medical_appointment_filter
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_institution
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_beds_institution
+msgid "Health Center"
+msgstr "Centro de salud"
+
+#. module: oehealth
+#: view:oeh.medical.health.center:oehealth.oeh_medical_healthcenters_view
+msgid "Health Centers Name"
+msgstr "Nombre de los centros de salud"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.ward:oehealth.oeh_medical_healthcenters_ward_view
+msgid "Ward Name"
+msgstr "Nombre de la sala"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_building
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_beds_building
+#: view:oeh.medical.health.center.ward:oehealth.view_medical_healthcenters_ward_filter
+#: view:oeh.medical.health.center.beds:oehealth.oeh_medical_healthcenters_bed_view
+msgid "Building"
+msgstr "Edificio"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_floor
+msgid "Floor Number"
+msgstr "Número de planta"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.ward:oehealth.view_medical_healthcenters_ward_filter
+msgid "Floor"
+msgstr "Planta"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_gender
+#: view:oeh.medical.health.center.ward:oehealth.view_medical_healthcenters_ward_filter
+msgid "Gender"
+msgstr "Género"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.ward,gender:0
+msgid "Men Ward"
+msgstr "Hombres Sala"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.ward,gender:0
+msgid "Women Ward"
+msgstr "Mujeres Sala"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.ward,gender:0
+msgid "Unisex"
+msgstr "Unisexo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_bio_hazard
+msgid "Bio Hazard"
+msgstr "Peligro biológico"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.ward:oehealth.oeh_medical_healthcenters_ward_view
+msgid "Facilities"
+msgstr "Instalaciones"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_telephone
+msgid "Telephone Access"
+msgstr "Acceso telefónico"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_ac
+msgid "Air Conditioning"
+msgstr "Aire acondicionado"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_private_bathroom
+msgid "Private Bathroom"
+msgstr "Baño privado"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_guest_sofa
+msgid "Guest Sofa-bed"
+msgstr "Sofá-cama de invitados"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_tv
+msgid "Television"
+msgstr "Televisión"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_internet
+msgid "Internet Access"
+msgstr "Acceso a internet"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_refrigerator
+msgid "Refrigerator"
+msgstr "Refrigerador"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_microwave
+msgid "Microwave"
+msgstr "Microondas"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_ward_state
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_beds_state
+#: view:oeh.medical.health.center.beds:oehealth.view_medical_healthcenters_bed_filter
+#: view:oeh.medical.appointment:oehealth.view_oeh_medical_appointment_filter
+#: view:oeh.medical.prescription:oehealth.view_medical_prescription_filter
+msgid "Status"
+msgstr "Estado"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.ward,state:0
+msgid "Beds Available"
+msgstr "Camas disponibles"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.ward,state:0
+msgid "Full"
+msgstr "Completo"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.ward:oehealth.oeh_medical_healthcenters_ward_view
+msgid "Beds List"
+msgstr "Lista de camas"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_beds_ward
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_ward
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_ward
+#: view:oeh.medical.health.center.beds:oehealth.view_medical_healthcenters_bed_filter
+#: view:oeh.medical.inpatient:oehealth.view_medical_inpatient_filter
+msgid "Ward"
+msgstr "Sala"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_beds_bed_type
+#: view:oeh.medical.health.center.beds:oehealth.view_medical_healthcenters_bed_filter
+msgid "Bed Type"
+msgstr "Tipo de cama"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,bed_type:0
+msgid "Gatch Bed"
+msgstr "Cama de Gatch"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,bed_type:0
+msgid "Electric"
+msgstr "Eléctrica"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,bed_type:0
+msgid "Stretcher"
+msgstr "Camilla"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,bed_type:0
+msgid "Low Bed"
+msgstr "Cama baja"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,bed_type:0
+msgid "Low Air Loss"
+msgstr "Baja pérdida de aire"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,bed_type:0
+msgid "Circo Electric"
+msgstr "Circo eléctrico"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,bed_type:0
+msgid "Clinitron"
+msgstr "Clinitron"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_beds_telephone_number
+msgid "Telephone Number"
+msgstr "Número de teléfono"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.beds:oehealth.oeh_medical_healthcenters_bed_view
+msgid "Reservation Charge"
+msgstr "Reserva de carga"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.beds:oehealth.oeh_medical_healthcenters_bed_view
+msgid "Bed Status"
+msgstr "Estado de la cama"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_beds_change_bed_status
+#: view:oeh.medical.health.center.beds:oehealth.oeh_medical_healthcenters_bed_view
+msgid "Change Bed Status"
+msgstr "Cambiar estado de cama"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.beds:oehealth.oeh_medical_healthcenters_bed_view
+msgid "Bed Name"
+msgstr "Nombre de la cama"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,state:0
+msgid "Free"
+msgstr "Gratis"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,state:0
+msgid "Reserved"
+msgstr "Reservados"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,state:0
+msgid "Occupied"
+msgstr "Ocupado"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,state:0
+msgid "Not Available"
+msgstr "No Disponible"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,change_bed_status:0
+msgid "Mark as Reserved"
+msgstr "Marca como reservado"
+
+#. module: oehealth
+#: selection:oeh.medical.health.center.beds,change_bed_status:0
+msgid "Mark as Not Available"
+msgstr "Marcar como no disponible"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_pharmacist_name
+#: view:oeh.medical.health.center.pharmacy:oehealth.view_medical_healthcenters_pharmacy_filter
+msgid "Pharmacist Name"
+msgstr "Nombre Farmacéutico"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.pharmacy:oehealth.view_medical_healthcenters_pharmacy_filter
+msgid "Pharmacies"
+msgstr "Farmacias"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.pharmacy:oehealth.oeh_medical_healthcenters_pharmacy_view
+msgid "Pharmacy Name"
+msgstr "Farmacia Nombre"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_name
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_name
+#: view:oeh.medical.inpatient:oehealth.oeh_medical_inpatient_view
+#: view:oeh.medical.inpatient.mydetails:oehealth.oeh_medical_inpatient_mydetails_view
+msgid "Inpatient #"
+msgstr "Hospitalización #"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_admission_type
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_admission_type
+#: view:oeh.medical.inpatient:oehealth.view_medical_inpatient_filter
+#: view:oeh.medical.inpatient.mydetails:oehealth.view_medical_inpatient_myadmission_filter
+msgid "Admission Type"
+msgstr "Tipo de admisión"
+
+#. module: oehealth
+#: selection:oeh.medical.inpatient,admission_type:0
+#: view:oeh.medical.inpatient.mydetails:oehealth.oeh_medical_inpatient_mydetails_view
+msgid "Routine"
+msgstr "Rutina"
+
+#. module: oehealth
+#: selection:oeh.medical.inpatient,admission_type:0
+#: view:oeh.medical.inpatient.mydetails:oehealth.oeh_medical_inpatient_mydetails_view
+msgid "Maternity"
+msgstr "Maternidad"
+
+#. module: oehealth
+#: selection:oeh.medical.inpatient,admission_type:0
+#: view:oeh.medical.inpatient.mydetails:oehealth.oeh_medical_inpatient_mydetails_view
+msgid "Elective"
+msgstr "Electivo"
+
+#. module: oehealth
+#: selection:oeh.medical.inpatient,admission_type:0
+#: view:oeh.medical.inpatient.mydetails:oehealth.oeh_medical_inpatient_mydetails_view
+#: selection:oeh.medical.appointment,urgency_level:0
+msgid "Urgent"
+msgstr "Urgente"
+
+#. module: oehealth
+#: selection:oeh.medical.inpatient,admission_type:0
+#: view:oeh.medical.inpatient.mydetails:oehealth.oeh_medical_inpatient_mydetails_view
+#: selection:oeh.medical.evaluation,evaluation_type:0
+msgid "Emergency"
+msgstr "Emergencia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_bed
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_bed
+msgid "Bed"
+msgstr "Cama"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_admission_date
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_admission_date
+msgid "Hospitalization Date"
+msgstr "Fecha de hospitalización"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_discharge_date
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_discharge_date
+msgid "Discharge Date"
+msgstr "Fecha de alta"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_admission_reason
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_admission_reason
+msgid "Reason for Admission"
+msgstr "Motivo de admision"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_attending_physician
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_attending_physician
+msgid "Attending Physician"
+msgstr "Médico Tratante"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_operating_physician
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_operating_physician
+msgid "Operating Physician"
+msgstr "Médico Operativo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_nursing_plan
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_nursing_plan
+msgid "Nursing Plan"
+msgstr "Plan de enfermería"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_discharge_plan
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_discharge_plan
+msgid "Discharge Plan"
+msgstr "Plan de alta"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_admission_condition
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_inpatient_mydetails_admission_condition
+msgid "Condition before Admission"
+msgstr "Condición antes de la admisión"
+
+#. module: oehealth
+#: selection:oeh.medical.inpatient,state:0
+#: selection:oeh.medical.inpatient.mydetails,state:0
+#: selection:oeh.medical.prescription,state:0
+#: selection:oeh.medical.lab.test,state:0
+#: selection:oeh.medical.health.center.pharmacy.line,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: oehealth
+#: selection:oeh.medical.inpatient,state:0
+#: selection:oeh.medical.inpatient.mydetails,state:0
+msgid "Hospitalized"
+msgstr "Hospitalizados"
+
+#. module: oehealth
+#: selection:oeh.medical.inpatient,state:0
+#: selection:oeh.medical.inpatient.mydetails,state:0
+#: selection:oeh.medical.prescription,state:0
+#: selection:oeh.medical.lab.test,state:0
+#: selection:oeh.medical.health.center.pharmacy.line,state:0
+msgid "Invoiced"
+msgstr "Facturado"
+
+#. module: oehealth
+#: selection:oeh.medical.inpatient,state:0
+#: selection:oeh.medical.inpatient.mydetails,state:0
+msgid "Discharged"
+msgstr "Descargado"
+
+#. module: oehealth
+#: selection:oeh.medical.inpatient,state:0
+#: selection:oeh.medical.inpatient.mydetails,state:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: oehealth
+#: view:oeh.medical.inpatient:oehealth.oeh_medical_inpatient_view
+#: view:oeh.medical.inpatient.mydetails:oehealth.oeh_medical_inpatient_mydetails_view
+msgid "Details"
+msgstr "Detalles"
+
+#. module: oehealth
+#: view:oeh.medical.inpatient:oehealth.oeh_medical_inpatient_view
+#: view:oeh.medical.inpatient.mydetails:oehealth.oeh_medical_inpatient_mydetails_view
+msgid "Dates"
+msgstr "Fechas"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_vaccines_name
+#: view:oeh.medical.vaccines:oehealth.oeh_medical_vaccine_view
+msgid "Vaccine"
+msgstr "Vacuna"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_vaccines_date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_vaccines_institution
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_physician_institution
+#: view:oeh.medical.vaccines:oehealth.view_medical_vaccine_filter
+msgid "Institution"
+msgstr "Institución"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_vaccines_dose
+msgid "Dose #"
+msgstr "Dosis #"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_vaccines_info
+msgid "Observation"
+msgstr "Observación"
+
+#. module: oehealth
+#: view:oeh.medical.vaccines:oehealth.oeh_medical_vaccine_view
+msgid "Observations"
+msgstr "Observacións"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_vaccines_doctor
+msgid "Current primary care / family doctor"
+msgstr "Corriente de atención / médico de familia primaria"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_vaccines_patient
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_appointment_patient
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_patient
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_patient
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_line_patient
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_lab_test_patient
+msgid "Patient Name"
+msgstr "Nombre del paciente"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_vaccines_institution
+msgid "Health Center where the patient is being or was vaccinated"
+msgstr "Centro de Salud donde se está o se vacunó al paciente"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_physician_code
+#: view:oeh.medical.physician:oehealth.view_medical_physician_filter
+msgid "License ID"
+msgstr "ID de licencia"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_physician_code
+msgid "Physician's License ID"
+msgstr "Licencia de Médico ID"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_physician_speciality
+#: view:oeh.medical.physician:oehealth.view_medical_physician_filter
+msgid "Speciality"
+msgstr "Especialidad"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_physician_speciality
+msgid "Speciality Code"
+msgstr "Especialidad Código"
+
+#. module: oehealth
+#: view:oeh.medical.physician:oehealth.oeh_medical_physician_view
+msgid "Physician Name"
+msgstr "Nombre del médico"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_physician_consultancy_type
+msgid "Consultancy Type"
+msgstr "Tipo de consultoría"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_physician_consultancy_type
+msgid "Type of Doctor's Consultancy"
+msgstr "Tipo de Consultoría del doctor"
+
+#. module: oehealth
+#: selection:oeh.medical.physician,consultancy_type:0
+msgid "Residential"
+msgstr "Residencial"
+
+#. module: oehealth
+#: selection:oeh.medical.physician,consultancy_type:0
+msgid "Visiting"
+msgstr "Visitando"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_physician_consultancy_price
+msgid "Consultancy Charge"
+msgstr "Tipo de consultoría"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_physician_consultancy_price
+msgid "Physician's Consultancy price"
+msgstr "Precio Consultoría del Médico"
+
+#. module: oehealth
+#: view:oeh.medical.physician:oehealth.oeh_medical_physician_view
+msgid "Graduation Institute"
+msgstr "Instituto de Graduación"
+
+#. module: oehealth
+#: view:oeh.medical.physician:oehealth.oeh_medical_physician_view
+msgid "Contact Information"
+msgstr "Información de contacto"
+
+#. module: oehealth
+#: view:oeh.medical.physician:oehealth.oeh_medical_physician_view
+msgid "Working Institution"
+msgstr "Trabajo de la institución"
+
+#. module: oehealth
+#: view:oeh.medical.physician:oehealth.oeh_medical_physician_view
+msgid "Weekly Availability"
+msgstr "Disponibilidad semanal"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_physician_line_name
+msgid "Available Day(s)"
+msgstr "Disponible Día (s)"
+
+#. module: oehealth
+#: selection:oeh.medical.physician.line,name:0
+msgid "Monday"
+msgstr "Lunes"
+
+#. module: oehealth
+#: selection:oeh.medical.physician.line,name:0
+msgid "Tuesday"
+msgstr "Martes"
+
+#. module: oehealth
+#: selection:oeh.medical.physician.line,name:0
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#. module: oehealth
+#: selection:oeh.medical.physician.line,name:0
+msgid "Thursday"
+msgstr "Jueves"
+
+#. module: oehealth
+#: selection:oeh.medical.physician.line,name:0
+msgid "Friday"
+msgstr "Viernes"
+
+#. module: oehealth
+#: selection:oeh.medical.physician.line,name:0
+msgid "Saturday"
+msgstr "Sábado"
+
+#. module: oehealth
+#: selection:oeh.medical.physician.line,name:0
+msgid "Sunday"
+msgstr "Domingo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_physician_line,_start_time
+msgid "Start Time (24h format)"
+msgstr "Hora de inicio (formato 24h)"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_physician_line_end_time
+msgid "End Time (24h format)"
+msgstr "Tiempo final (formato 24h)"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_name
+#: view:oeh.medical.appointment:oehealth.oeh_medical_appointment_view
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_appointment
+msgid "Appointment #"
+msgstr "Cita #"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_appointment_date
+msgid "Appointment Date"
+msgstr "Fecha de la cita"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_appointment_end
+msgid "Appointment End Date"
+msgstr "Fecha de finalización de la cita"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_duration
+msgid "Duration (Hours)"
+msgstr "Duración (horas)"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_appointment_institution
+msgid "Medical Center"
+msgstr "Centro Médico"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_urgency_level
+msgid "Urgency Level"
+msgstr "Nivel de urgencia"
+
+#. module: oehealth
+#: selection:oeh.medical.appointment,urgency_level:0
+msgid "Medical Emergency"
+msgstr "Emergencia médica"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_comments
+#: view:oeh.medical.appointment:oehealth.oeh_medical_appointment_view
+msgid "Comments"
+msgstr "Comentarios"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_patient_status
+msgid "Patient Status"
+msgstr "Estado del paciente"
+
+#. module: oehealth
+#: selection:oeh.medical.appointment,patient_status:0
+#: selection:oeh.medical.evaluation,evaluation_type:0
+msgid "Ambulatory"
+msgstr "Ambulatorio"
+
+#. module: oehealth
+#: selection:oeh.medical.appointment,patient_status:0
+msgid "Outpatient"
+msgstr "Paciente Externo"
+
+#. module: oehealth
+#: selection:oeh.medical.appointment,patient_status:0
+msgid "Inpatient"
+msgstr "Paciente Interno"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_appointment_comments
+#: view:oeh.medical.appointment:oehealth.view_oeh_medical_appointment_filter
+msgid "Urgency"
+msgstr "Urgencia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_name
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Evaluation #"
+msgstr "Evaluación #"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_evaluation_start_date
+msgid "Evaluation Date"
+msgstr "Fecha de evaluación"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_evaluation_end_date
+msgid "Evaluation End Date"
+msgstr "Fecha de evaluación final"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_derived_from
+msgid "Physician who escalated the case"
+msgstr "Médico que extendió el caso"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_derived_to
+msgid "Physician to whom escalated"
+msgstr "Médico a quien se extendió"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_evaluation_type
+#: view:oeh.medical.evaluation:oehealth.view_oeh_medical_evaluation_filter
+msgid "Evaluation Type"
+msgstr "Tipo de evaluación"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,evaluation_type:0
+msgid "Inpatient Admission"
+msgstr "Admisión de hospitalización"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,evaluation_type:0
+msgid "Pre-arraganged Appointment"
+msgstr "Cita de pre-arraganged"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,evaluation_type:0
+msgid "Periodic Control"
+msgstr "Control periódico"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,evaluation_type:0
+msgid "Phone Call"
+msgstr "Llamada de teléfono"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,evaluation_type:0
+msgid "Telemedicine"
+msgstr "Telemedicina"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_chief_complaint
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_chief_complaint
+msgid "Chief Complaint"
+msgstr "Jefe denuncia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_notes_complaint
+msgid "Complaint details"
+msgstr "Denuncia detalles"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_glycemia
+msgid "Glycemia"
+msgstr "Glucemia"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_glycemia
+msgid "Last blood glucose level. It can be approximative."
+msgstr "Último nivel de glucosa en sangre. Puede ser aproximada."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_hba1c
+msgid "Glycated Hemoglobin"
+msgstr "Hemoglobina glucosilada"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_hba1c
+msgid "Last Glycated Hb level. It can be approximative."
+msgstr "Último nivel de Hb glicosilada. Puede ser aproximado."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_cholesterol_total
+msgid "Last Cholesterol"
+msgstr "Último colesterol"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_cholesterol_total
+msgid "Last cholesterol reading. It can be approximative"
+msgstr "Última medición de colesterol. Puede ser aproximada."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_hdl
+msgid "Last HDL"
+msgstr "Última HDL"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_hdl
+msgid "Last HDL Cholesterol reading. It can be approximative"
+msgstr "Última lectura de colesterol HDL. Puede ser aproximada."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_ldl
+msgid "Last LDL"
+msgstr "Última LDL"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_ldl
+msgid "Last LDL Cholesterol reading. It can be approximative"
+msgstr "Última lectura de colesterol LDL. Puede ser aproximada."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_tag
+msgid "Last TAGs"
+msgstr "Última TAGs"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_tag
+msgid "Triacylglycerols (triglicerides) level. It can be approximative"
+msgstr "Triacilgliceroles (triglicéridos). Puede ser aproximativa."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_systolic
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_systolic
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_puerperium_monitor_systolic
+msgid "Systolic Pressure"
+msgstr "Presión sistólica"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_diastolic
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_diastolic
+#: model:ir.model.fields,field_description:oehealth.field_oeh.medical_puerperium_monitor_diastolic
+msgid "Diastolic Pressure"
+msgstr "Presión diastólica"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_bpm
+msgid "Heart Rate"
+msgstr "Frecuencia cardíaca"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_bpm
+msgid "Heart rate expressed in beats per minute"
+msgstr "La frecuencia cardíaca se expresa en pulsaciones por minuto"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_respiratory_rate
+msgid "Respiratory Rate"
+msgstr "Frecuencia respiratoria"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_respiratory_rate
+msgid "Respiratory rate expressed in breaths per minute"
+msgstr "La frecuencia respiratoria expresada en respiraciones por minuto"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_osat
+msgid "Oxygen Saturation"
+msgstr "Saturación de oxígeno"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_osat
+msgid "Oxygen Saturation (arterial)."
+msgstr "Saturación de oxígeno (arterial)."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_malnutrition
+msgid "Malnutrition"
+msgstr "Malnutrición"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_malnutrition
+msgid "Check this box if the patient show signs of malnutrition. If not associated to a disease, please encode the correspondent disease on the patient disease history. For example, Moderate protein-energy malnutrition, E44.0 in ICD-10 encoding"
+msgstr "Marque esta casilla si el paciente muestra signos de malnutrición. Si no asociado a una enfermedad, por favor codificar la enfermedad correspondiente en la historia de la enfermedad del paciente. Por ejemplo, la desnutrición proteinoenergética moderada, E44.0 en codificación CIE-10"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_dehydration
+msgid "Dehydration"
+msgstr "Deshidratación"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_dehydration
+msgid "Check this box if the patient show signs of dehydration. If not associated to a disease, please encode the correspondent disease on the patient disease history. For example, Volume Depletion, E86 in ICD-10 encoding"
+msgstr "Marque esta casilla si el paciente muestra signos de deshidratación. Si no asociado a una enfermedad, por favor codificar la enfermedad correspondiente en la historia de la enfermedad del paciente. Por ejemplo, depleción de volumen, E86 en codificación CIE-10"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_temperature
+msgid "Temperature (celsius)"
+msgstr "Temperatura (centígrado)"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_weight
+msgid "Weight (kg)"
+msgstr "Peso (kg)"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_height
+msgid "Height (cm)"
+msgstr "Altura (cm)"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_bmi
+msgid "Body Mass Index (BMI)"
+msgstr "Índice de Masa Corporal (IMC)"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_head_circumference
+msgid "Head Circumference"
+msgstr "Circunferencia de la cabeza"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_abdominal_circ
+msgid "Abdominal Circumference"
+msgstr "Circunferencia abdominal"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_edema
+msgid "Please also encode the correspondent disease on the patient disease history. For example,  R60.1 in ICD-10 encoding"
+msgstr "Por favor también codificar la enfermedad correspondiente en la historia de la enfermedad del paciente. Por ejemplo, R60.1 en codificación CIE-10"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_cyanosis
+msgid "If not associated to a disease, please encode it on the patient disease history. For example,  R23.0 in ICD-10 encoding"
+msgstr "Si no asociado a una enfermedad, codificar en la historia de la enfermedad del paciente. Por ejemplo, R23.0 en codificación CIE-10"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_acropachy
+msgid "Check if the patient shows acropachy / clubbing"
+msgstr "Compruebe si el paciente muestra acropaquias / clubbing"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_nystagmus
+msgid "Nystagmus"
+msgstr "Nistagmo"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_nystagmus
+msgid "If not associated to a disease, please encode it on the patient disease history. For example,  H55 in ICD-10 encoding"
+msgstr "Si no asociado a una enfermedad, codificar en la historia de la enfermedad del paciente. Por ejemplo, H55 en codificación CIE-10"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_miosis
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_mydriasis
+msgid "If not associated to a disease, please encode it on the patient disease history. For example,  H57.0 in ICD-10 encoding"
+msgstr "Si no asociado a una enfermedad, codificar en la historia de la enfermedad del paciente. Por ejemplo, H57.0 en codificación CIE-10"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_mydriasis
+msgid "Mydriasis"
+msgstr "Midriasis"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_cough
+msgid "Cough"
+msgstr "Tos"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_cough
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_palpebral_ptosis
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_arritmia
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_heart_extra_sounds
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_jugular_engorgement
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_ascites
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_jaundice
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_lynphadenitis
+msgid "If not associated to a disease, please encode it on the patient disease history."
+msgstr "Si no asociado a una enfermedad, codificar en la historia de la enfermedad del paciente."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_heart_murmurs
+msgid "Heart Murmurs"
+msgstr "Soplos cardíacos"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_heart_extra_sounds
+msgid "Heart Extra Sounds"
+msgstr "Sonidos de corazón adicionales"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_jugular_engorgement
+msgid "Tremor"
+msgstr "Temblor"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_ascites
+msgid "Ascites"
+msgstr "Ascitis"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_lung_adventitious_sounds
+msgid "Lung Adventitious sounds"
+msgstr "Sonidos adventicios pulmonares"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_lung_adventitious_sounds
+msgid "Crackles, wheezes, ronchus.."
+msgstr "Crepitantes, wheezes, ronchus..."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_increased_fremitus
+msgid "Increased Fremitus"
+msgstr "Aumento Frémito"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_decreased_fremitus
+msgid "Decreased Fremitus"
+msgstr "Disminuida Frémito"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_jaundice
+msgid "Jaundice"
+msgstr "Ictericia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_breast_lump
+msgid "Breast Lumps"
+msgstr "Bultos en los senos"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_breast_asymmetry
+msgid "Breast Asymmetry"
+msgstr "Asimetría de mama"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_nipple_inversion
+msgid "Nipple Inversion"
+msgstr "Inversión del pezón"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_nipple_discharge
+msgid "Nipple Discharge"
+msgstr "Secreción del pezón"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_peau_dorange
+msgid "Check if the patient has prominent pores in the skin of the breast"
+msgstr "Compruebe si el paciente tiene poros prominentes en la piel de la mama"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_gynecomastia
+msgid "Gynecomastia"
+msgstr "Ginecomastia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_masses
+msgid "Masses"
+msgstr "Masas"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_masses
+msgid "Check when there are findings of masses / tumors / lumps"
+msgstr "Verificación cuando hay resultados de masas / tumores / terrones"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_hypotonia
+msgid "Hypotonia"
+msgstr "Hipotonía"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_hypotonia
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_hypertonia
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_erithema
+msgid "Please also encode the correspondent disease on the patient disease history."
+msgstr "Por favor también codificar la enfermedad correspondiente en la historia de la enfermedad del paciente."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_hypertonia
+msgid "Hypertonia"
+msgstr "Hipertonía"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_pressure_ulcers
+msgid "Pressure Ulcers"
+msgstr "Úlceras por presión"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_pressure_ulcers
+msgid "Check when Decubitus / Pressure ulcers are present"
+msgstr "Compruebe que las úlceras de decúbito / Presión están presentes"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_alopecia
+msgid "Check when alopecia - including androgenic - is present"
+msgstr "Compruebe si la alopecia - incluyendo androgénica - está presente"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_loc
+msgid "Level of Consciousness"
+msgstr "Nivel de conciencia"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_loc
+msgid "Level of Consciousness - on Glasgow Coma Scale :  1=coma - 15=normal"
+msgstr "Nivel de Conciencia - en Glasgow Coma Scale: 1 = estado de coma - 15 = normal"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_loc_eyes
+msgid "Level of Consciousness - Eyes"
+msgstr "Nivel de conciencia - Ojos"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_loc_eyes
+msgid "Eyes Response - Glasgow Coma Scale - 1 to 4"
+msgstr "Ojos Respuesta - Glasgow Coma Scale - 1 a 4"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_loc_verbal
+msgid "Level of Consciousness - Verbal"
+msgstr "Nivel de Conciencia - Verbal"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_loc_verbal
+msgid "Verbal Response - Glasgow Coma Scale - 1 to 5"
+msgstr "Respuesta Verbal - Glasgow Coma Scale - 1 a 5"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_loc_motor
+msgid "Level of Consciousness - Motor"
+msgstr "Nivel de Conciencia - Motor"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_loc_motor
+msgid "Motor Response - Glasgow Coma Scale - 1 to 6"
+msgstr "Respuesta Motor - Glasgow Coma Scale - 1 a 6"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_violent
+msgid "Violent Behaviour"
+msgstr "Comportamiento violento"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_violent
+msgid "Check this box if the patient is agressive or violent at the moment"
+msgstr "Marque esta casilla si el paciente es agresivo o violento en el momento"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_mood
+#: view:oeh.medical.evaluation:oehealth.view_oeh_medical_evaluation_filter
+msgid "Mood"
+msgstr "Estado de ánimo"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,mood:0
+msgid "Sad"
+msgstr "Triste"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,mood:0
+msgid "Fear"
+msgstr "Miedo"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,mood:0
+msgid "Rage"
+msgstr "Rabia"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,mood:0
+msgid "Happy"
+msgstr "Feliz"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,mood:0
+msgid "Disgust"
+msgstr "Asco"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,mood:0
+msgid "Euphoria"
+msgstr "Euforia"
+
+#. module: oehealth
+#: selection:oeh.medical.evaluation,mood:0
+msgid "Flat"
+msgstr "Plano"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_indication
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_pharmacy_indication
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_indication
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_prescription_line_indication
+msgid "Indication"
+msgstr "Indicación"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_indication
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_pharmacy_indication
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_line_indication
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_health_center_pharmacy_prescription_line_indication
+msgid "Choose a disease for this medicament from the disease list. It can be an existing disease of the patient or a prophylactic."
+msgstr "Elegir una enfermedad para este medicamento en la lista de enfermedades. Puede ser una enfermedad actual del paciente o profiláctico."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_orientation
+msgid "Orientation"
+msgstr "Orientación"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_orientation
+msgid "Check this box if the patient is disoriented in time and/or space"
+msgstr "Marque esta casilla si el paciente está desorientado en el tiempo y / o espacio"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_memory
+msgid "Memory"
+msgstr "Memoria"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_memory
+msgid "Check this box if the patient has problems in short or long term memory"
+msgstr "Marque esta casilla si el paciente tiene problemas en resumen o memoria de largo plazo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_knowledge_current_events
+msgid "Knowledge of Current Events"
+msgstr "Conocimiento de acontecimientos actuales"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_knowledge_current_events
+msgid "Check this box if the patient can not respond to public notorious events"
+msgstr "Marque esta casilla si el paciente no puede responder a eventos públicos de notorias"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_judgment
+msgid "Judgement"
+msgstr "Juicio"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_judgment
+msgid "Check this box if the patient can not interpret basic scenario solutions"
+msgstr "Marque esta casilla si el paciente no puede interpretar soluciones escenario básico"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_abstraction
+msgid "Abstraction"
+msgstr "Abstracción"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_abstraction
+msgid "Check this box if the patient presents abnormalities in abstract reasoning"
+msgstr "Marque esta casilla si el paciente presenta anomalías en el razonamiento abstracto"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_vocabulary
+msgid "Vocabulary"
+msgstr "Vocabulario"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_vocabulary
+msgid "Check this box if the patient lacks basic intellectual capacity, when she/he can not describe elementary objects"
+msgstr "Márquese este recuadro si el paciente carece de capacidad intelectual básica, cuando él/ella puede describir objetos elementales"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_calculation_ability
+msgid "Calculation Ability"
+msgstr "Capacidad de cálculo"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_calculation_ability
+msgid "Check this box if the patient can not do simple arithmetic problems"
+msgstr "Marque esta casilla si el paciente no puede hacer problemas aritméticos simples"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_object_recognition
+msgid "Object Recognition"
+msgstr "Reconocimiento de objetos"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_object_recognition
+msgid "Check this box if the patient suffers from any sort of gnosia disorders, such as agnosia, prosopagnosia ..."
+msgstr "Marque esta casilla si el paciente sufre algún tipo de trastornos de la gnosia, tales como agnosia, prosopagnosia..."
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_praxis
+msgid "Check this box if the patient is unable to make voluntary movements"
+msgstr "Marque esta casilla si el paciente es incapaz de realizar movimientos voluntarios"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_info_diagnosis
+msgid "Presumptive Diagnosis"
+msgstr "Diagnóstico presuntivo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_pain
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Pain"
+msgstr "Dolor"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_pain_intensity
+msgid "Pain intensity"
+msgstr "Intensidad del dolor"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_symptom_pain_intensity
+msgid "Pain intensity from 0 (no pain) to 10 (worst possible pain)"
+msgstr "Intensidad del dolor de 0 (ningún dolor) a 10 (peor dolor posible)"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_myalgia
+msgid "Myalgia"
+msgstr "Mialgia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_abdominal_pain
+msgid "Abdominal Pain"
+msgstr "Dolor abdominal"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_cervical_pain
+msgid "Cervical Pain"
+msgstr "Dolor cervical"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_thoracic_pain
+msgid "Thoracic Pain"
+msgstr "Dolor torácica"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_lumbar_pain
+msgid "Lumbar Pain"
+msgstr "Dolor lumber"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_pelvic_pain
+msgid "Pelvic Pain"
+msgstr "Dolor pélvico"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_headache
+msgid "Headache"
+msgstr "Dolor de cabeza"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_odynophagia
+msgid "Odynophagia"
+msgstr "Odinofagia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_sore_throat
+msgid "Sore throat"
+msgstr "Dolor de garganta"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_ear_discharge
+msgid "Ear Discharge"
+msgstr "Secreción del oído"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_hoarseness
+msgid "Hoarseness"
+msgstr "Ronquera"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_chest_pain
+msgid "Chest Pain"
+msgstr "Dolor en el pecho"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_chest_pain_excercise
+msgid "Chest Pain on excercise only"
+msgstr "Dolor en el pecho el ejercicio sólo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_orthostatic_hypotension
+msgid "Orthostatic hypotension"
+msgstr "Hipotensión ortostática"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_symptom_orthostatic_hypotension
+msgid "If not associated to a disease,please encode it on the patient disease history. For example,  I95.1 in ICD-10 encoding"
+msgstr "Si no asociado a una enfermedad, codificar en la historia de la enfermedad del paciente. Por ejemplo, I95.1 en codificación CIE-10"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_weight_change
+msgid "Sudden weight change"
+msgstr "Cambio de peso repentino"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_abdominal_distension
+msgid "Abdominal Distension"
+msgstr "Distención abdominal"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_hemoptysis
+msgid "Hemoptysis"
+msgstr "Hemoptisis"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_gingival_bleeding
+msgid "Gingival Bleeding"
+msgstr "Sangrado de las encías"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_nausea
+msgid "Nausea"
+msgstr "Náuseas"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_vomiting
+msgid "Vomiting"
+msgstr "Vómitos"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_dysphagia
+msgid "Dysphagia"
+msgstr "Disfagia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_polydipsia
+msgid "Polydipsia"
+msgstr "Polidipsia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_polyphagia
+msgid "Polyphagia"
+msgstr "Polifagia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_vesical_tenesmus
+msgid "Vesical Tenesmus"
+msgstr "Tenesmo vesical"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_dysuria
+msgid "Dysuria"
+msgstr "Disuria"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_stress
+msgid "Stressed-out"
+msgstr "Estresados"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_mood_swings
+msgid "Mood Swings"
+msgstr "Cambios de humor"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_pruritus
+msgid "Pruritus"
+msgstr "Prurito"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_insomnia
+msgid "Insomnia"
+msgstr "Insomnio"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_disturb_sleep
+msgid "Disturbed Sleep"
+msgstr "Sueño disturbado"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_paralysis
+msgid "Paralysis"
+msgstr "Parálisis"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_syncope
+msgid "Syncope"
+msgstr "Síncope"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_dizziness
+msgid "Dizziness"
+msgstr "Mareo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_vertigo
+msgid "Vertigo"
+msgstr "Vértigo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_eye_glasses
+msgid "Eye glasses"
+msgstr "Lentes"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_evaluation_symptom_eye_glasses
+msgid "Eye glasses or contact lenses"
+msgstr "Gafas o lentes de contacto"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_blurry_vision
+msgid "Blurry vision"
+msgstr "Visión borrosa"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_photophobia
+msgid "Photophobia"
+msgstr "Fotofobia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_vaginal_discharge
+msgid "Vaginal Discharge"
+msgstr "Flujo vaginal"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_urethral_discharge
+msgid "Urethral Discharge"
+msgstr "Secreción uretral"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_constipation
+msgid "Constipation"
+msgstr "Estreñimiento"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_rectal_tenesmus
+msgid "Rectal Tenesmus"
+msgstr "Tenesmo rectal"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_symptom_sexual_dysfunction
+msgid "Sexual Dysfunction"
+msgstr "Disfunción sexual"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_evaluation_notes
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_notes
+msgid "Notes"
+msgstr "Notas"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Signs"
+msgstr "Signos"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Vital Signs"
+msgstr "Signos vitales"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Anthropometry"
+msgstr "Antropometría"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Nutrition"
+msgstr "Nutrición"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Glucose"
+msgstr "Glucosa"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Lipids"
+msgstr "Lípidos"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Symptoms"
+msgstr "Síntomas"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Miscellaneous"
+msgstr "Varios"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Mental Status"
+msgstr "Estado mental"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Glasgow Coma Scale"
+msgstr "Escala de Coma de Glasgow"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Mental Assessment and Impairments"
+msgstr "Deficiencias y evaluación mental"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_diagnosis
+msgid "Diagnosis"
+msgstr "Diagnóstico"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Information on Diagnosis"
+msgstr "Información sobre diagnóstico"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Treatment Plan"
+msgstr "Plan de tratamiento"
+
+#. module: oehealth
+#: view:oeh.medical.evaluation:oehealth.oeh_medical_evaluation_view
+msgid "Evaluation Summary"
+msgstr "Resumen de evaluación"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_name
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_line_name
+msgid "Prescription #"
+msgstr "Receta #"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_amount_total
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_line_amount_total
+msgid "Total"
+msgstr "Total"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_prescription_line_qty
+msgid "Prescribed Qty"
+msgstr "Cantidad prescrita"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_health_center_pharmacy_prescription_line_qty
+msgid "Quantity of units (eg, 2 capsules) of the medicament"
+msgstr "Cantidad de unidades (por ejemplo, 2 cápsulas) del medicamento"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_prescription_line_actual_qty
+msgid "Actual Qty Given"
+msgstr "Cantidad real dado"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_health_center_pharmacy_prescription_line_actual_qty
+msgid "Actual quantity given to the patient"
+msgstr "Cantidad real dada al paciente"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_prescription_line_price_unit
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_health_center_pharmacy_prescription_line_price_subtotal
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_pharmacy
+#: view:oeh.medical.prescription:oehealth.view_medical_prescription_filter
+msgid "Pharmacy"
+msgstr "Farmacia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_date
+msgid "Prescription Date"
+msgstr "Receta Fecha"
+
+#. module: oehealth
+#: selection:oeh.medical.prescription,state:0
+msgid "Sent to Pharmacy"
+msgstr "Enviada a farmacia"
+
+#. module: oehealth
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+#: view:oeh.medical.health.center.pharmacy:oehealth.oeh_medical_healthcenters_pharmacy_view
+msgid "Prescription Lines"
+msgstr "Líneas con receta"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_line_name
+msgid "Prescribed Medicines"
+msgstr "Medicamentos recetados"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_dose
+msgid "Dose"
+msgstr "Dosis"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_line_dose
+msgid "Amount of medicines (eg, 250 mg ) each time the patient takes it"
+msgstr "Cantidad de medicamentos (por ejemplo, 250 mg) cada vez que el paciente toma"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_dose_unit
+msgid "Dose Unit"
+msgstr "Unidad de dosis"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_line_dose_unit
+msgid "Unit of measure for the medication to be taken"
+msgstr "Unidad de medida para el medicamento a tomar"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_dose_route
+msgid "Administration Route"
+msgstr "Vía de administración"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_line_dose_route
+msgid "HL7 or other standard drug administration route code."
+msgstr "HL7 u otro código de ruta de administración de fármaco estándar."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_dose_form
+msgid "Form"
+msgstr "Forma"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_line_dose_form
+msgid "Drug form, such as tablet or gel"
+msgstr "Forma de drogas, tales como tabletas o gel de"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_line_qty
+msgid "Quantity of units (eg, 2 capsules) of the medicament"
+msgstr "Cantidad de unidades (por ejemplo, 2 cápsulas) del medicamento"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_common_dosage
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_frequency
+msgid "Frequency"
+msgstr "Frecuencia"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_line_common_dosage
+msgid "Common / standard dosage frequency for this medicines"
+msgstr "Común / estándar de este medicamentos"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_frequency_unit
+msgid "Unit"
+msgstr "Unidad"
+
+#. module: oehealth
+#: selection:oeh.medical.prescription.line,frequency_unit:0
+msgid "Seconds"
+msgstr "Segundos"
+
+#. module: oehealth
+#: selection:oeh.medical.prescription.line,frequency_unit:0
+#: selection:oeh.medical.prescription.line,duration_period:0
+msgid "Minutes"
+msgstr "Minutos"
+
+#. module: oehealth
+#: selection:oeh.medical.prescription.line,frequency_unit:0
+#: selection:oeh.medical.prescription.line,duration_period:0
+msgid "Hours"
+msgstr "Horas"
+
+#. module: oehealth
+#: selection:oeh.medical.prescription.line,frequency_unit:0
+#: selection:oeh.medical.prescription.line,duration_period:0
+msgid "Days"
+msgstr "Días"
+
+#. module: oehealth
+#: selection:oeh.medical.prescription.line,frequency_unit:0
+msgid "Weeks"
+msgstr "Semanas"
+
+#. module: oehealth
+#: selection:oeh.medical.prescription.line,frequency_unit:0
+msgid "When Required"
+msgstr "Cuando sea necesario"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_admin_times
+msgid "Admin hours"
+msgstr "Admin horas"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_line_admin_times
+msgid "Suggested administration hours. For example, at 08:00, 13:00 and 18:00 can be encoded like 08 13 18"
+msgstr "Horas de administración sugerido. Por ejemplo, en el 8:00, 13:00 y 18:00 pueden ser codificados como 08 13 18"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_duration
+msgid "Treatment duration"
+msgstr "Duración del tratamiento"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_duration_period
+msgid "Treatment period"
+msgstr "Período de tratamiento"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_prescription_line_duration_period
+msgid "Period that the patient must take the medication. in minutes, hours, days, months, years or indefinately"
+msgstr "Período que el paciente debe tomar el medicamento. en minutos, horas, días, meses, años o intercambiadas"
+
+#. module: oehealth
+#: selection:oeh.medical.prescription.line,duration_period:0
+msgid "Months"
+msgstr "Meses"
+
+#. module: oehealth
+#: selection:oeh.medical.prescription.line,duration_period:0
+msgid "Years"
+msgstr "Años"
+
+#. module: oehealth
+#: selection:oeh.medical.prescription.line,duration_period:0
+msgid "Indefinite"
+msgstr "Indefinida"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_start_treatment
+msgid "Start of treatment"
+msgstr "Inicio del tratamiento"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_end_treatment
+msgid "End of treatment"
+msgstr "Final del tratamiento"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_prescription_line_info
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Comment"
+msgstr "Comentario"
+
+#. module: oehealth
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Dosage"
+msgstr "Dosis"
+
+#. module: oehealth
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+msgid "Common Dosage"
+msgstr "Dosificación común"
+
+#. module: oehealth
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Specific Dosage"
+msgstr "Dosis específicas"
+
+#. module: oehealth
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Treatment"
+msgstr "Tratamiento"
+
+
+#. module: oehealth
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Day(s)"
+msgstr "Día (s)"
+
+#. module: oehealth
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_view
+msgid "Period"
+msgstr "Período"
+
+#. module: oehealth
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+msgid "Consultancy Invoice"
+msgstr "Consultoría factura"
+
+#. module: oehealth
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+msgid "Send to Pharmacy"
+msgstr "Enviar a la farmacia"
+
+#. module: oehealth
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+msgid "Are you sure you want to create the invoice?"
+msgstr "¿Confirma que desea crear la factura?"
+
+#. module: oehealth
+#: view:oeh.medical.prescription:oehealth.oeh_medical_prescription_view
+msgid "Are you sure you want to send prescription to selected pharmacy?"
+msgstr "¿Está seguro que desea enviar receta a la farmacia seleccionada?"
+
+#. module: oehealth
+#: view:oeh.medical.appointment:oehealth.view_oeh_medical_appointment_filter
+#: view:oeh.medical.vaccines:oehealth.view_medical_vaccine_filter
+#: view:oeh.medical.patient:oehealth.view_oeh_medical_patient_filter
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_vaccines_doctor
+#: view:oeh.medical.evaluation:oehealth.view_oeh_medical_evaluation_filter
+msgid "Doctor"
+msgstr "Médicos"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_name
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_puerperium_monitor_name
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_name
+msgid "Internal Code"
+msgstr "Código interno"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_date
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_puerperium_monitor_date
+msgid "Date and Time"
+msgstr "Fecha y hora"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_contractions
+msgid "Contractions"
+msgstr "Contracciones"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_frequency
+msgid "Mother\'s Heart Frequency"
+msgstr "Frecuencia de corazón de la madre"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_dilation
+msgid "Cervix Dilation"
+msgstr "Dilatación del cuello uterino"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_f_frequency
+msgid "Fetus Heart Frequency"
+msgstr "Frecuencia de corazón del feto"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_meconium
+msgid "Meconium"
+msgstr "El meconio"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_bleeding
+msgid "Bleeding"
+msgstr "Sangrado"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_fundal_height
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_puerperium_monitor_uterus_involution
+msgid "Fundal Height"
+msgstr "Altura del fondo uterino"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_perinatal_monitor_fetus_position
+msgid "Fetus Position"
+msgstr "Posición del feto"
+
+#. module: oehealth
+#: selection:oeh.medical.perinatal.monitor,fetus_position:0
+#: selection:oeh.medical.gyneco,fetus_presentation:0
+msgid "Correct"
+msgstr "Corregir"
+
+#. module: oehealth
+#: selection:oeh.medical.perinatal.monitor,fetus_position:0
+#: selection:oeh.medical.gyneco,fetus_presentation:0
+msgid "Occiput / Cephalic Posterior"
+msgstr "Occipital / cefálica Posterior"
+
+#. module: oehealth
+#: selection:oeh.medical.perinatal.monitor,fetus_position:0
+#: selection:oeh.medical.gyneco,fetus_presentation:0
+msgid "Frank Breech"
+msgstr "Frank de nalgas"
+
+#. module: oehealth
+#: selection:oeh.medical.perinatal.monitor,fetus_position:0
+#: selection:oeh.medical.gyneco,fetus_presentation:0
+msgid "Complete Breech"
+msgstr "Completo de nalgas"
+
+#. module: oehealth
+#: selection:oeh.medical.perinatal.monitor,fetus_position:0
+#: selection:oeh.medical.gyneco,fetus_presentation:0
+msgid "Transverse Lie"
+msgstr "Mentira transversal"
+
+#. module: oehealth
+#: selection:oeh.medical.perinatal.monitor,fetus_position:0
+#: selection:oeh.medical.gyneco,fetus_presentation:0
+msgid "Footling Breech"
+msgstr "Footling de nalgas"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_puerperium_monitor_frequency
+msgid "Heart Frequency"
+msgstr "Frecuencia Cardíaca"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_puerperium_monitor_lochia_amount
+msgid "Lochia Amount"
+msgstr "Loquios Monto"
+
+#. module: oehealth
+#: selection:oeh.medical.puerperium.monitor,lochia_amount:0
+msgid "Abundant"
+msgstr "Abundante"
+
+#. module: oehealth
+#: selection:oeh.medical.puerperium.monitor,lochia_amount:0
+msgid "Hemorrhage"
+msgstr "Hemorragia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_puerperium_monitor_lochia_color
+msgid "Lochia Color"
+msgstr "Loquios Color"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_puerperium_monitor_lochia_odor
+msgid "Lochia Odor"
+msgstr "Loquios Olor"
+
+#. module: oehealth
+#: selection:oeh.medical.puerperium.monitor,lochia_odor:0
+msgid "Offensive"
+msgstr "Ofensiva"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_puerperium_monitor_uterus_involution
+msgid "Distance between the symphysis pubis and the uterine fundus (S-FD) in cm"
+msgstr "Distancia entre la sínfisis púbica y el fondo uterino (S-FD) en cm"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_puerperium_monitor_temperature
+msgid "Temperature"
+msgstr "Temperatura"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_abortion
+msgid "Abortion"
+msgstr "Aborto"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_abortion_reason
+msgid "Abortion Reason"
+msgstr "Aborto Razón"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_admission_date
+msgid "Admission Date"
+msgstr "Fecha de admisión"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_gyneco_admission_date
+msgid "Date when she was admitted to give birth"
+msgstr "Fecha cuando ingresó para dar a luz"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_prenatal_evaluations
+msgid "# of Visit to Doctor"
+msgstr "# de visita al médico"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_gyneco_prenatal_evaluations
+msgid "Number of visits to the doctor during pregnancy"
+msgstr "Número de visitas al médico durante el embarazo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_labor_mode
+msgid "Labor Starting Mode"
+msgstr "Modo partido mano de obra"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_gestational_weeks
+msgid "Gestational Weeks"
+msgstr "Semanas gestacionales"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_gestational_days
+msgid "Gestational Days"
+msgstr "Días gestacionales"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_placenta_incomplete
+msgid "Incomplete Placenta"
+msgstr "Placenta incompleta"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_placenta_retained
+msgid "Retained Placenta"
+msgstr "Retención de Placenta"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_vaginal_tearing
+msgid "Vaginal Tearing"
+msgstr "Desgarro Vaginal"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_forceps
+msgid "Use of Forceps"
+msgstr "Uso de fórceps"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_dismissed
+msgid "Dismissed from Hospital"
+msgstr "Desestimación del Hospital"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_died_at_delivery
+msgid "Died at Delivery Room"
+msgstr "Murió en sala de partos"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_died_at_the_hospital
+msgid "Died at the Hospital"
+msgstr "Murió en el Hospital"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_gyneco_died_being_transferred
+msgid "Died being Transferred"
+msgstr "Murió siendo transferida"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_gyneco_died_being_transferred
+msgid "The mother died being transferred to another health institution"
+msgstr "La madre murió siendo transferido a otra institución de salud"
+
+#. module: oehealth
+#: view:oeh.medical.gyneco:oehealth.oeh_medical_gyneco_view
+msgid "Internal #"
+msgstr "Interno #"
+
+#. module: oehealth
+#: view:oeh.medical.gyneco:oehealth.oeh_medical_gyneco_view
+msgid "Code #"
+msgstr "Código #"
+
+#. module: oehealth
+#: view:oeh.medical.gyneco:oehealth.oeh_medical_gyneco_view
+msgid "Labor"
+msgstr "Trabajo"
+
+#. module: oehealth
+#: view:oeh.medical.gyneco:oehealth.oeh_medical_gyneco_view
+msgid "Misc"
+msgstr "Otra información"
+
+#. module: oehealth
+#: view:oeh.medical.gyneco:oehealth.oeh_medical_gyneco_view
+msgid "Deceased"
+msgstr "Fallecido"
+
+#. module: oehealth
+#: view:oeh.medical.gyneco:oehealth.oeh_medical_gyneco_view
+msgid "Fetus"
+msgstr "Feto"
+
+#. module: oehealth
+#: view:oeh.medical.gyneco:oehealth.oeh_medical_gyneco_view
+msgid "Complications"
+msgstr "Complicaciones"
+
+#. module: oehealth
+#: view:oeh.medical.gyneco:oehealth.oeh_medical_gyneco_view
+msgid "Main"
+msgstr "Principales"
+
+#. module: oehealth
+#: view:oeh.medical.gyneco:oehealth.oeh_medical_gyneco_view
+msgid "Lochia"
+msgstr "Loquios"
+
+#. module: oehealth
+#: view:oeh.medical.gyneco:oehealth.view_oeh_medical_gyneco_filter
+msgid "Labor Mode"
+msgstr "Modo de trabajo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_units_name
+msgid "Unit Name"
+msgstr "Nombre de la unidad"
+
+#. module: oehealth
+#: sql_constraint:oeh.medical.lab.units:0
+msgid "The Lab unit name must be unique"
+msgstr "El nombre de la unidad de laboratorio debe ser único"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_labtest_criteria_name
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_resultcriteria_name
+msgid "Tests"
+msgstr "Pruebas"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_labtest_criteria_normal_range
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_resultcriteria_normal_range
+msgid "Normal Range"
+msgstr "Rango normal"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_labtest_criteria_units
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_resultcriteria_units
+msgid "Units"
+msgstr "Unidades"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_labtest_criteria_sequence
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_resultcriteria_sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_labtest_types_name
+msgid "Lab Test Name"
+msgstr "Nombre de la prueba de laboratorio"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_labtest_types_code
+msgid "Short code for the test"
+msgstr "Código corto para la prueba"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_labtest_types_info
+msgid "Description"
+msgstr "Descripción"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_labtest_types_test_charge
+msgid "Test Charge"
+msgstr "Carga de la prueba"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_labtest_types_lab_criteria
+#: view:oeh.medical.lab.test:oehealth.oeh_medical_lab_test_form
+#: view:oeh.medical.labtest.types:oehealth.oeh_medical_lab_test_types_form
+msgid "Lab Test Cases"
+msgstr "Casos de prueba de laboratorio"
+
+#. module: oehealth
+#: selection:oeh.medical.lab.test,state:0
+msgid "Test In Progress"
+msgstr "Prueba en curso"
+
+#. module: oehealth
+#: selection:oeh.medical.lab.test,state:0
+msgid "Completed"
+msgstr "Completado"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_name
+msgid "Lab Test #"
+msgstr "Prueba de laboratorio #"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_test_type
+#: view:oeh.medical.lab.test:oehealth.view_oeh_medical_lab_test_filter
+msgid "Test Type"
+msgstr "Tipo de prueba"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_pathologist
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_lab_test_pathologist
+#: view:oeh.medical.lab.test:oehealth.view_oeh_medical_lab_test_filter
+msgid "Pathologist"
+msgstr "Patólogo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_requestor
+msgid "Doctor who requested the test"
+msgstr "Médico que solicita la prueba"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_results
+msgid "Results"
+msgstr "Resultados"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_lab_test_criteria
+msgid "Lab Test Result"
+msgstr "Resultado de la prueba de laboratorio"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_date_requested
+msgid "Date requested"
+msgstr "Fecha de solicitud"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_test_date_analysis
+msgid "Date of the Analysis"
+msgstr "Fecha del análisis"
+
+#. module: oehealth
+#: view:oeh.medical.lab.test:oehealth.oeh_medical_lab_test_form
+msgid "Test Results"
+msgstr "Resultados de la prueba"
+
+#. module: oehealth
+#: view:oeh.medical.lab.test:oehealth.oeh_medical_lab_test_form
+msgid "Are you sure you want to start the test?"
+msgstr "¿Seguro que deseas iniciar la prueba?"
+
+#. module: oehealth
+#: view:oeh.medical.lab.test:oehealth.oeh_medical_lab_test_form
+msgid "Start Test"
+msgstr "Iniciar Prueba"
+
+#. module: oehealth
+#: view:oeh.medical.lab.test:oehealth.oeh_medical_lab_test_form
+msgid "Are you sure you want to complete the test?"
+msgstr "¿Seguro que deseas completar la prueba?"
+
+#. module: oehealth
+#: view:oeh.medical.lab.test:oehealth.oeh_medical_lab_test_form
+msgid "Complete Test"
+msgstr "Prueba Completa"
+
+#. module: oehealth
+#: view:oeh.medical.lab.test:oehealth.oeh_medical_lab_test_form
+msgid "Are you sure you want to create the invoice?"
+msgstr "¿Seguro que desea crear la factura?"
+
+#. module: oehealth
+#: view:oeh.medical.lab.test:oehealth.oeh_medical_lab_test_form
+msgid "Create Lab Test Invoice"
+msgstr "Crear factura de prueba de laboratorio"
+
+#. module: oehealth
+#: view:oeh.medical.health.center.pharmacy.line:oehealth.oeh_medical_healthcenters_pharmacy_view
+msgid "Create Invoice"
+msgstr "Crea fattura"
+
+#. module: oehealth
+#: view:oeh.medical.lab.test:oehealth.oeh_medical_lab_test_form
+msgid "Print Lab Test"
+msgstr "Imprimir prueba de laboratorio"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_lab_resultcriteria_result
+msgid "Result"
+msgstr "Resultado"
+
+#. module: oehealth
+#: sql_constraint:oeh.medical.ethnicity:0
+msgid "The ethnic group must be unique !"
+msgstr "El grupo étnico debe ser único!"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_genetics_name
+msgid "Official Symbol"
+msgstr "Símbolo oficial"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_genetics_long_name
+msgid "Official Long Name"
+msgstr "Nombre tiempo oficial"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_genetics_gene_id
+msgid "Gene ID"
+msgstr "Identificación de genes"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_genetics_gene_id
+msgid "Default code from NCBI Entrez database."
+msgstr "Código predeterminado de la base de datos NCBI Entrez."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_genetics_chromosome
+msgid "Affected Chromosome"
+msgstr "Cromosoma Afectado"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_genetics_chromosome
+msgid "Name of the affected chromosome"
+msgstr "Nombre del cromosoma afectado"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_genetics_location
+msgid "Location"
+msgstr "Localización"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_genetics_location
+msgid "Locus of the chromosome"
+msgstr "Locus del cromosoma"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_genetics_dominance
+#: view:oeh.medical.genetics:oehealth.oeh_medical_genetics_view
+msgid "Dominance"
+msgstr "Dominio"
+
+#. module: oehealth
+#: selection:oeh.medical.genetics,dominance:0
+msgid "Recessive"
+msgstr "Recesivo"
+
+#. module: oehealth
+#: selection:oeh.medical.genetics,dominance:0
+msgid "Dominant"
+msgstr "Dominante"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_genetics_info
+msgid "Name of the protein(s) affected"
+msgstr "Nombre de la proteína(s) afectado"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_name
+msgid "Drug Name"
+msgstr "Nombre del medicamento"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_street_name
+msgid "Street Names"
+msgstr "Nombres de calles"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_street_name
+msgid "Common name of the drug in street jargon"
+msgstr "Nombre común de la droga en la jerga de la calle"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_toxicity
+msgid "Toxicity"
+msgstr "Toxicidad"
+
+#. module: oehealth
+#: selection:oeh.medical.recreational.drugs,toxicity:0
+#: selection:oeh.medical.recreational.drugs,addiction_level:0
+msgid "Extreme"
+msgstr "Extremo"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_addiction_level
+msgid "Addiction Level"
+msgstr "Nivel Adicción"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_legal_status
+msgid "Legal Status"
+msgstr "Estatus Legal"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_category
+msgid "Category"
+msgstr "Categoría"
+
+#. module: oehealth
+#: selection:oeh.medical.recreational.drugs,category:0
+msgid "Others"
+msgstr "Otros"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_withdrawal_level
+msgid "Withdrawal Level"
+msgstr "Retirada Nivel"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_withdrawal_level
+msgid "Presence and severity of characteristic withdrawal symptoms."
+msgstr "Presencia y severidad de los síntomas de abstinencia característicos."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_reinforcement_level
+msgid "Reinforcement Level"
+msgstr "Refuerzo Nivel"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_reinforcement_level
+msgid "A measure of the substance's ability to get users to take it again and again, and in preference to other substances."
+msgstr "Una medida de la capacidad de la sustancia para conseguir los usuarios tomar una y otra vez, y con preferencia a otras sustancias."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_tolerance_level
+msgid "Tolerance Level"
+msgstr "Nivel de tolerancia"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_tolerance_level
+msgid "How much of the substance is needed to satisfy increasing cravings for it, and the level of stable need that is eventually reached."
+msgstr "¿Qué cantidad de la sustancia que se necesita para satisfacer el aumento de la ansiedad por él, y el nivel de necesidad estable que se alcanza con el tiempo."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_dependence_level
+msgid "Dependence"
+msgstr "Dependencia"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_dependence_level
+msgid "How difficult it is for the user to quit, the relapse rate, the percentage of people who eventually become dependent, the rating users give their own need for the substance and the degree to which the substance will be used in the face of evidence that it causes harm."
+msgstr "Qué difícil es para el usuario para dejar de fumar, la tasa de recaída, el porcentaje de personas que eventualmente se convierten en dependientes, los usuarios de calificación dan su propia necesidad de la sustancia y el grado en que se utilizará la sustancia en el frente a la evidencia de que causa daño."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_intoxication_level
+msgid "Intoxication"
+msgstr "Intoxicación"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_intoxication_level
+msgid "the level of intoxication is associated with addiction and increases the personal and social damage a substance may do."
+msgstr "el nivel de intoxicación se asocia con la adicción y aumenta el daño personal y social de una sustancia puede hacer."
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_route_popping
+msgid "Skin Popping"
+msgstr "Hacer estallar la piel"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_route_popping
+msgid "Subcutaneous or Intradermical administration"
+msgstr "Administración subcutánea o Intradermical"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_route_inhaling
+msgid "Smoke / Inhale"
+msgstr "Humo / inhalar"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_route_inhaling
+msgid "Insufflation, exluding nasal"
+msgstr "Insuflación, nasal"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_route_sniffing
+msgid "Also called snorting - inhaling through the nares  "
+msgstr "También se llama resoplando - inhalar a través de las narinas"
+
+#. module: oehealth
+#: model:ir.model.fields,field_description:oehealth.field_oeh_medical_recreational_drugs_route_injection
+msgid "Injection"
+msgstr "Inyección"
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_route_injection
+msgid "Injection - Intravenous, Intramuscular..."
+msgstr "Inyección - intravenosa, intramuscular ..."
+
+#. module: oehealth
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_dea_schedule_i
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_dea_schedule_ii
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_dea_schedule_iii
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_dea_schedule_iv
+#: model:ir.model.fields,help:oehealth.field_oeh_medical_recreational_drugs_dea_schedule_v
+msgid "Schedule I and II drugs have a high potential for abuse. They require greater storage security and have a quota on manufacturing, among other restrictions. Schedule I drugs are available for research only and have no approved medical use; Schedule II drugs are available only by prescription (unrefillable) and require a form for ordering. Schedule III and IV drugs are available by prescription, may have five refills in 6 months, and may be ordered orally. Some Schedule V drugs are available over the counter"
+msgstr "Drogas II Lista I y tienen un alto potencial para el abuso. Ellos requieren una mayor seguridad de almacenamiento y tienen una cuota en la fabricación, entre otras restricciones. Horario drogas I están disponibles sólo para la investigación y no tienen ningún uso médico aprobado; Horario drogas II están disponibles sólo con receta médica (no recargables) y requieren un formulario de pedido. Lista III y IV medicamentos están disponibles con receta médica, pueden tener cinco recargas en 6 meses, y puede ser ordenada por vía oral. Algunos medicamentos Anejo V están disponibles en el mostrador"
+
+#. module: oehealth
+#: view:oeh.medical.recreational.drugs:oehealth.oeh_medical_recreational_drug_view
+msgid "Additional Info and Effects"
+msgstr "Info y Efectos adicional"
+
+#. module: oehealth
+#: view:oeh.medical.recreational.drugs:oehealth.oeh_medical_recreational_drug_view
+msgid "Administration Routes"
+msgstr "Rutas de administración"
+
+#. module: oehealth
+#: view:oeh.medical.recreational.drugs:oehealth.oeh_medical_recreational_drug_view
+msgid "Henningfield Rating"
+msgstr "Calificación de Henningfield"
+
+#. module: oehealth
+#: view:oeh.medical.recreational.drugs:oehealth.oeh_medical_recreational_drug_view
+msgid "DEA Schedule Level"
+msgstr "DEA programa nivel"
+
+#. module: oehealth
+#: view:oeh.medical.recreational.drugs:oehealth.oeh_medical_recreational_drug_view
+#: view:oeh.medical.patient:oehealth.oeh_medical_patient_socioeconomics_view
+msgid "General"
+msgstr "General"
