@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+            <!-- Procedures Codes Conf Menu -->
+		    <menuitem name="Medical Procedures" id="oeh_medical_procedures_conf_menu" parent="oehealth.oeh_medical_conf_menu" sequence="4"/>
+
+
+            <!-- Procedure Codes -->
+
+            <record model="ir.ui.view" id="oeh_medical_procedures_tree">
+                <field name="name">Procedures</field>
+                <field name="model">oeh.medical.procedure</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Procedures' editable="bottom">
+                        <field name="name"/>
+                        <field name="description"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_oeh_medical_procedures_filter" model="ir.ui.view">
+                <field name="name">Procedures Search</field>
+                <field name="model">oeh.medical.procedure</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Procedures">
+                        <field name="name"/>
+                        <field name="description"/>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_procedures_action_tree" model="ir.actions.act_window">
+                    <field name="name">Procedures</field>
+                    <field name="res_model">oeh.medical.procedure</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new medical procedure.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_procedures_action_tree" id="oeh_medical_procedure_conf_list" parent="oeh_medical_procedures_conf_menu" sequence="1"/>
+
+        </data>
+</openerp>

@@ -1,0 +1,119 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+            <!-- NTD Dengue Management -->
+
+            <record id="view_oeh_medical_ntd_dengue_filter" model="ir.ui.view">
+                <field name="name">NTD Dengue</field>
+                <field name="model">oeh.medical.ntd.dengue</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search NTD Dengue">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter name="f13" string="Domiciliary Unit" context="{'group_by':'du'}"/>
+                            <filter name="f14" string="Status" context="{'group_by':'du_status'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_ntd_dengue_view">
+                <field name="name">NTD Dengue</field>
+                <field name="model">oeh.medical.ntd.dengue</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                <form string="NTD Dengue">
+                    <sheet>
+                        <div class="oe_left" style="width: 300px;">
+                            <div class="oe_title">
+                               <!-- <label string="Name" class="oe_edit_only"/> -->
+                                <h1>
+                                    <field name="name" placeholder="Name"  required="1"/>
+                                </h1>
+                            </div>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="du"/>
+                                <field name="du_status"/>
+                            </group>
+                            <group>
+                                <field name="survey_date"/>
+                                <field name="next_survey_date"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Presence of larvae">
+                                <field name="aedes_larva"/>
+                                <field name="larva_in_house"/>
+                                <field name="larva_peri"/>
+                            </group>
+                            <group string="Areas to Improve">
+                                <field name="old_tyres"/>
+                                <field name="animal_water_container"/>
+                                <field name="flower_vase"/>
+                                <field name="potted_plant"/>
+                                <field name="tree_holes"/>
+                                <field name="rock_holes"/>
+                            </group>
+                        </group>
+                        <group string="Preventive Measures">
+                            <field name="ovitraps"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="du_fumigation"/>
+                            </group>
+                            <group>
+                                <field name="fumigation_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Observations">
+                                <field name="observations" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_ntd_dengue_tree">
+                <field name="name">NTD Dengue List</field>
+                <field name="model">oeh.medical.ntd.dengue</field>
+                <field name="type">tree</field>
+                    <field name="arch" type="xml">
+                        <tree string='NTD Dengue Information'>
+                            <field name="name"></field>
+                            <field name="du"/>
+                            <field name="du_status"/>
+                            <field name="survey_date"/>
+                            <field name="next_survey_date"/>
+                        </tree>
+                    </field>
+            </record>
+
+
+            <record id="oeh_medical_ntd_dengue_action_tree" model="ir.actions.act_window">
+                    <field name="name">NTD Dengue</field>
+                    <field name="res_model">oeh.medical.ntd.dengue</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new ntd dengue detail.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_ntd_dengue_action_tree" parent="oehealth_extra_addons.oeh_medical_ntd_menu"  id="oeh_medical_edit_ntd_dengue" sequence="10"/>
+
+        </data>
+    </openerp>

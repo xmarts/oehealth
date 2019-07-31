@@ -1,0 +1,350 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+            <!-- Nursing Management -->
+
+            <menuitem name="Nursing" id="oeh_medical_nursing_menu" parent="oehealth.oeh_medical_menu" sequence="7"/>
+
+
+            <!-- Rounding Management -->
+
+            <record id="view_oeh_medical_rounding_filter" model="ir.ui.view">
+                <field name="name">Roundings</field>
+                <field name="model">oeh.medical.patient.rounding</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Roundings">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="round_summary" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter name="f15" string="Patient" context="{'group_by':'patient'}"/>
+                            <filter name="f16" string="Physician" context="{'group_by':'doctor'}"/>
+                            <filter name="f17" string="Registration Codes" context="{'group_by':'inpatient_id'}"/>
+                            <filter name="f18" string="Evolution" context="{'group_by':'evolution'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_rounding_view">
+                <field name="name">Roundings</field>
+                <field name="model">oeh.medical.patient.rounding</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                <form string="Roundings">
+                    <header>
+                        <button confirm="Are you sure you want to complete evaluation?" name="set_to_completed" states="Draft" string="Complete Evaluation" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <button name="print_patient_evaluation" states="Completed" string="Print Rouding Evaluation" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="Draft,Completed" statusbar_colors='{"Draft":"blue","Completed":"grey"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_left" style="width: 300px;">
+                            <div class="oe_title">
+                              <!--  <label string="Name" class="oe_edit_only"/> -->
+                                <h1>
+                                    <field name="name" placeholder="Name"  required="1"/>
+                                </h1>
+                                <label class="oe_edit_only" for="patient"/>
+                                <field name="patient"/>
+                            </div>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="doctor" options="{'no_create': True}"/>
+                                <field name="evaluation_start_date"/>
+                                <field name="environmental_assessment"/>
+                            </group>
+                            <group>
+                                <field name="inpatient_id"/>
+                                <field name="evaluation_end_date"/>
+                                <field name="warning"/>
+                            </group>
+                        </group>
+                        <group string="Seven P's">
+                            <group>
+                                <field name="pain"/>
+                                <field name="potty"/>
+                                <field name="proximity"/>
+                                <field name="personal_needs"/>
+                            </group>
+                            <group>
+                                <field name="pain_level"/>
+                                <field name="position"/>
+                                <field name="pump"/>
+                            </group>
+                        </group>
+                        <group string="Vital Signs">
+                            <group>
+                                <field name="temperature"/>
+                                <field name="bpm"/>
+                                <field name="respiratory_rate"/>
+                            </group>
+                            <group>
+                                <field name="systolic"/>
+                                <field name="diastolic"/>
+                                <field name="osat"/>
+                            </group>
+                        </group>
+                        <group string="Other">
+                            <group>
+                                <field name="weight"/>
+                                <field name="glycemia"/>
+                                <field name="depression"/>
+                            </group>
+                            <group>
+                                <field name="diuresis"/>
+                                <field name="urinary_catheter"/>
+                                <field name="evolution"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Procedures">
+                                <field name="procedures" nolabel="1">
+                                    <form string="Procedures">
+                                        <sheet>
+                                            <group>
+                                                <field name="procedures" string="Code" required="1"/>
+                                            </group>
+                                            <group>
+                                                <field name="notes"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Procedures">
+                                        <field name="procedures" string="Code"/>
+                                        <field name="notes"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Medicaments">
+                                <field name="medicaments" nolabel="1">
+                                    <form string="Medicines">
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="medicine" required="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="qty" required="1"/>
+                                                    <field name="notes"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Medicines">
+                                        <field name="medicine"/>
+                                        <field name="qty"/>
+                                        <field name="notes"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Round Summary">
+                                <field name="round_summary" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_rounding_tree">
+                <field name="name">Roundings</field>
+                <field name="model">oeh.medical.patient.rounding</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Roundings' colors="grey:state=='Completed'">
+                        <field name="name"/>
+                        <field name="patient"/>
+                        <field name="doctor"/>
+                        <field name="inpatient_id"/>
+                        <field name="evolution"/>
+                        <field name="evaluation_start_date"/>
+                        <field name="evaluation_end_date"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record id="oeh_medical_rounding_action_tree" model="ir.actions.act_window">
+                    <field name="name">Roundings</field>
+                    <field name="res_model">oeh.medical.patient.rounding</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to record a new rounding information.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_rounding_action_tree" id="oeh_medical_rounding_list" parent="oeh_medical_nursing_menu" sequence="5"/>
+
+            <!-- Ambulatory Care Management -->
+
+            <record id="view_oeh_medical_ambulatory_care_filter" model="ir.ui.view">
+                <field name="name">Ambulatory Care</field>
+                <field name="model">oeh.medical.patient.ambulatory</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Cares">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="session_notes" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter name="f19" string="Patient" context="{'group_by':'patient'}"/>
+                            <filter name="f20" string="Physician" context="{'group_by':'doctor'}"/>
+                            <filter name="f21" string="Evaluations" context="{'group_by':'evaluation_id'}"/>
+                            <filter name="f22" string="Evolution" context="{'group_by':'evolution'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_ambulatory_care_view">
+                <field name="name">Ambulatory Cares</field>
+                <field name="model">oeh.medical.patient.ambulatory</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                <form string="Ambulatory Cares">
+                    <header>
+                        <button confirm="Are you sure you want to complete evaluation?" name="set_to_completed" states="Draft" string="Complete Evaluation" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="Draft,Completed" statusbar_colors='{"Draft":"blue","Completed":"grey"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_left" style="width: 300px;">
+                            <div class="oe_title">
+                              <!--  <label string="Name" class="oe_edit_only"/> -->
+                                <h1>
+                                    <field name="name" placeholder="Name" required="1"/>
+                                </h1>
+                                <!-- <label class="oe_edit_only" for="patient"/> -->
+                                <field name="patient"/>
+                            </div>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="doctor" options="{'no_create': True}"/>
+                                <field name="evaluation_start_date"/>
+                                <field name="base_condition"/>
+                            </group>
+                            <group>
+                                <field name="evaluation_id"/>
+                                <field name="evaluation_end_date"/>
+                                <field name="ordering_doctor"/>
+                            </group>
+                        </group>
+                        <group string="Vital Signs">
+                            <group>
+                                <field name="temperature"/>
+                                <field name="bpm"/>
+                                <field name="respiratory_rate"/>
+                            </group>
+                            <group>
+                                <field name="systolic"/>
+                                <field name="diastolic"/>
+                                <field name="osat"/>
+                            </group>
+                        </group>
+                        <group string="Misc">
+                            <group>
+                                <field name="glycemia"/>
+                            </group>
+                            <group>
+                                <field name="evolution"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Procedures">
+                                <field name="procedures" nolabel="1">
+                                    <form string="Procedures">
+                                        <sheet>
+                                            <group>
+                                                <field name="procedures" string="Code" required="1"/>
+                                            </group>
+                                            <group>
+                                                <field name="notes"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Procedures">
+                                        <field name="procedures" string="Code"/>
+                                        <field name="notes"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Medicaments">
+                                <field name="medicaments" nolabel="1">
+                                    <form string="Medicines">
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="medicine" required="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="qty" required="1"/>
+                                                    <field name="notes"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Medicines">
+                                        <field name="medicine"/>
+                                        <field name="qty"/>
+                                        <field name="notes"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Session Notes">
+                                <field name="session_notes" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_ambulatory_care_tree">
+                <field name="name">Roundings</field>
+                <field name="model">oeh.medical.patient.ambulatory</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Ambulatory Cares' colors="grey:state=='Completed'">
+                        <field name="name"/>
+                        <field name="patient"/>
+                        <field name="doctor"/>
+                        <field name="evaluation_id"/>
+                        <field name="evolution"/>
+                        <field name="evaluation_start_date"/>
+                        <field name="evaluation_end_date"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record id="oeh_medical_ambulatory_care_action_tree" model="ir.actions.act_window">
+                    <field name="name">Ambulatory Cares</field>
+                    <field name="res_model">oeh.medical.patient.ambulatory</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to record a new ambulatory care information.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_ambulatory_care_action_tree" id="oeh_medical_ambulatory_list" parent="oeh_medical_nursing_menu" sequence="10"/>
+
+
+        </data>
+    </openerp>

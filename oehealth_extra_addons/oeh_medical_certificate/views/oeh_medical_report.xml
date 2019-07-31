@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            string="Medical Certificate"
+            id="action_report_oeh_medical_patient_medical_cert"
+            model="oeh.medical.patient.medical.cert"
+            report_type="qweb-pdf"
+            name="oehealth_extra_addons.report_patient_medical_cert"
+            file="oehealth_extra_addons.report_patient_medical_cert"
+        />
+
+    </data>
+</openerp>

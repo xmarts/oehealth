@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_patient_medical_cert">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div t-if="o.institution">
+                                    <img t-if="o.institution.partner_id.image" t-att-src="'data:image/png;base64,%s' % o.institution.partner_id.image" height="150" border="1" width="150"/>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div t-if="o.doctor">
+                                    <p t-field="o.doctor.name"/>
+                                </div>
+                                <div t-if="o.institution">
+                                    <div t-field="o.institution.partner_id"
+                                t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true, "phone_icons": false}'/>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                This is to certify <span t-field="o.patient.name"/>, is unfit for work from <span t-field="o.start_date"/> to <span t-field="o.end_date"/> because <span t-field="o.reason"/>
+                            </div>
+                        </div>
+
+                        <br/><br/>
+                        <p class="text-left"><br/><br/><br/>______________________<br/><span t-field="o.doctor.name"/></p>
+
+                    </div>
+                </t>
+           </t>
+        </template>
+    </data>
+</odoo>

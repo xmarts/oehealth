@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- CHAGAS XENODIAGNOSIS ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_chagasxenodiagnosis0">
+            <field name="name">Chagas Xenodiagnosis</field>
+            <field name="code">CHAGAS-XENODX</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_chagasxenodiagnosis0">
+            <field name="name">T. cruzi in triatomine excreta</field>
+            <field name="sequence">1</field>
+            <field name="normal_range">Values > 0 are positive</field>
+            <field name="medical_type_id" ref="lab_test_chagasxenodiagnosis0"/>
+        </record>
+
+        <!-- CHAGAS STROUT ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_chagasstrout0">
+            <field name="name">Chagas Strout</field>
+            <field name="code">CHAGAS-STROUT</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_chagasstrout0">
+            <field name="name">Trypomastigotes</field>
+            <field name="sequence">1</field>
+            <field name="normal_range">Values > 0 are positive</field>
+            <field name="medical_type_id" ref="lab_test_chagasstrout0"/>
+        </record>
+
+        <!-- CHAGAS BLOOD SMEAR ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_chagasbloodsmear0">
+            <field name="name">Chagas Blood Smear</field>
+            <field name="code">CHAGAS-SMEAR</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_chagasbloodsmear0">
+            <field name="name">Trypomastigotes</field>
+            <field name="sequence">1</field>
+            <field name="normal_range">Values > 0 are positive</field>
+            <field name="medical_type_id" ref="lab_test_chagasbloodsmear0"/>
+        </record>
+
+        <!-- CHAGAS ELISA ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_chagaselisa0">
+            <field name="name">Chagas Elisa</field>
+            <field name="code">CHAGAS-ELISA</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_chagaselisa0">
+            <field name="name">Chagas ELISA Ig-G</field>
+            <field name="sequence">1</field>
+            <field name="medical_type_id" ref="lab_test_chagaselisa0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_chagaselisa1">
+            <field name="name">Chagas ELISA Ig-M</field>
+            <field name="sequence">2</field>
+            <field name="medical_type_id" ref="lab_test_chagaselisa0"/>
+        </record>
+
+        <!-- CHAGAS INDIRECT IMMUNOFLUORESCENCE - IFA ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_chagaseimmunofluorescence0">
+            <field name="name">Chagas Indirect Immunofluorescence - IFA</field>
+            <field name="code">CHAGAS-IFA</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_chagaseimmunofluorescence0">
+            <field name="name">Chagas IFA Ig-G</field>
+            <field name="sequence">1</field>
+            <field name="medical_type_id" ref="lab_test_chagaseimmunofluorescence0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_chagaseimmunofluorescence1">
+            <field name="name">Chagas IFA Ig-M</field>
+            <field name="sequence">2</field>
+            <field name="medical_type_id" ref="lab_test_chagaseimmunofluorescence0"/>
+        </record>
+
+        <!-- CHAGAS PCR ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_chagasepcr0">
+            <field name="name">Chagas PCR</field>
+            <field name="code">CHAGAS-PCR</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_chagasepcr0">
+            <field name="name">Chagas Realtime Quantitative qPCR</field>
+            <field name="sequence">1</field>
+            <field name="medical_type_id" ref="lab_test_chagasepcr0"/>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_chagasepcr1">
+            <field name="name">Chagas Qualitative PCR</field>
+            <field name="sequence">2</field>
+            <field name="medical_type_id" ref="lab_test_chagasepcr0"/>
+        </record>
+
+        <!-- DENGUE ELISA ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_dengueelisa0">
+            <field name="name">Dengue Elisa</field>
+            <field name="code">DENGUE-ELISA</field>
+            <field name="test_charge">1</field>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_dengueelisa0">
+            <field name="name">Dengue ELISA Ig-M</field>
+            <field name="sequence">1</field>
+            <field name="medical_type_id" ref="lab_test_dengueelisa0"/>
+        </record>
+
+        <!-- DENGUE IgG ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_dengueeigg0">
+            <field name="name">Dengue IgG</field>
+            <field name="code">DENGUE-IgG</field>
+            <field name="test_charge">1</field>
+        </record>
+        <record model="oeh.medical.labtest.criteria" id="lab_test_criteria_dengueeigg0">
+            <field name="name">Dengue Ig-G</field>
+            <field name="sequence">1</field>
+            <field name="medical_type_id" ref="lab_test_dengueeigg0"/>
+        </record>
+
+        <!-- DENGUE PCR ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_denguepcr0">
+            <field name="name">Dengue PCR</field>
+            <field name="code">DENGUE-PCR</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <!-- DENGUE PRNT ANALYSIS -->
+
+        <record model="oeh.medical.labtest.types" id="lab_test_dengueprnt0">
+            <field name="name">Dengue PRNT</field>
+            <field name="code">DENGUE-PRNT</field>
+            <field name="test_charge">1</field>
+        </record>
+
+    </data>
+</openerp>
+

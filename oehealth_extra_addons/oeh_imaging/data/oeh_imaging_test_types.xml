@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data noupdate="1">
+
+        <record model="oeh.medical.imaging.test.type" id="imaging_test_ultrasound0">
+            <field name="name">Ultrasound</field>
+            <field name="code">US</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.imaging.test.type" id="imaging_test_mri0">
+            <field name="name">MRI</field>
+            <field name="code">MRI</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.imaging.test.type" id="imaging_test_xray0">
+            <field name="name">X-Ray</field>
+            <field name="code">XR</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.imaging.test.type" id="imaging_test_ctscan0">
+            <field name="name">CT Scan</field>
+            <field name="code">CT</field>
+            <field name="test_charge">1</field>
+        </record>
+
+        <record model="oeh.medical.imaging.test.type" id="imaging_test_petscan0">
+            <field name="name">PET Scan</field>
+            <field name="code">PET</field>
+            <field name="test_charge">1</field>
+        </record>
+
+
+    </data>
+</openerp>
+

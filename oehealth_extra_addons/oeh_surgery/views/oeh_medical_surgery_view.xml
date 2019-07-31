@@ -1,0 +1,315 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+            <!-- Surgery Management -->
+		    <menuitem name="Surgeries" id="oeh_medical_surgery_menu" parent="oehealth.oeh_medical_menu" sequence="5"/>
+
+
+            <!-- Revised Cardiac Risk Index Management -->
+
+            <record id="view_oeh_medical_surgery_rcri" model="ir.ui.view">
+                <field name="name">RCRI Search</field>
+                <field name="model">oeh.medical.surgery.rcri</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Revised Cardiac Risk Index">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="patient" string="Patient" select="1"/>
+                            <field name="doctor" string="Physician" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter name="f33" string="Patient" context="{'group_by':'patient'}"/>
+                            <filter name="f34" string="Doctor" context="{'group_by':'doctor'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_surgery_rcri_view">
+                <field name="name">Revised Cardiac Risk Index</field>
+                <field name="model">oeh.medical.surgery.rcri</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                <form string="Revised Cardiac Risk Index">
+                    <sheet>
+                        <div class="oe_left" style="width: 500px;">
+                            <div class="oe_title">
+                               <label for="name" class="oe_edit_only"/>
+                                <h1>
+                                    <field name="name"/>
+                                </h1>
+                                <label for="patient" class="oe_edit_only"/>
+                                <field name="patient"/>
+                                <group>
+                                    <p class="oe_grey">
+                                        Points 0: Class I Very Low (0.4% complications)<br/>
+                                        Points 1: Class II Low (0.9% complications)<br/>
+                                        Points 2: Class III Moderate (6.6% complications)<br/>
+                                        Points 3 or more : Class IV High (>11% complications)
+                                    </p>
+                                </group>
+                            </div>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="rcri_date"/>
+                            </group>
+                            <group>
+                                <field name="doctor" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="rcri_high_risk_surgery" on_change="on_change_with_rcri(rcri_high_risk_surgery, rcri_ischemic_history, rcri_congestive_history, rcri_diabetes_history, rcri_cerebrovascular_history, rcri_kidney_history)"/>
+                                <field name="rcri_congestive_history" on_change="on_change_with_rcri(rcri_high_risk_surgery, rcri_ischemic_history, rcri_congestive_history, rcri_diabetes_history, rcri_cerebrovascular_history, rcri_kidney_history)"/>
+                                <field name="rcri_cerebrovascular_history" on_change="on_change_with_rcri(rcri_high_risk_surgery, rcri_ischemic_history, rcri_congestive_history, rcri_diabetes_history, rcri_cerebrovascular_history, rcri_kidney_history)"/>
+                            </group>
+                            <group>
+                                <field name="rcri_ischemic_history" on_change="on_change_with_rcri(rcri_high_risk_surgery, rcri_ischemic_history, rcri_congestive_history, rcri_diabetes_history, rcri_cerebrovascular_history, rcri_kidney_history)"/>
+                                <field name="rcri_diabetes_history" on_change="on_change_with_rcri(rcri_high_risk_surgery, rcri_ischemic_history, rcri_congestive_history, rcri_diabetes_history, rcri_cerebrovascular_history, rcri_kidney_history)"/>
+                                <field name="rcri_kidney_history" on_change="on_change_with_rcri(rcri_high_risk_surgery, rcri_ischemic_history, rcri_congestive_history, rcri_diabetes_history, rcri_cerebrovascular_history, rcri_kidney_history)"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="rcri_total"/>
+                            </group>
+                            <group>
+                                <field name="rcri_class"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_surgery_rcri_tree">
+                <field name="name">Revised Cardiac Risk Index</field>
+                <field name="model">oeh.medical.surgery.rcri</field>
+                <field name="type">tree</field>
+                    <field name="arch" type="xml">
+                        <tree string='Revised Cardiac Risk Index Information'>
+                            <field name="name"/>
+                            <field name="patient"/>
+                            <field name="doctor"/>
+                            <field name="rcri_date"/>
+                        </tree>
+                    </field>
+            </record>
+
+            <record id="oeh_medical_surgery_rcri_action_tree" model="ir.actions.act_window">
+                    <field name="name">Revised Cardiac Risk Index</field>
+                    <field name="res_model">oeh.medical.surgery.rcri</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to register a new Revised Cardiac Risk Index (RCRI).
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_surgery_rcri_action_tree" parent="oeh_medical_surgery_menu"  id="oeh_medical_surgery_rcri_list" sequence="5"/>
+
+            <!-- Surgical Management -->
+
+            <record id="view_oeh_medical_surgery" model="ir.ui.view">
+                <field name="name">Surgeries</field>
+                <field name="model">oeh.medical.surgery</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Surgeries">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="patient" string="Patient" select="1"/>
+                            <field name="surgeon" string="Surgeon" select="1"/>
+                            <field name="anesthetist" string="Anesthetist" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter name="f41" string="Patient" context="{'group_by':'patient'}"/>
+                            <filter name="f42" string="Surgeon" context="{'group_by':'surgeon'}"/>
+                            <filter name="f43" string="Anesthetist" context="{'group_by':'anesthetist'}"/>
+                            <filter name="f44" string="States" context="{'group_by':'state'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_surgery_view">
+                <field name="name">Surgeries</field>
+                <field name="model">oeh.medical.surgery</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                <form string="Surgeries">
+                    <header>
+                        <button confirm="Are you sure you want to confirm the surgery detail?" name="action_surgery_confirm" states="Draft" string="Confirm Surgery" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <button confirm="Are you sure you want to start surgery?" name="action_surgery_start" states="Confirmed" string="Start Surgery" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <button confirm="Are you sure you want to end surgery?" name="action_surgery_end" states="In Progress" string="End Surgery" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <button confirm="Are you sure you want to sign the surgery record?" name="action_surgery_sign" states="Done" string="Sign &amp; Archive" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <button confirm="Are you sure you want to cancel the surgery?" name="action_surgery_cancel" states="Draft,Confirmed" string="Cancel Surgery" type="object" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <button confirm="Are you sure you want to set surgery record in Draft state?" name="action_surgery_set_to_draft" states="Cancelled" string="Set To Draft" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="Draft,Confirmed,In Progress,Done,Signed,Cancelled" statusbar_colors='{"Draft":"blue","Confirmed":"green","In Progress":"green","Done":"grey","Signed":"grey","Cancelled":"red"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                           <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="patient"/>
+                            </group>
+                            <group>
+                                <field name="gender" required="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="computed_age" readonly="1"/>
+                                <field name="surgery_end_date" attrs="{'invisible':[('state','in',['Draft','Confirmed','Cancelled','In Progress'])]}"/>
+                            </group>
+                            <group>
+                                <field name="surgery_date" attrs="{'invisible':[('state','in',['Draft','Confirmed','Cancelled'])]}"/>
+                                <field name="surgery_length" widget="float_time" attrs="{'invisible':[('state','in',['Draft','Confirmed','Cancelled','In Progress'])]}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="classification"/>
+                                <field name="surgeon"/>
+                                <field name="institution" options="{'no_create': True}"/>
+                                <field name="operating_room" domain="[('building','=',building),('state','=','Free')]" options="{'no_create': True}"/>
+                            </group>
+                            <group>
+                                <field name="pathology"/>
+                                <field name="anesthetist"/>
+                                <field name="building" domain="[('institution','=',institution)]" options="{'no_create': True}"/>
+                                <field name="signed_by" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Operation Info">
+                                <group string="Patient Surgical Risk Assessment">
+                                    <group>
+                                        <field name="preop_asa"/>
+                                        <field name="preop_mallampati"/>
+                                    </group>
+                                    <group>
+                                        <field name="preop_rcri"/>
+                                        <field name="surgical_wound"/>
+                                    </group>
+                                </group>
+                                <group string="Preoperative Checklist">
+                                    <group>
+                                        <field name="preop_bleeding_risk"/>
+                                        <field name="preop_site_marking"/>
+                                        <field name="preop_sterility"/>
+                                    </group>
+                                    <group>
+                                        <field name="preop_oximeter"/>
+                                        <field name="preop_antibiotics"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Procedures &amp; Supplies">
+                                <group>
+                                    <field name="procedures" widget="many2many_tags" options="{'no_create': True}"/>
+                                </group>
+                                <group string="Supplies">
+                                    <field name="supplies" nolabel="1" >
+                                        <tree string="Supplies" editable="bottom">
+                                            <field name="supply"/>
+                                            <field name="qty"/>
+                                            <field name="qty_used"/>
+                                            <field name="notes"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Team Members">
+                                <field name="surgery_team" nolabel="1" >
+                                    <tree string="Team Members" editable="bottom">
+                                        <field name="team_member" on_change="onchange_team_member(team_member)"/>
+                                        <field name="role"/>
+                                        <field name="notes"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Information">
+                                <group string="Description">
+                                    <field name="description" nolabel="1"/>
+                                </group>
+                                <group string="Anesthesia Report">
+                                    <field name="anesthesia_report" nolabel="1"/>
+                                </group>
+                                <group string="Extra Info">
+                                    <field name="info" nolabel="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_surgery_tree">
+                <field name="name">Surgeries</field>
+                <field name="model">oeh.medical.surgery</field>
+                <field name="type">tree</field>
+                    <field name="arch" type="xml">
+                        <tree string='Sugeries' colors="grey:state=='Done';grey:state=='Signed';blue:state=='Draft';green:state=='Confirmed';green:state=='In Progress';red:state=='Cancelled'">
+                            <field name="name"/>
+                            <field name="patient"/>
+                            <field name="surgery_date"/>
+                            <field name="classification"/>
+                            <field name="surgeon"/>
+                            <field name="anesthetist"/>
+                            <field name="institution"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+            </record>
+
+            <record id="oeh_medical_surgery_action_tree" model="ir.actions.act_window">
+                    <field name="name">Surgeries</field>
+                    <field name="res_model">oeh.medical.surgery</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new surgery.
+                      </p><p>
+                        oeHealth surgery screen will allow you to record complete details of all the surgeries;
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_surgery_action_tree" parent="oeh_medical_surgery_menu"  id="oeh_medical_surgery_list" sequence="10"/>
+
+            <!-- Inheriting Patient screen to display patient's surgeries -->
+
+            <record id="oeh_medical_patient_surgery_view" model="ir.ui.view">
+                <field name="name">Patient</field>
+                <field name="model">oeh.medical.patient</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_patient_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Surgeries">
+                            <field name="pediatrics_surgery_ids" widget="one2many_list" readonly="1"/>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+
+        </data>
+    </openerp>

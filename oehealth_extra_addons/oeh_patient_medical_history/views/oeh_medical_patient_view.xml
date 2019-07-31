@@ -1,0 +1,414 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+<!-- Inheriting Patient screen to display medical history tab and related fields -->
+
+            <record id="oeh_medical_patient_medical_history_view" model="ir.ui.view">
+                <field name="name">Patient</field>
+                <field name="model">oeh.medical.patient</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_patient_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Medical History">
+                            <group string="PAST MEDICAL ILL NESS">
+                                <group>
+                                    <field name="hbv_infection_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                    <field name="hbv_infection_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="dm_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                    <field name="dm_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="ihd_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                    <field name="ihd_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="cold_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                    <field name="cold_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="hypertension_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                    <field name="hypertension_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="surgery_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                    <field name="surgery_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="others_past_illness" string="Others" attrs="{'readonly':[('deceased','=',True)]}"/>
+                            </group>
+                            <group string="DRUGS">
+                                <group>
+                                     <field name="nsaids_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                     <field name="nsaids_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="aspirin_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                     <field name="aspirin_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="laxative_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                     <field name="laxative_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="others_drugs" string="Others" attrs="{'readonly':[('deceased','=',True)]}"/>
+                            </group>
+                            <group string="MENSTRUAL HISTORY">
+                                <group>
+                                     <field name="lmp_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                     <field name="lmp_dt" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="menorrhagia_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                     <field name="menorrhagia_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="dysmenorrhoea_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                     <field name="dysmenorrhoea_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="bleeding_pv_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                     <field name="bleeding_pv_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="last_pap_smear_chk" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                                <group>
+                                     <field name="last_pap_smear_remarks" string="Remarks" attrs="{'readonly':[('deceased','=',True)]}"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+
+            <!-- Inheriting Appointment screen to display medical history tab and related fields -->
+
+            <record id="oeh_medical_appointment_medical_history_view" model="ir.ui.view">
+                <field name="name">Appointments</field>
+                <field name="model">oeh.medical.appointment</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_appointment_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Medical History">
+                            <group string="PAST MEDICAL ILL NESS">
+                                <group>
+                                    <field name="hbv_infection_chk"/>
+                                </group>
+                                <group>
+                                    <field name="hbv_infection_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="dm_chk"/>
+                                </group>
+                                <group>
+                                    <field name="dm_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="ihd_chk"/>
+                                </group>
+                                <group>
+                                    <field name="ihd_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="cold_chk"/>
+                                </group>
+                                <group>
+                                    <field name="cold_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="hypertension_chk"/>
+                                </group>
+                                <group>
+                                    <field name="hypertension_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="surgery_chk"/>
+                                </group>
+                                <group>
+                                    <field name="surgery_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="others_past_illness" string="Others"/>
+                            </group>
+                            <group string="DRUGS">
+                                <group>
+                                     <field name="nsaids_chk"/>
+                                </group>
+                                <group>
+                                     <field name="nsaids_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="aspirin_chk"/>
+                                </group>
+                                <group>
+                                     <field name="aspirin_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="laxative_chk"/>
+                                </group>
+                                <group>
+                                     <field name="laxative_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="others_drugs" string="Others"/>
+                            </group>
+                            <group string="MENSTRUAL HISTORY">
+                                <group>
+                                     <field name="lmp_chk"/>
+                                </group>
+                                <group>
+                                     <field name="lmp_dt"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="menorrhagia_chk"/>
+                                </group>
+                                <group>
+                                     <field name="menorrhagia_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="dysmenorrhoea_chk"/>
+                                </group>
+                                <group>
+                                     <field name="dysmenorrhoea_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="bleeding_pv_chk"/>
+                                </group>
+                                <group>
+                                     <field name="bleeding_pv_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="last_pap_smear_chk"/>
+                                </group>
+                                <group>
+                                     <field name="last_pap_smear_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+
+            <record id="oeh_medical_appointment_medical_history_onchange_view" model="ir.ui.view">
+                <field name="name">Appointments</field>
+                <field name="model">oeh.medical.appointment</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_appointment_view"/>
+                <field name="arch" type="xml">
+                    <field name="patient" position="replace">
+                        <field name="patient" on_change="onchange_patient_history(patient)"/>
+                    </field>
+                </field>
+            </record>
+
+
+            <!-- Inheriting Walkin screen to display medical history tab and related fields -->
+
+            <record id="oeh_medical_appointment_walkin_medical_history_view" model="ir.ui.view">
+                <field name="name">Walkins</field>
+                <field name="model">oeh.medical.appointment.register.walkin</field>
+                <field name="inherit_id" ref="oehealth_extra_addons.oeh_medical_register_for_walkin_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Medical History">
+                            <group string="PAST MEDICAL ILL NESS">
+                                <group>
+                                    <field name="hbv_infection_chk"/>
+                                </group>
+                                <group>
+                                    <field name="hbv_infection_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="dm_chk"/>
+                                </group>
+                                <group>
+                                    <field name="dm_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="ihd_chk"/>
+                                </group>
+                                <group>
+                                    <field name="ihd_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="cold_chk"/>
+                                </group>
+                                <group>
+                                    <field name="cold_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="hypertension_chk"/>
+                                </group>
+                                <group>
+                                    <field name="hypertension_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="surgery_chk"/>
+                                </group>
+                                <group>
+                                    <field name="surgery_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="others_past_illness" string="Others"/>
+                            </group>
+                            <group string="DRUGS">
+                                <group>
+                                     <field name="nsaids_chk"/>
+                                </group>
+                                <group>
+                                     <field name="nsaids_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="aspirin_chk"/>
+                                </group>
+                                <group>
+                                     <field name="aspirin_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="laxative_chk"/>
+                                </group>
+                                <group>
+                                     <field name="laxative_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="others_drugs" string="Others"/>
+                            </group>
+                            <group string="MENSTRUAL HISTORY">
+                                <group>
+                                     <field name="lmp_chk"/>
+                                </group>
+                                <group>
+                                     <field name="lmp_dt"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="menorrhagia_chk"/>
+                                </group>
+                                <group>
+                                     <field name="menorrhagia_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="dysmenorrhoea_chk"/>
+                                </group>
+                                <group>
+                                     <field name="dysmenorrhoea_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="bleeding_pv_chk"/>
+                                </group>
+                                <group>
+                                     <field name="bleeding_pv_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="last_pap_smear_chk"/>
+                                </group>
+                                <group>
+                                     <field name="last_pap_smear_remarks" string="Remarks"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+
+         </data>
+    </openerp>

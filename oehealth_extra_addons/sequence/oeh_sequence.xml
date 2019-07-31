@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- Pediatrics Management -->
+
+        <record id="seq_oeh_medical_pediatrics_newborn" model="ir.sequence">
+            <field name="name">Newborns</field>
+            <field name="code">oeh.medical.pediatrics.newborn</field>
+            <field name="prefix">NB/%(day)s-%(month)s-%(year)s/</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_oeh_medical_pediatrics_pcs" model="ir.sequence">
+            <field name="name">Pediatric Symptom Checklists</field>
+            <field name="code">oeh.medical.pediatrics.psc</field>
+            <field name="prefix">PCS</field>
+            <field name="padding">5</field>
+        </record>
+
+        <!-- Surgical Management -->
+
+        <record id="seq_oeh_medical_surgery" model="ir.sequence">
+            <field name="name">Surgeries</field>
+            <field name="code">oeh.medical.surgery</field>
+            <field name="prefix">SR/%(year)s/</field>
+            <field name="padding">5</field>
+        </record>
+
+        <!-- Ophthalmology Management -->
+
+        <record id="seq_oeh_medical_ophthalmology" model="ir.sequence">
+            <field name="name">Ophthalmology</field>
+            <field name="code">oeh.medical.ophthalmology</field>
+            <field name="prefix">OP</field>
+            <field name="padding">5</field>
+        </record>
+
+        <!-- Nursing Management -->
+
+        <record id="seq_oeh_medical_patient_rounding" model="ir.sequence">
+            <field name="name">Roundings</field>
+            <field name="code">oeh.medical.patient.rounding</field>
+            <field name="prefix">ROUND %(year)s/</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_oeh_medical_patient_ambulatory_care" model="ir.sequence">
+            <field name="name">Ambulatory Cares</field>
+            <field name="code">oeh.medical.patient.ambulatory</field>
+            <field name="prefix">AC %(year)s/</field>
+            <field name="padding">5</field>
+        </record>
+
+        <!-- Imaging Management -->
+
+        <record id="seq_oeh_medical_imaging" model="ir.sequence">
+            <field name="name">Imaging</field>
+            <field name="code">oeh.medical.imaging</field>
+            <field name="prefix">IM</field>
+            <field name="padding">5</field>
+        </record>
+
+        <!-- NTD Management -->
+
+        <record id="seq_oeh_medical_ntd_chagas" model="ir.sequence">
+            <field name="name">NTD Chagas</field>
+            <field name="code">oeh.medical.ntd.chagas</field>
+            <field name="prefix">NTCH</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_oeh_medical_ntd_dengue" model="ir.sequence">
+            <field name="name">NTD Dengue</field>
+            <field name="code">oeh.medical.ntd.dengue</field>
+            <field name="prefix">NTDN</field>
+            <field name="padding">5</field>
+        </record>
+
+        <!-- Walkins -->
+
+        <record id="seq_oeh_medical_appointment_register_walkin" model="ir.sequence">
+            <field name="name">Walk Ins</field>
+            <field name="code">oeh.medical.appointment.register.walkin</field>
+            <field name="prefix">WI/%(day)s-%(month)s-%(year)s/</field>
+            <field name="padding">5</field>
+        </record>
+
+        <!-- Medical Certificate -->
+
+        <record id="seq_oeh_medical_medical_cert_log" model="ir.sequence">
+            <field name="name">Medical Certificates</field>
+            <field name="code">oeh.medical.patient.medical.cert</field>
+            <field name="prefix">MC%(year)s%(month)s%(day)s-</field>
+            <field name="padding">3</field>
+        </record>
+
+        <!-- Call Logs -->
+
+        <record id="seq_oeh_medical_patient_call_log" model="ir.sequence">
+            <field name="name">Call Logs</field>
+            <field name="code">oeh.medical.patient.call.log</field>
+            <field name="prefix">CL/%(day)s-%(month)s-%(year)s/</field>
+            <field name="padding">5</field>
+        </record>
+
+
+    </data>
+</openerp>

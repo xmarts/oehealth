@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            string="Imaging Test Report"
+            id="action_report_patient_imaging"
+            model="oeh.medical.imaging"
+            report_type="qweb-pdf"
+            name="oehealth_extra_addons.report_oeh_medical_patient_imaging"
+            file="oehealth_extra_addons.report_oeh_medical_patient_imaging"
+        />
+
+    </data>
+</openerp>

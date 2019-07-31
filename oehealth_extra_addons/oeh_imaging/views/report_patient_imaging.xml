@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_oeh_medical_patient_imaging">
+    <t t-call="web.external_layout">
+        <t t-foreach="docs" t-as="o">
+            <t>
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <p style="font-size:24px;text-align:center;font-weight:bold;">Imaging Report</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <div t-if="o.name">
+                                <strong>Imaging Test#:</strong>
+                                <p t-field="o.name"/>
+                            </div>
+                            <div t-if="o.patient">
+                                <strong>Patient:</strong>
+                                <p t-field="o.patient.name"/>
+                            </div>
+                            <div t-if="o.date_requested">
+                                <strong>Date Requested:</strong>
+                                <p t-field="o.date_requested"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div t-if="o.test_type">
+                                <strong>Test Type:</strong>
+                                <p t-field="o.test_type.name"/>
+                            </div>
+                            <div t-if="o.requestor">
+                                <strong>Doctor who requested test:</strong>
+                                <p t-field="o.requestor"/>
+                            </div>
+                            <div t-if="o.date_analysis">
+                                <strong>Date Analysis:</strong>
+                                <p t-field="o.date_analysis"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="oe_structure"/>
+
+                    <p t-if="o.analysis">
+                        <strong>Analysis:</strong>
+                        <span t-field="o.analysis"/>
+                    </p>
+
+                    <p t-if="o.conclusion">
+                        <strong>Conclusion:</strong>
+                        <span t-field="o.conclusion"/>
+                    </p>
+                    <br/><br/>
+                    <table class="table table-condensed">
+                        <tr>
+                            <td width="50%">
+                                <p style="text-align:center;padding-top:10px;">
+                                    <img t-if="not o.image1" t-att-src="'/web/static/src/img/placeholder.png'" height="90" border="1" width="90"/>
+                                    <img t-if="o.image1" t-att-src="'data:image/png;base64,%s' % o.image1" height="90" border="1" width="90"/>
+                                </p>
+                            </td>
+                            <td width="50%">
+                                <p style="text-align:center;padding-top:10px;">
+                                    <img t-if="not o.image2" t-att-src="'/web/static/src/img/placeholder.png'" height="90" border="1" width="90"/>
+                                    <img t-if="o.image2" t-att-src="'data:image/png;base64,%s' % o.image2" height="90" border="1" width="90"/>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="50%">
+                                <p style="text-align:center;padding-top:10px;">
+                                    <img t-if="not o.image3" t-att-src="'/web/static/src/img/placeholder.png'" height="90" border="1" width="90"/>
+                                    <img t-if="o.image3" t-att-src="'data:image/png;base64,%s' % o.image3" height="90" border="1" width="90"/>
+                                </p>
+                            </td>
+                            <td width="50%">
+                                <p style="text-align:center;padding-top:10px;">
+                                    <img t-if="not o.image4" t-att-src="'/web/static/src/img/placeholder.png'" height="90" border="1" width="90"/>
+                                    <img t-if="o.image4" t-att-src="'data:image/png;base64,%s' % o.image4" height="90" border="1" width="90"/>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="50%">
+                                <p style="text-align:center;padding-top:10px;">
+                                    <img t-if="not o.image5" t-att-src="'/web/static/src/img/placeholder.png'" height="90" border="1" width="90"/>
+                                    <img t-if="o.image5" t-att-src="'data:image/png;base64,%s' % o.image5" height="90" border="1" width="90"/>
+                                </p>
+                            </td>
+                            <td width="50%">
+                                <p style="text-align:center;padding-top:10px;">
+                                    <img t-if="not o.image6" t-att-src="'/web/static/src/img/placeholder.png'" height="90" border="1" width="90"/>
+                                    <img t-if="o.image6" t-att-src="'data:image/png;base64,%s' % o.image6" height="90" border="1" width="90"/>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <br/><br/><br/><br/><br/><br/>
+                    <p class="text-right"><strong>Authorized signature</strong><br/><br/><br/>______________________</p>
+
+                </div>
+            </t>
+        </t>
+   </t>
+</template>
+</data>
+</openerp>

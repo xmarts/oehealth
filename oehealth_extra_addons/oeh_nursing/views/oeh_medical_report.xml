@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            string="Patient Rounding Report"
+            id="action_report_patient_rounding_evaluation"
+            model="oeh.medical.patient.rounding"
+            report_type="qweb-pdf"
+            name="oehealth_extra_addons.report_patient_rounding_evaluation"
+            file="oehealth_extra_addons.report_patient_rounding_evaluation"
+        />
+
+    </data>
+</openerp>

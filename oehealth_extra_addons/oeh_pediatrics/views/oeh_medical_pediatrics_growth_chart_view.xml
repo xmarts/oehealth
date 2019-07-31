@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+            <!-- Pediatrics Growth Chart Management -->
+
+            <record id="view_oeh_medical_pediatrics_growth_chart_filter" model="ir.ui.view">
+                <field name="name">Growth Chart Search</field>
+                <field name="model">oeh.medical.pediatrics.growth.chart.who</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Growth Charts">
+                        <separator orientation="vertical"/>
+                            <field name="indicator" select="1"/>
+                            <field name="measure" select="1"/>
+                            <field name="type" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter name="f28" string="Indicator" context="{'group_by':'indicator'}"/>
+                            <filter name="f29" string="Measure" context="{'group_by':'measure'}"/>
+                            <filter name="f30" string="Sex" context="{'group_by':'sex'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_pediatrics_growth_chart_tree">
+                <field name="name">Growth Chart List</field>
+                <field name="model">oeh.medical.pediatrics.growth.chart.who</field>
+                <field name="type">tree</field>
+                    <field name="arch" type="xml">
+                        <tree string='Growth Charts Information' editable="top">
+                            <field name="indicator"/>
+                            <field name="measure"/>
+                            <field name="sex"/>
+                            <field name="month"/>
+                            <field name="type"/>
+                            <field name="value"/>
+                        </tree>
+                    </field>
+            </record>
+
+            <record id="oeh_medical_pediatrics_growth_chart_graph" model="ir.ui.view">
+                <field name="name">Growth Chart Graph</field>
+                <field name="model">oeh.medical.pediatrics.growth.chart.who</field>
+                <field name="arch" type="xml">
+                    <graph string="Growth Charts" type="line">
+                        <field name="month" string="Month" type="col"/>
+                        <field name="value" type="measure"/>
+                    </graph>
+                </field>
+            </record>
+
+            <record id="oeh_medical_pediatrics_growth_chart_action_tree" model="ir.actions.act_window">
+                    <field name="name">Pediatrics Growth Charts (WHO)</field>
+                    <field name="res_model">oeh.medical.pediatrics.growth.chart.who</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,graph</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to register a new pediatrics growth chart (WHO).
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_pediatrics_growth_chart_action_tree" parent="oehealth.oeh_medical_conf_patient"  id="oeh_medical_pediatrics_growth_chart_list" sequence="15"/>
+
+        </data>
+    </openerp>

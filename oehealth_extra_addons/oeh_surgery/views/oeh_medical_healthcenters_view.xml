@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+            <!-- Operating Theaters -->
+
+            <record model="ir.ui.view" id="oeh_medical_healthcenters_ot_view">
+                <field name="name">Operating Theaters</field>
+                <field name="model">oeh.medical.health.center.ot</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Operating Theaters">
+                        <header>
+                            <button confirm="Are you sure you want to mark OT as Not Available?" name="action_surgery_set_to_not_available" states="Free" string="Mark as Not Available" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <button confirm="Are you sure you want to mark OT as available?" name="action_surgery_set_to_available" states="Not Available" string="Mark as Available" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <field name="state" widget="statusbar" statusbar_visible="Free,Reserved,Occupied,Not Available" statusbar_colors='{"Occupied":"red","Free":"blue","Reserved":"purple","Not Available":"grey"}'/>
+                        </header>
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name" string="OT Name"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <field name="building"/>
+                            </group>
+                            <group string="Extra Information">
+                                <field name="info" nolabel="1"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_healthcenters_ot_tree">
+                <field name="name">Operating Theaters</field>
+                <field name="model">oeh.medical.health.center.ot</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Operating Theaters' colors="grey:state=='Occupied';blue:state=='Reserved';green:state=='Free';red:state=='Not Available'">
+                        <field name="name"/>
+                        <field name="building"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_medical_healthcenters_ot_filter" model="ir.ui.view">
+                <field name="name">Operating Theater Search</field>
+                <field name="model">oeh.medical.health.center.ot</field>
+                <field name="priority" eval="8" />
+			    <field name="arch" type="xml">
+                    <search string="Operating Theaters">
+                        <field name="name"/>
+                        <field name="info"/>
+                        <newline />
+                        <group expand="0" string="Group By...">
+                            <filter name="f31" string="Building" domain="[]" context="{'group_by':'building'}" />
+                            <filter name="f32" string="State" domain="[]" context="{'group_by':'state'}" />
+                        </group>
+				    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_healthcenters_ot_action_tree" model="ir.actions.act_window">
+                    <field name="name">Operating Theaters</field>
+                    <field name="res_model">oeh.medical.health.center.ot</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new health center operation theater.
+                      </p><p>
+                        With oeHealth OT screen, you can configure your operating rooms to use during the surgeries
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_healthcenters_ot_action_tree" id="oeh_medical_healthcenters_ot_list" parent="oehealth.oeh_medical_hospital_menu" sequence="5"/>
+
+            <!-- Inheriting Building screen to display Operation Theater references -->
+
+            <record id="oeh_medical_healthcenters_building_ot_view" model="ir.ui.view">
+                <field name="name">Buildings</field>
+                <field name="model">oeh.medical.health.center.building</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_healthcenters_building_view"/>
+                <field name="arch" type="xml">
+                    <button type="action" class="oe_stat_button" name="%(oehealth.oeh_medical_healthcenters_bed_action_tree)d" context="{'search_default_building': active_id,'default_building': active_id}" icon="fa-list" position="after">
+                        <button type="action" class="oe_stat_button" name="%(oeh_medical_healthcenters_ot_action_tree)d" context="{'search_default_building': active_id,'default_building': active_id}" icon="fa-list">
+                            <field string="Operating Theaters" name="ot_count" widget="statinfo"/>
+                        </button>
+                    </button>
+                </field>
+            </record>
+
+    </data>
+</openerp>

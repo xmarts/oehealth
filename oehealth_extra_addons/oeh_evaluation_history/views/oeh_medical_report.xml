@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            string="Patient Evaluation History"
+            id="action_report_patient_evaluation_history"
+            model="oeh.medical.evaluation"
+            report_type="qweb-pdf"
+            name="oehealth_extra_addons.report_patient_evaluation_history"
+            file="oehealth_extra_addons.report_patient_evaluation_history"
+        />
+
+    </data>
+</openerp>

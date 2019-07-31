@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            string="Ophthalmology Report"
+            id="action_report_patient_ophthalmology"
+            model="oeh.medical.ophthalmology"
+            report_type="qweb-pdf"
+            name="oehealth_extra_addons.report_patient_ophthalmology_evaluation"
+            file="oehealth_extra_addons.report_patient_ophthalmology_evaluation"
+        />
+
+    </data>
+</openerp>

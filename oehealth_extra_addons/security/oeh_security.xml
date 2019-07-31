@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="group_oeh_medical_nurse" model="res.groups">
+            <field name="name">Nurse</field>
+            <field name="category_id" ref="oehealth.module_oeh_medical_category"/>
+        </record>
+
+        <!-- Pediatrics Management -->
+
+        <record model='ir.ui.menu' id='oeh_medical_newborn_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_pediatrics_growth_chart_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+        <!-- ICD10 Procedures -->
+
+        <record model='ir.ui.menu' id='oeh_medical_procedure_conf_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+        <!-- Surgical Management -->
+
+        <record model='ir.ui.menu' id='oeh_medical_healthcenters_ot_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_surgery_rcri_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_surgery_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+        <!-- Ophthalmology Management -->
+
+        <record model='ir.ui.menu' id='oeh_medical_ophthalmology_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+        <!-- Nursing Management -->
+
+        <record model='ir.ui.menu' id='oehealth.oeh_medical_edit_patient'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_rounding_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+         <record model='ir.ui.menu' id='oeh_medical_ambulatory_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oehealth.oeh_medical_inpatient_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+        <!-- Imaging Management -->
+
+        <record model='ir.ui.menu' id='oeh_medical_imaging_test_type_conf_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_imaging_test_conf_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager')])]"/>
+        </record>
+
+         <!-- NTD Management -->
+
+        <record model='ir.ui.menu' id='oeh_medical_edit_domiciliary_units'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_edit_ntd_chagas'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager')])]"/>
+        </record>
+
+        <record model='ir.ui.menu' id='oeh_medical_edit_ntd_dengue'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager')])]"/>
+        </record>
+
+        <!-- Walkins -->
+        <record model='ir.ui.menu' id='oeh_medical_register_for_walkin_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_manager'),ref('oehealth.group_oeh_medical_physician'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+        <!-- Patient Call Log -->
+        <record model='ir.ui.menu' id='oeh_medical_patient_call_log_list'>
+            <field name="groups_id" eval="[(6,0,[ref('oehealth.group_oeh_medical_physician'),ref('oehealth.group_oeh_medical_manager'),ref('group_oeh_medical_nurse')])]"/>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,800 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+            <!-- Inheriting Physician screen to add Walkin Schedule -->
+
+            <record id="oeh_medical_physician_walkin_view" model="ir.ui.view">
+                <field name="name">Physicians</field>
+                <field name="model">oeh.medical.physician</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_physician_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Walkin Schdule">
+                            <field name="walkin_schedule_lines" nolabel="1">
+                                <tree string="Walkin Schedule" nolabel="1" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="end_date"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+
+            <!-- Inheriting vaccine screen to display walkin reference -->
+
+            <record id="oeh_medical_vaccine_walkin_view" model="ir.ui.view">
+                <field name="name">Vaccines</field>
+                <field name="model">oeh.medical.vaccines</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_vaccine_view"/>
+                <field name="arch" type="xml">
+                    <field name="institution" options="{'no_create': True}" position="after">
+                        <field name="walkin"/>
+                    </field>
+                </field>
+            </record>
+
+            <!-- Inheriting evaluation screen to display walkin reference -->
+
+            <record id="oeh_medical_evaluation_walkin_view" model="ir.ui.view">
+                <field name="name">Evaluations</field>
+                <field name="model">oeh.medical.evaluation</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_evaluation_view"/>
+                <field name="arch" type="xml">
+                    <field name="chief_complaint" position="after">
+                        <field name="walkin"/>
+                    </field>
+                </field>
+            </record>
+
+            <!-- Inheriting prescription screen to display walkin reference -->
+
+            <record id="oeh_medical_prescription_walkin_view" model="ir.ui.view">
+                <field name="name">Prescriptions</field>
+                <field name="model">oeh.medical.prescription</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_prescription_view"/>
+                <field name="arch" type="xml">
+                    <field name="date" position="after">
+                        <field name="walkin"/>
+                    </field>
+                </field>
+            </record>
+
+            <!-- Inheriting admissions screen to display walkin reference -->
+
+            <record id="oeh_medical_inpatient_walkin_view" model="ir.ui.view">
+                <field name="name">Inpatient Admissions</field>
+                <field name="model">oeh.medical.inpatient</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_inpatient_view"/>
+                <field name="arch" type="xml">
+                    <field name="operating_physician" options="{'no_create': True}" position="after">
+                        <field name="walkin"/>
+                    </field>
+                </field>
+            </record>
+
+            <!-- Inheriting lab tests screen to display walkin reference -->
+
+           <!--  <record id="oeh_medical_lab_test_walkin_view" model="ir.ui.view">
+                <field name="name">Lab Tests</field>
+                <field name="model">oeh.medical.lab.test</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_lab_test_form"/>
+                <field name="arch" type="xml">
+                    <field name="requestor" options="{'no_create': True}" position="after">
+                        <field name="walkin"/>
+                    </field>
+                </field>
+            </record>
+ -->
+            <!-- Register for Walkin -->
+
+            <record model="ir.ui.view" id="view_oeh_medical_register_for_walkin_calendar">
+                <field name="name">Walkins Calendar</field>
+                <field name="model">oeh.medical.appointment.register.walkin</field>
+                <field name="priority" eval="2"/>
+                <field name="arch" type="xml">
+                    <calendar string="Walkins" date_start="date"
+                              color="state" quick_add="False" mode="week">
+                        <field name="patient"/>
+                    </calendar>
+                </field>
+            </record>
+
+            <record id="view_oeh_medical_register_for_walkin_filter" model="ir.ui.view">
+                <field name="name">Walkin Search</field>
+                <field name="model">oeh.medical.appointment.register.walkin</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Walkins">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="patient" string="Patient" select="1"/>
+                            <field name="doctor" string="Physician" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter name="f45" string="Patient" context="{'group_by':'patient'}"/>
+                            <filter name="f46" string="Doctor" context="{'group_by':'doctor'}"/>
+                            <filter name="f47" string="Sex" context="{'group_by':'sex'}"/>
+                            <filter name="f48" string="Blood Type" context="{'group_by':'blood_type'}"/>
+                            <filter name="f49" string="Marital Status" context="{'group_by':'marital_status'}"/>
+                            <filter name="f50" string="Walkin Date" context="{'group_by':'date'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+
+            <record model="ir.ui.view" id="oeh_medical_register_for_walkin_view">
+                <field name="name">Walkins</field>
+                <field name="model">oeh.medical.appointment.register.walkin</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                <form string="Walkins">
+                    <header>
+                        <button confirm="Are you sure you want to mark walkin as completed?" name="set_to_completed" states="Scheduled" string="Mark as Completed" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <button confirm="Are you sure you want to create the invoice?" name="action_walkin_invoice_create" states="Completed" string="Consultancy Invoice" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="Scheduled,Completed,Invoiced" statusbar_colors='{"Scheduled":"blue","Completed":"green","Invoiced":"grey"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_left" style="width: 500px;">
+                            <div class="oe_title" style="width: 390px;">
+                                <label class="oe_edit_only" for="name" string="Walkin #"/>
+                                <h1><field name="name" class="oe_inline"/></h1>
+                                <label for="patient" class="oe_edit_only"/>
+                                <field name="patient" on_change="onchange_patient(patient)"/>
+                            </div>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date"/>
+                            </group>
+                            <group>
+                                <field name="doctor" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="dob"/>
+                                <field name="marital_status"/>
+                                 <field name="rh"/>
+                            </group>
+                            <group>
+                                <field name="sex"/>
+                                <field name="blood_type"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Comments">
+                                <group>
+                                    <group>
+                                        <field name="comments" nolabel="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Evaluations">
+                                <field name="evaluation_ids" context="{'default_walkin': active_id}" domain="[('walkin', '=', active_id)]">
+                                    <form string="Evaluation">
+                                        <sheet>
+                                            <div class="oe_left" style="width: 500px;">
+                                                <div class="oe_title" style="width: 390px;">
+                                                    <label class="oe_edit_only" for="name" string="Evaluation #"/>
+                                                    <h1><field name="name" class="oe_inline"/></h1>
+                                                    <label for="patient" class="oe_edit_only"/>
+                                                    <field name="patient" domain="[('id', '=', parent.patient)]"/>
+                                                </div>
+                                            </div>
+                                            <group>
+                                                <group>
+                                                    <field name="doctor" options="{'no_create': True}"/>
+                                                    <field name="evaluation_start_date"/>
+                                                    <field name="walkin" readonly="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="evaluation_type"/>
+                                                    <field name="evaluation_end_date"/>
+                                                    <field name="chief_complaint"/>
+                                                </group>
+                                            </group>
+                                            <group string="Evaluation Summary">
+                                                <field name="notes_complaint" nolabel="1"/>
+                                            </group>
+                                            <notebook>
+                                                <page string="Signs">
+                                                    <group string="Vital Signs">
+                                                        <group>
+                                                            <field name="temperature"/>
+                                                            <field name="diastolic"/>
+                                                            <field name="respiratory_rate"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="systolic"/>
+                                                            <field name="bpm"/>
+                                                            <field name="osat"/>
+                                                        </group>
+                                                    </group>
+
+                                                    <group string="Anthropometry">
+                                                        <group>
+                                                            <field name="weight" on_change="onchange_height_weight(height,weight)"/>
+                                                            <field name="abdominal_circ"/>
+                                                            <field name="bmi"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="height" on_change="onchange_height_weight(height,weight)"/>
+                                                            <field name="head_circumference"/>
+                                                        </group>
+                                                    </group>
+                                                    <group>
+                                                        <group>
+                                                            <field name="edema"/>
+                                                            <field name="petechiae"/>
+                                                            <field name="acropachy"/>
+                                                            <field name="miosis"/>
+                                                            <field name="cough"/>
+                                                            <field name="arritmia"/>
+                                                            <field name="heart_extra_sounds"/>
+                                                            <field name="ascites"/>
+                                                            <field name="bronchophony"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="cyanosis"/>
+                                                            <field name="hematoma"/>
+                                                            <field name="nystagmus"/>
+                                                            <field name="mydriasis"/>
+                                                            <field name="palpebral_ptosis"/>
+                                                            <field name="heart_murmurs"/>
+                                                            <field name="jugular_engorgement"/>
+                                                            <field name="lung_adventitious_sounds"/>
+                                                        </group>
+                                                    </group>
+                                                    <group>
+                                                        <group>
+                                                            <field name="increased_fremitus"/>
+                                                            <field name="jaundice"/>
+                                                            <field name="breast_lump"/>
+                                                            <field name="nipple_inversion"/>
+                                                            <field name="peau_dorange"/>
+                                                            <field name="hypotonia"/>
+                                                            <field name="masses"/>
+                                                            <field name="goiter"/>
+                                                            <field name="xerosis"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="decreased_fremitus"/>
+                                                            <field name="lynphadenitis"/>
+                                                            <field name="breast_asymmetry"/>
+                                                            <field name="nipple_discharge"/>
+                                                            <field name="gynecomastia"/>
+                                                            <field name="hypertonia"/>
+                                                            <field name="pressure_ulcers"/>
+                                                            <field name="alopecia"/>
+                                                            <field name="erithema"/>
+                                                        </group>
+                                                    </group>
+                                                    <group string="Nutrition">
+                                                        <group>
+                                                            <field name="malnutrition"/>
+                                                        </group>
+                                                        <group>
+                                                             <field name="dehydration"/>
+                                                        </group>
+                                                    </group>
+                                                    <group string="Glucose">
+                                                        <group>
+                                                            <field name="glycemia"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="hba1c"/>
+                                                        </group>
+                                                    </group>
+                                                    <group string="Lipids">
+                                                        <group>
+                                                            <field name="cholesterol_total"/>
+                                                            <field name="ldl"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="hdl"/>
+                                                            <field name="tag"/>
+                                                        </group>
+                                                    </group>
+                                                </page>
+                                                <page string="Symptoms">
+                                                    <group string="Pain">
+                                                        <group>
+                                                            <field name="symptom_pain"/>
+                                                            <field name="symptom_arthralgia"/>
+                                                            <field name="symptom_abdominal_pain"/>
+                                                            <field name="symptom_thoracic_pain"/>
+                                                            <field name="symptom_pelvic_pain"/>
+                                                            <field name="symptom_hoarseness"/>
+                                                            <field name="symptom_sore_throat"/>
+                                                            <field name="symptom_ear_discharge"/>
+                                                            <field name="symptom_chest_pain_excercise"/>
+                                                            <field name="symptom_astenia"/>
+                                                            <field name="symptom_weight_change"/>
+                                                            <field name="symptom_hemoptysis"/>
+                                                            <field name="symptom_epistaxis"/>
+                                                            <field name="symptom_rinorrhea"/>
+                                                            <field name="symptom_vomiting"/>
+                                                            <field name="symptom_polydipsia"/>
+                                                            <field name="symptom_polyuria"/>
+                                                            <field name="symptom_vesical_tenesmus"/>
+                                                             <field name="symptom_dysuria"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="symptom_pain_intensity"/>
+                                                            <field name="symptom_myalgia"/>
+                                                            <field name="symptom_cervical_pain"/>
+                                                            <field name="symptom_lumbar_pain"/>
+                                                            <field name="symptom_headache"/>
+                                                            <field name="symptom_odynophagia"/>
+                                                            <field name="symptom_otalgia"/>
+                                                            <field name="symptom_chest_pain"/>
+                                                            <field name="symptom_orthostatic_hypotension"/>
+                                                            <field name="symptom_anorexia"/>
+                                                            <field name="symptom_abdominal_distension"/>
+                                                            <field name="symptom_hematemesis"/>
+                                                            <field name="symptom_gingival_bleeding"/>
+                                                            <field name="symptom_nausea"/>
+                                                            <field name="symptom_dysphagia"/>
+                                                            <field name="symptom_polyphagia"/>
+                                                            <field name="symptom_nocturia"/>
+                                                            <field name="symptom_pollakiuria"/>
+                                                        </group>
+                                                    </group>
+                                                    <group string="Miscellaneous">
+                                                        <group>
+                                                            <field name="symptom_mood_swings"/>
+                                                            <field name="symptom_pruritus"/>
+                                                            <field name="symptom_disturb_sleep"/>
+                                                            <field name="symptom_orthopnea"/>
+                                                            <field name="symptom_paresthesia"/>
+                                                            <field name="symptom_dizziness"/>
+                                                            <field name="symptom_tinnitus"/>
+                                                            <field name="symptom_eye_glasses"/>
+                                                            <field name="symptom_diplopia"/>
+                                                            <field name="symptom_dysmenorrhea"/>
+                                                            <field name="symptom_metrorrhagia"/>
+                                                            <field name="symptom_vaginal_discharge"/>
+                                                            <field name="symptom_diarrhea"/>
+                                                            <field name="symptom_rectal_tenesmus"/>
+                                                            <field name="symptom_proctorrhagia"/>
+                                                            <field name="symptom_sexual_dysfunction"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="symptom_stress"/>
+                                                            <field name="symptom_insomnia"/>
+                                                            <field name="symptom_dyspnea"/>
+                                                            <field name="symptom_amnesia"/>
+                                                            <field name="symptom_paralysis"/>
+                                                            <field name="symptom_vertigo"/>
+                                                            <field name="symptom_syncope"/>
+                                                            <field name="symptom_blurry_vision"/>
+                                                            <field name="symptom_photophobia"/>
+                                                            <field name="symptom_amenorrhea"/>
+                                                            <field name="symptom_menorrhagia"/>
+                                                            <field name="symptom_urethral_discharge"/>
+                                                            <field name="symptom_constipation"/>
+                                                            <field name="symptom_melena"/>
+                                                            <field name="symptom_xerostomia"/>
+                                                        </group>
+                                                    </group>
+                                                </page>
+                                                <page string="Mental Status">
+                                                    <group string="Glasgow Coma Scale">
+                                                        <group>
+                                                            <field name="loc"/>
+                                                            <field name="loc_verbal" on_change="onchange_loc(loc_motor,loc_eyes,loc_verbal)"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="loc_eyes" on_change="onchange_loc(loc_motor,loc_eyes,loc_verbal)"/>
+                                                            <field name="loc_motor" on_change="onchange_loc(loc_motor,loc_eyes,loc_verbal)"/>
+                                                        </group>
+                                                    </group>
+                                                    <group string="Mental Assessment and Impairments">
+                                                        <group>
+                                                            <field name="mood"/>
+                                                            <field name="orientation"/>
+                                                            <field name="knowledge_current_events"/>
+                                                            <field name="abstraction"/>
+                                                            <field name="calculation_ability"/>
+                                                            <field name="praxis"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="violent"/>
+                                                            <field name="memory"/>
+                                                            <field name="judgment"/>
+                                                            <field name="vocabulary"/>
+                                                            <field name="object_recognition"/>
+                                                        </group>
+                                                    </group>
+                                                </page>
+                                                <page string="Diagnosis">
+                                                    <group>
+                                                        <field name="indication" options="{'no_create': True}"/>
+                                                    </group>
+                                                    <group string="Information on Diagnosis">
+                                                        <field name="info_diagnosis" nolabel="1"/>
+                                                    </group>
+                                                    <group string="Treatment Plan">
+                                                        <field name="directions" nolabel="1"/>
+                                                    </group>
+                                                </page>
+                                                <page string="Extra Information">
+                                                    <field name="notes" nolabel="1"/>
+                                                </page>
+                                            </notebook>
+                                        </sheet>
+                                    </form>
+                                    <tree colors="red:bmi&lt;=18 or bmi&gt;=25" string='Evaluations'>
+                                        <field name="name"/>
+                                        <field name="patient"/>
+                                        <field name="doctor"/>
+                                        <field name="walkin"/>
+                                        <field name="evaluation_start_date"/>
+                                        <field name="indication"/>
+                                        <field name="bmi"/>
+                                        <field name="evaluation_type"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Prescriptions">
+                                <field name="prescription_ids" options="{'reload_on_button': true}" context="{'default_walkin': active_id}" domain="[('walkin', '=', active_id)]">
+                                    <form string="Prescriptions">
+                                        <header>
+                                            <button confirm="Are you sure you want to create the invoice?" name="action_prescription_invoice_create" states="Draft" string="Consultancy Invoice" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                            <button confirm="Are you sure you want to send prescription to selected pharmacy?" name="action_prescription_send_to_pharmacy" states="Draft" string="Send to Pharmacy" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                            <field name="state" widget="statusbar" statusbar_visible="Draft,Invoiced,Sent to Pharmacy" statusbar_colors='{"Draft":"blue","Invoiced":"grey"}'/>
+                                        </header>
+                                        <sheet>
+                                            <div class="oe_left" style="width: 500px;">
+                                                <div class="oe_title">
+                                                    <label string="Prescription #" class="oe_edit_only"/>
+                                                    <h1>
+                                                        <field name="name"/>
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                            <group>
+                                                <group>
+                                                    <field name="patient" domain="[('id', '=', parent.patient)]"/>
+                                                    <field name="pharmacy" options="{'no_create': True}"/>
+                                                    <field name="walkin" readonly="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="doctor" options="{'no_create': True}"/>
+                                                    <field name="date"/>
+                                                </group>
+                                            </group>
+                                            <notebook>
+                                                <page string="Prescription Lines">
+                                                    <field name="prescription_line">
+                                                        <form string="Prescription Lines">
+                                                            <group>
+                                                                <group>
+                                                                    <field name="name"/>
+                                                                    <field name="dose_form"/>
+                                                                    <field name="start_treatment"/>
+                                                                    <field name="patient" domain="[('id', '=', parent.patient)]" required="1"/>
+                                                                </group>
+                                                                <group>
+                                                                    <field name="indication"/>
+                                                                    <field name="dose_route"/>
+                                                                    <field name="end_treatment"/>
+                                                                </group>
+                                                            </group>
+                                                            <group>
+                                                                <group string="Dosage">
+                                                                    <field name="qty" required="1"/>
+                                                                    <label for="dose"/>
+                                                                    <div>
+                                                                        <field name="dose" placeholder="250" style="width: 20%%"/>
+                                                                        <field name="dose_unit" placeholder="mg" style="width: 40%%"/>
+                                                                    </div>
+                                                                </group>
+                                                                <group string="Common Dosage">
+                                                                    <field name="common_dosage"/>
+                                                                    <field name="admin_times"/>
+                                                                </group>
+                                                            </group>
+                                                            <group string="Specific Dosage">
+                                                                <p class="oe_grey">
+                                                                    Time in between doses the patient must wait (ie, for 1 pill each 8 hours, put here 8 and select 'hours' in the unit field
+                                                                </p>
+                                                            </group>
+                                                            <group>
+                                                                <group>
+                                                                    <field name="frequency"/>
+                                                                </group>
+                                                                <group>
+                                                                    <field name="frequency_unit"/>
+                                                                </group>
+                                                            </group>
+                                                            <group string="Treatment">
+                                                                <p class="oe_grey">
+                                                                    Treatment period that the patient must take the medication in minutes, hours, days, months, years or indefinitely
+                                                                </p>
+                                                            </group>
+                                                            <group>
+                                                                <group>
+                                                                    <field name="duration" string="Day(s)"/>
+                                                                </group>
+                                                                <group>
+                                                                    <field name="duration_period" string="Period"/>
+                                                                </group>
+                                                            </group>
+                                                            <group string="Comment">
+                                                                <field name="info" nolabel="1"/>
+                                                            </group>
+                                                        </form>
+                                                        <tree string="Prescription Lines">
+                                                            <field name="name"/>
+                                                            <field name="indication"/>
+                                                            <field name="dose"/>
+                                                            <field name="dose_unit"/>
+                                                            <field name="dose_form"/>
+                                                            <field name="common_dosage"/>
+                                                            <field name="qty"/>
+                                                            <field name="duration"/>
+                                                            <field name="duration_period"/>
+                                                            <field name="info"/>
+                                                        </tree>
+                                                    </field>
+                                                </page>
+                                                <page string="Notes">
+                                                    <field name="info" nolabel="1"/>
+                                                </page>
+                                            </notebook>
+                                        </sheet>
+                                    </form>
+                                    <tree string='Prescriptions' colors="grey:state=='Invoiced';blue:state=='Draft';green:state=='Sent to Pharmacy'">
+                                        <field name="name"/>
+                                        <field name="patient"/>
+                                        <field name="date"/>
+                                        <field name="doctor"/>
+                                        <field name="pharmacy"/>
+                                        <field name="walkin"/>
+                                        <field name="state"/>
+                                        <button confirm="Are you sure you want to send prescription to selected pharmacy?" name="action_prescription_send_to_pharmacy"
+                                           string="Send to Pharmacy" type="object"
+                                           icon="gtk-convert"
+                                           states="Draft"
+                                           groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Inpatient Admissions">
+                                <field name="inpatient_ids" context="{'default_walkin': active_id}" domain="[('walkin', '=', active_id)]">
+                                    <form string="Inpatient Admission">
+                                        <header>
+                                            <button confirm="Are you sure you want to admit the patient?" name="set_to_hospitalized" states="Draft" string="Admit Now" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                            <button confirm="Are you sure you want to discharge the patient?" name="set_to_discharged" states="Hospitalized" string="Discharge Now" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                            <button confirm="Are you sure you want to create the invoice?" name="set_to_invoiced" states="Discharged" string="Create Invoice" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                            <button confirm="Are you sure you want to cancel the admission?" name="set_to_cancelled" states="Hospitalized" string="Cancel Admission" type="object" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                            <button confirm="Are you sure you want to set record to draft mode?" name="set_to_draft" states="Cancelled" string="Set to Draft" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                            <field name="state" widget="statusbar" statusbar_visible="Draft,Hospitalized,Discharged,Invoiced" statusbar_colors='{"Hospitalized":"red","Draft":"blue","Invoiced":"grey","Discharged":"red"}'/>
+                                        </header>
+                                        <sheet>
+                                            <div class="oe_left" style="width: 500px;">
+                                                <div class="oe_title" style="width: 390px;">
+                                                    <label class="oe_edit_only" for="name" string="Inpatient #"/>
+                                                    <h1><field name="name" class="oe_inline"/></h1>
+                                                </div>
+                                            </div>
+                                            <group>
+                                                <group>
+                                                    <field name="patient" domain="[('id', '=', parent.patient)]"/>
+                                                    <field name="admission_reason"/>
+                                                    <field name="ward" options="{'no_create': True}"/>
+                                                    <field name="bed" domain="[('ward','=',ward),('state','=','Free')]" options="{'no_create': True}"/>
+                                                </group>
+                                                <group>
+                                                    <field name="admission_type"/>
+                                                    <field name="attending_physician" options="{'no_create': True}"/>
+                                                    <field name="operating_physician" options="{'no_create': True}"/>
+                                                    <field name="walkin" readonly="1"/>
+                                                </group>
+                                            </group>
+                                            <group string="Dates">
+                                                <group>
+                                                    <field name="admission_date"/>
+                                                </group>
+                                                <group>
+                                                    <field name="discharge_date"/>
+                                                </group>
+                                            </group>
+                                            <notebook>
+                                                <page string="Details">
+                                                    <group>
+                                                        <field name="admission_condition"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="nursing_plan"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="discharge_plan"/>
+                                                    </group>
+                                                </page>
+                                                <page string="Extra Information">
+                                                    <field name="info" nolabel="1"/>
+                                                </page>
+                                            </notebook>
+                                        </sheet>
+                                    </form>
+                                    <tree string='Inpatient Admission' colors="grey:state=='Invoiced';blue:state=='Hospitalized';green:state=='Discharged';red:state=='Cancelled'">
+                                        <field name="name"/>
+                                        <field name="patient"/>
+                                        <field name="admission_type"/>
+                                        <field name="ward"/>
+                                        <field name="bed"/>
+                                        <field name="admission_date"/>
+                                        <field name="discharge_date"/>
+                                        <field name="walkin"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                             <page string="Lab Tests">
+                                <field name="lab_test_ids" context="{'default_walkin': active_id}" domain="[('walkin', '=', active_id)]">
+                                    <form string="Lab Tests">
+                                        <header>
+                                            <button confirm="Are you sure you want to start the test?" name="set_to_test_inprogress" states="Draft" string="Start Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                            <button confirm="Are you sure you want to complete the test?" name="set_to_test_complete" states="Test In Progress" string="Complete Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                            <button confirm="Are you sure you want to create the invoice?" name="action_lab_invoice_create" states="Completed" string="Create Lab Test Invoice" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                            <button name="print_patient_labtest" states="Test In Progress,Completed,Invoiced" string="Print Lab Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                                            <field name="state" widget="statusbar" statusbar_visible="Draft,Test In Progress,Completed,Invoiced" statusbar_colors='{"Completed":"blue","Test In Progress":"red","Invoiced":"grey"}'/>
+                                        </header>
+                                        <sheet>
+                                            <div class="oe_left" style="width: 500px;">
+                                                <div class="oe_title" style="width: 390px;">
+                                                    <label class="oe_edit_only" for="name"/>
+                                                    <h1><field name="name" class="oe_inline"/></h1>
+                                                </div>
+                                            </div>
+                                            <group>
+                                                <group>
+                                                    <field name="lab_department" required="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="test_type" on_change="onchange_test_type_id(test_type)"/>
+                                                </group>
+                                            </group>
+                                            <group>
+                                                <group>
+                                                    <field name="patient" domain="[('id', '=', parent.patient)]" options="{'no_create': True}"/>
+                                                    <field name="date_requested"/>
+                                                    <field name="requestor" options="{'no_create': True}"/>
+                                                    <field name="walkin" readonly="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="pathologist" options="{'no_create': True}"/>
+                                                    <field name="date_analysis"/>
+                                                </group>
+                                            </group>
+                                            <notebook>
+                                                <page string="Lab Test Cases">
+                                                    <group>
+                                                        <field name="lab_test_criteria" nolabel="1">
+                                                            <tree string="Lab Test Cases" editable="bottom">
+                                                                <field name="sequence" required="1"/>
+                                                                <field name="name"/>
+                                                                <field name="result"/>
+                                                                <field name="normal_range"/>
+                                                                <field name="units"/>
+                                                            </tree>
+                                                        </field>
+                                                    </group>
+                                                </page>
+                                                <page string="Test Results">
+                                                    <group>
+                                                        <field name="results"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="diagnosis"/>
+                                                    </group>
+                                                </page>
+                                            </notebook>
+                                        </sheet>
+                                    </form>
+                                    <tree string='Lab Tests' colors="grey:state=='Invoiced';blue:state=='Test In Progress';green:state=='Completed';red:state=='Cancelled'">
+                                        <field name="name"/>
+                                        <field name="test_type"/>
+                                        <field name="patient"/>
+                                        <field name="pathologist"/>
+                                        <field name="requestor"/>
+                                        <field name="date_requested"/>
+                                        <field name="date_analysis"/>
+                                        <field name="walkin"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Vaccines">
+                                <field name="vaccine_ids" context="{'default_walkin': active_id}" domain="[('walkin', '=', active_id)]">
+                                    <form string="Vaccines">
+                                        <sheet>
+                                            <div class="oe_left" style="width: 500px;">
+                                                <div class="oe_title">
+                                                    <label string="Vaccine" class="oe_edit_only"/>
+                                                    <h1>
+                                                        <field name="name"/>
+                                                    </h1>
+                                                    <label for="patient" class="oe_edit_only"/>
+                                                    <field name="patient" domain="[('id', '=', parent.patient)]" on_change="onchange_patient(patient)"/>
+                                                </div>
+                                            </div>
+                                            <group>
+                                                <group>
+                                                    <field name="dose"/>
+                                                    <field name="date"/>
+                                                    <field name="walkin" readonly="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="doctor" options="{'no_create': True}"/>
+                                                    <field name="institution" options="{'no_create': True}"/>
+                                                </group>
+                                            </group>
+                                            <notebook>
+                                                <page string="Observations">
+                                                    <field name="info" nolabel="1"/>
+                                                </page>
+                                            </notebook>
+                                        </sheet>
+                                    </form>
+                                    <tree string='Vaccines'>
+                                        <field name="name"/>
+                                        <field name="patient"/>
+                                        <field name="dose"/>
+                                        <field name="doctor"/>
+                                        <field name="date"/>
+                                        <field name="institution"/>
+                                        <field name="walkin"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_register_for_walkin_tree">
+                <field name="name">Walkins</field>
+                <field name="model">oeh.medical.appointment.register.walkin</field>
+                <field name="type">tree</field>
+                    <field name="arch" type="xml">
+                        <tree string="Walkin Details" colors="grey:state=='Invoiced';blue:state=='Scheduled';green:state=='Completed'">
+                            <field name="name"/>
+                            <field name="patient"/>
+                            <field name="doctor"/>
+                            <field name="date"/>
+                            <field name="sex"/>
+                            <field name="dob"/>
+                            <field name="blood_type"/>
+                            <field name="rh"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+            </record>
+
+
+            <record id="oeh_medical_register_for_walkin_action_tree" model="ir.actions.act_window">
+                    <field name="name">Register for Walkins</field>
+                    <field name="res_model">oeh.medical.appointment.register.walkin</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">calendar,tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new patient for walkins.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_register_for_walkin_action_tree" parent="oehealth.oeh_medical_appointment_menu"  id="oeh_medical_register_for_walkin_list" sequence="10"/>
+
+        </data>
+</openerp>

@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- Pediatrics System Checklist -->
+
+        <record id="oeh_medical_pediatrics_psc_profile" model="ir.rule">
+            <field name="name">Each patient can see only own psc</field>
+            <field name="model_id" ref="model_oeh_medical_pediatrics_psc"/>
+            <field name="domain_force">['|', ('patient', '=', False), ('patient.oeh_patient_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_patient'))]"/>
+        </record>
+
+        <record id="oeh_medical_pediatrics_psc_physician" model="ir.rule">
+            <field name="name">Access all the psc</field>
+            <field name="model_id" ref="model_oeh_medical_pediatrics_psc"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+        </record>
+
+        <record id="oeh_medical_pediatrics_psc_admin" model="ir.rule">
+            <field name="name">Access all the psc</field>
+            <field name="model_id" ref="model_oeh_medical_pediatrics_psc"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+
+        <!-- RCRI -->
+
+        <record id="oeh_medical_surgery_rcri_profile" model="ir.rule">
+            <field name="name">Each patient can see only own rcri</field>
+            <field name="model_id" ref="model_oeh_medical_surgery_rcri"/>
+            <field name="domain_force">['|', ('patient', '=', False), ('patient.oeh_patient_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_patient'))]"/>
+        </record>
+
+        <record id="oeh_medical_surgery_rcri_physician" model="ir.rule">
+            <field name="name">Access all the rcri</field>
+            <field name="model_id" ref="model_oeh_medical_surgery_rcri"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+        </record>
+
+        <record id="oeh_medical_surgery_rcri_admin" model="ir.rule">
+            <field name="name">Access all the rcri</field>
+            <field name="model_id" ref="model_oeh_medical_surgery_rcri"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+
+        <!-- Surgeries -->
+
+        <record id="oeh_medical_surgery_profile" model="ir.rule">
+            <field name="name">Each patient can see only own surgeries</field>
+            <field name="model_id" ref="model_oeh_medical_surgery"/>
+            <field name="domain_force">['|', ('patient', '=', False), ('patient.oeh_patient_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_patient'))]"/>
+        </record>
+
+        <record id="oeh_medical_surgery_physician" model="ir.rule">
+            <field name="name">Each physician can see only own surgeries</field>
+            <field name="model_id" ref="model_oeh_medical_surgery"/>
+            <field name="domain_force">['|', ('surgeon', '=', False), ('surgeon.oeh_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+        </record>
+
+        <record id="oeh_medical_surgery_admin" model="ir.rule">
+            <field name="name">Access all the surgeries</field>
+            <field name="model_id" ref="model_oeh_medical_surgery"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+
+        <!-- Ophthalmology Management -->
+
+        <record id="oeh_medical_ophthalmology_profile" model="ir.rule">
+            <field name="name">Each patient can see only own ophthalmology</field>
+            <field name="model_id" ref="model_oeh_medical_ophthalmology"/>
+            <field name="domain_force">['|', ('patient', '=', False), ('patient.oeh_patient_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_patient'))]"/>
+        </record>
+
+        <record id="oeh_medical_ophthalmology_physician" model="ir.rule">
+            <field name="name">Each physician can see only own ophthalmology</field>
+            <field name="model_id" ref="model_oeh_medical_ophthalmology"/>
+            <field name="domain_force">['|', ('doctor', '=', False), ('doctor.oeh_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+        </record>
+
+        <record id="oeh_medical_ophthalmology_admin" model="ir.rule">
+            <field name="name">Access all the ophthalmology</field>
+            <field name="model_id" ref="model_oeh_medical_ophthalmology"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+
+        <!-- Rounding Management -->
+
+        <record id="oeh_medical_patient_rounding_profile" model="ir.rule">
+            <field name="name">Each patient can see only own rounding details</field>
+            <field name="model_id" ref="model_oeh_medical_patient_rounding"/>
+            <field name="domain_force">['|', ('patient', '=', False), ('patient.oeh_patient_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_patient'))]"/>
+        </record>
+
+        <record id="oeh_medical_patient_rounding_physician" model="ir.rule">
+            <field name="name">Each physician can see only own rounding details</field>
+            <field name="model_id" ref="model_oeh_medical_patient_rounding"/>
+            <field name="domain_force">['|', ('doctor', '=', False), ('doctor.oeh_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+        </record>
+
+        <record id="oeh_medical_patient_rounding_admin" model="ir.rule">
+            <field name="name">Access all the rounding details</field>
+            <field name="model_id" ref="model_oeh_medical_patient_rounding"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+
+        <!-- Ambulatory Cares Management -->
+
+        <record id="oeh_medical_patient_ambulatory_cares_profile" model="ir.rule">
+            <field name="name">Each patient can see only own ambulatory cares details</field>
+            <field name="model_id" ref="model_oeh_medical_patient_ambulatory"/>
+            <field name="domain_force">['|', ('patient', '=', False), ('patient.oeh_patient_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_patient'))]"/>
+        </record>
+
+        <record id="oeh_medical_patient_ambulatory_cares_physician" model="ir.rule">
+            <field name="name">Each physician can see only own ambulatory cares</field>
+            <field name="model_id" ref="model_oeh_medical_patient_ambulatory"/>
+            <field name="domain_force">['|', ('doctor', '=', False), ('doctor.oeh_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+        </record>
+
+        <record id="oeh_medical_patient_ambulatory_cares_admin" model="ir.rule">
+            <field name="name">Access all the ambulatory cares details</field>
+            <field name="model_id" ref="model_oeh_medical_patient_ambulatory"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+
+        <!-- Imaging Test Management -->
+
+        <record id="oeh_medical_imaging_profile" model="ir.rule">
+            <field name="name">Each patient can see only own imaging record</field>
+            <field name="model_id" ref="model_oeh_medical_imaging"/>
+            <field name="domain_force">['|', ('patient', '=', False), ('patient.oeh_patient_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_patient'))]"/>
+        </record>
+
+        <record id="oeh_medical_imaging_physician" model="ir.rule">
+            <field name="name">Each physician can see only own imaging record</field>
+            <field name="model_id" ref="model_oeh_medical_imaging"/>
+            <field name="domain_force">['|', ('requestor', '=', False), ('requestor.oeh_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+        </record>
+
+        <record id="oeh_medical_imaging_admin" model="ir.rule">
+            <field name="name">Access all the imaging</field>
+            <field name="model_id" ref="model_oeh_medical_imaging"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+
+        <!-- Register for Walkin -->
+
+        <record id="oeh_medical_appointment_register_walkin_profile" model="ir.rule">
+            <field name="name">Each patient can see only own walk in</field>
+            <field name="model_id" ref="model_oeh_medical_appointment_register_walkin"/>
+            <field name="domain_force">['|', ('patient', '=', False), ('patient.oeh_patient_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_patient'))]"/>
+        </record>
+
+        <record id="oeh_medical_appointment_register_walkin_physician" model="ir.rule">
+            <field name="name">Each physician can see only own walk ins</field>
+            <field name="model_id" ref="model_oeh_medical_appointment_register_walkin"/>
+            <field name="domain_force">['|', ('doctor', '=', False), ('doctor.oeh_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+        </record>
+
+        <record id="oeh_medical_appointment_register_walkin_admin" model="ir.rule">
+            <field name="name">Access all the walk ins</field>
+            <field name="model_id" ref="model_oeh_medical_appointment_register_walkin"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+
+
+    </data>
+</openerp>

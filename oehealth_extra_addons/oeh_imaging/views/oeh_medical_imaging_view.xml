@@ -1,0 +1,226 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+            <!-- Imaging Management -->
+            <menuitem name="Imaging" id="oeh_medical_imaging_menu" parent="oehealth.oeh_medical_menu" sequence="6"/>
+            <menuitem name="Imaging" id="oeh_medical_imaging_conf_menu" parent="oehealth.oeh_medical_conf_menu" sequence="6"/>
+
+
+            <!-- Imaging Test Department management -->
+
+            <record model="ir.ui.view" id="oeh_medical_imaging_test_department_tree">
+                <field name="name">Imaging Test Departments</field>
+                <field name="model">oeh.medical.imagingtest.department</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Imaging Test Departments' editable="top">
+                        <field name="name"/>
+                    </tree>
+                </field>
+            </record>
+
+             <record id="view_imaging_test_department_filter" model="ir.ui.view">
+                <field name="name">Imaging Test Departments</field>
+                <field name="model">oeh.medical.imagingtest.department</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Departments">
+                        <separator orientation="vertical"/>
+                        <field name="name" select="1"/>
+                    </search>
+                </field>
+            </record>
+
+            <record id="oeh_medical_imagingtest_department_action_tree" model="ir.actions.act_window">
+                    <field name="name">Imaging Test Departments</field>
+                    <field name="res_model">oeh.medical.imagingtest.department</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new Imaging Test department.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_imagingtest_department_action_tree" id="oeh_medical_imagingtest_department_menu" parent="oeh_medical_imaging_conf_menu" sequence="5"/>
+
+
+
+            <!-- Imaging Test Types Management -->
+
+            <record id="view_oeh_medical_imaging_test_type_filter" model="ir.ui.view">
+                <field name="name">Imaging Test Types</field>
+                <field name="model">oeh.medical.imaging.test.type</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Imaging Test Types">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="code" select="1"/>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_imaging_test_type_tree">
+                <field name="name">Imaging Test Types</field>
+                <field name="model">oeh.medical.imaging.test.type</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='Imaging Test Types' editable="bottom">
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="imaging_department"/>
+                        <field name="test_charge"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record id="oeh_medical_imaging_test_type_action_tree" model="ir.actions.act_window">
+                    <field name="name">Imaging Test Types</field>
+                    <field name="res_model">oeh.medical.imaging.test.type</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new imaging test type.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_imaging_test_type_action_tree" id="oeh_medical_imaging_test_type_conf_list" parent="oeh_medical_imaging_conf_menu" sequence="10"/>
+
+            <!-- Imaging Tests -->
+
+            <record id="view_oeh_medical_imaging_test_filter" model="ir.ui.view">
+                <field name="name">Imaging Tests</field>
+                <field name="model">oeh.medical.imaging</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Tests">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="analysis" select="1"/>
+                            <field name="conclusion" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter name="f1" string="Patient" icon="terp-personal" domain="[]" context="{'group_by':'patient'}"/>
+                            <filter name="f2" string="Doctor" icon="terp-personal" domain="[]" context="{'group_by':'requestor'}"/>
+                            <filter name="f3" string="Test Types" icon="terp-personal" domain="[]" context="{'group_by':'test_type'}"/>
+                            <filter name="f4" string="State" icon="terp-personal" domain="[]" context="{'group_by':'state'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_imaging_test_tree">
+                <field name="name">Imaging Tests</field>
+                <field name="model">oeh.medical.imaging</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string='X-Ray Tests' colors="grey:state=='Invoiced';blue:state=='Test In Progress';green:state=='Completed'">
+                        <field name="name"/>
+                        <field name="test_type"/>
+                        <field name="patient"/>
+                        <field name="requestor"/>
+                        <field name="date_requested"/>
+                        <field name="date_analysis"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_imaging_test_form">
+                <field name="name">Imaging Tests</field>
+                <field name="model">oeh.medical.imaging</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Imaging Tests">
+                        <header>
+                            <button confirm="Are you sure you want to start the test?" name="set_to_test_start" states="Draft" string="Start Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <button confirm="Are you sure you want to complete the test?" name="set_to_test_complete" states="Test In Progress" string="Complete Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <button confirm="Are you sure you want to create the invoice?" name="action_imaging_invoice_create" states="Completed" string="Create Imaging Test Invoice" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <button name="print_patient_imaging" states="Test In Progress,Completed,Invoiced" string="Print Imaging Test" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                            <field name="state" widget="statusbar" statusbar_visible="Draft,Test In Progress,Completed,Invoiced" statusbar_colors='{"Test In Progress":"blue","Completed":"green","Invoiced":"grey"}'/>
+                        </header>
+                        <sheet>
+                            <div class="oe_left" style="width: 500px;">
+                                <div class="oe_title" style="width: 390px;">
+                                    <label class="oe_edit_only" for="name"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="imaging_department" required="1"/>
+                                </group>
+                                <group>
+                                    <field name="test_type"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="patient" options="{'no_create': True}"/>
+                                    <field name="date_requested"/>
+                                </group>
+                                <group>
+                                    <field name="requestor" options="{'no_create': True}"/>
+                                    <field name="date_analysis"/>
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Images">
+                                    <group>
+                                        <group>
+                                            <field name="image1" widget="image"/>
+                                            <field name="image3" widget="image"/>
+                                            <field name="image5" widget="image"/>
+                                        </group>
+                                        <group>
+                                            <field name="image2" widget="image"/>
+                                            <field name="image4" widget="image"/>
+                                            <field name="image6" widget="image"/>
+                                        </group>
+                                    </group>
+                                </page>
+                                <page string="Information">
+                                    <group>
+                                        <field name="analysis"/>
+                                    </group>
+                                    <group>
+                                        <field name="conclusion"/>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record id="oeh_medical_imaging_test_action_tree" model="ir.actions.act_window">
+                    <field name="name">Imaging Tests</field>
+                    <field name="res_model">oeh.medical.imaging</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new imaging test.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_imaging_test_action_tree" id="oeh_medical_imaging_test_conf_list" parent="oeh_medical_imaging_menu" sequence="5"/>
+
+
+    </data>
+</openerp>

@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+            <!-- Patient Call Log Management -->
+
+            <record id="view_oeh_medical_patient_call_log_filter" model="ir.ui.view">
+                <field name="name">Call Logs Search</field>
+                <field name="model">oeh.medical.patient.call.log</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Call Logs">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="patient" string="Patient" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter name="f25" string="Patient" context="{'group_by':'patient'}"/>
+                            <filter name="f26" string="Call Type" context="{'group_by':'call_type'}"/>
+                            <filter name="f27" string="Person In Charge" context="{'group_by':'person_in_charge'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+
+            <record model="ir.ui.view" id="oeh_medical_patient_call_log_main_view">
+                <field name="name">Call Logs</field>
+                <field name="model">oeh.medical.patient.call.log</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                <form string="Call Logs">
+                    <sheet>
+                        <div class="oe_left" style="width: 500px;">
+                            <div class="oe_title">
+                               <!-- <label string="Call Log #" class="oe_edit_only"/> -->
+                                <h1>
+                                    <field name="name" placeholder="Call Log #"  required="1"/>
+                                </h1>
+                            </div>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="patient" on_change="onchange_patient(patient)"/>
+                                <field name="person_in_charge" options="{'no_create': True}" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="call_type"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="log_date"/>
+                        </group>
+                        <group string="Call Log">
+                            <group>
+                                <field name="call_log"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_call_log_tree">
+                <field name="name">Call Logs List</field>
+                <field name="model">oeh.medical.patient.call.log</field>
+                <field name="type">tree</field>
+                    <field name="arch" type="xml">
+                        <tree string='Call Logs Information'>
+                            <field name="name"/>
+                            <field name="call_type"/>
+                            <field name="log_date"/>
+                            <field name="patient"/>
+                            <field name="person_in_charge"/>
+                            <field name="call_log"/>
+                        </tree>
+                    </field>
+            </record>
+
+
+            <record id="oeh_medical_patient_call_log_action_tree" model="ir.actions.act_window">
+                    <field name="name">Call Logs</field>
+                    <field name="res_model">oeh.medical.patient.call.log</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to record new patient call log information.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_patient_call_log_action_tree" parent="oehealth.oeh_medical_patients_menu"  id="oeh_medical_patient_call_log_list" sequence="10"/>
+
+            <!-- Inheriting Patient screen to display patient's call logs -->
+
+            <record id="oeh_medical_patient_call_log_patient_view" model="ir.ui.view">
+                <field name="name">Patient</field>
+                <field name="model">oeh.medical.patient</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_patient_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Call Logs">
+                            <field name="call_log_ids" widget="one2many_list" context="{'default_patient': active_id}" attrs="{'readonly':[('deceased','=',True)]}"/>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+
+        </data>
+    </openerp>

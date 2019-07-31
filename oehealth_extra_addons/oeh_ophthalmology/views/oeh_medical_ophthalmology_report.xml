@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_patient_ophthalmology_evaluation">
+    <t t-call="web.external_layout">
+        <t t-foreach="docs" t-as="o">
+            <div class="page">
+                <div class="oe_structure"/>
+                <div class="row">
+                    <h1 style="text-align:center;">Ophthalmology Report</h1>
+                    <p style="font-size:12px;text-align:center;">Evaluation at <span t-field="o.visit_date"/></p>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div t-if="o.patient">
+                            <strong>Patient Name:</strong>
+                            <p t-field="o.patient.name"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div t-if="o.computed_age">
+                            <strong>Age at evaluation:</strong>
+                            <p t-field="o.computed_age"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div t-if="o.doctor">
+                            <strong>Doctor:</strong>
+                            <p t-field="o.doctor.name"/>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+                <p style="font-size:24px;text-align:left;font-weight:bold;">Optometry Refraction Report</p>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <p style="font-size:16px;text-align:left;font-weight:bold;">Right Eye</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <p style="font-size:16px;text-align:left;font-weight:bold;">Left Eye</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div t-if="o.rbcva_spherical">
+                            <span>Spherical (DV): <span t-esc="o.rbcva_spherical"/></span>
+                        </div>
+                        <div t-if="o.rbcva_cylinder">
+                            <span>Cylinder (DV): <span t-esc="o.rbcva_cylinder"/></span>
+                        </div>
+                        <div t-if="o.rbcva_axis">
+                            <span>Axis (DV): <span t-esc="o.rbcva_axis"/></span>
+                        </div>
+                        <div t-if="o.rbcva">
+                            <span>VA (DV): <span t-esc="o.rbcva"/></span>
+                        </div>
+                        <div t-if="o.rbcva_nv_add">
+                            <span>ADD (NV): <span t-esc="o.rbcva_nv_add"/></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div t-if="o.lbcva_spherical">
+                            <span>Spherical: <span t-esc="o.lbcva_spherical"/></span>
+                        </div>
+                        <div t-if="o.lbcva_cylinder">
+                            <span>Cylinder (DV): <span t-esc="o.lbcva_cylinder"/></span>
+                        </div>
+                        <div t-if="o.lbcva_axis">
+                            <span>Axis (DV): <span t-esc="o.lbcva_axis"/></span>
+                        </div>
+                        <div t-if="o.lbcva">
+                            <span>VA (DV): <span t-esc="o.lbcva"/></span>
+                        </div>
+                        <div t-if="o.lbcva_nv_add">
+                            <span>ADD (NV): <span t-esc="o.lbcva_nv_add"/></span>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+                <p style="font-size:24px;text-align:left;font-weight:bold;">Findings</p>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Structure </th>
+                            <th>Eye</th>
+                            <th>Finding</th>
+                        </tr>
+                   </thead>
+                   <tbody class="sale_tbody">
+                        <t t-foreach="o.findings" t-as="l">
+                            <tr t-if="l.name">
+                                <td>
+                                   <span t-field="l.eye_structure"/>
+                                </td>
+                                <td>
+                                   <span t-field="l.affected_eye"/>
+                                </td>
+                                <td>
+                                    <span t-field="l.finding"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <br/><br/><br/><br/><br/><br/>
+                <p class="text-right"><strong>Authorized signature</strong><br/><br/><br/>______________________</p>
+
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </t>
+</template>
+
+</data>
+</openerp>

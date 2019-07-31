@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+            <!-- Inheriting Patient screen to display patient's medical certificates -->
+
+            <record id="oeh_medical_patient_medical_certificate_patient_view" model="ir.ui.view">
+                <field name="name">Patient</field>
+                <field name="model">oeh.medical.patient</field>
+                <field name="inherit_id" ref="oehealth.oeh_medical_patient_view"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Medical Certificates">
+                            <field name="medical_cert_ids" context="{'default_patient': active_id}" attrs="{'readonly':[('deceased','=',True)]}">
+                                <form string="Medical Certificates">
+                                    <header>
+                                        <button name="print_patient_medical_cert" string="Print Medical Certificate" type="object" class="oe_highlight"/>
+                                    </header>
+                                    <sheet>
+                                        <div class="oe_left" style="width: 300px;">
+                                            <div class="oe_title">
+                                               <label string="MC #" class="oe_edit_only"/>
+                                                <h1>
+                                                    <field name="name" required="1"/>
+                                                </h1>
+                                                <label for="patient" class="oe_edit_only"/>
+                                                <field name="patient"/>
+                                            </div>
+                                        </div>
+                                        <group>
+                                            <group>
+                                                <field name="doctor"/>
+                                                <field name="start_date"/>
+                                                <field name="no_of_days"/>
+                                            </group>
+                                            <group>
+                                                <field name="institution"/>
+                                                <field name="end_date"/>
+                                                <field name="issue_date"/>
+                                            </group>
+                                        </group>
+                                        <notebook>
+                                            <page string="Reason">
+                                                <group>
+                                                    <field name="reason" nolabel="1"/>
+                                                </group>
+                                            </page>
+                                        </notebook>
+                                    </sheet>
+                                </form>
+                                <tree string="Medical Certificates">
+                                    <field name="name"/>
+                                    <field name="patient"/>
+                                    <field name="doctor"/>
+                                    <field name="institution"/>
+                                    <field name="issue_date"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="no_of_days"/>
+                                    <button name="print_patient_medical_cert" string="Print Medical Certificate" type="object" icon="gtk-print"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+
+        </data>
+    </openerp>

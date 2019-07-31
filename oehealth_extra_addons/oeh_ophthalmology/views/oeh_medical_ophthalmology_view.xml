@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <openerp>
+        <data>
+
+            <!-- Ophthalmology Management -->
+
+            <menuitem name="Ophthalmology" id="oeh_medical_ophthalmology_menu" parent="oehealth.oeh_medical_menu" sequence="5"/>
+
+
+            <record id="view_oeh_medical_ophthalmology" model="ir.ui.view">
+                <field name="name">Ophthalmology Search</field>
+                <field name="model">oeh.medical.ophthalmology</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search Ophthalmology">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                            <field name="patient" string="Patient" select="1"/>
+                            <field name="doctor" string="Physician" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter name="f23" string="Patient" context="{'group_by':'patient'}"/>
+                            <filter name="f24" string="Doctor" context="{'group_by':'doctor'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_ophthalmology_view">
+                <field name="name">Ophthalmology</field>
+                <field name="model">oeh.medical.ophthalmology</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                <form string="Ophthalmology">
+                    <header>
+                        <button confirm="Are you sure you want to start the evaluation?" name="start_evaluation" states="Draft" string="Start Evaluation" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <button confirm="Are you sure you want to complete the evaluation?" name="complete_evaluation" states="In Progress" string="End Evaluation" type="object" class="oe_highlight" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="Draft,In Progress,Completed" statusbar_colors='{"Completed":"grey","In Progress":"blue"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_left" style="width: 300px;">
+                            <div class="oe_title">
+                               <label for="name" class="oe_edit_only"/>
+                                <h1>
+                                    <field name="name" required="1"/>
+                                </h1>
+                            </div>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="patient"/>
+                                <field name="visit_date"/>
+                            </group>
+                            <group>
+                                <field name="doctor" options="{'no_create': True}"/>
+                                <field name="computed_age"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Optometry">
+                                <group string="Refraction">
+                                    <group string="Right Eye">
+                                        <field name="rdva"/>
+                                        <field name="rdva_pinhole"/>
+                                        <field name="rdva_aid"/>
+                                        <field name="rnv"/>
+                                    </group>
+                                    <group string="Left Eye">
+                                        <field name="ldva"/>
+                                        <field name="ldva_pinhole"/>
+                                        <field name="ldva_aid"/>
+                                        <field name="lnv"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group string="Right Eye">
+                                        <field name="rspherical"/>
+                                        <field name="rcylinder"/>
+                                        <field name="raxis"/>
+                                        <field name="rnv_add"/>
+                                    </group>
+                                    <group string="Left Eye">
+                                        <field name="lspherical"/>
+                                        <field name="lcylinder"/>
+                                        <field name="laxis"/>
+                                        <field name="lnv_add"/>
+                                    </group>
+                                </group>
+                                <group string="Best Corrected Visual Acuity">
+                                    <group string="Right Eye">
+                                        <field name="rbcva_spherical"/>
+                                        <field name="rbcva_cylinder"/>
+                                        <field name="rbcva_axis"/>
+                                        <field name="rbcva"/>
+                                        <field name="rbcva_nv_add"/>
+                                        <field name="rbcva_nv"/>
+                                    </group>
+                                    <group string="Left Eye">
+                                        <field name="lbcva_spherical"/>
+                                        <field name="lbcva_cylinder"/>
+                                        <field name="lbcva_axis"/>
+                                        <field name="lbcva"/>
+                                        <field name="lbcva_nv_add"/>
+                                        <field name="lbcva_nv"/>
+                                    </group>
+                                </group>
+                                <group string="Tonometry">
+                                    <field name="iop_method"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="riop"/>
+                                    </group>
+                                    <group>
+                                        <field name="liop"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Findings">
+                                <field name="findings" nolabel="1">
+                                    <form string="Findings">
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="eye_structure" required="1"/>
+                                                    <field name="finding" required="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="affected_eye" required="1"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree string="Findings" editable="bottom">
+                                        <field name="eye_structure" required="1"/>
+                                        <field name="affected_eye" required="1"/>
+                                        <field name="finding" required="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Notes">
+                                <group>
+                                    <group>
+                                        <field name="notes" nolabel="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_ophthalmology_tree">
+                <field name="name">Ophthalmology List</field>
+                <field name="model">oeh.medical.ophthalmology</field>
+                <field name="type">tree</field>
+                    <field name="arch" type="xml">
+                        <tree string='Ophthalmology' colors="grey:state=='Completed';blue:state=='In Progress'">
+                            <field name="name"/>
+                            <field name="patient"/>
+                            <field name="computed_age"/>
+                            <field name="doctor"/>
+                            <field name="visit_date"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+            </record>
+
+            <record id="oeh_medical_ophthalmology_action_tree" model="ir.actions.act_window">
+                    <field name="name">Ophthalmology</field>
+                    <field name="res_model">oeh.medical.ophthalmology</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to register a new ophthalmology visit.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_ophthalmology_action_tree" parent="oeh_medical_ophthalmology_menu"  id="oeh_medical_ophthalmology_list" sequence="10"/>
+
+        </data>
+    </openerp>

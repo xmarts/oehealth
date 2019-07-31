@@ -1,0 +1,127 @@
+<?xml version="1.0" ?>
+    <openerp>
+        <data>
+
+            <!-- NTD Management -->
+
+            <menuitem name="Neglected Tropical Diseases" id="oeh_medical_ntd_menu" parent="oehealth.oeh_medical_menu" sequence="6"/>
+
+
+            <!-- NTD Chagas Management -->
+
+            <record id="view_oeh_medical_ntd_chagas_filter" model="ir.ui.view">
+                <field name="name">NTD Chagas</field>
+                <field name="model">oeh.medical.ntd.chagas</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Search NTD Chagas">
+                        <separator orientation="vertical"/>
+                            <field name="name" select="1"/>
+                        <newline/>
+                        <group expand="0" string="Group By..." colspan="11" col="11">
+                            <filter name="f10" string="Domiciliary Unit" context="{'group_by':'du'}"/>
+                            <filter name="f11" string="Status" context="{'group_by':'du_status'}"/>
+                            <filter name="f12" string="Vector" context="{'group_by':'vector'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_ntd_chagas_view">
+                <field name="name">NTD Chagas</field>
+                <field name="model">oeh.medical.ntd.chagas</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                <form string="NTD Chagas">
+                    <sheet>
+                        <div class="oe_left" style="width: 300px;">
+                            <div class="oe_title">
+                               <!-- <label for="name" string="Name" class="oe_edit_only"/> -->
+                                <h1>
+                                    <field name="name" placeholder="Name" required="1"/>
+                                </h1>
+                            </div>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="du"/>
+                                <field name="du_status"/>
+                            </group>
+                            <group>
+                                <field name="survey_date"/>
+                                <field name="next_survey_date"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Presence of triatomines">
+                                <field name="triatomines"/>
+                                <field name="nymphs"/>
+                                <field name="t_in_house"/>
+                                <field name="t_peri"/>
+                                <field name="vector"/>
+                            </group>
+                            <group string="Areas to Improve">
+                                <field name="droof"/>
+                                <field name="dwall"/>
+                                <field name="dfloor"/>
+                                <field name="dperi"/>
+                            </group>
+                        </group>
+                        <group string="Preventive Measures">
+                            <field name="bugtraps"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="du_fumigation"/>
+                                <field name="du_paint"/>
+                            </group>
+                            <group>
+                                <field name="fumigation_date"/>
+                                <field name="paint_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Observations">
+                                <field name="observations" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="oeh_medical_ntd_chagas_tree">
+                <field name="name">NTD Chagas List</field>
+                <field name="model">oeh.medical.ntd.chagas</field>
+                <field name="type">tree</field>
+                    <field name="arch" type="xml">
+                        <tree string='NTD Chagas Information'>
+                            <field name="name"></field>
+                            <field name="du"/>
+                            <field name="du_status"/>
+                            <field name="survey_date"/>
+                            <field name="next_survey_date"/>
+                        </tree>
+                    </field>
+            </record>
+
+
+            <record id="oeh_medical_ntd_chagas_action_tree" model="ir.actions.act_window">
+                    <field name="name">NTD Chagas</field>
+                    <field name="res_model">oeh.medical.ntd.chagas</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new ntd chagas detail.
+                      </p>
+                    </field>
+            </record>
+
+            <menuitem action="oeh_medical_ntd_chagas_action_tree" parent="oeh_medical_ntd_menu"  id="oeh_medical_edit_ntd_chagas" sequence="5"/>
+
+        </data>
+    </openerp>

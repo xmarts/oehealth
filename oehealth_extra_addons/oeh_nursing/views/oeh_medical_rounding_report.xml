@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_patient_rounding_evaluation">
+    <t t-call="web.external_layout">
+        <t t-foreach="docs" t-as="o">
+            <div class="page">
+                <div class="oe_structure"/>
+                <div class="row">
+                    <h1 style="text-align:center;">Patient Rounding Report</h1>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div t-if="o.name">
+                            <strong>Rounding #:</strong>
+                            <p t-field="o.name"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div t-if="o.doctor">
+                            <strong>Physician:</strong>
+                            <p t-field="o.doctor.name"/>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div t-if="o.patient">
+                            <strong>Patient Name:</strong>
+                            <p t-field="o.patient.name"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div t-if="o.patient.identification_code">
+                            <strong>Patient ID:</strong>
+                            <p t-field="o.patient.identification_code"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div t-if="o.patient.sex">
+                            <strong>Sex:</strong>
+                            <p t-field="o.patient.sex"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div t-if="o.evaluation_start_date">
+                            <strong>Start date &amp; time:</strong>
+                            <p t-field="o.evaluation_start_date"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div t-if="o.evaluation_end_date">
+                            <strong>End date &amp; time:</strong>
+                            <p t-field="o.evaluation_end_date"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div t-if="o.evolution">
+                            <strong>Evolution:</strong>
+                            <p t-field="o.evolution"/>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div t-if="o.systolic">
+                            <strong>Systolic Pressure:</strong>
+                            <p t-field="o.systolic"/>
+                        </div>
+                        <div t-if="o.diastolic">
+                            <strong>Diastolic Pressure:</strong>
+                            <p t-field="o.diastolic"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div t-if="o.temperature">
+                            <strong>Temp. (C):</strong>
+                            <p t-field="o.temperature"/>
+                        </div>
+                        <div t-if="o.weight">
+                            <strong>Weight (kg):</strong>
+                            <p t-field="o.weight"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div t-if="o.bpm">
+                            <strong>Heart rate:</strong>
+                            <p t-field="o.bpm"/>
+                        </div>
+                        <div t-if="o.glycemia">
+                            <strong>Glycemia:</strong>
+                            <p t-field="o.glycemia"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div t-if="o.diuresis">
+                            <strong>Diuresis:</strong>
+                            <p t-field="o.diuresis"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div t-if="o.pain">
+                            <strong>Pain:</strong>
+                            <p> Yes </p>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+                <p style="font-size:24px;text-align:left;font-weight:bold;">Procedures</p>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Code </th>
+                            <th>Description </th>
+                            <th>Notes</th>
+                        </tr>
+                   </thead>
+                   <tbody class="sale_tbody">
+                        <t t-foreach="o.procedures" t-as="l">
+                            <tr t-if="l.procedures">
+                                <td>
+                                   <span t-field="l.procedures"/>
+                                </td>
+                                <td>
+                                   <span t-field="l.procedures.description"/>
+                                </td>
+                                <td>
+                                   <span t-field="l.notes"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <br/><br/>
+                <div class="col-xs-12">
+                    <div t-if="o.round_summary">
+                        <p style="font-size:24px;text-align:left;font-weight:bold;">Round Summary</p>
+                        <p t-field="o.round_summary"/>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </t>
+</template>
+
+</data>
+</openerp>
