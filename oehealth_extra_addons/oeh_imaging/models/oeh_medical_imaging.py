@@ -55,8 +55,19 @@ class OeHealthImagingTestType(models.Model):
     test_charge = fields.Float(string='Test Charge', required=True, default=lambda *a: 0.0)
     imaging_department = fields.Many2one('oeh.medical.imagingtest.department', string='Department')
 
-    _sql_constraints = [('name_uniq', 'unique(name)', 'The Imaging test type name must be unique')]
+    _sql_constraints = [('name_uniq', 'Check(1=1)', 'The Imaging test type name must be unique')]
+    @api.model
+    def create(self, values):
+        name = values.get('name')
+        code = values.get('code')
+        depar = values.get('imaging_department')
 
+        consul = self.env['oeh.medical.imaging.test.type'].search([('name','=',name),('code','=',code),('imaging_department','=',int(depar))],limit=1)
+        if consul:
+            raise UserError('El registro ya exite!!')    
+        res = super(OeHealthImagingTestType, self).create(values)
+       
+        return res
 
 # Imaging Test Management
 
